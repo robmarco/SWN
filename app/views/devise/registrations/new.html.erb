@@ -1,0 +1,21 @@
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	<%= devise_error_messages! %>
+	<fieldset>
+  	<legend>Datos de registro</legend>
+		<dl>
+			<dt>
+				<label>Login</label>
+			</dt>
+			<dd>
+				<%= f.email_field :email, :class => 'large' %>
+			</dd>
+			<dt>
+				<label>Password</label>
+			</dt>
+			<dd>
+				<%= f.password_field :password, :class => 'large' %>
+			</dd>			
+		</dl>
+  </fieldset>
+	<%= f.submit "Sign up", :class => "button right" %>
+<% end %>

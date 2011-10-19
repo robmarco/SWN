@@ -17,7 +17,132 @@
 		
 		<!-- Article Content -->
 		<section>
-			<p>Find me in app/views/pages/index.html.erb</p>
+			<h3>Form</h3>
+			<form>
+				<!-- Inputs -->
+				<!-- Use class .small, .medium or .large for predefined size -->
+				<fieldset>
+					<legend>Legend</legend>
+					<dl>
+						<dt>
+							<label>Short Input</label>
+						</dt>
+						<dd>
+							<input type="text" class="small">
+							<p>Short description of event</p>
+						</dd>
+						<dt>
+							<label>Medium Input</label>
+						</dt>
+						<dd>
+							<input type="text" class="medium">
+						</dd>
+						<dt>
+							<label>Focused Input</label>
+						</dt>
+						<dd>
+							<input type="text" class="medium">
+						</dd>
+						<dt>
+							<label>Valid Input</label>
+						</dt>
+						<dd>
+							<input type="text" class="medium valid">
+							<span class="valid-side-note">Valid text</span>
+						</dd>
+						<dt>
+							<label>Invalid Input</label>
+						</dt>
+						<dd>
+							<input type="text" class="medium invalid">
+							<span class="invalid-side-note">Invalid text</span>
+						</dd>
+						<dt>
+							<label>Disabled Input</label>
+						</dt>
+						<dd>
+							<input type="text" class="medium" disabled>
+						</dd>
+						<dt>
+							<label>Long text input</label>
+						</dt>
+						<dd>
+							<input type="text" class="large">
+							<p>Short description of event</p>
+						</dd>
+						<dt>
+							<label>Text content</label>
+						</dt>
+						<dd class="text">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis lobortis nisl nec commodo. In eleifend, arcu sed aliquet varius, turpis dolor sollicitudin mi, condimentum consequat lectus massa vitae risus. Aliquam sed arcu sed magna auctor dictum.</p>
+						</dd>
+						<dt>
+							<label>Text content</label>
+						</dt>
+						<dd class="text">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis lobortis nisl nec commodo. In eleifend, arcu sed aliquet varius, turpis dolor sollicitudin mi, condimentum consequat lectus massa vitae risus. Aliquam sed arcu sed magna auctor dictum.
+						</dd>
+						<dt>
+							<label>File input</label>
+						</dt>
+						<dd>
+							<input type="file" class="fileupload">
+							<p>Max size 5Mb</p>
+						</dd>
+						<dt>
+							<label>Date input</label>
+						</dt>
+						<dd>
+							<input type="text" class="datepicker small">
+						</dd>
+						<dt>
+							<label>Textarea</label>
+						</dt>
+						<dd>
+							<!-- Use class .wysiwyg for jQuery jWYSIWYG initiation -->
+							<textarea rows="5" cols="40" class="wysiwyg large"></textarea>
+							<p>Short description of event</p>
+						</dd>
+					</dl>
+				</fieldset>
+				<fieldset>
+					<legend>Check-in some of these</legend>
+					<dl>
+						<dt class="checkbox"><label>Checkbox A</label></dt>
+						<dd><input type="checkbox"></dd>
+						<dt class="checkbox"><label>Checkbox B</label></dt>
+						<dd><input type="checkbox"></dd>
+						<dt class="checkbox"><label>Checkbox C</label></dt>
+						<dd><input type="checkbox"></dd>
+					</dl>
+				</fieldset>
+				<fieldset>
+					<legend>Choose one of these</legend>
+					<dl>
+						<dt class="radio"><label>Option 1</label></dt>
+						<dd><input type="radio" name="test"></dd>
+						<dt class="radio"><label>Option 2</label></dt>
+						<dd><input type="radio" name="test"></dd>
+						<dt class="radio"><label>Option 3</label></dt>
+						<dd><input type="radio" name="test"></dd>
+					</dl>
+				</fieldset>
+				<fieldset>
+					<legend>Choose one of these</legend>
+					<dl>
+						<dt><label>Select</label></dt>
+						<dd>
+							<select name="actions">
+								<option selected>Choose an action</option>
+								<option value="e">Edit</option>
+								<option value="r">Remove</option>
+								<option value="x">Export</option>
+							</select>
+						</dd>
+					</dl>
+				</fieldset>
+				<button type="submit">Submit</button> or <a href="#">Cancel</a>
+			</form>
 		</section>
 		<!-- /Article Content -->
 	

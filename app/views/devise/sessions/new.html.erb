@@ -1,0 +1,27 @@
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	<fieldset>
+		<legend>Datos de acceso</legend>
+		<dl>
+			<dt>
+				<label>Login</label>
+			</dt>
+			<dd>
+				<%= f.email_field :email, :class => 'large' %>
+			</dd>
+			<dt>
+				<label>Password</label>
+			</dt>
+			<dd>
+				<%= f.password_field :password, :class => 'large' %>
+			</dd>
+			<% if devise_mapping.rememberable? -%>
+		    <dt class="checkbox"><label>Remeber me</label></dt>
+				<dd><%= f.check_box :remember_me %></dd>
+		  <% end -%>
+			
+		</dl>
+	</fieldset>
+	<%= f.submit "Sign in", :class => 'button right' %>
+<% end %>
+		
+		

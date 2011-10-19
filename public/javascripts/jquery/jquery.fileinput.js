@@ -59,9 +59,9 @@ $.fn.customFileInput = function(){
 	//create custom control container
 	var upload = $('<div class="customfile"></div>');
 	//create custom control button
-	var uploadButton = $('<span class="customfile-button button" aria-hidden="true">Browse</span>').appendTo(upload);
+	var uploadButton = $('<span class="customfile-button button" aria-hidden="true">Buscar</span>').appendTo(upload);
 	//create custom control feedback
-	var uploadFeedback = $('<span class="customfile-feedback" aria-hidden="true">No file selected...</span>').appendTo(upload);
+	var uploadFeedback = $('<span class="customfile-feedback" aria-hidden="true">No hay archivos seleccionados...</span>').appendTo(upload);
 	
 	//match disabled state
 	if(fileInput.is('[disabled]')){

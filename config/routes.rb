@@ -1,5 +1,8 @@
 SWN::Application.routes.draw do
+  resources :swimmers
+
   get "pages/index"
+  get "pages/about"
 
   devise_for :users
 

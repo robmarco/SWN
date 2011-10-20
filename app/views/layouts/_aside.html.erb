@@ -2,7 +2,7 @@
 <section role="navigation">
 	<!-- Header with logo and headline -->
 	<header>
-		<a href="#" title="Back to Homepage"></a>
+		<%= link_to '', root_path, :title => "Back to Homepage" %>
 		<h1>Lorem ipsum dolor sit amet!</h1>
 	</header>
 	
@@ -10,11 +10,11 @@
 	<section id="user-info">
 		<img src="/images/sample_user.png" alt="User Avatar">
 		<div>
-			<a href="#" title="Account Settings and Profile Page">Joe Tester</a>
+			<a href="#" title="Account Settings and Profile Page">Robert Tester</a>
 			<em>Administrator</em>
 			<ul>
 				<li><a class="button-link" href="#" title="This is my title!" rel="tooltip">view website</a></li>
-				<li><a class="button-link" href="#" title="And this is Sparta!" rel="tooltip">logout</a></li>
+				<li><%= link_to 'logout', destroy_user_session_path, :method => 'delete',  :class => 'button-link' %></li>
 			</ul>
 		</div>
 	</section>

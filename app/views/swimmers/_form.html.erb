@@ -1,0 +1,77 @@
+<%= form_for(@swimmer) do |f| %>
+  <% if @swimmer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@swimmer.errors.count, "error") %> prohibited this swimmer from being saved:</h2>
+
+      <ul>
+      <% @swimmer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :secname %><br />
+    <%= f.text_field :secname %>
+  </div>
+  <div class="field">
+    <%= f.label :born %><br />
+    <%= f.date_select :born %>
+  </div>
+  <div class="field">
+    <%= f.label :licence %><br />
+    <%= f.text_field :licence %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :postal %><br />
+    <%= f.text_field :postal %>
+  </div>
+  <div class="field">
+    <%= f.label :city_id %><br />
+    <%= f.text_field :city_id %>
+  </div>
+  <div class="field">
+    <%= f.label :country_id %><br />
+    <%= f.text_field :country_id %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :parentname %><br />
+    <%= f.text_field :parentname %>
+  </div>
+  <div class="field">
+    <%= f.label :parentemail %><br />
+    <%= f.text_field :parentemail %>
+  </div>
+  <div class="field">
+    <%= f.label :parentphone %><br />
+    <%= f.text_field :parentphone %>
+  </div>
+  <div class="field">
+    <%= f.label :disease %><br />
+    <%= f.text_area :disease %>
+  </div>
+  <div class="field">
+    <%= f.label :observation %><br />
+    <%= f.text_area :observation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

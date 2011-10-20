@@ -10,7 +10,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111019130300) do
+ActiveRecord::Schema.define(:version => 20111020133538) do
+
+  create_table "swimmers", :force => true do |t|
+    t.string   "name"
+    t.string   "secname"
+    t.date     "born"
+    t.integer  "licence"
+    t.string   "email"
+    t.string   "address"
+    t.integer  "postal"
+    t.integer  "city_id"
+    t.integer  "country_id"
+    t.integer  "phone"
+    t.string   "parentname"
+    t.string   "parentemail"
+    t.integer  "parentphone"
+    t.text     "disease"
+    t.text     "observation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

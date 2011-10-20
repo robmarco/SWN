@@ -1,0 +1,114 @@
+<ul id="breadcrumbs">
+	<li><a href="/" title="Back to Homepage">Back to Home</a></li>
+	<li><a href="#">Projects</a></li>
+	<li><a href="#">Project's Assets</a></li>
+	<li><a href="#">Edit Assets</a></li>
+	<li>Current Page</li>
+</ul>
+
+<!-- Full Content Block -->
+<article class="full-block clearfix">
+	
+	<!-- Article Container - Listado de nadadores -->
+	<div class="article-container">
+		
+		<!-- Article header -->
+		<header>
+			<h2>Gestión de nadadores</h2>
+		</header>
+		<!-- Article header-->
+		
+		<!-- Article content -->
+		<section>
+			
+			<!-- Sidetabs -->
+			<div class="sidetabs">
+				
+				<!-- Sidetabs Navigation -->
+				<nav class="sidetab-switch">
+					<ul>
+						<li><a class="default-sidetab" href="#sidetab1">Todos</a></li>
+						<li><a href="#sidetab2">Federados</a></li>
+						<li><a href="#sidetab3">No Federados</a></li>
+						<li><a href="#sidetab4">Bajas</a></li>
+					</ul>
+					<p>Se muestran los nadadores insertados en el sistema por un entrenador y su equipo técnico.</p>
+				</nav>
+				<!-- /Sidetabs Navigation -->
+				
+				<!-- Sidetab1 -->
+				<div class="sidetab default-sidetab" id="sidetab1">
+					<h3>Todos</h3>
+					<table class="datatable">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Apellidos</th>
+								<th>Nombre</th>
+								<th>Categoría</th>
+								<th>Estado</th>
+								<th>Acción</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<% @swimmers.each do |swimmer| %>
+							<tr>
+								<td><%= swimmer.id %></td>
+								<td><%= swimmer.secname %></td>
+								<td><%= swimmer.name %></td>
+								<td><%= swimmer.licence %></td>
+								<td><%= swimmer.email %></td>
+								<td>
+									<ul class="actions">
+										<li><a class="view" href="#" title="View Item" rel="tooltip">view</a></li>
+										<li><a class="edit" href="#" title="Edit Item" rel="tooltip">edit</a></li>
+										<li><a class="delete" href="#" title="Delete Item" rel="tooltip">delete</a></li>
+									</ul>
+								</td>
+							</tr>	
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+				<!-- /Sidetab1 -->
+				
+				<div class="sidetab" id="sidetab2">
+					<h3>Federados</h3>
+				</div>
+				
+				<div class="sidetab" id="sidetab3">
+					<h3>No Federados</h3>
+				</div>
+			
+				<div class="sidetab" id="sidetab4">
+					<h3>Bajas</h3>
+				</div>
+			</div>
+			<!-- /Sidetabs -->
+			
+		</section>
+		<!-- /Article content -->
+				
+	</div>
+	<!-- /Article Container-->
+		
+</article>
+<!-- /Full Content Block -->
+
+<!-- Full Content Block -->
+<article class="full-block clearfix">
+	
+	<!-- Article Container - Estadísticas-->
+	<div class="article-container">
+		
+		<header>
+			<h2>Estadísticas y logs</h2>
+			
+		</header>
+		
+	</div>
+	<!-- \Article Container -->
+	
+</article>
+<!-- \Full Content Block -->

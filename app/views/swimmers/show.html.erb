@@ -1,3 +1,64 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Nadadores', swimmers_path %></li>
+	<li>Ver nadador</li>
+</ul>
+
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<!-- Header  -->
+		<header>
+			<h2>
+				Ver nadador - <%= "#{@swimmer.name} #{@swimmer.secname}" %>
+			</h2>
+				<%= link_to 'Editar', @swimmer, :class => "button right"%>
+		</header>
+		<!-- \Header  -->
+
+		<section>
+			<%= link_to 'Añadir nuevo nadador', @swimmer, :class => "button-link right"%>
+			
+			<div class="clearfix"></div>
+			<form>
+				<fieldset>
+					<legend>Datos personales</legend>
+
+					<dl>
+						<dt><%= label :name, "Nombre" %></dt>
+						<dd class="text"><%= @swimmer.name %></dd>
+						<dt><%= label :secname, "Apellidos" %></dt>
+						<dd class="text"><%= @swimmer.secname %></dd>
+						<dt><%= label :licence, "Licencia" %></dt>
+						<dd class="text"><%= @swimmer.licence %></dd>
+						<dt><%= label :born, "Año nacimiento" %></dt>
+						<dd class="text"><%= @swimmer.born %></dd>
+					</dl>
+				</fieldset>
+				
+				<fieldset>
+					<legend>Datos de contacto</legend>
+					
+					<dl>
+						<dt><%= label :email, "Email" %></dt>
+						<dd class="text"><%= @swimmer.email %></dd>
+						<dt><%= label :address, "Dirección" %></dt>
+						<dd class="text"><%= @swimmer.address %></dd>
+						<dt><%= label :postal, "Código Postal" %></dt>
+						<dd class="text"><%= @swimmer.postal %></dd>
+						<dt><%= label :city_id, "Ciudad" %></dt>
+						<dd class="text"><%= @swimmer.city_id %></dd>
+					</dl>
+				</fieldset>
+			</form>
+			
+			
+			
+		</section>
+		
+	</div>
+</article>
+
 <p id="notice"><%= notice %></p>
 
 <p>

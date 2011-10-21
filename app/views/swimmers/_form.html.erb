@@ -65,7 +65,10 @@
 		
 		<dl>
 			<dt><%= f.label :disease, "Enfermedades" %></dt>
-			<dd><%= f.text_area :disease, :class => "wysiwyg medium" %></dd>
+			<dd>
+				<%= f.text_area :disease, :class => "wysiwyg medium" %>
+				<p>Inserte las enfermedades que padezca el niño, así como su tratamiento</p>
+			</dd>
 			<dt><%= f.label :observation, "Observaciones" %></dt>
 			<dd><%= f.text_area :observation, :class => "wysiwyg medium" %></dd>
 		</dl>

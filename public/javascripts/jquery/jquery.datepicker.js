@@ -41,7 +41,7 @@ function Datepicker() {
 		selectDefaultDate: false, // True to pre-select the default date if no other is chosen
 		minDate: null, // The minimum selectable date
 		maxDate: null, // The maximum selectable date
-		dateFormat: 'mm/dd/yyyy', // Format for dates
+		dateFormat: 'dd/mm/yyyy', // Format for dates
 		autoSize: false, // True to size the input field according to the date format
 		rangeSelect: false, // Allows for selecting a date range on one date picker
 		rangeSeparator: ' - ', // Text between two dates in a range
@@ -59,38 +59,38 @@ function Datepicker() {
 		commands: this.commands // Command actions that may be added to a layout by name
 	};
 	this.regional = {
-		'': { // US/English
-			monthNames: ['January', 'February', 'March', 'April', 'May', 'June',
-			'July', 'August', 'September', 'October', 'November', 'December'],
-			monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-			dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-			dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-			dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-			dateFormat: 'mm/dd/yyyy', // See options on formatDate
-			firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
+		'': { // ES/Spanish
+			monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+			'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+			monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
+			dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+			dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+			dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+			dateFormat: 'dd/mm/yyyy', // See options on formatDate
+			firstDay: 1, // The first day of the week, Sun = 0, Mon = 1, ...
 			renderer: this.defaultRenderer, // The rendering templates
-			prevText: '&lt;Prev', // Text for the previous month command
-			prevStatus: 'Show the previous month', // Status text for the previous month command
+			prevText: '&lt;Ant', // Text for the previous month command
+			prevStatus: 'Mostrar mes anterior', // Status text for the previous month command
 			prevJumpText: '&lt;&lt;', // Text for the previous year command
-			prevJumpStatus: 'Show the previous year', // Status text for the previous year command
-			nextText: 'Next&gt;', // Text for the next month command
-			nextStatus: 'Show the next month', // Status text for the next month command
+			prevJumpStatus: 'Mostrar año anterior', // Status text for the previous year command
+			nextText: 'Sig&gt;', // Text for the next month command
+			nextStatus: 'Mostrar mes siguiente', // Status text for the next month command
 			nextJumpText: '&gt;&gt;', // Text for the next year command
-			nextJumpStatus: 'Show the next year', // Status text for the next year command
-			currentText: 'Current', // Text for the current month command
-			currentStatus: 'Show the current month', // Status text for the current month command
-			todayText: 'Today', // Text for the today's month command
-			todayStatus: 'Show today\'s month', // Status text for the today's month command
-			clearText: 'Clear', // Text for the clear command
-			clearStatus: 'Clear all the dates', // Status text for the clear command
-			closeText: 'Close', // Text for the close command
-			closeStatus: 'Close the datepicker', // Status text for the close command
-			yearStatus: 'Change the year', // Status text for year selection
-			monthStatus: 'Change the month', // Status text for month selection
-			weekText: 'Wk', // Text for week of the year column header
-			weekStatus: 'Week of the year', // Status text for week of the year column header
+			nextJumpStatus: 'Mostrar año siguiente', // Status text for the next year command
+			currentText: 'Actual', // Text for the current month command
+			currentStatus: 'Mostrar mes actual', // Status text for the current month command
+			todayText: 'Hoy', // Text for the today's month command
+			todayStatus: 'Mostrar mes de hoy', // Status text for the today's month command
+			clearText: 'Limpiar', // Text for the clear command
+			clearStatus: 'Limpiar todas las fechas', // Status text for the clear command
+			closeText: 'Cerrar', // Text for the close command
+			closeStatus: 'Cerrar datepicker', // Status text for the close command
+			yearStatus: 'Cambiar el año', // Status text for year selection
+			monthStatus: 'Cambiar el mes', // Status text for month selection
+			weekText: 'Sm', // Text for week of the year column header
+			weekStatus: 'Semana del año', // Status text for week of the year column header
 			dayStatus: 'Select DD, M d, yyyy', // Status text for selectable days
-			defaultStatus: 'Select a date', // Status text shown by default
+			defaultStatus: 'Seleccione una fecha', // Status text shown by default
 			isRTL: false // True if language is right-to-left
 		}};
 	$.extend(this._defaults, this.regional['']);

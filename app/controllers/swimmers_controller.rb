@@ -15,6 +15,7 @@ class SwimmersController < ApplicationController
   # GET /swimmers/1
   # GET /swimmers/1.xml
   def show
+    @swimmers = current_user.swimmers.all
     @swimmer = Swimmer.find(params[:id])
 
     respond_to do |format|
@@ -26,8 +27,9 @@ class SwimmersController < ApplicationController
   # GET /swimmers/new
   # GET /swimmers/new.xml
   def new
+    @swimmers = current_user.swimmers.all
     @swimmer = current_user.swimmers.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @swimmer }
@@ -36,6 +38,7 @@ class SwimmersController < ApplicationController
 
   # GET /swimmers/1/edit
   def edit
+    @swimmers = current_user.swimmers.all
     @swimmer = Swimmer.find(params[:id])
   end
 

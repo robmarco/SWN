@@ -397,7 +397,7 @@
 			formWidth: 600,
 			i18n: false,
 			iFrameClass: '',
-			initialContent: "<p>jQuery jWYSIWYG Editor</p>",
+			initialContent: "",			// <p>jQuery Text content</p>
 			maxHeight: 10000,			// see autoGrow
 			messages: {
 				nonSelection: "Select the text you wish to link"

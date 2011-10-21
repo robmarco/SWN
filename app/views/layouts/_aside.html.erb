@@ -26,9 +26,10 @@
 			<li><a href="/" title="" class="dashboard no-submenu">Dashboard</a></li> <!-- Use class .no-submenu to open link instead of a sub menu-->
 			<!-- Use class .current to open submenu on page load -->
 			<li class="current">
-				<a href="" title="" class="swimmers">Nadadores</a><span title="You have 3 new tasks">3</span>
+				<%= link_to 'Nadadores', swimmers_path, :class => "swimmers no-submenu" %>
+				<span title='Tienes <%= @swimmers.nil? ? "0" : @swimmers.size %> nadadores'><%= @swimmers.nil? ? "0" : @swimmers.size %></span>
 				<ul>
-					<li class="current"><a href="#" title="">Añadir Nadador</a></li>
+					<li class="current"><%= link_to 'Añadir nadador', new_swimmer_path %></li>
 					<li><a href="#" title="">Modificar nadador</a></li>
 					<li><a href="#" title="">Eliminar nadador</a></li>
 					<li><a href="#" title="">Imprimir nadadores</a></li>

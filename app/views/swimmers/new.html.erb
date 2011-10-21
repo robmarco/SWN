@@ -1,5 +1,27 @@
-<h1>New swimmer</h1>
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Nadadores', swimmers_path %></li>
+	<li>Añadir nadador</li>
+</ul>
 
-<%= render 'form' %>
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<!-- Header  -->
+		<header>
+			<h2>Añadir nadador</h2>
+		</header>
+		<!-- \Header  -->
 
-<%= link_to 'Back', swimmers_path %>
+		<section>
+			<%= render 'form' %>
+			<%= link_to 'Back', swimmers_path %>
+		</section>
+		
+	</div>
+</article>
+
+
+
+
+

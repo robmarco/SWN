@@ -1,9 +1,7 @@
 <ul id="breadcrumbs">
-	<li><a href="/" title="Back to Homepage">Back to Home</a></li>
-	<li><a href="#">Projects</a></li>
-	<li><a href="#">Project's Assets</a></li>
-	<li><a href="#">Edit Assets</a></li>
-	<li>Current Page</li>
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Nadadores', swimmers_path %></li>
+	<li>Ver lista de nadadores</li>
 </ul>
 
 <!-- Full Content Block -->
@@ -21,7 +19,7 @@
 		<!-- Article content -->
 		<section>
 			
-			<!-- Sidetabs -->
+			<!-- Sidetabs - Gestión de nadadores -->
 			<div class="sidetabs">
 				
 				<!-- Sidetabs Navigation -->
@@ -36,7 +34,7 @@
 				</nav>
 				<!-- /Sidetabs Navigation -->
 				
-				<!-- Sidetab1 -->
+				<!-- Sidetab1 - Lista todos los nadadores-->
 				<div class="sidetab default-sidetab" id="sidetab1">
 					<h3>Todos</h3>
 					<table class="datatable">
@@ -61,9 +59,15 @@
 								<td><%= swimmer.email %></td>
 								<td>
 									<ul class="actions">
-										<li><a class="view" href="#" title="View Item" rel="tooltip">view</a></li>
-										<li><a class="edit" href="#" title="Edit Item" rel="tooltip">edit</a></li>
-										<li><a class="delete" href="#" title="Delete Item" rel="tooltip">delete</a></li>
+										<li>
+											<%= link_to 'ver', swimmer_path(swimmer), :class => "view", :title => "Ver nadador", :rel => "tooltip" %>
+										</li>
+										<li>
+											<%= link_to 'editar', edit_swimmer_path(swimmer), :class => "edit", :title => "Editar nadador", :rel => "tooltip" %>
+										</li>
+										<li>
+											<%= link_to 'eliminar', '#', :class => "delete", :title => "Eliminar nadador", :rel => "tooltip" %>
+										</li>
 									</ul>
 								</td>
 							</tr>	
@@ -85,7 +89,7 @@
 					<h3>Bajas</h3>
 				</div>
 			</div>
-			<!-- /Sidetabs -->
+			<!-- /Sidetabs - Gestión de nadadores-->
 			
 		</section>
 		<!-- /Article content -->
@@ -103,9 +107,165 @@
 	<div class="article-container">
 		
 		<header>
-			<h2>Estadísticas y logs</h2>
-			
+			<h2>Estadísticas y registros de datos</h2>
+			<nav>
+				<ul class="tab-switch">
+					<li><a href="#tab0" class="default-tab">Gráficas</a></li>
+					<li><a href="#tab1">Logs</a></li>
+				</ul>
+			</nav>			
 		</header>
+		
+		<section>
+			<!-- Tab Grafícas de estadísticas de nadadores -->
+			<div class="tab default-tab" id="tab0">
+				<div class="sidetabs">
+					<nav class="sidetab-switch">
+						<ul>
+							<li><a class="default-sidetab" href="#sidetab1b">Altas por mes</a></li>
+							<li><a href="#sidetab2b">Bajas por mes</a></li>
+						</ul>
+					</nav>
+					
+					<!-- Gráfica de altas por mes -->
+					<div class="sidetab default-sidetab" id="sidetab1b">
+						<h3>Altas de nadadores por mes</h3>
+						<table class="data" data-chart="line">
+							<thead>
+								<tr>
+									<td></td>
+									<th scope="col">food</th>
+									<th scope="col">auto</th>
+									<th scope="col">household</th>
+									<th scope="col">furniture</th>
+									<th scope="col">kitchen</th>
+									<th scope="col">bath</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">Mary</th>
+									<td>190</td>
+									<td>160</td>
+									<td>40</td>
+									<td>120</td>
+									<td>30</td>
+									<td>70</td>
+								</tr>
+								<tr>
+									<th scope="row">Tom</th>
+									<td>3</td>
+									<td>40</td>
+									<td>30</td>
+									<td>45</td>
+									<td>35</td>
+									<td>49</td>
+								</tr>
+								<tr>
+									<th scope="row">Brad</th>
+									<td>10</td>
+									<td>180</td>
+									<td>10</td>
+									<td>85</td>
+									<td>25</td>
+									<td>79</td>
+								</tr>
+								<tr>
+									<th scope="row">Kate</th>
+									<td>40</td>
+									<td>80</td>
+									<td>90</td>
+									<td>25</td>
+									<td>15</td>
+									<td>119</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- /Gráfica de altas por mes -->
+					
+					<!-- Gráfica de bajas por mes -->
+					<div class="sidetab" id="sidetab2b">
+						<h3>Bajas de nadadores por mes</h3>
+						<table class="data" data-chart="line">
+							<thead>
+								<tr>
+									<td></td>
+									<th scope="col">food</th>
+									<th scope="col">auto</th>
+									<th scope="col">household</th>
+									<th scope="col">furniture</th>
+									<th scope="col">kitchen</th>
+									<th scope="col">bath</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">Mary</th>
+									<td>190</td>
+									<td>160</td>
+									<td>40</td>
+									<td>120</td>
+									<td>30</td>
+									<td>70</td>
+								</tr>
+								<tr>
+									<th scope="row">Tom</th>
+									<td>3</td>
+									<td>40</td>
+									<td>30</td>
+									<td>45</td>
+									<td>35</td>
+									<td>49</td>
+								</tr>
+								<tr>
+									<th scope="row">Brad</th>
+									<td>10</td>
+									<td>180</td>
+									<td>10</td>
+									<td>85</td>
+									<td>25</td>
+									<td>79</td>
+								</tr>
+								<tr>
+									<th scope="row">Kate</th>
+									<td>40</td>
+									<td>80</td>
+									<td>90</td>
+									<td>25</td>
+									<td>15</td>
+									<td>119</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- /Gráfica de bajas por mes -->
+					
+				</div>
+			</div>	
+			<!-- \Tab Grafícas de estadísticas de nadadores -->
+			
+			<!-- Tab Logs de nadadores -->
+			<div class="tab" id="tab1">
+				<h3>Última actividad</h3>
+				
+				<!-- Log de nadadores -->
+				<ul class="logs">
+					<li class="bomb">
+						<span class="logs-timestamp">Oct 21, 2011</span>
+						<h4><a class="logs-event" href="#">System Update #112563</a></h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et dignissim metus. Maecenas id augue ac metus tempus aliquam. Sed pharetra placerat est suscipit sagittis. Phasellus aliquam malesuada blandit.</p>
+						<em class="logs-meta">Posted by <a href="#">Administrator</a></em>
+					</li>
+				</ul>
+				<!-- \Log de nadadores -->
+				
+			</div>
+			<!-- \Tab Logs de nadadores -->
+						
+		</section>
+		
+
 		
 	</div>
 	<!-- \Article Container -->

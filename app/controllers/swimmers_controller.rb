@@ -1,8 +1,10 @@
 class SwimmersController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /swimmers
   # GET /swimmers.xml
   def index
-    @swimmers = Swimmer.all
+    @swimmers = current_user.swimmers.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +26,7 @@ class SwimmersController < ApplicationController
   # GET /swimmers/new
   # GET /swimmers/new.xml
   def new
-    @swimmer = Swimmer.new
+    @swimmer = current_user.swimmers.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +42,7 @@ class SwimmersController < ApplicationController
   # POST /swimmers
   # POST /swimmers.xml
   def create
-    @swimmer = Swimmer.new(params[:swimmer])
+    @swimmer = current_user.swimmers.new(params[:swimmer])
 
     respond_to do |format|
       if @swimmer.save

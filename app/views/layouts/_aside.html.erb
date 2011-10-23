@@ -13,7 +13,7 @@
 			<a href="#" title="Account Settings and Profile Page">Robert Tester</a>
 			<em>Administrator</em>
 			<ul>
-				<li><a class="button-link" href="#" title="This is my title!" rel="tooltip">view website</a></li>
+				<li><a class="button-link" href="#" title="¡Web del Club!" rel="tooltip">ver sitio web</a></li>
 				<li><%= link_to 'logout', destroy_user_session_path, :method => 'delete',  :class => 'button-link' %></li>
 			</ul>
 		</div>
@@ -24,31 +24,30 @@
 	<nav id="main-nav">
 		<ul>
 			<li><a href="/" title="" class="dashboard no-submenu">Dashboard</a></li> <!-- Use class .no-submenu to open link instead of a sub menu-->
+			
 			<!-- Use class .current to open submenu on page load -->
-			<li class="current">
+			
+			<!-- Swimmers menu -->
+			<li <%= params[:controller].eql?("swimmers") ? "class='current'" : "" %>>
 				<%= link_to 'Nadadores', swimmers_path, :class => "swimmers no-submenu" %>
 				<span title='Tienes <%= @swimmers.nil? ? "0" : @swimmers.size %> nadadores'><%= @swimmers.nil? ? "0" : @swimmers.size %></span>
-				<ul>
-					<li class="current"><%= link_to 'Añadir nadador', new_swimmer_path %></li>
-					<li><a href="#" title="">Modificar nadador</a></li>
-					<li><a href="#" title="">Eliminar nadador</a></li>
-					<li><a href="#" title="">Imprimir nadadores</a></li>
-					<li><a href="#" title="">Ver estadísticas</a></li>
-				</ul>
 			</li>
+			<!-- /Swimmers menu -->
+			
+			<!-- Trainings menu -->
 			<li>
-				<a href="#" title="" class="projects no-submenu">Entrenamientos</a>
-				<ul>
-					<li><a href="" title="">Añadir planificación</a></li>
-					<li><a href="" title="">Añadir entrenamiento</a></li>
-					<li><a href="" title="">Modificar entrenamiento</a></li>
-					<li><a href="" title="">Eliminar entrenamiento</a></li>
-					<li><a href="" title="">Ver estadísticas</a></li>
-				</ul>
+				<%= link_to 'Entrenamientos', '', :class => 'projects' %>
 			</li>
-			<li><a href="" title="" class="events">Competiciones</a></li>
+			<!-- /Trainings menu -->
+			
+			<!-- Competitions menu -->
+			<li <%= params[:controller].eql?("competitions") ? "class='current'" : "" %>>
+				<%= link_to 'Competiciones', competitions_path, :class => 'events no-submenu' %>
+			</li>
+			<!-- /Competitions menu -->
+			
 			<li><a href="" title="" class="tests">Test preparatorios</a></li>
-			<li><a href="" title="" class="articles">Diario de Incidencias</a><span title="You have 47 new tasks">47</span></li>
+			<li><a href="" title="" class="articles">Diario de Incidencias</a></li>
 			<li><a href="" title="" class="settings">Configuración</a></li>
 		</ul>
 	</nav>

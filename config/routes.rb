@@ -1,4 +1,6 @@
 SWN::Application.routes.draw do
+  resources :competitions
+
   resources :swimmers
 
   get "pages/index"

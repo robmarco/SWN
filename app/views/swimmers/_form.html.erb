@@ -22,8 +22,40 @@
 			<dd><%= f.text_field :secname, :class => "medium" %></dd>
 			<dt><%= f.label :licence, "Licencia" %></dt>
 			<dd><%= f.text_field :licence, :class => "small" %></dd>
+			
+			<!-- Born Field-->
 			<dt><%= f.label :born, "Fecha Nacimiento" %></dt>
-			<dd><%= f.text_field :born, :class => "datepicker small" %></dd>
+			<dd>
+				<% if params[:action]=="edit" %>
+					<%= f.text_field :born, :value => @swimmer.born.strftime("%d/%m/%Y"), :class => "datepicker small" %>
+				<% else %>
+					<%= f.text_field :born, :class => "datepicker small" %>
+				<% end %>
+			</dd>
+			<!-- /Born Field-->
+			
+			<!-- Category Field -->
+			<dt><%= f.label :category, "Categoría" %></dt>
+			<dd>
+				<% if params[:action] == "edit" %>
+					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), :class => "small"%>
+				<% else %>
+					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), :include_blank => true, :class => "small"%>
+				<% end %>	
+			</dd>
+			<!-- \Category Field -->
+			
+			<!-- State Field -->
+			<dt><%= f.label :state, "Estado" %></dt>
+			<dd>
+				<% if params[:action] == "edit" %>
+					<%= f.select :state, options_from_collection_for_select(@states, "name", "name") %>
+				<% else %>
+					<%= f.select :state, options_from_collection_for_select(@states, "name", "name"), :include_blank => true %>
+				<% end %>	
+			</dd>
+			<!-- \State Field -->
+			
 		</dl>
 	
 	</fieldset>
@@ -38,10 +70,21 @@
 			<dd><%= f.text_field :address, :class => "medium" %></dd>
 			<dt><%= f.label :postal, "Código Postal" %></dt>
 			<dd><%= f.text_field :postal, :class => "small" %></dd>
-			<dt><%= f.label :city_id, "Ciudad" %></dt>
-			<dd><%= f.text_field :city_id, :class => "small" %></dd>
-			<dt><%= f.label :country_id, "País" %></dt>
-			<dd><%= f.text_field :country_id, :class => "small" %></dd>
+			<dt><%= f.label :city, "Ciudad" %></dt>
+			<dd><%= f.text_field :city, :class => "small" %></dd>
+		
+			<!-- Country Field -->
+			<dt><%= f.label :country, "País" %></dt>
+			<dd>
+				<% if params[:action] == "edit" %>
+					<%= f.select :country, options_from_collection_for_select(@countries, "name", "name") %>
+				<% else %>
+					<%= f.select :country, options_from_collection_for_select(@countries, "name", "name"), :include_blank => true %>
+				<% end %>
+				
+			</dd>
+			<!-- \Country Field -->
+			
 			<dt><%= f.label :phone, "Teléfono" %></dt>
 			<dd><%= f.text_field :phone, :class => "small" %></dd>
 		</dl>

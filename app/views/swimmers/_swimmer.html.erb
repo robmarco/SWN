@@ -1,0 +1,33 @@
+<tr>
+	<td><%= swimmer.secname %></td>
+	<td><%= swimmer.name %></td>
+	<td><%= swimmer.born.strftime("%Y") %></td>
+	<td><%= swimmer.category %></td>
+
+	<!-- State Tags-->
+	<td>
+		<% case swimmer.state %>
+			<% when "Baja" %>
+				<span class='tag tag2 red'><%= swimmer.state %></span>
+			<% when "Federado" %>
+				<span class='tag tag2 green'><%= swimmer.state %></span>
+			<% when "No Federado" %>
+				<span class='tag tag2 orange'><%= swimmer.state %></span>
+		<% end %>
+	</td>
+	<!-- /State Tags-->
+
+	<td>
+		<ul class="actions">
+			<li>
+				<%= link_to 'ver', swimmer_path(swimmer), :class => "view", :title => "Ver nadador", :rel => "tooltip" %>
+			</li>
+			<li>
+				<%= link_to 'editar', edit_swimmer_path(swimmer), :class => "edit", :title => "Editar nadador", :rel => "tooltip" %>
+			</li>
+			<li>
+				<%= link_to 'eliminar', '#', :class => "delete", :title => "Eliminar nadador", :rel => "tooltip" %>
+			</li>
+		</ul>
+	</td>
+</tr>	

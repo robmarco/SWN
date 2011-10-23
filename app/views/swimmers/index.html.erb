@@ -13,6 +13,11 @@
 		<!-- Article header -->
 		<header>
 			<h2>Gestión de nadadores</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir nadador', new_swimmer_path, :class => "button" %></li>
+				</ul>
+			</nav>
 		</header>
 		<!-- Article header-->
 		
@@ -40,38 +45,16 @@
 					<table class="datatable">
 						<thead>
 							<tr>
-								<th>ID</th>
 								<th>Apellidos</th>
 								<th>Nombre</th>
+								<th>Año</th>
 								<th>Categoría</th>
 								<th>Estado</th>
 								<th>Acción</th>
 							</tr>
 						</thead>
 						<tbody>
-
-							<% @swimmers.each do |swimmer| %>
-							<tr>
-								<td><%= swimmer.id %></td>
-								<td><%= swimmer.secname %></td>
-								<td><%= swimmer.name %></td>
-								<td><%= swimmer.licence %></td>
-								<td><%= swimmer.email %></td>
-								<td>
-									<ul class="actions">
-										<li>
-											<%= link_to 'ver', swimmer_path(swimmer), :class => "view", :title => "Ver nadador", :rel => "tooltip" %>
-										</li>
-										<li>
-											<%= link_to 'editar', edit_swimmer_path(swimmer), :class => "edit", :title => "Editar nadador", :rel => "tooltip" %>
-										</li>
-										<li>
-											<%= link_to 'eliminar', '#', :class => "delete", :title => "Eliminar nadador", :rel => "tooltip" %>
-										</li>
-									</ul>
-								</td>
-							</tr>	
-							<% end %>
+							<%= render :partial => "swimmer", :collection => @swimmers %>
 						</tbody>
 					</table>
 				</div>
@@ -79,14 +62,59 @@
 				
 				<div class="sidetab" id="sidetab2">
 					<h3>Federados</h3>
+					<table class="datatable">
+						<thead>
+							<tr>
+								<th>Apellidos</th>
+								<th>Nombre</th>
+								<th>Año</th>
+								<th>Categoría</th>
+								<th>Estado</th>
+								<th>Acción</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%= render :partial => "swimmer", :collection => @swimmers_fed %>
+						</tbody>
+					</table>
 				</div>
 				
 				<div class="sidetab" id="sidetab3">
 					<h3>No Federados</h3>
+					<table class="datatable">
+						<thead>
+							<tr>
+								<th>Apellidos</th>
+								<th>Nombre</th>
+								<th>Año</th>
+								<th>Categoría</th>
+								<th>Estado</th>
+								<th>Acción</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%= render :partial => "swimmer", :collection => @swimmers_nofed %>
+						</tbody>
+					</table>
 				</div>
 			
 				<div class="sidetab" id="sidetab4">
 					<h3>Bajas</h3>
+					<table class="datatable">
+						<thead>
+							<tr>
+								<th>Apellidos</th>
+								<th>Nombre</th>
+								<th>Año</th>
+								<th>Categoría</th>
+								<th>Estado</th>
+								<th>Acción</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%= render :partial => "swimmer", :collection => @swimmers_baja %>
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<!-- /Sidetabs - Gestión de nadadores-->

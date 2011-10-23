@@ -10,7 +10,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111021091714) do
+ActiveRecord::Schema.define(:version => 20111023163916) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "competitions", :force => true do |t|
+    t.date     "date_competition"
+    t.string   "title"
+    t.string   "place"
+    t.string   "chrono_type"
+    t.string   "pool_dist"
+    t.string   "category"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.string   "iso_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "states", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "swimmers", :force => true do |t|
     t.string   "name"
@@ -20,17 +51,19 @@ ActiveRecord::Schema.define(:version => 20111021091714) do
     t.string   "email"
     t.string   "address"
     t.integer  "postal"
-    t.integer  "city_id"
-    t.integer  "country_id"
+    t.string   "city"
+    t.string   "country"
     t.integer  "phone"
     t.string   "parentname"
     t.string   "parentemail"
     t.integer  "parentphone"
     t.text     "disease"
     t.text     "observation"
+    t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "state"
   end
 
   create_table "users", :force => true do |t|

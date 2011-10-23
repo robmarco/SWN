@@ -8,14 +8,15 @@ class CreateSwimmers < ActiveRecord::Migration
       t.string :email
       t.string :address
       t.integer :postal
-      t.integer :city_id
-      t.integer :country_id
+      t.string :city
+      t.string :country
       t.integer :phone
       t.string :parentname
       t.string :parentemail
       t.integer :parentphone
       t.text :disease
       t.text :observation
+      t.string :category
 
       t.timestamps
     end

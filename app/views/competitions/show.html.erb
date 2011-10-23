@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date competition:</b>
+  <%= @competition.date_competition %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @competition.title %>
+</p>
+
+<p>
+  <b>Place:</b>
+  <%= @competition.place %>
+</p>
+
+<p>
+  <b>Chrono type:</b>
+  <%= @competition.chrono_type %>
+</p>
+
+<p>
+  <b>Pool dist:</b>
+  <%= @competition.pool_dist %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @competition.category %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @competition.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_competition_path(@competition) %> |
+<%= link_to 'Back', competitions_path %>

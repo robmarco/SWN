@@ -10,12 +10,17 @@
 		<!-- Header  -->
 		<header>
 			<h2>Modificar nadador - <%= "#{@swimmer.name} #{@swimmer.secname}" %></h2>
+			<hav>
+				<ul class="button-switch">
+					<li><%= link_to 'Eliminar', '#', :class => "button gray" %></li>
+					<li><%= link_to 'Mostrar nadador', swimmer_path(@swimmer), :class => "button" %></li>					
+				</ul>
+			</hav>
 		</header>
 		<!-- \Header  -->
 
 		<section>
-			<%= link_to 'Mostrar nadador', @swimmer, :class => "button right"%>
-			<div class="clearfix"></div>
+
 			<%= render 'form' %>
 			
 		</section>

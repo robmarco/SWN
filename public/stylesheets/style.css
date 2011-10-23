@@ -480,9 +480,10 @@ section .sidetab-switch li {
 	display:block;
 }
 .button-switch li {
-	float:left;
+	float:right;
 	list-style:none;
-	margin-right:7px;
+	/* margin-right:7px; */
+	margin-left: 7px;
 }
 .button-switch li:last-child { margin-right:2px; }
 .button-switch li a.button {
@@ -757,7 +758,7 @@ div.tab > img, div.tab > .image-frame img { margin-top:0; }
 .image-gallery > li:last-child { margin-right:0; }
 
 /*  Tags  */
-.tag {
+.tag, .tag2 {
 	display:block;
 	color:#fff;
 	font-size:93%;
@@ -773,6 +774,8 @@ div.tab > img, div.tab > .image-frame img { margin-top:0; }
 	-moz-box-shadow:0 0 2px #b3b3b3;
 	box-shadow:0 0 2px #b3b3b3;
 }
+.tag2 { width: 80px;}
+
 .tag.red { background-color:#ae432e; }
 .tag.blue { background-color:#058dc7; }
 .tag.green { background-color:#77ab13; }

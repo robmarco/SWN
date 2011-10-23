@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date_competition: 2011-10-23
+  title: MyString
+  place: MyString
+  chrono_type: MyString
+  pool_dist: MyString
+  category: MyString
+  user_id: 1
+
+two:
+  date_competition: 2011-10-23
+  title: MyString
+  place: MyString
+  chrono_type: MyString
+  pool_dist: MyString
+  category: MyString
+  user_id: 1

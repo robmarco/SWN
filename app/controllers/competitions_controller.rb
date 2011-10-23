@@ -2,6 +2,7 @@ class CompetitionsController < ApplicationController
   # GET /competitions
   # GET /competitions.xml
   def index
+    @swimmers = current_user.swimmers.all
     @competitions = current_user.competitions.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1
   # GET /competitions/1.xml
   def show
+    @swimmers = current_user.swimmers.all
     @competition = Competition.find(params[:id])
 
     respond_to do |format|
@@ -34,6 +36,7 @@ class CompetitionsController < ApplicationController
 
   # GET /competitions/1/edit
   def edit
+    @swimmers = current_user.swimmers.all
     @competition = Competition.find(params[:id])
   end
 

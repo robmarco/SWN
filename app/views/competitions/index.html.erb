@@ -1,35 +1,101 @@
-<h1>Listing competitions</h1>
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Competiciones', competitions_path %></li>
+	<li>Ver lista de competiciones</li>
+</ul>
 
-<table>
-  <tr>
-    <th>Date competition</th>
-    <th>Title</th>
-    <th>Place</th>
-    <th>Chrono type</th>
-    <th>Pool dist</th>
-    <th>Category</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<!-- Article Full Content Block -->
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Gestión de Competiciones</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir competición', new_competition_path, :class => "button" %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<table class="datatable">
+			  <thead>
+			  	<tr>
+				    <th>Date competition</th>
+				    <th>Title</th>
+				    <th>Place</th>
+				    <th>Chrono type</th>
+				    <th>Pool dist</th>
+				    <th>Category</th>
+				    <th>User</th>
+				    <th></th>
+				    <th></th>
+				    <th></th>
+				  </tr>
+			  </thead>
 
-<% @competitions.each do |competition| %>
-  <tr>
-    <td><%= competition.date_competition %></td>
-    <td><%= competition.title %></td>
-    <td><%= competition.place %></td>
-    <td><%= competition.chrono_type %></td>
-    <td><%= competition.pool_dist %></td>
-    <td><%= competition.category %></td>
-    <td><%= competition.user_id %></td>
-    <td><%= link_to 'Show', competition %></td>
-    <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
-    <td><%= link_to 'Destroy', competition, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+				<tbody>
+					<% @competitions.each do |competition| %>
+					  <tr>
+					    <td><%= competition.date_competition %></td>
+					    <td><%= competition.title %></td>
+					    <td><%= competition.place %></td>
+					    <td><%= competition.chrono_type %></td>
+					    <td><%= competition.pool_dist %></td>
+					    <td><%= competition.category %></td>
+					    <td><%= competition.user_id %></td>
+					    <td><%= link_to 'Show', competition %></td>
+					    <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
+					    <td><%= link_to 'Destroy', competition, :confirm => 'Are you sure?', :method => :delete %></td>
+					  </tr>
+					<% end %>
+				</tbody>			
+			</table>
+		</section>
+	
 
-<br />
+	</div>
+</article>
+<!-- \Article Full Content Block -->
 
-<%= link_to 'New Competition', new_competition_path %>
+<!-- Article Full Content Block 2 -->
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Calendario y estadísticas</h2>
+		</header>
+		
+		<section>
+			<div class="sidetabs">
+				
+				<nav class="sidetab-switch">
+					<ul>
+						<li><%= link_to 'Calendario', '#sidetab1', :class => "default-sidetab" %></li>
+						<li><%= link_to 'Estadísticas básicas', '#sidetab2'  %></li>
+					</ul>
+				</nav>
+				
+				<!-- jquery Full Calendar Sidetab Content -->
+				<div class="sidetab default-sidetab" id="sidetab1">
+					<h3>Calendario de competiciones</h3>
+					
+					<!-- jQuery Full Calendar Plugin -->
+					<div class="fullcalendar"></div>
+					<!-- /jQuery Full Calendar Plugin -->
+					
+				</div>
+				<!-- \jquery Full Calendar Sidetab Content -->
+				
+				<!-- Competition Statistics Sidetab Content -->
+				<div class="sidetab" id="sidetab2">
+					
+				</div>
+				<!-- \Competition Statistics Sidetab Content -->
+			
+			</div>
+		</section>
+		
+	</div>
+</article>
+<!-- \Article Full Content Block 2 -->

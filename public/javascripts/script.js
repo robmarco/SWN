@@ -243,6 +243,7 @@ $(function () {
 			right: 'month,basicWeek,basicDay'
 		},
 		editable: true,
+		firstDay: 1,
 		events: [
 			{
 				title: 'All Day Event',

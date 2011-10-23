@@ -26,7 +26,7 @@
 				<%= link_to 'editar', edit_swimmer_path(swimmer), :class => "edit", :title => "Editar nadador", :rel => "tooltip" %>
 			</li>
 			<li>
-				<%= link_to 'eliminar', '#', :class => "delete", :title => "Eliminar nadador", :rel => "tooltip" %>
+				<%= link_to 'eliminar', swimmer_path(swimmer), :confirm => '¿Está seguro de que desea eliminar al nadador?', :method => :delete, :class => "delete", :title => "Eliminar nadador", :rel => "tooltip" %>
 			</li>
 		</ul>
 	</td>

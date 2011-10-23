@@ -16,7 +16,7 @@
 			<nav>
 				<ul class="button-switch">
 					<li><%= link_to 'Añadir nadador', new_swimmer_path, :class => "button" %></li>
-					<li><%= link_to 'Eliminar', '#', :class => "button gray" %></li>
+					<li><%= link_to 'Eliminar', swimmer_path(@swimmer), :confirm => '¿Está seguro de que desea eliminar al nadador?', :method => :delete, :class => "button gray" %></li>
 					<li><%= link_to 'Editar', edit_swimmer_path(@swimmer), :class => "button" %></li>					
 				</ul>
 			</nav>				

@@ -5,9 +5,21 @@
 	<li>Modificar competición</li>
 </ul>
 
-<h1>Editing competition</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @competition %> |
-<%= link_to 'Back', competitions_path %>
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Modificar competición - <%= @competition.title %></h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Eliminar', competition_path(@competition), :confirm => '¿Está seguro de que desea eliminar la competición?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Mostrar competición', competition_path(@competition), :class => "button" %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<%= render 'form' %>
+		</section>
+	</div>
+</article>

@@ -20,7 +20,6 @@ class SwimmersController < ApplicationController
   # GET /swimmers/1
   # GET /swimmers/1.xml
   def show
-    @swimmers = current_user.swimmers.all
     @swimmer = Swimmer.find(params[:id])
 
     respond_to do |format|
@@ -32,7 +31,6 @@ class SwimmersController < ApplicationController
   # GET /swimmers/new
   # GET /swimmers/new.xml
   def new
-    @swimmers = current_user.swimmers.all
     @swimmer = current_user.swimmers.new
     
     @categories = Category.all
@@ -47,7 +45,6 @@ class SwimmersController < ApplicationController
 
   # GET /swimmers/1/edit
   def edit
-    @swimmers = current_user.swimmers.all
     @swimmer = Swimmer.find(params[:id])
     
     #Array de Categorías ordenado con el seleccionado primero
@@ -71,12 +68,14 @@ class SwimmersController < ApplicationController
   # POST /swimmers.xml
   def create
     @swimmer = current_user.swimmers.new(params[:swimmer])
+    
     @categories = Category.all
     @states = State.all
     @countries = Country.all
     
     respond_to do |format|
       if @swimmer.save
+        session[:swimmers_size] = current_user.swimmers.size
         format.html { redirect_to(@swimmer, :notice => 'Swimmer was successfully created.') }
         format.xml  { render :xml => @swimmer, :status => :created, :location => @swimmer }
       else
@@ -122,6 +121,7 @@ class SwimmersController < ApplicationController
   def destroy
     @swimmer = Swimmer.find(params[:id])
     @swimmer.destroy
+    session[:swimmers_size] = current_user.swimmers.size
 
     respond_to do |format|
       format.html { redirect_to(swimmers_url) }

@@ -1,6 +1,7 @@
 <%= form_for(@competition) do |f| %>
   <% if @competition.errors.any? %>
     <div id="error_explanation">
+			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
       <h2><%= pluralize(@competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
 
       <ul>
@@ -11,35 +12,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :date_competition %><br />
-    <%= f.date_select :date_competition %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :place %><br />
-    <%= f.text_field :place %>
-  </div>
-  <div class="field">
-    <%= f.label :chrono_type %><br />
-    <%= f.text_field :chrono_type %>
-  </div>
-  <div class="field">
-    <%= f.label :pool_dist %><br />
-    <%= f.text_field :pool_dist %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<fieldset>
+		<legend>Datos de competición</legend>
+		<dl>
+			<dt><%= f.label :title, "Título" %></dt>
+			<dd><%= f.text_field :title, :class => 'medium' %></dd>
+
+			<dt><%= f.label :place, "Lugar" %></dt>
+			<dd> <%= f.text_field :place, :class => 'medium' %></dd>
+
+			<dt><%= f.label :date_competition, "Fecha" %></dt>
+			<dd><%= f.text_field :date_competition, :class => 'datepicker small' %></dd>
+			
+			<dt><%= f.label :chrono_type, "Tipo de Crono" %></dt>
+			<dd><%= f.text_field :chrono_type, :class => 'small' %></dd>
+
+			<dt><%= f.label :pool_dist, "Tipo de Piscina" %></dt>
+			<dd><%= f.text_field :pool_dist, :class => 'small' %></dd>
+			
+			<!-- Category Field -->
+			<dt><%= f.label :category, "Categoría" %></dt>
+			<dd>
+				<% if params[:action] == "edit" %>
+					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), :class => "small"%>
+				<% else %>
+					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), :include_blank => true, :class => "small"%>
+				<% end %>	
+			</dd>
+			<!-- \Category Field -->
+			
+		</dl>
+		
+	</fieldset>
+	<div align="center"><%= f.submit 'Enviar', :class => "button" %> ó <%= link_to 'Cancelar', :back %></div>
+	
+
 <% end %>

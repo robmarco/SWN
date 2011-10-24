@@ -2,7 +2,6 @@ class CompetitionsController < ApplicationController
   # GET /competitions
   # GET /competitions.xml
   def index
-    @swimmers = current_user.swimmers.all
     @competitions = current_user.competitions.all
 
     respond_to do |format|
@@ -14,7 +13,6 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1
   # GET /competitions/1.xml
   def show
-    @swimmers = current_user.swimmers.all
     @competition = Competition.find(params[:id])
 
     respond_to do |format|
@@ -27,6 +25,10 @@ class CompetitionsController < ApplicationController
   # GET /competitions/new.xml
   def new
     @competition = current_user.competitions.new
+    
+    @categories = Category.all
+    @states = State.all
+    @countries = Country.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,17 +38,26 @@ class CompetitionsController < ApplicationController
 
   # GET /competitions/1/edit
   def edit
-    @swimmers = current_user.swimmers.all
     @competition = Competition.find(params[:id])
+    
+    #Array de Categorías ordenado con el seleccionado primero
+    @categories = []
+    Category.all.each {|c| c.name==@swimmer.category ? @aux=c : @categories << c }
+    @categories.insert(0,@aux)
   end
 
   # POST /competitions
   # POST /competitions.xml
   def create
     @competition = current_user.competitions.new(params[:competition])
+    
+    @categories = Category.all
+    @states = State.all
+    @countries = Country.all
 
     respond_to do |format|
       if @competition.save
+        session[:competitions_size] = current_user.competitions.size
         format.html { redirect_to(@competition, :notice => 'Competition was successfully created.') }
         format.xml  { render :xml => @competition, :status => :created, :location => @competition }
       else
@@ -60,6 +71,11 @@ class CompetitionsController < ApplicationController
   # PUT /competitions/1.xml
   def update
     @competition = Competition.find(params[:id])
+    
+    #Array de Categorías ordenado con el seleccionado primero
+    @categories = []
+    Category.all.each {|c| c.name==@swimmer.category ? @aux=c : @categories << c }
+    @categories.insert(0,@aux)
 
     respond_to do |format|
       if @competition.update_attributes(params[:competition])
@@ -77,7 +93,8 @@ class CompetitionsController < ApplicationController
   def destroy
     @competition = Competition.find(params[:id])
     @competition.destroy
-
+    session[:competitions_size] = current_user.competitions.size
+    
     respond_to do |format|
       format.html { redirect_to(competitions_url) }
       format.xml  { head :ok }

@@ -23,14 +23,14 @@
 	<!-- Main Navigation -->
 	<nav id="main-nav">
 		<ul>
-			<li><a href="/" title="" class="dashboard no-submenu">Dashboard</a></li> <!-- Use class .no-submenu to open link instead of a sub menu-->
-			
-			<!-- Use class .current to open submenu on page load -->
-			
+			<!-- Class .no-submenu to open link instead of a sub menu-->
+			<!-- Class .current to open submenu on page load -->
+			<li><a href="/" title="" class="dashboard no-submenu">Dashboard</a></li> 
+		
 			<!-- Swimmers menu -->
 			<li <%= params[:controller].eql?("swimmers") ? "class='current'" : "" %>>
 				<%= link_to 'Nadadores', swimmers_path, :class => "swimmers no-submenu" %>
-				<span title='Tienes <%= @swimmers.nil? ? "0" : @swimmers.size %> nadadores'><%= @swimmers.nil? ? "0" : @swimmers.size %></span>
+				<span title='Tienes <%= session[:swimmers_size] %> nadadores'><%= session[:swimmers_size] %></span>
 			</li>
 			<!-- /Swimmers menu -->
 			
@@ -43,6 +43,7 @@
 			<!-- Competitions menu -->
 			<li <%= params[:controller].eql?("competitions") ? "class='current'" : "" %>>
 				<%= link_to 'Competiciones', competitions_path, :class => 'events no-submenu' %>
+				<span title='Tienes <%= session[:competitions_size] %> competiciones'><%= session[:competitions_size] %></span>
 			</li>
 			<!-- /Competitions menu -->
 			

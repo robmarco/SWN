@@ -1,40 +1,120 @@
-<p id="notice"><%= notice %></p>
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Competiciones', competitions_path %></li>
+	<li>Id <%= @competition.id %></li>
+</ul>
 
-<p>
-  <b>Date competition:</b>
-  <%= @competition.date_competition %>
-</p>
+<!-- Competition's Information Block -->
+<article class="second-third-block">
+	<div class="article-container">
+	
+		<header>
+			<h2><%= @competition.title %></h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Eliminar', competition_path(@competition), :confirm => '¿Está seguro de que desea eliminar la competición?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Editar', edit_competition_path(@competition), :class => "button" %></li>					
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<form>
+				<fieldset>
+					<legend>Datos del evento</legend>
 
-<p>
-  <b>Title:</b>
-  <%= @competition.title %>
-</p>
+					<dl>
+						<dt><%= label :competition_place, "Lugar" %></dt>
+						<dd class="text"><%= @competition.place %></dd>
+						<dt><%= label :competition_date, "Fecha de competición" %></dt>
+						<dd class="text"><%= @competition.date_competition %></dd>
+						<dt><%= label :competition_pool_dist, "Tipo de Piscina" %></dt>
+						<dd class="text">De <%= @competition.pool_dist %></dd>
+						<dt><%= label :competition_chrono_type, "Tipo de Cronómetro" %></dt>
+						<dd class="text"><%= @competition.chrono_type %></dd>
+						<dt><%= label :competition_category, "Categoría" %></dt>
+						<dd class="text"><%= @competition.category %></dd>
+					</dl>
+				</fieldset>
+			</form>
+		</section>
+		
+	</div>
+</article>
+<!-- \Competition's Information Block -->
 
-<p>
-  <b>Place:</b>
-  <%= @competition.place %>
-</p>
+<!-- Competition's Basic Statistics Block -->
+<article class="third-block">
+	<div class="article-container">
+		<header>
+			<h2>Estadísticas</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir Competición', new_competition_path, :class => "button" %></li>
+				</ul>
+			</nav>
+		</header>
+		<section>
+			<ul class="stats-summary">
+				<li>
+					<strong class="stats-count">12</strong>
+					<p>Total participantes</p>
+				</li>
+				
+				<li>
+					<strong class="stats-count">3</strong>
+					<p>Participantes masculinos</p>
+				</li>
+				
+				<li>
+					<strong class="stats-count">9</strong>
+					<p>Participantes femeninos</p>
+				</li>
+				
+				<li>
+					<strong class="stats-count">5</strong>
+					<p>Descalificaciones</p>
+				</li>
+			</ul>
+		</section>
+	</div>
+</article>
+<!-- \Competition's Basic Statistics Block -->
 
-<p>
-  <b>Chrono type:</b>
-  <%= @competition.chrono_type %>
-</p>
+<div class="clearfix"></div>
 
-<p>
-  <b>Pool dist:</b>
-  <%= @competition.pool_dist %>
-</p>
+<!-- Results Block -->
+<article class="full-block">
+	<div class="article-container">
+		<header>
+			<h2>Resultados de Nadadores</h2>
+		</header>
+		
+		<section>
+			<table class="datatable">
+			  <thead>
+			  	<tr>
+				    <th>Nadador</th>
+				    <th>Prueba</th>
+				    <th>Género</th>
+				    <th>Tiempo</th>
+				    <th>Observación</th>
+				  </tr>
+			  </thead>
 
-<p>
-  <b>Category:</b>
-  <%= @competition.category %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @competition.user_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_competition_path(@competition) %> |
-<%= link_to 'Back', competitions_path %>
+				<tbody>
+					<tr>
+						<td>Roberto Marco</td>
+						<td>200 Ei</td>
+						<td>Masculino</td>
+						<td>02:22:84</td>
+						<td>Descalificado</td>
+					</tr>
+				</tbody>			
+			</table>
+		</section>
+	</div>
+</article>
+<!-- \Results Block -->
+<%= link_to 'Ir Atrás', competitions_path, :class => "button right" %>
+<br />

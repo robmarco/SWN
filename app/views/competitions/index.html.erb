@@ -21,34 +21,16 @@
 			<table class="datatable">
 			  <thead>
 			  	<tr>
-				    <th>Date competition</th>
-				    <th>Title</th>
-				    <th>Place</th>
-				    <th>Chrono type</th>
-				    <th>Pool dist</th>
-				    <th>Category</th>
-				    <th>User</th>
-				    <th></th>
-				    <th></th>
-				    <th></th>
+				    <th>Fecha</th>
+				    <th>Título</th>
+				    <th>Lugar</th>
+				    <th>Categoría</th>
+				    <th>Acción</th>
 				  </tr>
 			  </thead>
 
 				<tbody>
-					<% @competitions.each do |competition| %>
-					  <tr>
-					    <td><%= competition.date_competition %></td>
-					    <td><%= competition.title %></td>
-					    <td><%= competition.place %></td>
-					    <td><%= competition.chrono_type %></td>
-					    <td><%= competition.pool_dist %></td>
-					    <td><%= competition.category %></td>
-					    <td><%= competition.user_id %></td>
-					    <td><%= link_to 'Show', competition %></td>
-					    <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
-					    <td><%= link_to 'Destroy', competition, :confirm => 'Are you sure?', :method => :delete %></td>
-					  </tr>
-					<% end %>
+					<%= render :partial => "competition", :collection => @competitions %>
 				</tbody>			
 			</table>
 		</section>
@@ -83,6 +65,36 @@
 					<!-- jQuery Full Calendar Plugin -->
 					<div class="fullcalendar"></div>
 					<!-- /jQuery Full Calendar Plugin -->
+					<% content_for :fullcalendar_script do %>
+						<script type="text/javascript">
+							//jQuery Full Calendar
+							//var date = new Date(); // date must be with this format: '2010-10-02'
+							//var d = date.getDate();
+							//var m = date.getMonth();
+							//var y = date.getFullYear();
+
+							$('.fullcalendar').fullCalendar({
+								header: {
+									left: 'prev,next today',
+									center: 'title',
+									right: 'month,basicWeek,basicDay'
+								},
+								editable: true,
+								firstDay: 1,
+								events: [
+									<% @competitions.each do |competition| %>
+										{
+											title: '<%= competition.title %>',
+											start: '<%= competition.date_competition.strftime("%Y/%m/%d") %>',
+											allDay: true, 
+											url: '<%= competition_path(competition) %>'
+										},
+									<% end %>
+								]
+							});
+						</script>
+					<% end %>
+					
 					
 				</div>
 				<!-- \jquery Full Calendar Sidetab Content -->

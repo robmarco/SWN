@@ -27,7 +27,7 @@
 						<dt><%= label :competition_place, "Lugar" %></dt>
 						<dd class="text"><%= @competition.place %></dd>
 						<dt><%= label :competition_date, "Fecha de competición" %></dt>
-						<dd class="text"><%= @competition.date_competition %></dd>
+						<dd class="text"><%= @competition.date_competition.strftime("%d/%m/%Y") %></dd>
 						<dt><%= label :competition_pool_dist, "Tipo de Piscina" %></dt>
 						<dd class="text">De <%= @competition.pool_dist %></dd>
 						<dt><%= label :competition_chrono_type, "Tipo de Cronómetro" %></dt>

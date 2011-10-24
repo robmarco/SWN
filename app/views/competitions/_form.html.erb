@@ -24,11 +24,27 @@
 			<dt><%= f.label :date_competition, "Fecha" %></dt>
 			<dd><%= f.text_field :date_competition, :class => 'datepicker small' %></dd>
 			
-			<dt><%= f.label :chrono_type, "Tipo de Crono" %></dt>
-			<dd><%= f.text_field :chrono_type, :class => 'small' %></dd>
+			<!-- Chrono_Type Field -->
+			<dt><%= f.label :chrono_type, "Tipo de Cronómetro" %></dt>
+			<dd>
+				<% if params[:action] == "edit" %>
+					<%= f.select :chrono_type, "<option #{@competition.chrono_type == "Manual" ? "selected='selected' " : ""} value='Manual'>Manual</option><option #{@competition.chrono_type == "Electrónico" ? "selected='selected' " : ""} value='Electrónico'>Electrónico</option>".html_safe  %>
+				<% else %>
+					<%= f.select :chrono_type, "<option value='Manual'>Manual</option><option value='Electrónico'>Electrónico</option>".html_safe, :include_blank => true  %>
+				<% end %>				
+			</dd>
+			<!-- \Chrono_Type Field -->
 
+			<!-- Pool_Dist Field -->
 			<dt><%= f.label :pool_dist, "Tipo de Piscina" %></dt>
-			<dd><%= f.text_field :pool_dist, :class => 'small' %></dd>
+			<dd>
+				<% if params[:action] == "edit" %>
+					<%= f.select :pool_dist, "<option #{@competition.pool_dist == "25m" ? "selected='selected' " : ""} value='25m'>25m</option><option #{@competition.pool_dist == "50m" ? "selected='selected' " : ""} value='50m'>50m</option>".html_safe  %>
+				<% else %>
+					<%= f.select :pool_dist, "<option value='25m'>25m</option><option value='50m'>50m</option>".html_safe, :include_blank => true  %>
+				<% end %>				
+			</dd>
+			<!-- \Pool_Dist Field -->
 			
 			<!-- Category Field -->
 			<dt><%= f.label :category, "Categoría" %></dt>

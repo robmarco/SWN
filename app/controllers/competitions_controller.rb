@@ -27,8 +27,6 @@ class CompetitionsController < ApplicationController
     @competition = current_user.competitions.new
     
     @categories = Category.all
-    @states = State.all
-    @countries = Country.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,7 +40,7 @@ class CompetitionsController < ApplicationController
     
     #Array de Categorías ordenado con el seleccionado primero
     @categories = []
-    Category.all.each {|c| c.name==@swimmer.category ? @aux=c : @categories << c }
+    Category.all.each {|c| c.name==@competition.category ? @aux=c : @categories << c }
     @categories.insert(0,@aux)
   end
 
@@ -52,12 +50,10 @@ class CompetitionsController < ApplicationController
     @competition = current_user.competitions.new(params[:competition])
     
     @categories = Category.all
-    @states = State.all
-    @countries = Country.all
 
     respond_to do |format|
       if @competition.save
-        session[:competitions_size] = current_user.competitions.size
+        session[:competitions_size] = current_user.competitions.size  # Update competitions size
         format.html { redirect_to(@competition, :notice => 'Competition was successfully created.') }
         format.xml  { render :xml => @competition, :status => :created, :location => @competition }
       else
@@ -74,7 +70,7 @@ class CompetitionsController < ApplicationController
     
     #Array de Categorías ordenado con el seleccionado primero
     @categories = []
-    Category.all.each {|c| c.name==@swimmer.category ? @aux=c : @categories << c }
+    Category.all.each {|c| c.name==@competition.category ? @aux=c : @categories << c }
     @categories.insert(0,@aux)
 
     respond_to do |format|
@@ -93,7 +89,7 @@ class CompetitionsController < ApplicationController
   def destroy
     @competition = Competition.find(params[:id])
     @competition.destroy
-    session[:competitions_size] = current_user.competitions.size
+    session[:competitions_size] = current_user.competitions.size  # Update competitions size
     
     respond_to do |format|
       format.html { redirect_to(competitions_url) }

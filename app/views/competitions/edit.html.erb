@@ -1,3 +1,10 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Competiciones', competitions_path %></li>
+	<li><%= link_to "Id #{@competition.id}", @competition %></li>
+	<li>Modificar competición</li>
+</ul>
+
 <h1>Editing competition</h1>
 
 <%= render 'form' %>

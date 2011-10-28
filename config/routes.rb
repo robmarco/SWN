@@ -1,4 +1,6 @@
 SWN::Application.routes.draw do
+  resources :trials, :path => "tests"
+
   resources :competitions
 
   resources :swimmers

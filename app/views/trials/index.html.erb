@@ -1,0 +1,41 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Tests preparatorios', trials_path %></li>
+	<li>Ver lista de tests preparatorios</li>
+</ul>
+
+<!-- Article Full Content Block -->
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Gestión de tests preparatorios</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir test', new_trial_path, :class => 'button' %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<table class="datatable">
+			  <thead>
+			  	<tr>
+				    <th>Date trial</th>
+				    <th>Title</th>
+				    <th>User</th>
+				    <th></th>
+				    <th></th>
+				    <th></th>
+				  </tr>
+			  </thead>
+				
+				<tbody>
+					<%= render :partial => "trial", :collection => @trials %>
+				</tbody>
+			</table>
+		</section>
+		
+	</div>
+</article>
+<!-- \Article Full Content Block -->

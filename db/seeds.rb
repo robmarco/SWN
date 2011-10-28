@@ -189,3 +189,9 @@ Country.create([
         {:name => 'Zambia', :iso_code => 'ZM'},
         {:name => 'Zimbabwe', :iso_code => 'ZW'}
 ])
+
+TrialCategory.create([
+        {:name => "Talla"},
+        {:name => "Peso"},
+        {:name => "Envergadura"}
+])

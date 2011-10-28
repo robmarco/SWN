@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date trial:</b>
+  <%= @trial.date_trial %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @trial.title %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @trial.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_trial_path(@trial) %> |
+<%= link_to 'Back', trials_path %>

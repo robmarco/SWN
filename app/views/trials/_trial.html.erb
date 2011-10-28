@@ -1,0 +1,8 @@
+<tr>
+	<td><%= trial.date_trial %></td>
+  <td><%= trial.title %></td>
+  <td><%= trial.user_id %></td>
+  <td><%= link_to 'Show', trial %></td>
+  <td><%= link_to 'Edit', edit_trial_path(trial) %></td>
+  <td><%= link_to 'Destroy', trial, :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>

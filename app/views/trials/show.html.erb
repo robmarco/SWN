@@ -27,7 +27,7 @@
 						<dt><%= label :date_trial, 'Fecha del test'%></dt>
 						<dd class="text"><%= @trial.date_trial.strftime("%d/%m/%Y") %></dd>
 						<dt><%= label :trial_category_id, 'Categoría' %></dt>
-						<dd class="text"><%= @trial.trial_category_id %></dd>
+						<dd class="text"><%= @trial.trial_category.name %></dd>
 					</dl>
 				</fieldset>
 			</form>

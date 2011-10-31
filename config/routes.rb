@@ -7,6 +7,7 @@ SWN::Application.routes.draw do
 
   get "pages/index"
   get "pages/about"
+  get "pages/dashboard"
 
   devise_for :users
 

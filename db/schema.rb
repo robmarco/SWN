@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20111031175235) do
   create_table "competition_results", :force => true do |t|
     t.integer  "swimmer_id"
     t.integer  "competition_set_id"
-    t.time     "time_result"
+    t.string   "time_result"
     t.string   "disqualify"
     t.string   "observation"
     t.integer  "competition_id"

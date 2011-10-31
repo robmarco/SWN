@@ -10,9 +10,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111026110758) do
+ActiveRecord::Schema.define(:version => 20111031175235) do
 
   create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "competition_results", :force => true do |t|
+    t.integer  "swimmer_id"
+    t.integer  "competition_set_id"
+    t.time     "time_result"
+    t.string   "disqualify"
+    t.string   "observation"
+    t.integer  "competition_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "competition_sets", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -60,6 +60,37 @@
 		</dl>
 		
 	</fieldset>
+	
+	<!-- Competition Results Block -->
+	<fieldset>
+		<legend>Resultados de competición</legend>
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Nadador</th>
+					<th>Prueba</th>
+					<th>Tiempo</th>
+					<th>Descalificado</th>
+					<th>Observaciones</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<%= f.fields_for :competition_results do |builder| %>
+					<%= render 'competition_result_fields', :f => builder %>
+				<% end %>				
+			</tbody>
+			
+			<tfoot>
+				<tr>
+					<td colspan="6"><p><%= link_to 'Añadir resultado', '#' %></p></td>
+				</tr>
+			</tfoot>
+		</table>
+		<br />
+	</fieldset>
+	<!-- \Competition Results Block -->
 	<div align="center"><%= f.submit 'Enviar', :class => "button" %> ó <%= link_to 'Cancelar', :back %></div>
 	
 

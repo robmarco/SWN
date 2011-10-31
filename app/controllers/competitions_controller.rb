@@ -25,8 +25,8 @@ class CompetitionsController < ApplicationController
   # GET /competitions/new.xml
   def new
     @competition = current_user.competitions.new
-    
     @categories = Category.all
+    @competition_result = @competition.competition_results.build    
 
     respond_to do |format|
       format.html # new.html.erb

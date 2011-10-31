@@ -204,3 +204,22 @@ TrialCategory.create([
         {:name => "Hidrodinámica", :description => "Capacidad o resistencia hidrodinámica que ofrece el nadador en cm"},
         {:name => "Test 300 metros piernas", :description => "Resistencia aeróbica máxima en miebros inferiores del nadador en min/seg"}
 ])
+
+CompetitionSet.create([
+        {:name => "50 Libre"},
+        {:name => "100 Libre"},
+        {:name => "200 Libre"},
+        {:name => "400 Libre"},
+        {:name => "800 Libre"},
+        {:name => "1500 Libre"},
+        {:name => "3000 Libre"},
+        {:name => "50 Mariposa"},
+        {:name => "100 Mariposa"},
+        {:name => "200 Mariposa"},
+        {:name => "50 Espalda"},
+        {:name => "100 Espalda"},
+        {:name => "200 Espalda"},
+        {:name => "50 Braza"},
+        {:name => "100 Braza"},
+        {:name => "200 Braza"}
+])

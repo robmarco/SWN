@@ -1,6 +1,7 @@
 <%= form_for(@trial) do |f| %>
   <% if @trial.errors.any? %>
     <div id="error_explanation">
+			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
       <h2><%= pluralize(@trial.errors.count, "error") %> prohibited this trial from being saved:</h2>
 
       <ul>
@@ -11,19 +12,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :date_trial %><br />
-    <%= f.date_select :date_trial %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<fieldset>
+		<legend>Datos del test</legend>
+		
+		<dl>
+			<dt><%= f.label :title, "Título" %></dt>
+			<dd><%= f.text_field :title, :class => "medium" %></dd>
+			
+			<dt><%= f.label :date_trial, "Fecha" %></dt>
+			<dd><%= f.text_field :date_trial, :class => "datepicker" %></dd>
+			
+			<dt><%= f.label :trial_category_id, "Categoría" %></dt>
+			<dd><%= f.text_field :trial_category_id %></dd>
+		</dl>
+	</fieldset>
+	
+	<div align="center"><%= f.submit 'Enviar', :class => "button" %> ó <%= link_to 'Cancelar', :back %></div>
+	
 <% end %>

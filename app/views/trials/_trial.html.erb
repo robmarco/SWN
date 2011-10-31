@@ -1,8 +1,12 @@
 <tr>
-	<td><%= trial.date_trial %></td>
+	<td><%= trial.date_trial.strftime("%d/%m/%Y") %></td>
   <td><%= trial.title %></td>
-  <td><%= trial.user_id %></td>
-  <td><%= link_to 'Show', trial %></td>
-  <td><%= link_to 'Edit', edit_trial_path(trial) %></td>
-  <td><%= link_to 'Destroy', trial, :confirm => 'Are you sure?', :method => :delete %></td>
+  <td><%= trial.trial_category.name %></td>
+	<td>
+		<ul class="actions">
+			<li><%= link_to 'ver', trial_path(trial), :class => "view", :title => "Ver test", :rel => "tooltip" %></li>
+			<li><%= link_to 'editar', edit_trial_path(trial), :class => "edit", :title => "Editar test", :rel => "tooltip" %></li>
+			<li><%= link_to 'eliminar', trial_path(trial), :confirm => '¿Está seguro de que desea eliminar el test?', :method => :delete, :class => "delete", :title => "Eliminar test", :rel => "tooltip" %></li>
+		</ul>
+	</td>
 </tr>

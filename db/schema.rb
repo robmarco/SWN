@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20111026110758) do
 
   create_table "trial_categories", :force => true do |t|
     t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

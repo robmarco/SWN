@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :swimmers
-  has_many :competitions
-  has_many :trials
+  has_many :swimmers, :dependent => :destroy
+  has_many :competitions, :dependent => :destroy
+  has_many :trials, :dependent => :destroy
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable

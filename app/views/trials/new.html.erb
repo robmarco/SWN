@@ -1,5 +1,21 @@
-<h1>New trial</h1>
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Tests preparatorios', trials_path %></li>
+	<li>Añadir test</li>
+</ul>
 
-<%= render 'form' %>
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<!-- Header  -->
+		<header>
+			<h2>Añadir Test preparatorio</h2>
+		</header>
+		<!-- \Header  -->
 
-<%= link_to 'Back', trials_path %>
+		<section>
+			<%= render 'form' %>
+		</section>
+		
+	</div>
+</article>

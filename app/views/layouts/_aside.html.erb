@@ -48,7 +48,7 @@
 			<!-- /Competitions menu -->
 			
 			<!-- Trials menu -->
-			<li <%= params[:controller].eql?("trial") ? "class='current'" : "" %>>
+			<li <%= params[:controller].eql?("trials") ? "class='current'" : "" %>>
 				<%= link_to 'Test preparatorios', trials_path, :class => 'tests no-submenu' %>
 				<span title='Tienes <%= session[:trials_size] %> tests preparatorios'><%= session[:trials_size] %></span>
 			</li>

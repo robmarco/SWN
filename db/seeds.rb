@@ -191,7 +191,16 @@ Country.create([
 ])
 
 TrialCategory.create([
-        {:name => "Talla"},
-        {:name => "Peso"},
-        {:name => "Envergadura"}
+        {:name => "Talla", :description => "Altura del nadador en cm"},
+        {:name => "Peso", :description => "Peso del nadador en kg"},
+        {:name => "Envergadura", :description => "Envergadura del nadador en cm"},
+        {:name => "Presión Arterial", :description => "Presión arterial sistólica y diastólica en mmHg"},
+        {:name => "FC Basal", :description => "Media de la FCBasal de una semana en p/m"}, 
+        {:name => "Flotabilidad", :description => "Capacidad de flotar del nadador (referencia de puntos corporales)"}, 
+        {:name => "Test 30 minutos", :description => "Capacidad de resistencia básica del nadador (referencia umbral) en metros"},
+        {:name => "Test 2000 metros", :description => "Capacidad de resistencia básica del nadador (referencia umbral) en min/seg"}, 
+        {:name => "Test 25 metros", :description => "Velocidad máxima de nado en 25m a estilo crol en seg"},
+        {:name => "Potencia MMII", :description => "Fuerza de los miembros inferiores en cm"},
+        {:name => "Hidrodinámica", :description => "Capacidad o resistencia hidrodinámica que ofrece el nadador en cm"},
+        {:name => "Test 300 metros piernas", :description => "Resistencia aeróbica máxima en miebros inferiores del nadador en min/seg"}
 ])

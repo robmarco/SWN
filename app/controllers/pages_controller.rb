@@ -10,9 +10,8 @@ class PagesController < ApplicationController
   
   def dashboard
     # When users sign_in, current_user data is stored in session variable
-    session[:swimmers_size] ||= current_user.swimmers.all.size
-    session[:competitions_size] ||= current_user.competitions.all.size
-    session[:trials_size] ||= current_user.trials.all.size
-    
+    session[:swimmers_size] ||= current_user.swimmers.size
+    session[:competitions_size] ||= current_user.competitions.size
+    session[:trials_size] ||= current_user.trials.size    
   end
 end

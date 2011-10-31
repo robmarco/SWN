@@ -1,20 +1,114 @@
-<p id="notice"><%= notice %></p>
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Tests preparatorios', trials_path %></li>
+	<li>Id <%= @trial.id %></li>
+</ul>
 
-<p>
-  <b>Date trial:</b>
-  <%= @trial.date_trial %>
-</p>
+<!-- Test Information Block -->
+<article class="second-third-block">
+	<div class="article-container">
+		
+		<header>
+			<h2><%= @trial.title %></h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Eliminar', trial_path(@trial), :confirm => '¿Está seguro de que desea eliminar el test?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Editar', edit_trial_path(@trial), :class => "button" %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<form>
+				<fieldset>
+					<legend>Datos del test</legend>
+					
+					<dl>
+						<dt><%= label :date_trial, 'Fecha del test'%></dt>
+						<dd class="text"><%= @trial.date_trial.strftime("%d/%m/%Y") %></dd>
+						<dt><%= label :trial_category_id, 'Categoría' %></dt>
+						<dd class="text"><%= @trial.trial_category_id %></dd>
+					</dl>
+				</fieldset>
+			</form>
+		</section>
+		
+	</div>
+</article>
 
-<p>
-  <b>Title:</b>
-  <%= @trial.title %>
-</p>
+<!-- Tests Basic Statistics Block -->
+<article class="third-block">
+	<div class="article-container">
+		<header>
+			<h2>Estadísticas</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir Test', new_trial_path, :class => "button" %></li>
+				</ul>
+			</nav>
+		</header>
+		<section>
+			<ul class="stats-summary">
+				<li>
+					<strong class="stats-count">12</strong>
+					<p>Total participantes</p>
+				</li>
+				
+				<li>
+					<strong class="stats-count">3</strong>
+					<p>Participantes masculinos</p>
+				</li>
+				
+				<li>
+					<strong class="stats-count">9</strong>
+					<p>Participantes femeninos</p>
+				</li>
+				
+				<li>
+					<strong class="stats-count">5</strong>
+					<p>Descalificaciones</p>
+				</li>
+			</ul>
+		</section>
+	</div>
+</article>
+<!-- \Tests Basic Statistics Block -->
 
-<p>
-  <b>User:</b>
-  <%= @trial.user_id %>
-</p>
+<div class="clearfix"></div>
 
+<!-- Results Block -->
+<article class="full-block">
+	<div class="article-container">
+		<header>
+			<h2>Resultados de Nadadores</h2>
+		</header>
+		
+		<section>
+			<table class="datatable">
+			  <thead>
+			  	<tr>
+				    <th>Nadador</th>
+				    <th>Prueba</th>
+				    <th>Género</th>
+				    <th>Tiempo</th>
+				    <th>Observación</th>
+				  </tr>
+			  </thead>
 
-<%= link_to 'Edit', edit_trial_path(@trial) %> |
-<%= link_to 'Back', trials_path %>
+				<tbody>
+					<tr>
+						<td>Roberto Marco</td>
+						<td>200 Ei</td>
+						<td>Masculino</td>
+						<td>02:22:84</td>
+						<td>Descalificado</td>
+					</tr>
+				</tbody>			
+			</table>
+		</section>
+	</div>
+</article>
+<!-- \Results Block -->
+
+<%= link_to 'Ir Atrás', trials_path, :class => "button right" %>
+<br />

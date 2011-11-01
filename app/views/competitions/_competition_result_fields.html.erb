@@ -1,8 +1,10 @@
 <tr class="fields">
-	<td><%= link_to_remove_fields "X", f %></td>
-	<td><%= f.text_field :swimmer_id %></td>
-	<td><%= f.text_field :competition_set_id  %></td>
-	<td><%= f.text_field :time_result %></td>
-	<td><%= f.text_field :disqualify %></td>
-	<td><%= f.text_field :observation %></td>
+	<td class="remove"><%= link_to_remove_fields "X", f %></td>
+	<td class="result"><%= f.text_field :swimmer_id, :class => "swimmer_input" %></td>
+	<td class="result">
+		<%= f.collection_select :competition_set_id, @competition_sets, :id, :name, { :prompt => "Seleccionar"} %>
+	</td>
+	<td class="result"><%= f.text_field :time_result, :class => "time_result_input" %></td>
+	<td class="result"><%= f.text_field :disqualify, :class => "desc_input" %></td>
+	<td class="result"><%= f.text_field :observation, :class => "observation_input" %></td>
 </tr>

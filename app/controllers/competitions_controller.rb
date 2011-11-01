@@ -26,6 +26,9 @@ class CompetitionsController < ApplicationController
   def new
     @competition = current_user.competitions.new
     @categories = Category.all
+    @competition_sets = CompetitionSet.all
+    
+    # Result built when try to add a new competition
     @competition_result = @competition.competition_results.build    
 
     respond_to do |format|
@@ -42,14 +45,16 @@ class CompetitionsController < ApplicationController
     @categories = []
     Category.all.each {|c| c.name==@competition.category ? @aux=c : @categories << c }
     @categories.insert(0,@aux)
+    
+    @competition_sets = CompetitionSet.all    
   end
 
   # POST /competitions
   # POST /competitions.xml
   def create
-    @competition = current_user.competitions.new(params[:competition])
-    
+    @competition = current_user.competitions.new(params[:competition])    
     @categories = Category.all
+    @competition_sets = CompetitionSet.all
 
     respond_to do |format|
       if @competition.save
@@ -67,12 +72,13 @@ class CompetitionsController < ApplicationController
   # PUT /competitions/1.xml
   def update
     @competition = Competition.find(params[:id])
+    @competition_sets = CompetitionSet.all 
     
     #Array de Categorías ordenado con el seleccionado primero
     @categories = []
     Category.all.each {|c| c.name==@competition.category ? @aux=c : @categories << c }
     @categories.insert(0,@aux)
-
+    
     respond_to do |format|
       if @competition.update_attributes(params[:competition])
         format.html { redirect_to(@competition, :notice => 'Competition was successfully updated.') }

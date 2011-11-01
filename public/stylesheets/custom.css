@@ -5,3 +5,10 @@
 	box-shadow: 0 0 3px #000;
 	opacity: 0.9999999;
 }
+
+.result { padding-right: 10px;}
+.swimmer_input { width: 250px; }
+.time_result_input, .desc_input { width: 100px;}
+.observation_input { width: 300px;}
+.remove { padding-top: 12px; padding-left: 10px; display:block; height: 23px; width: 20px; border:none; }
+.remove a { }

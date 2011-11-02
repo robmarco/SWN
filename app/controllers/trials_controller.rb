@@ -1,4 +1,6 @@
 class TrialsController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /trials
   # GET /trials.xml
   def index

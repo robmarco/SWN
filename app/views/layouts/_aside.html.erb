@@ -25,7 +25,9 @@
 		<ul>
 			<!-- Class .no-submenu to open link instead of a sub menu-->
 			<!-- Class .current to open submenu on page load -->
-			<li><a href="/" title="" class="dashboard no-submenu">Dashboard</a></li> 
+			<li <%= params[:controller].eql?("pages")&&params[:action].eql?("dashboard") ? "class='current'" : "" %>>
+				<%= link_to 'Dashboard', pages_dashboard_path, :class => "dashboard no-submenu" %>
+			</li> 
 		
 			<!-- Swimmers menu -->
 			<li <%= params[:controller].eql?("swimmers") ? "class='current'" : "" %>>

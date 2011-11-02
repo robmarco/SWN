@@ -4,7 +4,4 @@ class Swimmer < ActiveRecord::Base
   
   validates_presence_of :name, :secname, :born, :licence, :category, :state
   
-  def attributes_id_name
-    { 'id' => id, 'name' => name+' '+secname }
-  end
 end

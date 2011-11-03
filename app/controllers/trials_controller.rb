@@ -30,6 +30,9 @@ class TrialsController < ApplicationController
 
     @trial_categories = TrialCategory.all
     
+    # Result built when try to add a new competition
+    @trial_result = @trial.trial_results.build
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @trial }

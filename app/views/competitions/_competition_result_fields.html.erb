@@ -1,6 +1,8 @@
 <tr class="fields">
 	<td class="remove"><%= link_to_remove_fields "X", f %></td>
-	<td class="result"><%= f.text_field :swimmer_id, :class => "swimmer_input" %></td>
+	<td class="result">
+		<%= f.collection_select :swimmer_id, Swimmer.all, :id, :swimmer_name_secname, { :prompt => "Seleccionar"}  %>
+	</td>
 	<td class="result">
 		<%= f.collection_select :competition_set_id, @competition_sets, :id, :name, { :prompt => "Seleccionar"} %>
 	</td>

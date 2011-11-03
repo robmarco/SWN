@@ -20,6 +20,14 @@
 			<dd><%= f.text_field :name, :class => "medium" %></dd>
 			<dt><%= f.label :secname, "Apellidos" %></dt>
 			<dd><%= f.text_field :secname, :class => "medium" %></dd>
+			<dt><%= f.label :genre, "Género" %></dt>
+			<dd>
+				<% if params[:action]=="edit" %>
+					<%= f.select :genre, options_for_select(["Masculino", "Femenino"], @swimmer.genre), {:prompt => "Seleccionar "}  %>
+				<% else %>
+					<%= f.select :genre, options_for_select(["Masculino", "Femenino"]), {:prompt => "Seleccionar "}  %>
+				<% end %>				
+			</dd>
 			<dt><%= f.label :licence, "Licencia" %></dt>
 			<dd><%= f.text_field :licence, :class => "small" %></dd>
 			

@@ -50,24 +50,24 @@
 		<section>
 			<ul class="stats-summary">
 				<li>
-					<strong class="stats-count">12</strong>
-					<p>Total participantes</p>
+					<strong class="stats-count"><%= @trial.trial_results.size %></strong>
+					<p>Total de resultados añadidos</p>
 				</li>
 				
 				<li>
-					<strong class="stats-count">3</strong>
+					<strong class="stats-count">
+						<%= @trial.trial_results.joins(:swimmer).merge(Swimmer.male).map(&:swimmer_id).uniq.size %>
+					</strong>
 					<p>Participantes masculinos</p>
 				</li>
 				
 				<li>
-					<strong class="stats-count">9</strong>
+					<strong class="stats-count">
+						<%= @trial.trial_results.joins(:swimmer).merge(Swimmer.female).map(&:swimmer_id).uniq.size %>
+					</strong>
 					<p>Participantes femeninos</p>
 				</li>
 				
-				<li>
-					<strong class="stats-count">5</strong>
-					<p>Descalificaciones</p>
-				</li>
 			</ul>
 		</section>
 	</div>
@@ -88,21 +88,25 @@
 			  <thead>
 			  	<tr>
 				    <th>Nadador</th>
-				    <th>Prueba</th>
-				    <th>Género</th>
-				    <th>Tiempo</th>
+				    <th>Tipo de Test</th>
+				    <th>Valor</th>
 				    <th>Observación</th>
 				  </tr>
 			  </thead>
 
 				<tbody>
-					<tr>
-						<td>Roberto Marco</td>
-						<td>200 Ei</td>
-						<td>Masculino</td>
-						<td>02:22:84</td>
-						<td>Descalificado</td>
-					</tr>
+					<!-- Trial Results -->
+					<% if %>
+						<% @trial.trial_results.each do |res| %>
+							<tr>
+								<td><%= res.swimmer.swimmer_name_secname %></td>
+								<td><%= @trial.trial_category.name %></td>
+								<td><%= "#{res.trial_value} #{@trial.trial_category.type_value}" %></td>
+								<td><%= res.observation %></td>
+							</tr>
+						<% end %>
+					<% end %>
+					<!-- \Trial Results -->
 				</tbody>			
 			</table>
 		</section>

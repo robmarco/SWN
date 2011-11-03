@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  swimmer_id: 1
+  trial_value: MyString
+  observation: MyString
+
+two:
+  swimmer_id: 1
+  trial_value: MyString
+  observation: MyString

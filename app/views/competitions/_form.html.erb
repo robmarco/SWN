@@ -15,17 +15,17 @@
 	<fieldset>
 		<legend>Datos de competición</legend>
 		<dl>
-			<dt><%= f.label :title, "Título" %></dt>
+			<dt><%= f.label :title, "Título*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :title, :class => 'medium' %></dd>
 
-			<dt><%= f.label :place, "Lugar" %></dt>
+			<dt><%= f.label :place, "Lugar*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd> <%= f.text_field :place, :class => 'medium' %></dd>
 
-			<dt><%= f.label :date_competition, "Fecha" %></dt>
+			<dt><%= f.label :date_competition, "Fecha*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :date_competition, :class => 'datepicker small' %></dd>
 			
 			<!-- Chrono_Type Field -->
-			<dt><%= f.label :chrono_type, "Tipo de Cronómetro" %></dt>
+			<dt><%= f.label :chrono_type, "Tipo de Cronómetro*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action] == "edit" %>
 					<%= f.select :chrono_type, "<option #{@competition.chrono_type == "Manual" ? "selected='selected' " : ""} value='Manual'>Manual</option><option #{@competition.chrono_type == "Electrónico" ? "selected='selected' " : ""} value='Electrónico'>Electrónico</option>".html_safe  %>
@@ -36,7 +36,7 @@
 			<!-- \Chrono_Type Field -->
 
 			<!-- Pool_Dist Field -->
-			<dt><%= f.label :pool_dist, "Tipo de Piscina" %></dt>
+			<dt><%= f.label :pool_dist, "Tipo de Piscina*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action] == "edit" %>
 					<%= f.select :pool_dist, "<option #{@competition.pool_dist == "25m" ? "selected='selected' " : ""} value='25m'>25m</option><option #{@competition.pool_dist == "50m" ? "selected='selected' " : ""} value='50m'>50m</option>".html_safe  %>
@@ -47,7 +47,7 @@
 			<!-- \Pool_Dist Field -->
 			
 			<!-- Category Field -->
-			<dt><%= f.label :category, "Categoría" %></dt>
+			<dt><%= f.label :category, "Categoría*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action] == "edit" %>
 					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), :class => "small"%>

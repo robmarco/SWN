@@ -16,11 +16,11 @@
 		<legend>Datos personales</legend>
 		
 		<dl>
-			<dt><%= f.label :name, "Nombre" %></dt>
+			<dt><%= f.label :name, "Nombre*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :name, :class => "medium" %></dd>
-			<dt><%= f.label :secname, "Apellidos" %></dt>
+			<dt><%= f.label :secname, "Apellidos*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :secname, :class => "medium" %></dd>
-			<dt><%= f.label :genre, "Género" %></dt>
+			<dt><%= f.label :genre, "Género*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action]=="edit" %>
 					<%= f.select :genre, options_for_select(["Masculino", "Femenino"], @swimmer.genre), {:prompt => "Seleccionar "}  %>
@@ -28,11 +28,11 @@
 					<%= f.select :genre, options_for_select(["Masculino", "Femenino"]), {:prompt => "Seleccionar "}  %>
 				<% end %>				
 			</dd>
-			<dt><%= f.label :licence, "Licencia" %></dt>
+			<dt><%= f.label :licence, "Licencia*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :licence, :class => "small" %></dd>
 			
 			<!-- Born Field-->
-			<dt><%= f.label :born, "Fecha Nacimiento" %></dt>
+			<dt><%= f.label :born, "Fecha Nacimiento*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action]=="edit" %>
 					<%= f.text_field :born, :value => @swimmer.born.strftime("%d/%m/%Y"), :class => "datepicker small" %>
@@ -43,24 +43,25 @@
 			<!-- /Born Field-->
 			
 			<!-- Category Field -->
-			<dt><%= f.label :category, "Categoría" %></dt>
+			<dt><%= f.label :category, "Categoría*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action] == "edit" %>
 					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), :class => "small"%>
 				<% else %>
-					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), :include_blank => true, :class => "small"%>
+					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), {:prompt => "Seleccionar"}%>
 				<% end %>	
 			</dd>
 			<!-- \Category Field -->
 			
 			<!-- State Field -->
-			<dt><%= f.label :state, "Estado" %></dt>
+			<dt><%= f.label :state, "Estado*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action] == "edit" %>
 					<%= f.select :state, options_from_collection_for_select(@states, "name", "name") %>
 				<% else %>
-					<%= f.select :state, options_from_collection_for_select(@states, "name", "name"), :include_blank => true %>
+					<%= f.select :state, options_from_collection_for_select(@states, "name", "name"), {:prompt => "Seleccionar"} %> 
 				<% end %>	
+				<p><em>Con estado no federado o baja, el nadador no podrá participar en competiciones</em></p>
 			</dd>
 			<!-- \State Field -->
 			
@@ -72,7 +73,7 @@
 		<legend>Datos de contacto</legend>
 		
 		<dl>
-			<dt><%= f.label :email, "Email" %></dt>
+			<dt><%= f.label :email, "Email*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :email, :class => "medium" %></dd>
 			<dt><%= f.label :address, "Dirección" %></dt>
 			<dd><%= f.text_field :address, :class => "medium" %></dd>

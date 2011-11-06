@@ -158,21 +158,25 @@
 							<table class="datatable">
 								<thead>
 									<tr>
-										<th>ID</th>
 										<th>Fecha</th>
 										<th>Lugar</th>
 										<th>Prueba</th>
 										<th>Tiempo</th>
+										<th>Acción</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td>10/12/2011</td>
-										<td>Piscina Municipal Ingenio</td>
-										<td>200 Ei</td>
-										<td>02:22:03</td>
-									</tr>
+									<% if @swimmer.competition_results.size > 0 %>
+										<% @swimmer.competition_results.each do |competition_result| %>
+											<tr>
+												<td><%= competition_result.competition.date_competition.strftime("%d/%m/%Y") %></td>
+												<td><%= competition_result.competition.place %></td>
+												<td><%= competition_result.competition_set.name %></td>
+												<td><%= competition_result.time_result %></td>
+												<td><ul class="actions"><li><%= link_to 'ver', competition_path(competition_result.competition), :class => "view", :title => "Ver competición", :rel => "tooltip" %></li></ul></td>
+											</tr>
+										<% end %>
+									<% end %>
 								</tbody>
 							</table>
 						</div>
@@ -200,7 +204,31 @@
 						
 						<!-- Test Results Sidetab -->
 						<div class="sidetab default-sidetab" id="sidetab3b">
-							
+							<h3>Resultados del nadador en test preparatorios</h3>
+							<table class="datatable">
+								<thead>
+									<tr>
+										<th>Fecha</th>
+										<th>Título</th>
+										<th>Tipo</th>
+										<th>Valor</th>
+										<th>Acción</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% if @swimmer.trial_results.size > 0 %>
+										<% @swimmer.trial_results.each do |trial_result| %>
+											<tr>
+												<td><%= trial_result.trial.date_trial.strftime("%d/%m/%Y") %></td>
+												<td><%= trial_result.trial.title %></td>
+												<td><%= trial_result.trial.trial_category.name %></td>
+												<td><%= trial_result.trial_value %> <%= "#{trial_result.trial.trial_category.type_value}" %></td>
+												<td><ul class="actions"><li><%= link_to 'ver', trial_path(trial_result.trial), :class => "view", :title => "Ver test", :rel => "tooltip" %></li></ul></td>
+											</tr>
+										<% end %>
+									<% end %>
+								</tbody>
+							</table>
 						</div>
 						<!-- \Test Results Sidetab -->
 						

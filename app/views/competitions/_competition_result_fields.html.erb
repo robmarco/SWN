@@ -1,12 +1,20 @@
 <tr class="fields">
 	<td class="remove"><%= link_to_remove_fields "X", f %></td>
 	<td class="result">
-		<%= f.collection_select :swimmer_id, Swimmer.all, :id, :swimmer_name_secname, { :prompt => "Seleccionar"}  %>
+		<%= f.collection_select :swimmer_id, Swimmer.federado, :id, :swimmer_name_secname, { :prompt => "Seleccionar"}  %>
 	</td>
 	<td class="result">
 		<%= f.collection_select :competition_set_id, @competition_sets, :id, :name, { :prompt => "Seleccionar"} %>
 	</td>
 	<td class="result"><%= f.text_field :time_result, :class => "time_result_input" %></td>
-	<td class="result"><%= f.text_field :disqualify, :class => "desc_input" %></td>
+	<td class="result">
+		<% if params[:action] == 'edit' %>
+			<%= f.select :disqualify, options_for_select(["", "Descalificado"], f.object.disqualify), :class => "desc_input" %>
+		<% else %>
+			<%= f.select :disqualify, options_for_select(["", "Descalificado"]), :class => "desc_input" %>
+		<% end %>
+		
+		
+	</td>
 	<td class="result"><%= f.text_field :observation, :class => "observation_input" %></td>
 </tr>

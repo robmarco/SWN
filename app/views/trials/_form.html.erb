@@ -16,13 +16,13 @@
 		<legend>Datos del test</legend>
 		
 		<dl>
-			<dt><%= f.label :title, "Título" %></dt>
+			<dt><%= f.label :title, "Título*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :title, :class => "medium" %></dd>
 			
-			<dt><%= f.label :date_trial, "Fecha" %></dt>
+			<dt><%= f.label :date_trial, "Fecha*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :date_trial, :class => "datepicker" %></dd>
 			
-			<dt><%= f.label :trial_category_id, "Categoría" %></dt>
+			<dt><%= f.label :trial_category_id, "Categoría*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action] == "edit" %>
 					<%= f.select :trial_category_id, options_from_collection_for_select(@trial_categories, "id", "name"), :class => "small"%>

@@ -4,7 +4,7 @@ class CompetitionsController < ApplicationController
   # GET /competitions
   # GET /competitions.xml
   def index
-    @competitions = current_user.competitions.all
+    @competitions = current_user.competitions
 
     respond_to do |format|
       format.html # index.html.erb

@@ -4,7 +4,7 @@
 	<li>Ver lista de tests preparatorios</li>
 </ul>
 
-<!-- Article Full Content Block -->
+<!-- Article Full Content Block - Test table -->
 <article class="full-block clearfix">
 	<div class="article-container">
 		
@@ -37,3 +37,71 @@
 	</div>
 </article>
 <!-- \Article Full Content Block -->
+
+<br />
+
+<!-- Article Full Content Block - Calendar and statistics -->
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header><h2>Calendario y Estadísticas</h2></header>
+		
+		<section>
+			<div class="sidetabs">
+				<nav class="sidetab-switch">
+					<ul>
+						<li><%= link_to 'Calendario', '#sidetab1b', :class => "default-sidetab" %></li>
+						<li><%= link_to 'Estadísticas', '#sidetab2b'  %></li>
+					</ul>
+				</nav>
+				
+				<!-- jquery Full Calendar Sidetab Content -->
+				<div class="sidetab default-sidetab" id="sidetab1b">
+					<h3>Calendario de test</h3>
+					
+					<!-- jQuery Full Calendar Plugin -->
+					<div class="fullcalendar"></div>
+					<!-- /jQuery Full Calendar Plugin -->
+					<% content_for :fullcalendar_script do %>
+						<script type="text/javascript">
+							//jQuery Full Calendar
+							//var date = new Date(); // date must be with this format: '2010-10-02'
+							//var d = date.getDate();
+							//var m = date.getMonth();
+							//var y = date.getFullYear();
+
+							$('.fullcalendar').fullCalendar({
+								header: {
+									left: 'prev,next today',
+									center: 'title',
+									right: 'month'
+								},
+								editable: true,
+								firstDay: 1,
+								events: [
+									<% @trials.each do |trial| %>
+										{
+											title: '<%= trial.title + " " + "(#{trial.trial_category.name})" %>',
+											start: '<%= trial.date_trial.strftime("%Y/%m/%d") %>',
+											allDay: true, 
+											url: '<%= trial_path(trial) %>'
+										},
+									<% end %>
+								]
+							});
+						</script>
+					<% end %>					
+				</div>
+				<!-- \jquery Full Calendar Sidetab Content -->
+				
+				<!-- Test Statistics Sidetab Content -->
+				<div class="sidetab" id="sidetab2b">
+					
+				</div>
+				<!-- \Test Statistics Sidetab Content -->
+				
+			</div>
+		</section>
+	</div>
+</article>
+<!-- \Article Full Content Block - Calendar and statistics -->

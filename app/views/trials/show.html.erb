@@ -102,7 +102,7 @@
 								<td><%= res.swimmer.swimmer_name_secname %></td>
 								<td><%= @trial.trial_category.name %></td>
 								<td><%= "#{res.trial_value} #{@trial.trial_category.type_value}" %></td>
-								<td><%= res.observation %></td>
+								<td><%= res.observation.blank? ? "Sin observaciones" : res.observation %></td>
 							</tr>
 						<% end %>
 					<% end %>

@@ -120,7 +120,7 @@
 								<td><%= res.swimmer.name + ' ' + res.swimmer.secname %></td>
 								<td><%= res.competition_set.name %></td>
 								<td><%= res.time_result %></td>
-								<td><%= res.observation %></td>
+								<td><%= res.disqualify.eql?("Descalificado") ? "Descalificado" : res.observation %></td>
 							</tr>
 						<% end %>							
 					<% end %>

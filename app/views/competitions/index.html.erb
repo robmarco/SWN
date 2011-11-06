@@ -18,28 +18,112 @@
 		</header>
 		
 		<section>
-			<table class="datatable">
-			  <thead>
-			  	<tr>
-				    <th>Fecha</th>
-				    <th>Título</th>
-				    <th>Lugar</th>
-				    <th>Categoría</th>
-				    <th>Acción</th>
-				  </tr>
-			  </thead>
+			
+			<div class="sidetabs">
+				<nav class="sidetab-switch">
+					<ul>
+						<li><%= link_to 'Todos', '#sidetab1a' %></li>
+						<li><%= link_to 'Mini', '#sidetab2a' %></li>
+						<li><%= link_to 'PreBenjamín', '#sidetab3a' %></li>
+						<li><%= link_to 'Alevín', '#sidetab4a' %></li>
+						<li><%= link_to 'Infantil', '#sidetab5a' %></li>
+						<li><%= link_to 'Junior', '#sidetab6a' %></li>
+						<li><%= link_to 'Absoluto', '#sidetab7a' %></li>
+						<li><%= link_to 'Master', '#sidetab8a' %></li>
+						<p>Se muestran las competiciones insertadas en el sistema por un entrenador y su equipo técnico.</p>
+					</ul>
+				</nav>
+			
+				<div class="sidetab default-sidetab" id="sidetab1a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
 
-				<tbody>
-					<%= render :partial => "competition", :collection => @competitions %>
-				</tbody>			
-			</table>
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.all %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab2a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.mini %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab3a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.preb %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab4a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.ale %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab5a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.inf %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab6a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.jun %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab7a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.abs %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab8a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.mast %>
+						</tbody>			
+					</table>
+				</div>
+							
+			</div>			
+			
 		</section>
-	
-
+		
 	</div>
+
 </article>
 <!-- \Article Full Content Block -->
 
+<br />
 <!-- Article Full Content Block 2 -->
 <article class="full-block clearfix">
 	<div class="article-container">
@@ -53,13 +137,13 @@
 				
 				<nav class="sidetab-switch">
 					<ul>
-						<li><%= link_to 'Calendario', '#sidetab1', :class => "default-sidetab" %></li>
-						<li><%= link_to 'Estadísticas básicas', '#sidetab2'  %></li>
+						<li><%= link_to 'Calendario', '#sidetab1b', :class => "default-sidetab" %></li>
+						<li><%= link_to 'Estadísticas', '#sidetab2b'  %></li>
 					</ul>
 				</nav>
 				
 				<!-- jquery Full Calendar Sidetab Content -->
-				<div class="sidetab default-sidetab" id="sidetab1">
+				<div class="sidetab default-sidetab" id="sidetab1b">
 					<h3>Calendario de competiciones</h3>
 					
 					<!-- jQuery Full Calendar Plugin -->
@@ -77,7 +161,7 @@
 								header: {
 									left: 'prev,next today',
 									center: 'title',
-									right: 'month,basicWeek,basicDay'
+									right: 'month,basicWeek'
 								},
 								editable: true,
 								firstDay: 1,
@@ -100,7 +184,7 @@
 				<!-- \jquery Full Calendar Sidetab Content -->
 				
 				<!-- Competition Statistics Sidetab Content -->
-				<div class="sidetab" id="sidetab2">
+				<div class="sidetab" id="sidetab2b">
 					
 				</div>
 				<!-- \Competition Statistics Sidetab Content -->

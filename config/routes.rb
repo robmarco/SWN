@@ -1,11 +1,9 @@
 SWN::Application.routes.draw do
+  resources :trainnings, :path => "entrenamientos"
   resources :incidents, :path => "incidencias"
-
   resources :trials, :path => "tests"
-
-  resources :competitions
-
-  resources :swimmers
+  resources :competitions, :path => "competiciones"
+  resources :swimmers, :path => "nadadores"
 
   get "pages/index"
   get "pages/about"

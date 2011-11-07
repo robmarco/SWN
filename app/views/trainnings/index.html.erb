@@ -1,0 +1,113 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Entrenamientos', trainnings_path %></li>
+	<li>Ver lista de entrenamientos</li>
+</ul>
+
+<div class="clearfix"></div>
+
+<!-- Trainnings Calendar Block -->
+<article class="third-quarter-block">
+	<div class="article-container">
+		
+		<header>
+			<h2>Gestión de entrenamientos</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir entrenamiento', new_trainning_path, :class => 'button' %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>			
+			<div class="third-quarter-reduced">
+				<!-- jQuery Full Calendar Plugin -->
+				<div class="fullcalendar"></div>
+				<!-- /jQuery Full Calendar Plugin -->
+				<% content_for :fullcalendar_script do %>
+					<script type="text/javascript">
+						//jQuery Full Calendar
+						//var date = new Date(); // date must be with this format: '2010-10-02'
+						//var d = date.getDate();
+						//var m = date.getMonth();
+						//var y = date.getFullYear();
+
+						$('.fullcalendar').fullCalendar({
+							header: {
+								left: 'prev,next today',
+								center: 'title',
+								right: 'month,basicWeek'
+							},
+							editable: true,
+							firstDay: 1,
+							events: [
+								<% @trainnings.each do |trainning| %>
+									{
+										title: '<%= "Micro " + trainning.micro.to_s + " - Macro " + trainning.macro.to_s %>',
+										start: '<%= trainning.date_trainning.strftime("%Y/%m/%d") %>',
+										allDay: true, 
+										url: '<%= trainning_path(trainning) %>'
+									},
+								<% end %>
+							]
+						});
+					</script>
+				<% end %>
+			</div>
+		</section>
+		
+	</div>
+</article>
+<!-- \Trainnings Calendar Block -->
+
+<!-- Trainnings Basic Stats Block -->
+<article class="quarter-block clearrm">
+	<div class="article-container">
+		
+		<header>
+			<h2>Información básica</h2>
+		</header>
+		
+		<section>
+			<ul class="stats-summary">
+				<li>
+					<strong class="stats-count">17</strong>
+					<p>Metros semana actual</p>
+				</li>
+				
+				<li>
+					<strong class="stats-count">17</strong>
+					<p>Metros temporada actual</p>
+				</li>
+				
+				<li>
+					<strong class="stats-count">17</strong>
+					<p>Metros micro 1</p>
+				</li>
+				
+				<li>
+					<strong class="stats-count">17</strong>
+					<p>New registrations</p>
+				</li>
+			</ul>
+		</section>
+		
+	</div>
+</article>
+<!-- \Trainnings Basic Stats Block -->
+
+<div class="clearfix"></div>
+
+<article class="full-block">
+	<div class="article-container">
+		
+		<header>
+			<h2>Estadísticas</h2>
+		</header>
+		
+		<section>
+			
+		</section>
+		
+	</div>
+</article>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date_trainning: 2011-11-07
+  macro: 1
+  micro: 1
+  physical: MyText
+  user_id: 1
+
+two:
+  date_trainning: 2011-11-07
+  macro: 1
+  micro: 1
+  physical: MyText
+  user_id: 1

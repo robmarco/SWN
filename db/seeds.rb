@@ -221,5 +221,8 @@ CompetitionSet.create([
         {:name => "200 Espalda"},
         {:name => "50 Braza"},
         {:name => "100 Braza"},
-        {:name => "200 Braza"}
+        {:name => "200 Braza"},
+        {:name => "100 Estilos"},
+        {:name => "200 Estilos"},
+        {:name => "400 Estilos"}        
 ])

@@ -1,0 +1,17 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Entrenamientos', trainnings_path %></li>
+	<li>Añadir entrenamiento</li>
+</ul>
+
+<article class="full-block clearfix">
+	<div class="article-container">
+		<header>
+			<h2>Añadir entrenamiento</h2>
+		</header>
+		
+		<section>
+			<%= render 'form' %>
+		</section>
+	</div>
+</article>

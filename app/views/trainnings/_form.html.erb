@@ -1,0 +1,46 @@
+<%= form_for(@trainning) do |f| %>
+  <% if @trainning.errors.any? %>
+    <div id="error_explanation">
+			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
+      <h2><%= pluralize(@trainning.errors.count, "error") %> prohibited this trainning from being saved:</h2>
+
+      <ul>
+      <% @trainning.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<fieldset>
+		<legend>Datos del entrenamiento</legend>
+		
+		<dl>
+			<dt><%= f.label :date_trainning, "Fecha" %></dt>
+			<dd>
+				<% if params[:action]=="edit" %>
+					<%= f.text_field :date_trainning, :value => @trainning.date_trainning.strftime("%d/%m/%Y"), :class => "datepicker" %>
+				<% else %>
+					<%= f.text_field :date_trainning, :class => "datepicker" %>
+				<% end %>
+			</dd>
+			
+			<dt><%= f.label :macro, "Macrociclo" %></dt>
+			<dd><%= f.text_field :macro, :class => "mini" %></dd>
+			
+			<dt><%= f.label :micro, "Microciclo" %></dt>
+			<dd><%= f.text_field :micro, :class => "mini" %></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>Entrenamiento fuera del agua</legend>
+		<dl>
+			<dt><%= f.label :physical, "Física" %></dt>
+			<dd><%= f.text_area :physical, :class => "wysiwyg medium" %></dd>
+		</dl>
+	</fieldset>
+
+	<div align="center"><%= f.submit 'Enviar', :class => "button" %> ó <%= link_to 'Cancelar', :back %></div>
+
+<% end %>

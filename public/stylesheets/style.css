@@ -115,8 +115,8 @@ section[role=navigation] header {
 	padding-left:25px;
 }
 section[role=navigation] header a {
-	background:url('../images/sample_logo.png') no-repeat;
-	width:148px;
+	background:url('../images/quswimming_logo.png') no-repeat;
+	width:160px;
 	height:31px;
 	text-indent:-9999em;
 	display:block;
@@ -411,6 +411,18 @@ article footer {
 	width:32%;
 	margin-right:2%;
 	float:left;
+}
+
+.third-quarter-block {
+	width: 74%;
+	margin-right: 2%;
+	float:left;
+}
+
+.third-quarter-reduced {
+	width: 95%;
+	margin: 0 auto;
+	padding-top: 10px;
 }
 .quarter-block {
 	width:23.5%;
@@ -1113,6 +1125,7 @@ input, textarea, select {
 	-moz-border-radius:1px;
 	border-radius:1px;
 }
+input.mini, textarea.mini { width:7%; }
 input.small, textarea.small { width:25%; }
 input.medium, textarea.medium { width:50%; }
 input.large, textarea.large { width:75%; }
@@ -1435,8 +1448,8 @@ table .actions .delete { background:url('../images/icons/icon_table_delete.png')
 	background:none;
 }
 .login section[role=main] > a {
-	background:url('../images/sample_logo.png') no-repeat;
-	width:148px;
+	background:url('../images/quswimming_logo.png') no-repeat;
+	width:160px;
 	height:31px;
 	text-indent:-9999em;
 	display:block;

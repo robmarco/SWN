@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :swimmers, :dependent => :destroy
+  has_many :trainnings, :dependent => :destroy
   has_many :competitions, :dependent => :destroy
   has_many :trials, :dependent => :destroy
   has_many :incidents, :dependent => :destroy

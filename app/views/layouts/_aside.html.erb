@@ -36,11 +36,12 @@
 			</li>
 			<!-- /Swimmers menu -->
 			
-			<!-- Trainings menu -->
-			<li>
-				<%= link_to 'Entrenamientos', '#', :class => 'projects' %>
+			<!-- Trainnings menu -->
+			<li <%= params[:controller].eql?("trainnings") ? "class='current'" : "" %>>
+				<%= link_to 'Entrenamientos', trainnings_path, :class => 'projects no-submenu' %>
+				<span title='Tienes <%= session[:trainnings_size] %> entrenamientos'><%= session[:trainnings_size] %></span>
 			</li>
-			<!-- /Trainings menu -->
+			<!-- \Trainnings menu -->
 			
 			<!-- Competitions menu -->
 			<li <%= params[:controller].eql?("competitions") ? "class='current'" : "" %>>

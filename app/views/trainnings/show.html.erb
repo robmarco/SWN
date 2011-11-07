@@ -1,0 +1,57 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Entrenamientos', trainnings_path %></li>
+	<li>Id <%= @trainning.id %></li>
+</ul>
+
+<!-- Trainning Information Block -->
+<article class="second-third-block">
+	<div class="article-container">
+		
+		<header>
+			<h2><%= "Micro " + @trainning.micro.to_s + " del Macro " + @trainning.macro.to_s %></h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Eliminar', trainning_path(@trainning), :confirm => '¿Está seguro de que desea eliminar el entrenamiento?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Editar', edit_trainning_path(@trainning), :class => "button" %></li>
+				</ul>
+			</nav>
+		</header>
+		
+	</div>
+</article>
+<!-- \Trainning Information Block -->
+
+
+
+
+
+
+<p>
+  <b>Date trainning:</b>
+  <%= @trainning.date_trainning %>
+</p>
+
+<p>
+  <b>Macro:</b>
+  <%= @trainning.macro %>
+</p>
+
+<p>
+  <b>Micro:</b>
+  <%= @trainning.micro %>
+</p>
+
+<p>
+  <b>Physical:</b>
+  <%= @trainning.physical %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @trainning.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_trainning_path(@trainning) %> |
+<%= link_to 'Back', trainnings_path %>

@@ -22,7 +22,13 @@
 			<dd> <%= f.text_field :place, :class => 'medium' %></dd>
 
 			<dt><%= f.label :date_competition, "Fecha*", :rel => "tooltip", :title => "Campo requerido" %></dt>
-			<dd><%= f.text_field :date_competition, :class => 'datepicker small' %></dd>
+			<dd>
+				<% if params[:action]=="edit" %>
+					<%= f.text_field :date_competition, :value => @competition.date_competition.strftime("%d/%m/%Y"), :class => 'datepicker small' %>
+				<% else %>
+					<%= f.text_field :date_competition, :class => 'datepicker small' %>
+				<% end %>
+			</dd>
 			
 			<!-- Chrono_Type Field -->
 			<dt><%= f.label :chrono_type, "Tipo de Cronómetro*", :rel => "tooltip", :title => "Campo requerido" %></dt>

@@ -15,5 +15,6 @@ class PagesController < ApplicationController
     session[:swimmers_size] ||= current_user.swimmers.size
     session[:competitions_size] ||= current_user.competitions.size
     session[:trials_size] ||= current_user.trials.size    
+    session[:incidents_size] ||= current_user.incidents.size    
   end
 end

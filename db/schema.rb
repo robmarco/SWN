@@ -10,12 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111103142002) do
+ActiveRecord::Schema.define(:version => 20111107120158) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "color"
   end
 
   create_table "competition_results", :force => true do |t|
@@ -50,6 +51,15 @@ ActiveRecord::Schema.define(:version => 20111103142002) do
   create_table "countries", :force => true do |t|
     t.string   "name"
     t.string   "iso_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "incidents", :force => true do |t|
+    t.date     "date_incident"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20111103142002) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type_value"
+    t.string   "color"
   end
 
   create_table "trial_results", :force => true do |t|

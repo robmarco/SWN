@@ -7,14 +7,14 @@ State.create([
 ])
 
 Category.create([
-        {:name => 'Mini'}, 
-        { :name => 'PreBenjamin'}, 
-        {:name => 'Benjamin'}, 
-        {:name => 'Alevin'},
-        {:name => 'Infantil'}, 
-        {:name => 'Junior'}, 
-        {:name => 'Absoluto'}, 
-        {:name => 'Master'}
+        {:name => 'Mini', :color => 'red'}, 
+        { :name => 'PreBenjamin', :color => 'blue'}, 
+        {:name => 'Benjamin', :color => 'green'}, 
+        {:name => 'Alevin', :color =>'orange'},
+        {:name => 'Infantil', :color => 'gray'}, 
+        {:name => 'Junior', :color => 'red'}, 
+        {:name => 'Absoluto', :color => 'blue'}, 
+        {:name => 'Master', :color => 'green'}
 ])
                           
 Country.create([
@@ -191,18 +191,18 @@ Country.create([
 ])
 
 TrialCategory.create([
-        {:name => "Talla", :description => "Altura del nadador en cm", :type_value => "cm"},
-        {:name => "Peso", :description => "Peso del nadador en kg", :type_value => "kg"},
-        {:name => "Envergadura", :description => "Envergadura del nadador en cm", :type_value => "cm"},
-        {:name => "Presión Arterial", :description => "Presión arterial sistólica y diastólica en mmHg", :type_value => "mmHg"},
-        {:name => "FC Basal", :description => "Media de la FCBasal de una semana en p/m", :type_value => "p/m"}, 
-        {:name => "Flotabilidad", :description => "Capacidad de flotar del nadador (referencia de puntos corporales)", :type_value => ""}, 
-        {:name => "Test 30 minutos", :description => "Capacidad de resistencia básica del nadador (referencia umbral) en metros" , :type_value => "m"},
-        {:name => "Test 2000 metros", :description => "Capacidad de resistencia básica del nadador (referencia umbral) en min/seg", :type_value => "min/seg/cent"}, 
-        {:name => "Test 25 metros", :description => "Velocidad máxima de nado en 25m a estilo crol en seg", :type_value => "min/seg/cent"},
-        {:name => "Potencia MMII", :description => "Fuerza de los miembros inferiores en cm", :type_value => "cm"},
-        {:name => "Hidrodinámica", :description => "Capacidad o resistencia hidrodinámica que ofrece el nadador en cm", :type_value => "cm"},
-        {:name => "Test 300 metros piernas", :description => "Resistencia aeróbica máxima en miebros inferiores del nadador en min/seg", :type_value => "min/seg/cent"}
+        {:name => "Talla", :description => "Altura del nadador en cm", :type_value => "cm", :color => 'red'},
+        {:name => "Peso", :description => "Peso del nadador en kg", :type_value => "kg", :color => 'blue'},
+        {:name => "Envergadura", :description => "Envergadura del nadador en cm", :type_value => "cm", :color => 'orange'},
+        {:name => "Presión Arterial", :description => "Presión arterial sistólica y diastólica en mmHg", :type_value => "mmHg", :color => 'green'},
+        {:name => "FC Basal", :description => "Media de la FCBasal de una semana en p/m", :type_value => "p/m", :color => 'gray'}, 
+        {:name => "Flotabilidad", :description => "Capacidad de flotar del nadador (referencia de puntos corporales)", :type_value => "", :color => 'red'}, 
+        {:name => "Test 30 minutos", :description => "Capacidad de resistencia básica del nadador (referencia umbral) en metros" , :type_value => "m", :color => 'blue'},
+        {:name => "Test 2000 metros", :description => "Capacidad de resistencia básica del nadador (referencia umbral) en min/seg", :type_value => "min/seg/cent", :color => 'orange'}, 
+        {:name => "Test 25 metros", :description => "Velocidad máxima de nado en 25m a estilo crol en seg", :type_value => "min/seg/cent", :color => 'green'},
+        {:name => "Potencia MMII", :description => "Fuerza de los miembros inferiores en cm", :type_value => "cm", :color => 'gray'},
+        {:name => "Hidrodinámica", :description => "Capacidad o resistencia hidrodinámica que ofrece el nadador en cm", :type_value => "cm", :color => 'red'},
+        {:name => "Test 300 metros piernas", :description => "Resistencia aeróbica máxima en miebros inferiores del nadador en min/seg", :type_value => "min/seg/cent", :color => 'blue'}
 ])
 
 CompetitionSet.create([

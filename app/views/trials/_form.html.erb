@@ -20,7 +20,13 @@
 			<dd><%= f.text_field :title, :class => "medium" %></dd>
 			
 			<dt><%= f.label :date_trial, "Fecha*", :rel => "tooltip", :title => "Campo requerido" %></dt>
-			<dd><%= f.text_field :date_trial, :class => "datepicker" %></dd>
+			<dd>
+				<% if params[:action]=="edit" %>
+					<%= f.text_field :date_trial, :value => @trial.date_trial.strftime("%d/%m/%Y"), :class => "datepicker" %>
+				<% else %>
+					<%= f.text_field :date_trial, :class => "datepicker" %>
+				<% end %>
+			</dd>
 			
 			<dt><%= f.label :trial_category_id, "Categoría*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>

@@ -7,12 +7,13 @@
 	<td>
 		<% case swimmer.state %>
 			<% when "Baja" %>
-				<span class='tag tag2 red'><%= swimmer.state %></span>
+				<span class='tag tag2 red'>
 			<% when "Federado" %>
-				<span class='tag tag2 green'><%= swimmer.state %></span>
+				<span class='tag tag2 green'>
 			<% when "No Federado" %>
-				<span class='tag tag2 orange'><%= swimmer.state %></span>
+				<span class='tag tag2 orange'>
 		<% end %>
+		<%= swimmer.state %></span>
 	</td>
 	<!-- /State Tags-->
 

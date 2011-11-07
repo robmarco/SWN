@@ -782,7 +782,7 @@ div.tab > img, div.tab > .image-frame img { margin-top:0; }
 	box-shadow:0 0 2px #b3b3b3;
 }
 .tag2 { width: 80px;}
-
+.tag_show { margin: 0; padding: 0;}
 .tag.red { background-color:#ae432e; }
 .tag.blue { background-color:#058dc7; }
 .tag.green { background-color:#77ab13; }

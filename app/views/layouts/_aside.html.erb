@@ -11,7 +11,7 @@
 		<img src="/images/sample_user.png" alt="User Avatar">
 		<div>
 			<a href="#" title="Account Settings and Profile Page">Robert Tester</a>
-			<em>Administrator</em>
+			<em>Entrenador</em>
 			<ul>
 				<li><a class="button-link" href="#" title="¡Web del Club!" rel="tooltip">ver sitio web</a></li>
 				<li><%= link_to 'logout', destroy_user_session_path,  :class => 'button-link' %></li>
@@ -55,8 +55,14 @@
 				<span title='Tienes <%= session[:trials_size] %> tests preparatorios'><%= session[:trials_size] %></span>
 			</li>
 			<!-- \Trials menu -->
-						
-			<li><a href="" title="" class="articles">Diario de Incidencias</a></li>
+			
+			<!-- Incidents menu -->
+			<li <%= params[:controller].eql?("incidents") ? "class='current'" : "" %>>
+				<%= link_to 'Diario de incidencias', incidents_path, :class => 'articles no-submenu' %>
+				<span title='Tienes <%= session[:incidents_size] %> incidencias en tu diario'><%= session[:incidents_size] %></span>
+			</li>
+			<!-- \Incidents menu -->			
+
 			<li><a href="" title="" class="settings">Configuración</a></li>
 		</ul>
 	</nav>

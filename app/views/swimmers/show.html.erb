@@ -53,7 +53,17 @@
 								<dt><%= label :category, "Categoría" %></dt>
 								<dd class="text"><%= @swimmer.category %></dd>
 								<dt><%= label :state, "Estado" %></dt>
-								<dd class="text"><%= @swimmer.state %></dd>
+								<dd class="text">
+									<% case @swimmer.state %>
+										<% when "Baja" %>
+											<span class='tag tag2 tag_show red'>
+										<% when "Federado" %>
+											<span class='tag tag2 tag_show green'>
+										<% when "No Federado" %>
+											<span class='tag tag2 tag_show orange'>
+									<% end %>
+									<%= @swimmer.state %></span>
+								</dd>
 							</dl>
 						</fieldset>
 

@@ -33,7 +33,11 @@
 						<dt><%= label :competition_chrono_type, "Tipo de Cronómetro" %></dt>
 						<dd class="text"><%= @competition.chrono_type %></dd>
 						<dt><%= label :competition_category, "Categoría" %></dt>
-						<dd class="text"><%= @competition.category %></dd>
+						<dd class="text">
+							<span class="tag tag2 tag_show <%= Category.where('name like ?', @competition.category).map(&:color)[0] %>">
+								<%= @competition.category %>
+							</span>
+						</dd>
 					</dl>
 				</fieldset>
 			</form>

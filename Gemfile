@@ -8,6 +8,8 @@ gem 'rails', '3.0.9'
 gem 'sqlite3'
 gem 'devise'
 gem 'jquery-rails'
+gem 'acts-as-taggable-on'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

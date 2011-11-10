@@ -33,6 +33,38 @@
 		</dl>
 	</fieldset>
 
+	<!-- Trainning Exercises Block -->
+	<fieldset>
+		<legend>Ejercicios del entrenamiento</legend>
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Repeticiones</th>
+					<th>Series</th>
+					<th>Metros</th>
+					<th>Estilo</th>
+					<th>Tipo</th>
+					<th>Observaciones</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<%= f.fields_for :trainning_exercises do |builder| %>
+					<%= render 'trainning_exercise_fields', :f => builder %>
+				<% end %>				
+			</tbody>
+			
+			<tfoot>
+				<tr>
+					<td colspan="7"><p class="res"><%= link_to_add_fields "Añadir resultado", f, :trainning_exercises %></p></td>
+				</tr>
+			</tfoot>
+		</table>
+		<br />
+	</fieldset>
+	<!-- \Trainning Exercises Block -->
+
 	<fieldset>
 		<legend>Entrenamiento fuera del agua</legend>
 		<dl>

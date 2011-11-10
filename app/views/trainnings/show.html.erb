@@ -5,11 +5,11 @@
 </ul>
 
 <!-- Trainning Information Block -->
-<article class="second-third-block">
+<article class="full-block clearfix">
 	<div class="article-container">
 		
 		<header>
-			<h2><%= "Micro " + @trainning.micro.to_s + " del Macro " + @trainning.macro.to_s %></h2>
+			<h2><%= "[#{@trainning.date_trainning.strftime('%d/%m/%Y')}] " + "Micro " + @trainning.micro.to_s + " del Macro " + @trainning.macro.to_s %></h2>
 			<nav>
 				<ul class="button-switch">
 					<li><%= link_to 'Eliminar', trainning_path(@trainning), :confirm => '¿Está seguro de que desea eliminar el entrenamiento?', :method => :delete, :class => "button gray" %></li>
@@ -17,6 +17,39 @@
 				</ul>
 			</nav>
 		</header>
+		
+		<section>
+			<p>
+			  <b>Date trainning:</b>
+			  <%= @trainning.date_trainning %>
+			</p>
+
+			<p>
+			  <b>Macro:</b>
+			  <%= @trainning.macro %>
+			</p>
+
+			<p>
+			  <b>Micro:</b>
+			  <%= @trainning.micro %>
+			</p>
+
+			<p>
+			  <b>Physical:</b>
+			  <%= @trainning.physical %>
+			</p>
+
+			<p>
+			  <b>User:</b>
+			  <%= @trainning.user_id %>
+			</p>
+			<br />
+			
+			El volumen del entreno es el siguiente: <%= @trainning.volumen %> <br />
+			La carga del entreno es el siguiente: <%= @trainning.carga %>
+			
+			
+		</section>
 		
 	</div>
 </article>
@@ -27,30 +60,6 @@
 
 
 
-<p>
-  <b>Date trainning:</b>
-  <%= @trainning.date_trainning %>
-</p>
-
-<p>
-  <b>Macro:</b>
-  <%= @trainning.macro %>
-</p>
-
-<p>
-  <b>Micro:</b>
-  <%= @trainning.micro %>
-</p>
-
-<p>
-  <b>Physical:</b>
-  <%= @trainning.physical %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @trainning.user_id %>
-</p>
 
 
 <%= link_to 'Edit', edit_trainning_path(@trainning) %> |

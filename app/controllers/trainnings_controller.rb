@@ -1,9 +1,16 @@
 class TrainningsController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /trainnings
   # GET /trainnings.xml
   def index
-    @trainnings = current_user.trainnings.all
-
+    @trainnings = current_user.trainnings.order(:date_trainning)
+    @last_trainning = current_user.trainnings.last
+    
+    #@last_12_trainnings = current_user.trainnings.where('date_trainning < ?', current_user.trainnings.maximum("date_trainning")+1).limit(12).reverse_order
+    #@last_12_trainnings = @trainnings.take_while {|i| i.date_trainning < (@trainnings.last.date_trainning)+1}.last(12)
+    @last_12_trainnings = @trainnings.last(12).map(&:date_trainning).uniq
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @trainnings }
@@ -25,6 +32,9 @@ class TrainningsController < ApplicationController
   # GET /trainnings/new.xml
   def new
     @trainning = current_user.trainnings.new
+    
+    # Exercise built when try to add a new trainning session
+    @trainning_exercise = @trainning.trainning_exercises.build
 
     respond_to do |format|
       format.html # new.html.erb

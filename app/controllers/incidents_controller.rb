@@ -1,4 +1,6 @@
 class IncidentsController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /incidents
   # GET /incidents.xml
   def index

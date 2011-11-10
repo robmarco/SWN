@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  trainning_id: 1
+  repetition: 1
+  heat: 1
+  distance: 1
+  exercise_type_id: 1
+  observation: MyString
+
+two:
+  trainning_id: 1
+  repetition: 1
+  heat: 1
+  distance: 1
+  exercise_type_id: 1
+  observation: MyString

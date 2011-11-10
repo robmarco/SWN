@@ -43,6 +43,7 @@ $(function () {
 				width: chartWidth,
 				height: '240px',
 				lineDots: 'double',
+				parseDirection: 'x',
 				interaction: true,
 				multiHover: 5,
 				tooltip: true,
@@ -63,6 +64,44 @@ $(function () {
 		}
 	});
 
+
+	// jQuery Data Visualize
+	$('table.data2').each(function() {
+		var chartWidth = $(this).parent().width()*0.75; // Set chart width to 90% of its parent
+		var chartType = ''; // Set chart type
+			
+		if ($(this).attr('data-chart')) { // If exists chart-chart attribute
+			chartType = $(this).attr('data-chart'); // Get chart type from data-chart attribute
+		} else {
+			chartType = 'area'; // If data-chart attribute is not set, use 'area' type as default. Options: 'bar', 'area', 'pie', 'line'
+		}
+		
+		if(chartType == 'line' || chartType == 'pie') {
+			$(this).hide().visualize({
+				type: chartType,
+				width: chartWidth,
+				height: '240px',
+				lineDots: 'double',
+				parseDirection: 'x',
+				interaction: true,
+				multiHover: 5,
+				tooltip: true,
+				tooltiphtml: function(data) {
+					var html ='';
+					for(var i=0; i<data.point.length; i++){
+						html += '<p class="chart_tooltip"><strong>'+data.point[i].value+'</strong> '+data.point[i].yLabels[0]+'</p>';
+					}	
+					return html;
+				}
+			});
+		} else {
+			$(this).hide().visualize({
+				type: chartType,
+				width: chartWidth,
+				height: '240px'
+			});
+		}
+	});
 	// Check all checkboxes
 	$('.check-all').click(
 		function(){

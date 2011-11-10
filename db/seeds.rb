@@ -226,3 +226,11 @@ CompetitionSet.create([
         {:name => "200 Estilos"},
         {:name => "400 Estilos"}        
 ])
+
+ExerciseType.create([
+        {:name => "AL", :description => "Aeróbico ligero", :mujika => 1, :color => "blue"},
+        {:name => "AM", :description => "Aeróbico medio", :mujika => 3, :color => "red"},
+        {:name => "AI", :description => "Aeróbico intenso", :mujika => 5, :color => "orange"},
+        {:name => "Téc", :description => "Técnica", :mujika => 2, :color => "green"},
+        {:name => "Vel", :description => "Velocidad", :mujika => 4, :color => "gray"}        
+])

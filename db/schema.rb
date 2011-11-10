@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111107204924) do
+ActiveRecord::Schema.define(:version => 20111108182041) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(:version => 20111107204924) do
   create_table "countries", :force => true do |t|
     t.string   "name"
     t.string   "iso_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "exercise_types", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "mujika"
+    t.string   "color"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -109,6 +118,18 @@ ActiveRecord::Schema.define(:version => 20111107204924) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "trainning_exercises", :force => true do |t|
+    t.integer  "trainning_id"
+    t.integer  "repetition"
+    t.integer  "heat"
+    t.integer  "distance"
+    t.string   "style"
+    t.integer  "exercise_type_id"
+    t.string   "observation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "trainnings", :force => true do |t|

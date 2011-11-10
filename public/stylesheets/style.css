@@ -1125,7 +1125,9 @@ input, textarea, select {
 	-moz-border-radius:1px;
 	border-radius:1px;
 }
+
 input.mini, textarea.mini { width:7%; }
+input.mini_px, textarea.mini_px { width:50px; }
 input.small, textarea.small { width:25%; }
 input.medium, textarea.medium { width:50%; }
 input.large, textarea.large { width:75%; }

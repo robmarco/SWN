@@ -72,7 +72,7 @@
 			<ul class="stats-summary">
 				<li>
 					<strong class="stats-count"><%= last_macro_volumen %></strong>
-					<p>Volumen Macro actual (<%= max_macro = current_user.trainnings.maximum("macro") %>)</p>
+					<p>Volumen Macro actual (<%= max_macro = current_user.trainnings.maximum("macro") || "0" %>)</p>
 				</li>
 				
 				<li>
@@ -82,7 +82,7 @@
 				
 				<li>
 					<strong class="stats-count"><%= last_micro_volumen %></strong>
-					<p>Volumen Micro actual (<%= max_micro = current_user.trainnings.maximum("micro") %>)</p>
+					<p>Volumen Micro actual (<%= max_micro = current_user.trainnings.maximum("micro") || "0" %>)</p>
 				</li>
 				
 				<li>

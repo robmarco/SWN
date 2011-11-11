@@ -83,7 +83,8 @@
 											title: '<%= trial.title + " " + "(#{trial.trial_category.name})" %>',
 											start: '<%= trial.date_trial.strftime("%Y/%m/%d") %>',
 											allDay: true, 
-											url: '<%= trial_path(trial) %>'
+											url: '<%= trial_path(trial) %>',
+											color: '<%= trial.trial_category.color_hex %>'
 										},
 									<% end %>
 								]

@@ -12,9 +12,9 @@ Category.create([
         {:name => 'Benjamin', :color => 'green', :color_hex => '#77ab13'}, 
         {:name => 'Alevin', :color =>'orange', :color_hex => '#ef561a'},
         {:name => 'Infantil', :color => 'gray', :color_hex => '#b3b3b3'}, 
-        {:name => 'Junior', :color => 'red', :color_hex => '#ae432e'}, 
-        {:name => 'Absoluto', :color => 'blue', :color_hex => '#058dc7'}, 
-        {:name => 'Master', :color => 'green', :color_hex => '#77ab13'}
+        {:name => 'Junior', :color => 'purple', :color_hex => '#895fa6'}, 
+        {:name => 'Absoluto', :color => 'pink', :color_hex => '#c56ab3'}, 
+        {:name => 'Master', :color => 'semigreen', :color_hex => '#669966'}
 ])
                           
 Country.create([
@@ -196,13 +196,13 @@ TrialCategory.create([
         {:name => "Envergadura", :description => "Envergadura del nadador en cm", :type_value => "cm", :color => 'orange', :color_hex => '#ef561a'},
         {:name => "Presión Arterial", :description => "Presión arterial sistólica y diastólica en mmHg", :type_value => "mmHg", :color => 'green', :color_hex => '#77ab13'},
         {:name => "FC Basal", :description => "Media de la FCBasal de una semana en p/m", :type_value => "p/m", :color => 'gray', :color_hex => '#b3b3b3'}, 
-        {:name => "Flotabilidad", :description => "Capacidad de flotar del nadador (referencia de puntos corporales)", :type_value => "", :color => 'red', :color_hex => '#ae432e'}, 
-        {:name => "Test 30 minutos", :description => "Capacidad de resistencia básica del nadador (referencia umbral) en metros" , :type_value => "m", :color => 'blue', :color_hex => '#058dc7'},
-        {:name => "Test 2000 metros", :description => "Capacidad de resistencia básica del nadador (referencia umbral) en min/seg", :type_value => "min/seg/cent", :color => 'orange', :color_hex => '#ef561a'}, 
-        {:name => "Test 25 metros", :description => "Velocidad máxima de nado en 25m a estilo crol en seg", :type_value => "min/seg/cent", :color => 'green', :color_hex => '#77ab13'},
-        {:name => "Potencia MMII", :description => "Fuerza de los miembros inferiores en cm", :type_value => "cm", :color => 'gray', :color_hex => '#b3b3b3'},
-        {:name => "Hidrodinámica", :description => "Capacidad o resistencia hidrodinámica que ofrece el nadador en cm", :type_value => "cm", :color => 'red', :color_hex => '#ae432e'},
-        {:name => "Test 300 metros piernas", :description => "Resistencia aeróbica máxima en miebros inferiores del nadador en min/seg", :type_value => "min/seg/cent", :color => 'blue', :color_hex => '#058dc7'}
+        {:name => "Flotabilidad", :description => "Capacidad de flotar del nadador (referencia de puntos corporales)", :type_value => "", :color => 'purple', :color_hex => '#895fa6'}, 
+        {:name => "Test 30 minutos", :description => "Capacidad de resistencia básica del nadador (referencia umbral) en metros" , :type_value => "m", :color => 'pink', :color_hex => '#c56ab3'},
+        {:name => "Test 2000 metros", :description => "Capacidad de resistencia básica del nadador (referencia umbral) en min/seg", :type_value => "min/seg/cent", :color => 'semigreen', :color_hex => '#669966'}, 
+        {:name => "Test 25 metros", :description => "Velocidad máxima de nado en 25m a estilo crol en seg", :type_value => "min/seg/cent", :color => 'cian', :color_hex => '#99cccc'},
+        {:name => "Potencia MMII", :description => "Fuerza de los miembros inferiores en cm", :type_value => "cm", :color => 'semired', :color_hex => '#ff6666'},
+        {:name => "Hidrodinámica", :description => "Capacidad o resistencia hidrodinámica que ofrece el nadador en cm", :type_value => "cm", :color => 'semipurple', :color_hex => '#9999ff'},
+        {:name => "Test 300 metros piernas", :description => "Resistencia aeróbica máxima en miebros inferiores del nadador en min/seg", :type_value => "min/seg/cent", :color => 'semiorange', :color_hex => '#cc9966'}
 ])
 
 CompetitionSet.create([

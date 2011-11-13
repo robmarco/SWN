@@ -20,7 +20,7 @@ class TrainningsController < ApplicationController
   # GET /trainnings/1
   # GET /trainnings/1.xml
   def show
-    @trainning = Trainning.find(params[:id])
+    @trainning = current_user.trainnings.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,7 +44,7 @@ class TrainningsController < ApplicationController
 
   # GET /trainnings/1/edit
   def edit
-    @trainning = Trainning.find(params[:id])
+    @trainning = current_user.trainnings.find(params[:id])
   end
 
   # POST /trainnings
@@ -67,7 +67,7 @@ class TrainningsController < ApplicationController
   # PUT /trainnings/1
   # PUT /trainnings/1.xml
   def update
-    @trainning = Trainning.find(params[:id])
+    @trainning = current_user.trainnings.find(params[:id])
 
     respond_to do |format|
       if @trainning.update_attributes(params[:trainning])
@@ -83,7 +83,7 @@ class TrainningsController < ApplicationController
   # DELETE /trainnings/1
   # DELETE /trainnings/1.xml
   def destroy
-    @trainning = Trainning.find(params[:id])
+    @trainning = current_user.trainnings.find(params[:id])
     @trainning.destroy
     session[:trainnings_size] = current_user.trainnings.size
 

@@ -20,7 +20,7 @@ class SwimmersController < ApplicationController
   # GET /swimmers/1
   # GET /swimmers/1.xml
   def show
-    @swimmer = Swimmer.find(params[:id])
+    @swimmer = current_user.swimmers.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,7 +45,7 @@ class SwimmersController < ApplicationController
 
   # GET /swimmers/1/edit
   def edit
-    @swimmer = Swimmer.find(params[:id])
+    @swimmer = current_user.swimmers.find(params[:id])
     
     #Array de Categorías ordenado con el seleccionado primero
     @categories = []
@@ -88,7 +88,7 @@ class SwimmersController < ApplicationController
   # PUT /swimmers/1
   # PUT /swimmers/1.xml
   def update
-    @swimmer = Swimmer.find(params[:id])
+    @swimmer = current_user.swimmers.find(params[:id])
     
     #Array de Categorías ordenado con el seleccionado primero
     @categories = []
@@ -119,7 +119,7 @@ class SwimmersController < ApplicationController
   # DELETE /swimmers/1
   # DELETE /swimmers/1.xml
   def destroy
-    @swimmer = Swimmer.find(params[:id])
+    @swimmer = current_user.swimmers.find(params[:id])
     @swimmer.destroy
     session[:swimmers_size] = current_user.swimmers.size
 

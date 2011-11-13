@@ -15,8 +15,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/1
   # GET /incidents/1.xml
   def show
-    @incident = Incident.find(params[:id])
-
+    @incident = current_user.incidents.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @incident }
@@ -36,7 +35,7 @@ class IncidentsController < ApplicationController
 
   # GET /incidents/1/edit
   def edit
-    @incident = Incident.find(params[:id])
+    @incident = current_user.incidents.find(params[:id])
   end
 
   # POST /incidents
@@ -59,7 +58,7 @@ class IncidentsController < ApplicationController
   # PUT /incidents/1
   # PUT /incidents/1.xml
   def update
-    @incident = Incident.find(params[:id])
+    @incident = current_user.incidents.find(params[:id])
 
     respond_to do |format|
       if @incident.update_attributes(params[:incident])
@@ -75,7 +74,7 @@ class IncidentsController < ApplicationController
   # DELETE /incidents/1
   # DELETE /incidents/1.xml
   def destroy
-    @incident = Incident.find(params[:id])
+    @incident = current_user.incidents.find(params[:id])
     @incident.destroy
     session[:incidents_size] = current_user.incidents.size  # Update incidents size
     

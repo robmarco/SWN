@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery
   before_filter :initialize_sessions
   
-  protect_from_forgery
+  #rescue_from ActiveRecord::RecordNotFound do
+  #  render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404
+  #end
   
   private
   

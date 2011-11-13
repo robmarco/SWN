@@ -5,7 +5,7 @@
 </ul>
 
 <!-- Trainning Information Block -->
-<article class="full-block clearfix">
+<article class="third-quarter-block">
 	<div class="article-container">
 		
 		<header>
@@ -19,48 +19,42 @@
 		</header>
 		
 		<section>
-			<p>
-			  <b>Date trainning:</b>
-			  <%= @trainning.date_trainning %>
-			</p>
-
-			<p>
-			  <b>Macro:</b>
-			  <%= @trainning.macro %>
-			</p>
-
-			<p>
-			  <b>Micro:</b>
-			  <%= @trainning.micro %>
-			</p>
-
-			<p>
-			  <b>Physical:</b>
-			  <%= @trainning.physical %>
-			</p>
-
-			<p>
-			  <b>User:</b>
-			  <%= @trainning.user_id %>
-			</p>
-			<br />
 			
-			El volumen del entreno es el siguiente: <%= @trainning.volumen %> <br />
-			La carga del entreno es el siguiente: <%= @trainning.carga %>
-			
-			
+				<table class="trainning_table">
+					<thead>
+						<tr>
+							<th>Ejercicio</th>
+							<th>Contenido</th>
+							<th>Tipo</th>
+							<th>Volumen</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td>Ejercicio 1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
 		</section>
 		
 	</div>
 </article>
 <!-- \Trainning Information Block -->
 
+<article class="quarter-block clearrm">
+	<div class="article-container">
+		<header>
+			<h2>Más información</h2>
+		</header>
+		
+		<section>
+			hola
+		</section>
+	</div>
+</article>
 
-
-
-
-
-
-
-<%= link_to 'Edit', edit_trainning_path(@trainning) %> |
-<%= link_to 'Back', trainnings_path %>
+<div class="clearfix"></div>

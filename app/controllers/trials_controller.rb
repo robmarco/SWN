@@ -15,7 +15,7 @@ class TrialsController < ApplicationController
   # GET /trials/1
   # GET /trials/1.xml
   def show
-    @trial = Trial.find(params[:id])
+    @trial = current_user.trials.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,7 +41,7 @@ class TrialsController < ApplicationController
 
   # GET /trials/1/edit
   def edit
-    @trial = Trial.find(params[:id])
+    @trial = current_user.trials.find(params[:id])
     
     #Array de Categorías ordenado con el seleccionado primero
     @trial_categories = []
@@ -71,7 +71,7 @@ class TrialsController < ApplicationController
   # PUT /trials/1
   # PUT /trials/1.xml
   def update
-    @trial = Trial.find(params[:id])
+    @trial = current_user.trials.find(params[:id])
 
     #Array de Categorías ordenado con el seleccionado primero
     @trial_categories = []
@@ -92,7 +92,7 @@ class TrialsController < ApplicationController
   # DELETE /trials/1
   # DELETE /trials/1.xml
   def destroy
-    @trial = Trial.find(params[:id])
+    @trial = current_user.trials.find(params[:id])
     @trial.destroy
     session[:trials_size] = current_user.trials.size
 

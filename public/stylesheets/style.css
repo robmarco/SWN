@@ -800,6 +800,13 @@ div.tab > img, div.tab > .image-frame img { margin-top:0; }
 .tag.green { background-color:#77ab13; }
 .tag.orange { background-color:#ef561a; }
 .tag.gray { background-color:#b3b3b3; }
+.tag.purple { background-color: #895fa6;}
+.tag.pink { background-color: #c56ab3;}
+.tag.semigreen { background-color: #669966;}
+.tag.cian { background-color: #99cccc;}
+.tag.semired { background-color: #ff6666;}
+.tag.semipurple { background-color: #9999ff;}
+.tag.semiorange { background-color: #cc9966;}
 
 /*  Ajax Loading Gif  */
 .loader {
@@ -1395,6 +1402,7 @@ table .actions .view { background:url('../images/icons/icon_table_view.png') no-
 table .actions .edit { background:url('../images/icons/icon_table_edit.png') no-repeat 0 0; }
 table .actions .delete { background:url('../images/icons/icon_table_delete.png') no-repeat 0 0; }
 
+.trainning_table { border-top: none;}
 /*  Table Mini Actions  */
 .toggle-table-switch {
 	display:block;

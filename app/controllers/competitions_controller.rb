@@ -15,7 +15,7 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1
   # GET /competitions/1.xml
   def show
-    @competition = Competition.find(params[:id])
+    @competition = current_user.competitions.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,7 +41,7 @@ class CompetitionsController < ApplicationController
 
   # GET /competitions/1/edit
   def edit
-    @competition = Competition.find(params[:id])
+    @competition = current_user.competitions.find(params[:id])
     
     #Array de Categorías ordenado con el seleccionado primero
     @categories = []
@@ -73,7 +73,7 @@ class CompetitionsController < ApplicationController
   # PUT /competitions/1
   # PUT /competitions/1.xml
   def update
-    @competition = Competition.find(params[:id])
+    @competition = current_user.competitions.find(params[:id])
     @competition_sets = CompetitionSet.all 
     
     #Array de Categorías ordenado con el seleccionado primero
@@ -95,7 +95,7 @@ class CompetitionsController < ApplicationController
   # DELETE /competitions/1
   # DELETE /competitions/1.xml
   def destroy
-    @competition = Competition.find(params[:id])
+    @competition = current_user.competitions.find(params[:id])
     @competition.destroy
     session[:competitions_size] = current_user.competitions.size  # Update competitions size
     

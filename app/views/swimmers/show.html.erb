@@ -5,13 +5,13 @@
 </ul>
 
 <!-- Information Block -->
-<article class="full-block clearfix">
+<article class="third-quarter-block">
 	<div class="article-container">
 		
 		<!-- Header  -->
 		<header>
 			<h2>
-				Ver nadador - <%= "#{@swimmer.name} #{@swimmer.secname}" %>
+				<%= "#{@swimmer.name} #{@swimmer.secname}" %>
 			</h2>
 			<nav>
 				<ul class="button-switch">
@@ -28,7 +28,7 @@
 				<nav class="sidetab-switch">
 					<ul>
 						<li><%= link_to 'Básico', "#sidetab1", :class => "default-sidetab" %></li>
-						<li><%= link_to 'Contacto', "#sidetab2" %></li>
+						<li><%= link_to 'Localización', "#sidetab2" %></li>
 						<li><%= link_to 'Enfermedades', "#sidetab3" %></li>
 					</ul>
 				</nav>
@@ -73,39 +73,26 @@
 				
 				<div class="sidetab" id="sidetab2">
 
-					<h3>Información de contacto</h3>
+					<h3>Información de localización</h3>
 					<form>
 						<fieldset>
-							<legend>Datos de contacto</legend>
 
 							<dl>
-								<dt><%= label :email, "Email" %></dt>
-								<dd class="text"><%= @swimmer.email %> (<%= link_to 'Enviar email', '#' %>)</dd>
 								<dt><%= label :address, "Dirección" %></dt>
-								<dd class="text"><%= @swimmer.address %></dd>
+								<dd class="text"><%= @swimmer.address.nil? ? "-" : @swimmer.address  %></dd>
 								<dt><%= label :postal, "Código Postal" %></dt>
-								<dd class="text"><%= @swimmer.postal %></dd>
+								<dd class="text"><%= @swimmer.postal.nil? ? "-" : @swimmer.postal  %></dd>
 								<dt><%= label :city, "Ciudad" %></dt>
-								<dd class="text"><%= @swimmer.city %></dd>
+								<dd class="text"><%= @swimmer.city.nil? ? "-" : @swimmer.city  %></dd>
 								<dt><%= label :country, "País" %></dt>
-								<dd class="text"><%= @swimmer.country %></dd>
+								<dd class="text"><%= @swimmer.country  %></dd>
 								<dt><%= label :phone, "Teléfono" %></dt>
-								<dd class="text"><%= @swimmer.phone %></dd>
-							</dl>
-						</fieldset>
-						
-						<fieldset>
-							<dl>
-								<dt><%= label :parentname, "Nombre Padre/Madre" %></dt>
-								<dd class="text"><%= @swimmer.parentname %></dd>
-								<dt><%= label :parentemail, "Email Padre/Madre" %></dt>
-								<dd class="text">
-									<%= @swimmer.parentemail %> (<%= link_to 'Enviar email', '#' %>)
-								</dd>
+								<dd class="text"><%= @swimmer.phone.nil? ? "-" : @swimmer.phone  %></dd>
 								<dt><%= label :parentphone, "Teléfono Padre/Madre" %></dt>
 								<dd class="text"><%= @swimmer.parentphone.nil? ? "-" : @swimmer.parentphone  %></dd>
 							</dl>
 						</fieldset>
+					
 					</form>
 					
 				</div>
@@ -115,14 +102,12 @@
 					<form>
 						<fieldset>
 							<dl>
-								<dt><%= label :disease, "Enfermedades" %></dt>
-								<dd>
-									<textarea rows="5" cols="40" class="wysiwyg large"><%= @swimmer.disease %></textarea>
-								</dd>
-								<dt><%= label :observation, "Observaciones" %></dt>
-								<dd>
-									<textarea rows="5" cols="40" class="wysiwyg large"><%= @swimmer.observation %></textarea>
-								</dd>
+								<p><strong><%= label :disease, "Enfermedades" %></strong></p>
+								<textarea rows="5" cols="40" class="wysiwyg large"><%= @swimmer.disease %></textarea>
+								<br />
+								<p><strong><%= label :observation, "Observaciones" %></strong></p>
+								<textarea rows="5" cols="40" class="wysiwyg large"><%= @swimmer.observation %></textarea>
+								<br />
 							</dl>
 						</fieldset>
 					</form>
@@ -135,6 +120,46 @@
 	</div>
 </article>
 <!-- \Information Block -->
+
+<!-- Extra information block -->
+<article class="quarter-block clearrm">
+	<div class="article-container">
+		
+		<header>
+			<h2>Contacto</h2>
+		</header>
+		<section>
+			<!-- Contacts -->
+			<ul class="contacts">
+				<li>
+					<img src="/images/sample_user.png" alt="">
+					<a href="#" class="contacts-user"><%= @swimmer.swimmer_name_secname %></a>
+					<em><%= @swimmer.email %></em>
+					<ul>
+						<li><a class="button-link" href="#">Enviar email</a></li>
+					</ul>
+				</li>
+				
+				<% if !@swimmer.parentname.blank? %>
+				<li>
+					<img src="/images/sample_user.png" alt="">
+					<a href="#" class="contacts-user"><%= @swimmer.parentname %></a>
+					<em>Padres del nadador</em>
+					<% if !@swimmer.parentemail.blank? %>
+					<em><%= @swimmer.parentemail %></em>
+					<ul>
+						<li><a class="button-link" href="#">Enviar email</a></li>
+					</ul>
+					<% end %>					
+				</li>
+				<% end %>
+			</ul>
+			<!-- /Contacts -->
+		</section>
+	
+	</div>
+</article>
+<!-- \Extra information block -->
 
 <!-- Competition and test results Block -->
 <article class="full-block clearfix">

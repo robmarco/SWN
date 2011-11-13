@@ -5,7 +5,7 @@
 </ul>
 
 <!-- Article Full Content Block - Test table -->
-<article class="full-block clearfix">
+<article class="third-quarter-block clearfix">
 	<div class="article-container">
 		
 		<header>
@@ -33,10 +33,27 @@
 				</tbody>
 			</table>
 		</section>
-		
+				
 	</div>
 </article>
 <!-- \Article Full Content Block -->
+
+<!-- Trial Information -->
+<article class="quarter-block nested clearrm">
+	<div class="article-container">
+		<header><h2>Información</h2></header>
+		<section>
+			<p>Las capacidades que el entrenador puede evaluar sobre un nadador son las siguientes:</p>
+			<ul class="list-style-checkmark">
+				<% @trial_categories.each do |cat| %>
+					<li><strong><%= cat.name %></strong></li>
+				<% end %>
+			</ul>
+				
+		</section>
+	</div>
+</article>
+<!-- \Trial Information -->
 
 <br />
 

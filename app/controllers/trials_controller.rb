@@ -5,7 +5,8 @@ class TrialsController < ApplicationController
   # GET /trials.xml
   def index
     @trials = current_user.trials.all
-
+    @trial_categories = TrialCategory.order(:name)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @trials }

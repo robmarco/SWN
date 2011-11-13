@@ -52,6 +52,23 @@
 					</tbody>
 					
 				</table>
+				
+				<% if !remove_html_tag(@trainning.physical).blank? %>
+				<form>
+					<fieldset>
+						<legend>Entrenamiento fuera del agua</legend>
+						<dl>
+							<dt><%= label :physical, "Física" %></dt>
+							<dd>
+								<textarea class="wysiwyg medium" cols="40" id="trainning_physical" name="trainning[physical]" rows="2">
+									<%= @trainning.physical %>
+								</textarea>
+							</dd>
+						</dl>
+					</fieldset>
+				</form>
+				<% end %>				
+				
 		</section>
 		
 	</div>
@@ -77,3 +94,6 @@
 </article>
 
 <div class="clearfix"></div>
+<br />
+<%= link_to 'Ir Atrás', competitions_path, :class => "button right" %>
+<br />

@@ -34,7 +34,8 @@
 					<%= f.select :trial_category_id, options_from_collection_for_select(@trial_categories, "id", "name"), :class => "small"%>
 				<% else %>
 					<%= f.select :trial_category_id, options_from_collection_for_select(@trial_categories, "id", "name"), :include_blank => true, :class => "small"%>
-				<% end %>				
+				<% end %>	
+				<p class="hola_amigo"></p>			
 			</dd>
 		</dl>
 	</fieldset>

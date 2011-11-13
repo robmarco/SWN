@@ -7,6 +7,19 @@
 
 <article class="full-block clearfix">
 	<div class="article-container">
+		<% content_for :fullcalendar_script do %>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$("#trial_trial_category_id").change(function(){
+						var str = "";
+						$('option:selected').each(function(){
+							str += $(this).text() + " ";
+						});
+						$(".hola_amigo").text(str);
+					});
+				});
+			</script>
+		<% end %>
 		
 		<header>
 			<h2>Modificar test preparatorio - <%= @trial.title %></h2>
@@ -20,7 +33,7 @@
 		
 		<section>
 			<%= render 'form' %>
-		</section>
+		</section>		
 		
 	</div>
 </article>

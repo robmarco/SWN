@@ -21,6 +21,7 @@ class TrainningsController < ApplicationController
   # GET /trainnings/1.xml
   def show
     @trainning = current_user.trainnings.find(params[:id])
+    @trainning_exercises = @trainning.trainning_exercises
 
     respond_to do |format|
       format.html # show.html.erb

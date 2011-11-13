@@ -1403,6 +1403,13 @@ table .actions .edit { background:url('../images/icons/icon_table_edit.png') no-
 table .actions .delete { background:url('../images/icons/icon_table_delete.png') no-repeat 0 0; }
 
 .trainning_table { border-top: none;}
+tr.table_results > td { background-color: white; }
+td.text_right { text-align: right;}
+td.text_left { text-align: left; padding-left: 30px;}
+
+td.table_content { width: 300px; padding: 10px 0 10px 0;} 
+td.text_left.table_content > a { text-decoration: none; }
+
 /*  Table Mini Actions  */
 .toggle-table-switch {
 	display:block;
@@ -1528,3 +1535,5 @@ table .actions .delete { background:url('../images/icons/icon_table_delete.png')
 	text-align:center;
 	font-size:1000%;
 }
+
+.actions > ul > li { background: none;}

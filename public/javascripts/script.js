@@ -285,5 +285,9 @@ $(function () {
 			$(this).removeClass("invalid");
 		}
 	);
-		
+	
+	// jQuery Masked input selectors
+	$("input#time_type_masked").live("focusin", function() {
+		$(this).mask("99:99:99")
+	});
 });

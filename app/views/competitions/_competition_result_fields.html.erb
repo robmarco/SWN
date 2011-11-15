@@ -7,7 +7,7 @@
 		<%= f.collection_select :competition_set_id, @competition_sets, :id, :name, { :prompt => "Seleccionar"} %>
 	</td>
 	<td class="result">
-		<%= f.text_field :time_result, :value => f.object.time_result.blank? ? "00:00:00" : f.object.time_result, :class => "time_result_input" %>
+		<%= f.text_field :time_result, :class => "time_result_input text_center", :id => "time_type_masked" %>
 	</td>
 	<td class="result">
 		<% if params[:action] == 'edit' %>

@@ -12,8 +12,9 @@
 				$(document).ready(function(){
 					$("#trial_trial_category_id").change(function(){
 						var str = "";
+						
 						$('option:selected').each(function(){
-							str += $(this).text() + " ";
+							str = $(this).text();
 						});
 						$(".hola_amigo").text(str);
 					});
@@ -23,6 +24,7 @@
 		
 		<header>
 			<h2>Modificar test preparatorio - <%= @trial.title %></h2>
+			<h2><%= @pepe %></h2>
 			<nav>
 				<ul class="button-switch">
 					<li><%= link_to 'Eliminar', trial_path(@trial), :confirm => '¿Está seguro de que desea eliminar el test?', :method => :delete, :class => "button gray" %></li>

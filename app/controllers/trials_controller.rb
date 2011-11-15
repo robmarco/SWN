@@ -43,6 +43,7 @@ class TrialsController < ApplicationController
   # GET /trials/1/edit
   def edit
     @trial = current_user.trials.find(params[:id])
+    @pepe = ""
     
     #Array de Categorías ordenado con el seleccionado primero
     @trial_categories = []

@@ -108,6 +108,10 @@ body.fixed {
 .large { width:99%; }
 .left { float:left; }
 .right { float:right; }
+.text_left { text-align: left;}
+.text_right { text-align: right;}
+.text_center { text-align: center;}
+.text_justify { text-align: justify;}
 
 /*  Navigation Layout :: Header  */
 section[role=navigation] header {

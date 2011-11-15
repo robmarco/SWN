@@ -6,7 +6,9 @@
 	<td class="result">
 		<%= f.collection_select :competition_set_id, @competition_sets, :id, :name, { :prompt => "Seleccionar"} %>
 	</td>
-	<td class="result"><%= f.text_field :time_result, :class => "time_result_input" %></td>
+	<td class="result">
+		<%= f.text_field :time_result, :value => f.object.time_result.blank? ? "00:00:00" : f.object.time_result, :class => "time_result_input" %>
+	</td>
 	<td class="result">
 		<% if params[:action] == 'edit' %>
 			<%= f.select :disqualify, options_for_select(["", "Descalificado"], f.object.disqualify), :class => "desc_input" %>

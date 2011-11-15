@@ -269,4 +269,21 @@ $(function () {
 		$(this).children().css({ 'width':0 }).animate({width:progress},3000);
 	});
 	
+	// Validation in forms - .field_with_errors
+	// On change - remove invalid class. 
+	$("dd>.field_with_errors>input").addClass("invalid")
+	$("td.result>div.field_with_errors>input").addClass("invalid")
+	 
+	$("dd>.field_with_errors>input").change(
+		function() {
+			$(this).removeClass("invalid");
+		}
+	);
+	
+	$("td.result>div.field_with_errors>input").change(
+		function() {
+			$(this).removeClass("invalid");
+		}
+	);
+		
 });

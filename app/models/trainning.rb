@@ -4,8 +4,8 @@ class Trainning < ActiveRecord::Base
   has_many :trainning_exercises, :dependent => :destroy
   
   accepts_nested_attributes_for :trainning_exercises,
-      :reject_if => lambda {|attrs| attrs['repetition'].blank? || attrs['heat'].blank? || attrs['distance'].blank? || 
-        attrs['style'].blank? || attrs['exercise_type_id'].blank?},
+      # :reject_if => lambda {|attrs| attrs['repetition'].blank? || attrs['heat'].blank? || attrs['distance'].blank? || 
+      #   attrs['style'].blank? || attrs['exercise_type_id'].blank?},
       :allow_destroy => true
 
   validates_presence_of :micro, :macro, :date_trainning

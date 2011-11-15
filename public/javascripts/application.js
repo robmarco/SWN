@@ -12,5 +12,3 @@ function add_fields(link, association, content) {
   $(".res").parent().parent().parent().prev().append(content.replace(regexp, new_id));
   //$(link).parent().before(content.replace(regexp, new_id));
 }
-
-

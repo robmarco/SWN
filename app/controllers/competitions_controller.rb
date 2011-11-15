@@ -82,7 +82,7 @@ class CompetitionsController < ApplicationController
     @categories.insert(0,@aux)
     
     respond_to do |format|
-      if @competition.update_attributes(params[:competition])
+      if @competition.update_attributes(params[:competition]) and @competition.errors.blank?
         format.html { redirect_to(@competition, :notice => 'Competition was successfully updated.') }
         format.xml  { head :ok }
       else

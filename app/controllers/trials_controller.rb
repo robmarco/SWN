@@ -32,7 +32,7 @@ class TrialsController < ApplicationController
     @trial_categories = TrialCategory.all
     
     # Result built when try to add a new competition
-    @trial_result = @trial.trial_results.build
+    # @trial_result = @trial.trial_results.build
     
     respond_to do |format|
       format.html # new.html.erb
@@ -43,12 +43,16 @@ class TrialsController < ApplicationController
   # GET /trials/1/edit
   def edit
     @trial = current_user.trials.find(params[:id])
-    @pepe = ""
     
     #Array de Categorías ordenado con el seleccionado primero
     @trial_categories = []
     TrialCategory.all.each {|c| c.name==@trial.trial_category.name ? @aux=c : @trial_categories << c }
     @trial_categories.insert(0,@aux)
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # POST /trials

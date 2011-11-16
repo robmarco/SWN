@@ -290,4 +290,19 @@ $(function () {
 	$("input#time_type_masked").live("focusin", function() {
 		$(this).mask("99:99:99")
 	});
+	
+	// trialCategory labels in table
+	$(".res>a").live("click", function(){
+		var category_name = $("#trial_trial_category_id option:selected").text();
+		var category_type_value = $("#trial_trial_category_id option:selected").attr("data-value");
+		
+		$("tr>td#result_trial_category").each(function(){
+			$(this).text(category_name);
+		});
+
+		$("tr>td#result_trial_category_type").each(function(){
+			$(this).text(category_type_value);
+		});
+		
+	});
 });

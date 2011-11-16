@@ -1,4 +1,6 @@
 SWN::Application.routes.draw do
+  get "dashboard/index", :as => :dashboard
+
   resources :trainnings, :path => "entrenamientos"
   resources :incidents, :path => "incidencias"
   resources :trials, :path => "tests"
@@ -7,7 +9,6 @@ SWN::Application.routes.draw do
 
   get "pages/index"
   get "pages/about"
-  get "pages/dashboard"
 
   devise_for :users
 

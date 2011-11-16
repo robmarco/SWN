@@ -333,3 +333,6 @@ article.nested .sidetab-switch li a.current { border-right:1px solid #e6e6e6; }
 .extension.swoosh { background-image:url('../images/icons/extensions/page_swoosh.png'); }
 .extension.report { background-image:url('../images/icons/extensions/page_report.png'); }
 .extension.wrench { background-image:url('../images/icons/extensions/page_wrench.png'); }
+.extension.email { background-image:url('../images/led-icons/email.png'); }
+.extension.print { background-image:url('../images/led-icons/printer.png'); }
+.extension.add { background-image:url('../images/led-icons/add.png'); }

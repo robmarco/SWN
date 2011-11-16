@@ -30,45 +30,24 @@
 			
 			<dt><%= f.label :trial_category_id, "Categoría*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
-				<% if params[:action] == "edit" %>
-					<%= f.select :trial_category_id, options_from_collection_for_select(@trial_categories, "id", "name"), :class => "small"%>
-				<% else %>
-					<%= f.select :trial_category_id, options_from_collection_for_select(@trial_categories, "id", "name"), :include_blank => true, :class => "small"%>
-				<% end %>	
-				<p class="hola_amigo"></p>			
+				<% #= f.select :trial_category_id, options_from_collection_for_select(@trial_categories, "id", "name"), :class => "small" %>
+				<select name="trial[trial_category_id]" id="trial_trial_category_id" class="disabled">
+					<% @trial_categories.each do |category| %>
+						<option <%= "selected" if f.object.trial_category_id == category.id %> data-value="<%= category.type_value %>" value="<%= category.id %>"><%= category.name %></option>
+					<% end %>
+				</select>				
 			</dd>
 		</dl>
 	</fieldset>
 	
+	<% content_for :fullcalendar_script do %>
+		<script type="text/javascript">
+				// código javascript para controlar data-value
+		</script>
+	<% end %>
+	
 	<!-- Trial_Results Block -->
-	<fieldset>
-		<legend>Resultados de Test</legend>
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Nadador</th>
-					<th>Tipo de Test</th>
-					<th>Valor</th>
-					<th>Unidad</th>
-					<th>Observaciones</th>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<%= f.fields_for :trial_results do |builder| %>
-					<%= render 'trial_result_fields', :f => builder %>
-				<% end %>				
-			</tbody>
-			
-			<tfoot>
-				<tr>
-					<td colspan="6"><p class="res"><%= link_to_add_fields "Añadir resultado", f, :trial_results %></p></td>
-				</tr>
-			</tfoot>
-		</table>
-		<br />
-	</fieldset>
+	<div class="trial_result"><%= render 'trial_results_fieldset', :f => f %></div>
 	<!-- \Trial_Results Block -->
 	
 	<div align="center"><%= f.submit 'Enviar', :class => "button" %> ó <%= link_to 'Cancelar', :back %></div>

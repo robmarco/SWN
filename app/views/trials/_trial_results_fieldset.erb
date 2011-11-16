@@ -1,0 +1,28 @@
+<fieldset>
+	<legend>Resultados de Test</legend>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Nadador</th>
+				<th>Tipo de Test</th>
+				<th>Valor</th>
+				<th>Unidad</th>
+				<th>Observaciones</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<%= f.fields_for :trial_results do |builder| %>
+				<%= render 'trial_result_fields', :f => builder %>
+			<% end %>				
+		</tbody>
+		
+		<tfoot>
+			<tr>
+				<td colspan="6"><p class="res"><%= link_to_add_fields "Añadir resultado", f, :trial_results %></p></td>
+			</tr>
+		</tfoot>
+	</table>
+	<br />
+</fieldset>

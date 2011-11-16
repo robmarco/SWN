@@ -1,0 +1,128 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li>Dashboard</li>
+</ul>
+
+<!-- Dashboard main block -->
+<article class="third-quarter-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Planificación</h2>
+		</header>
+		
+		<section>
+			<!-- jQuery Full Calendar Plugin -->
+			<div class="fullcalendar"></div>
+			<!-- /jQuery Full Calendar Plugin -->
+			<% content_for :fullcalendar_script do %>
+				<script type="text/javascript">
+					//jQuery Full Calendar
+					//var date = new Date(); // date must be with this format: '2010-10-02'
+					//var d = date.getDate();
+					//var m = date.getMonth();
+					//var y = date.getFullYear();
+
+					$('.fullcalendar').fullCalendar({
+						header: {
+							left: 'prev,next today',
+							center: 'title',
+							right: 'month,basicWeek'
+						},
+						editable: true,
+						firstDay: 1,
+						events: [
+							<% @competitions.each do |competition| %>
+								{
+									title: '<%= competition.title %>',
+									start: '<%= competition.date_competition.strftime("%Y/%m/%d") %>',
+									allDay: true, 
+									url: '<%= competition_path(competition) %>',
+									color: '#ae432e'
+								},
+							<% end %>
+							<% @trials.each do |trial| %>
+								{
+									title: '<%= trial.title + " " + "(#{trial.trial_category.name})" %>',
+									start: '<%= trial.date_trial.strftime("%Y/%m/%d") %>',
+									allDay: true, 
+									url: '<%= trial_path(trial) %>',
+									color: '#77ab13'
+								},
+							<% end %>
+							<% @trainnings.each do |trainning| %>
+								{
+									title: '<%= "Entrenamiento" %>',
+									start: '<%= trainning.date_trainning.strftime("%Y/%m/%d") %>',
+									allDay: true, 
+									url: '<%= trainning_path(trainning) %>'
+								},
+							<% end %>
+						]
+					});
+				</script>
+			<% end %>
+		</section>
+		
+	</div>
+</article>
+<!-- \Dashboard main block -->
+
+<article class="quarter-block nested clearrm">
+	<div class="article-container">
+		<header>
+			<h2>Acciones</h2>
+		</header>
+		
+		<section class="actions">
+			<!-- Common actions -->
+			<ul class="left">
+				<li><span class="extension add"><%= link_to 'Añadir entrenamiento', new_trainning_path %></span></li>
+				<li><span class="extension add"><%= link_to 'Añadir competición', new_competition_path %></span></li>
+				<li><span class="extension add"><%= link_to 'Añadir test', new_trial_path %></span></li>
+				<li><span class="extension add"><%= link_to 'Añadir incidencia', new_incident_path %></span></li>
+				<hr />
+				<li><span class="extension print">Imprimir</span></li>
+				<li><span class="extension pdf">Exportar a PDF</span></li>
+				<li><span class="extension email">Enviar por email</span></li>
+			</ul>
+			<div class="clearfix"></div>
+			<!-- /Common actions -->
+		</section>
+		
+	</div>
+</article>
+
+<article class="quarter-block clearrm">
+	<div class="article-container">
+		<header>
+			<h2>Información</h2>
+		</header>
+		
+		<section class="actions">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis risus a lacus fringilla commodo. Nam lacinia, est in lobortis sollicitudin, dui augue accumsan arcu, rutrum cursus neque metus eu diam. Morbi mattis porttitor nisi in elementum. Morbi porttitor commodo fermentum. Etiam vehicula, magna at consequat laoreet, urna purus faucibus nunc, et posuere ligula lorem at nisl. In quis elit est. Fusce in urna urna. Quisque et lobortis magna. Aenean nunc nisi, tristique eu mollis in, vehicula id turpis.
+			</p>
+		</section>
+		
+	</div>
+</article>
+
+<div class="clearfix"></div>
+
+<!-- Recent activity feed -->
+<article class="third-quarter-block">
+	<div class="article-container">
+		
+		<header>
+			<h2>Actividad reciente</h2>
+		</header>
+		
+		<section>
+			
+		</section>
+	</div>
+</article>
+<!-- \Recent activity feed -->
+
+<div class="clearfix"></div>

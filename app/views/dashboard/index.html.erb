@@ -33,7 +33,7 @@
 						events: [
 							<% @competitions.each do |competition| %>
 								{
-									title: '<%= competition.title %>',
+									title: '<%= "Competición - " + competition.title %>',
 									start: '<%= competition.date_competition.strftime("%Y/%m/%d") %>',
 									allDay: false, 
 									url: '<%= competition_path(competition) %>',
@@ -42,7 +42,7 @@
 							<% end %>
 							<% @trials.each do |trial| %>
 								{
-									title: '<%= trial.title + " " + "(#{trial.trial_category.name})" %>',
+									title: '<%= "Test - " + trial.title + " " + "(#{trial.trial_category.name})" %>',
 									start: '<%= trial.date_trial.strftime("%Y/%m/%d") %>',
 									allDay: false, 
 									url: '<%= trial_path(trial) %>',
@@ -51,7 +51,8 @@
 							<% end %>
 							<% @trainnings.each do |trainning| %>
 								{
-									title: '<%= "Entrenamiento" %>',
+									title: '<%= "Entrenamiento Macro " + trainning.macro.to_s + " / Micro " + trainning.micro.to_s +
+									  			"	- Volumen: #{trainning.volumen} m. / Carga #{trainning.carga} m." %>',
 									start: '<%= trainning.date_trainning.strftime("%Y/%m/%d") %>',
 									allDay: false, 
 									url: '<%= trainning_path(trainning) %>'
@@ -61,12 +62,12 @@
 					});
 				</script>
 				<script type="text/javascript">
-					var div_var = "td.fc-wed.fc-widget-content.fc-day0.fc-first.fc-last.fc-today>div";
+					// var div_var = "td.fc-wed.fc-widget-content.fc-day0.fc-first.fc-last.fc-today>div";
 					var event_count = $("span.fc-event-time").size();
 					
 					$("table.fc-header").css("display", "none"); // Dont need display the title
 					$(".fc-state-highlight").removeClass("fc-state-highlight"); // Change day format color
-					$(div_var).css("min-height", 200); // Resize content div
+					// $(div_var).css("min-height", 200); // Resize content div
 
 					$("span.fc-event-time").css("display", "none");
 					if (event_count == 0) $(".fc-day-content>div").html("<p><br />No hay eventos para hoy </p>");
@@ -81,85 +82,24 @@
 <article class="half-block clearrm">
 	<div class="article-container">
 		<header><h2>Actividad Reciente</h2></header>
-		<section></section>
+		<section>
+			<table class="recent-activity">
+				<% @recent_activities.each do |a| %>
+					<tr>
+						<td class="activity-description">
+							<p><strong>Roberto</strong> <%= activity_title(a.action, a.assoc_class) %></p>
+							<span><strong><%= a.description %></strong></span>
+						</td>
+						<td class="activity-date">
+							<img src="/images/recent-activity/<%= a.action %>.png" alt="" />
+							<p class="activity-time"><%= days_from_today(a.created_at.to_date) %></p>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</section>
 	</div>
 </article>
 <!-- \Recent Activity Block with Half -->
-
-<div class="clearfix"></div>
-
-<br />
-<br />
-<br />
-<!-- Dashboard main block -->
-<article class="third-quarter-block clearfix">
-	<div class="article-container">
-		
-		<header>
-			<h2>Planificación</h2>
-		</header>
-		
-		
-		
-	</div>
-</article>
-<!-- \Dashboard main block -->
-
-<article class="quarter-block nested clearrm">
-	<div class="article-container">
-		<header>
-			<h2>Acciones</h2>
-		</header>
-		
-		<section class="actions">
-			<!-- Common actions -->
-			<ul class="left">
-				<li><span class="extension add"><%= link_to 'Añadir entrenamiento', new_trainning_path %></span></li>
-				<li><span class="extension add"><%= link_to 'Añadir competición', new_competition_path %></span></li>
-				<li><span class="extension add"><%= link_to 'Añadir test', new_trial_path %></span></li>
-				<li><span class="extension add"><%= link_to 'Añadir incidencia', new_incident_path %></span></li>
-				<hr />
-				<li><span class="extension print">Imprimir</span></li>
-				<li><span class="extension pdf">Exportar a PDF</span></li>
-				<li><span class="extension email">Enviar por email</span></li>
-			</ul>
-			<div class="clearfix"></div>
-			<!-- /Common actions -->
-		</section>
-		
-	</div>
-</article>
-
-<article class="quarter-block clearrm">
-	<div class="article-container">
-		<header>
-			<h2>Información</h2>
-		</header>
-		
-		<section class="actions">
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis risus a lacus fringilla commodo. Nam lacinia, est in lobortis sollicitudin, dui augue accumsan arcu, rutrum cursus neque metus eu diam. Morbi mattis porttitor nisi in elementum. Morbi porttitor commodo fermentum. Etiam vehicula, magna at consequat laoreet, urna purus faucibus nunc, et posuere ligula lorem at nisl. In quis elit est. Fusce in urna urna. Quisque et lobortis magna. Aenean nunc nisi, tristique eu mollis in, vehicula id turpis.
-			</p>
-		</section>
-		
-	</div>
-</article>
-
-<div class="clearfix"></div>
-
-<!-- Recent activity feed -->
-<article class="third-quarter-block">
-	<div class="article-container">
-		
-		<header>
-			<h2>Actividad reciente</h2>
-		</header>
-		
-		<section>
-			
-		</section>
-	</div>
-</article>
-<!-- \Recent activity feed -->
 
 <div class="clearfix"></div>

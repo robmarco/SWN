@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111116221244) do
+ActiveRecord::Schema.define(:version => 20111118123324) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -79,9 +79,9 @@ ActiveRecord::Schema.define(:version => 20111116221244) do
     t.string   "action"
     t.string   "assoc_class"
     t.integer  "assoc_id"
-    t.date     "date_activity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
   end
 
   create_table "states", :force => true do |t|

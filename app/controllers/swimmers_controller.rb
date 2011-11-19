@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class SwimmersController < ApplicationController
   before_filter :authenticate_user!
   
@@ -76,6 +78,12 @@ class SwimmersController < ApplicationController
     respond_to do |format|
       if @swimmer.save
         session[:swimmers_size] = current_user.swimmers.size
+        
+        # Add swimmer to recent_activities
+        current_user.recent_activities.create!( :action => "create", :assoc_class => "Swimmer", 
+                                            :assoc_id => @swimmer.id, 
+                                            :description => "Nadador #{@swimmer.name} #{@swimmer.secname} en categoría #{@swimmer.category}")
+                                            
         format.html { redirect_to(@swimmer, :notice => 'Swimmer was successfully created.') }
         format.xml  { render :xml => @swimmer, :status => :created, :location => @swimmer }
       else
@@ -123,6 +131,11 @@ class SwimmersController < ApplicationController
     @swimmer.destroy
     session[:swimmers_size] = current_user.swimmers.size
 
+    # Add swimmer to recent_activities
+    current_user.recent_activities.create!( :action => "destroy", :assoc_class => "Swimmer", 
+                                        :assoc_id => @swimmer.id, 
+                                        :description => "Nadador #{@swimmer.name} #{@swimmer.secname} en categoría #{@swimmer.category}")
+                                        
     respond_to do |format|
       format.html { redirect_to(swimmers_url) }
       format.xml  { head :ok }

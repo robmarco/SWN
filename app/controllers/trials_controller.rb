@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class TrialsController < ApplicationController
   before_filter :authenticate_user!
   
@@ -65,6 +67,12 @@ class TrialsController < ApplicationController
     respond_to do |format|
       if @trial.save
         session[:trials_size] = current_user.trials.size
+        
+        # Add trial to recent_activities
+        current_user.recent_activities.create!( :action => "create", :assoc_class => "Trial", 
+                                            :assoc_id => @trial.id, 
+                                            :description => "#{@trial.title} en categoría #{@trial.category.name}")
+                                            
         format.html { redirect_to(@trial, :notice => 'Trial was successfully created.') }
         format.xml  { render :xml => @trial, :status => :created, :location => @trial }
       else
@@ -101,6 +109,11 @@ class TrialsController < ApplicationController
     @trial = current_user.trials.find(params[:id])
     @trial.destroy
     session[:trials_size] = current_user.trials.size
+    
+    # Add trial to recent_activities
+    current_user.recent_activities.create!( :action => "destroy", :assoc_class => "Trial", 
+                                        :assoc_id => @trial.id, 
+                                        :description => "#{@trial.title} en categoría #{@trial.category.name}")
 
     respond_to do |format|
       format.html { redirect_to(trials_url) }

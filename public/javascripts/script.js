@@ -305,4 +305,7 @@ $(function () {
 		});
 		
 	});
+	
+	// Notification error fadeOut
+	$("div.notification.success").fadeOut(5000, function(){});
 });

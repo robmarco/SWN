@@ -1458,6 +1458,15 @@ td.text_left.table_content > a { text-decoration: none; }
 }
 .no-js .table-switch, .no-js .toggle-table-switch { display:none; }
 
+/* Table Recent Activity */
+
+table.recent-activity, table.recent-activity>tbody, table.recent-activity>tbody>td { border: none;}
+table.recent-activity > tbody > tr { background-color: white;} 
+td.activity-description { text-align: left; padding-left: 10px; width: 80%;}
+td.activity-description > p { padding: 0; margin: 0; font-size: 1.1em;}
+td.activity-description > p > strong { color: #327A9F;}
+td.activity-date > img { border: none;}
+p.activity-time { color: #AAA; font-style: italic; }
 
 
 /*  Login Page  */

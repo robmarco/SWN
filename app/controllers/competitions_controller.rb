@@ -64,7 +64,8 @@ class CompetitionsController < ApplicationController
         
         # Add competition to recent_activities
         current_user.recent_activities.create!( :action => "create", :assoc_class => "Competition", 
-                                            :assoc_id => @competition.id, :date_activity => @competition.date_competition)
+                                            :assoc_id => @competition.id,
+                                            :description => "#{@competition.title} en #{@competition.place} (#{@competition.category})")
         
         format.html { redirect_to(@competition, :notice => 'Competition was successfully created.') }
         format.xml  { render :xml => @competition, :status => :created, :location => @competition }
@@ -106,7 +107,8 @@ class CompetitionsController < ApplicationController
     
     # Add competition to recent_activities
     current_user.recent_activities.create!( :action => "destroy", :assoc_class => "Competition", 
-                                        :assoc_id => @competition.id, :date_activity => @competition.date_competition)
+                                        :assoc_id => @competition.id, 
+                                        :description => "#{@competition.title} en #{@competition.place} (#{@competition.category})")
     
     respond_to do |format|
       format.html { redirect_to(competitions_url) }

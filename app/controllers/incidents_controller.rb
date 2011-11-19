@@ -46,6 +46,12 @@ class IncidentsController < ApplicationController
     respond_to do |format|
       if @incident.save
         session[:incidents_size] = current_user.incidents.size  # Update incidents size
+        
+        # Add incident to recent_activities
+        current_user.recent_activities.create!( :action => "create", :assoc_class => "Incident", 
+                                            :assoc_id => @incident.id,
+                                            :description => "#{@incident.title}")
+        
         format.html { redirect_to(@incident, :notice => 'Incident was successfully created.') }
         format.xml  { render :xml => @incident, :status => :created, :location => @incident }
       else
@@ -77,6 +83,11 @@ class IncidentsController < ApplicationController
     @incident = current_user.incidents.find(params[:id])
     @incident.destroy
     session[:incidents_size] = current_user.incidents.size  # Update incidents size
+    
+    # Add incident to recent_activities
+    current_user.recent_activities.create!( :action => "create", :assoc_class => "Incident", 
+                                        :assoc_id => @incident.id,
+                                        :description => "#{@incident.title}")
     
     respond_to do |format|
       format.html { redirect_to(incidents_url) }

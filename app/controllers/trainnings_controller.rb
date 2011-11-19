@@ -56,6 +56,12 @@ class TrainningsController < ApplicationController
     respond_to do |format|
       if @trainning.save
         session[:trainnings_size] = current_user.trainnings.size
+        
+        # Add trainning to recent_activities
+        current_user.recent_activities.create!( :action => "create", :assoc_class => "Trainning", 
+                                            :assoc_id => @trainning.id,
+                                            :description => "Entrenamiento micro #{@trainning.micro} / macro #{@trainning.macro}")
+        
         format.html { redirect_to(@trainning, :notice => 'Trainning was successfully created.') }
         format.xml  { render :xml => @trainning, :status => :created, :location => @trainning }
       else
@@ -88,6 +94,11 @@ class TrainningsController < ApplicationController
     @trainning.destroy
     session[:trainnings_size] = current_user.trainnings.size
 
+    # Add swimmer to recent_activities
+    current_user.recent_activities.create!( :action => "destroy", :assoc_class => "Trainning", 
+                                        :assoc_id => @trainning.id, 
+                                        :description => "Entrenamiento micro #{@trainning.micro} / macro #{@trainning.macro}")
+    
     respond_to do |format|
       format.html { redirect_to(trainnings_url) }
       format.xml  { head :ok }

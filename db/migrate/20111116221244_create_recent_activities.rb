@@ -5,7 +5,6 @@ class CreateRecentActivities < ActiveRecord::Migration
       t.string :action
       t.string :assoc_class
       t.integer :assoc_id
-      t.date :date_activity
 
       t.timestamps
     end

@@ -291,6 +291,8 @@ $(function () {
 		$(this).mask("99:99:99")
 	});
 	
+	$(".phone_mask").mask("(999) 99 99 99");
+	
 	// trialCategory labels in table
 	$(".res>a").live("click", function(){
 		var category_name = $("#trial_trial_category_id option:selected").text();

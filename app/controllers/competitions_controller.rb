@@ -62,11 +62,6 @@ class CompetitionsController < ApplicationController
       if @competition.save
         session[:competitions_size] = current_user.competitions.size  # Update competitions size
         
-        # Add competition to recent_activities
-        current_user.recent_activities.create!( :action => "create", :assoc_class => "Competition", 
-                                            :assoc_id => @competition.id,
-                                            :description => "#{@competition.title} en #{@competition.place} (#{@competition.category})")
-        
         format.html { redirect_to(@competition, :notice => 'Competition was successfully created.') }
         format.xml  { render :xml => @competition, :status => :created, :location => @competition }
       else
@@ -104,12 +99,7 @@ class CompetitionsController < ApplicationController
     @competition = current_user.competitions.find(params[:id])
     @competition.destroy
     session[:competitions_size] = current_user.competitions.size  # Update competitions size
-    
-    # Add competition to recent_activities
-    current_user.recent_activities.create!( :action => "destroy", :assoc_class => "Competition", 
-                                        :assoc_id => @competition.id, 
-                                        :description => "#{@competition.title} en #{@competition.place} (#{@competition.category})")
-    
+        
     respond_to do |format|
       format.html { redirect_to(competitions_url) }
       format.xml  { head :ok }

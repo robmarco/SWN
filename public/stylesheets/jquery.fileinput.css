@@ -3,7 +3,7 @@ input.customfile-input {
 	position:absolute;
 	top:-12px;
 	height:50px;
-	width:250px;
+	width:450px;
 	cursor:pointer;
 	background:transparent;
 	border:0;
@@ -13,7 +13,7 @@ input.customfile-input {
 	z-index:999;
 }
 .customfile {
-	width:250px;
+	width:450px;
 	height:23px;
 	position:relative;
 	cursor:pointer;

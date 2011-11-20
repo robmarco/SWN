@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  secname: MyString
+  dni: MyString
+  born: 2011-11-19
+  address: MyString
+  phone: 1
+  club: MyString
+  web: MyString
+  user_id: 1
+
+two:
+  name: MyString
+  secname: MyString
+  dni: MyString
+  born: 2011-11-19
+  address: MyString
+  phone: 1
+  club: MyString
+  web: MyString
+  user_id: 1

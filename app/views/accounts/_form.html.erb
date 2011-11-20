@@ -1,0 +1,68 @@
+<%= form_for(@account, :html => {:multipart => true}) do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+      <% @account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<fieldset>
+		<legend>Fotografía / Avatar</legend>
+		<dl>
+			<dt><%= f.label :photo, "URL" %></dt>
+			<dd>
+				<%= f.file_field :photo, :class => "fileupload" %>
+				<p>Tamaño máximo de 5Mb - Foto: <%= @account.photo %></p>
+			</dd>
+		</dl>
+	</fieldset>
+		
+	<fieldset>
+		<legend>Datos personales</legend>
+		<dl>
+			<dt><%= f.label :name, "Nombre" %></dt>
+			<dd><%= f.text_field :name, :class => "medium" %></dd>
+			
+			<dt><%= f.label :secname, "Apellidos" %></dt>
+			<dd><%= f.text_field :secname, :class => "medium" %></dd>
+			
+			<dt><%= f.label :dni, "DNI" %></dt>
+			<dd><%= f.text_field :dni, :class => "small" %></dd>
+			
+			<dt><%= f.label :born, "Fecha de nacimiento" %></dt>
+			<dd><%= f.text_field :born, :value => f.object.born.strftime("%d/%m/%Y"), :class => 'datepicker' %></dd>
+			
+			<dt><%= f.label :club, "Club" %></dt>
+			<dd><%= f.text_field :club, :class => "medium" %></dd>
+			
+			<dt><%= f.label :web, "Web" %></dt>
+			<dd><%= f.text_field :web, :class => "medium" %></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>Datos de contacto</legend>
+		<dl>
+			<dt><%= f.label :address, "Dirección" %></dt>
+			<dd><%= f.text_field :address, :class => "medium" %></dd>
+			
+			<dt><%= f.label :city, "Ciudad" %></dt>
+			<dd><%= f.text_field :city, :class => "medium" %></dd>
+			
+			<dt><%= f.label :country, "País" %></dt>
+			<dd><%= f.select :country, options_from_collection_for_select(@country, :name, :name, :prompt => true, :selected => f.object.country), :class => "medium" %></dd>
+			
+			<dt><%= f.label :phone, "Teléfono" %></dt>
+			<dd><%= f.text_field :phone, :class => "phone_mask small", :placeholder => "Ejemplo: (928) 70 00 00" %></dd>
+		</dl>
+	</fieldset>
+
+	<div align="center"><%= f.submit 'Enviar', :class => "button" %> ó <%= link_to 'Cancelar', :back %></div>
+	
+<% end %>

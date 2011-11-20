@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  after_create :create_account
+  
+  has_one :account, :dependent => :destroy
   has_many :recent_activities, :dependent => :destroy
   has_many :swimmers, :dependent => :destroy
   has_many :trainnings, :dependent => :destroy
@@ -13,4 +16,12 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  private
+  
+  def create_account
+    @account = build_account
+    @account.save 
+  end
+  
 end

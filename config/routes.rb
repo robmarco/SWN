@@ -1,4 +1,7 @@
 SWN::Application.routes.draw do
+  resources :accounts, :only => [:edit, :update, :destroy]
+
+  get "accounts/upload"
   get "dashboard/index", :as => :dashboard
 
   resources :trainnings, :path => "entrenamientos"

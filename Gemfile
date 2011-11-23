@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'jquery-rails'
 gem 'acts-as-taggable-on'
+gem 'will_paginate'
 
 # Use unicorn as the web server
 # gem 'unicorn'

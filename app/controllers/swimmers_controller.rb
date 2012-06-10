@@ -7,9 +7,9 @@ class SwimmersController < ApplicationController
     @swimmers = current_user.swimmers.all
     
     # Nadadores filtrados por estado para los render del index
-    @swimmers_fed = current_user.swimmers.where("state='Federado'")
-    @swimmers_nofed = current_user.swimmers.where("state='No Federado'")
-    @swimmers_baja = current_user.swimmers.where("state='Baja'")
+    @swimmers_fed = current_user.swimmers.federado
+    @swimmers_nofed = current_user.swimmers.no_federado
+    @swimmers_baja = current_user.swimmers.baja
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,6 +21,8 @@ class SwimmersController < ApplicationController
   # GET /swimmers/1.xml
   def show
     @swimmer = current_user.swimmers.find(params[:id])
+    @swimmer_competition_results = @swimmer.competition_results
+    @swimmer_trial_results = @swimmer.trial_results
 
     respond_to do |format|
       format.html # show.html.erb

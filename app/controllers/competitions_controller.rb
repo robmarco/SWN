@@ -16,7 +16,8 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1.xml
   def show
     @competition = current_user.competitions.find(params[:id])
-
+    @competition_results = @competition.competition_results
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @competition }

@@ -1,6 +1,6 @@
  <tr>
    <td><%= competition.date_competition.strftime("%d/%m/%Y") %></td>
-   <td><b><%= competition.title %></b></td>
+   <td><b><%= link_to competition.title, competition_path(competition), :class => "normal" %></b></td>
    <td><%= competition.place %> (<%= competition.pool_dist %>)</td>
    <td>
 	   <span class="tag tag2 <%= Category.where('name like ?', competition.category).map(&:color)[0] %>"><%= competition.category %></span>

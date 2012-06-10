@@ -1,4 +1,20 @@
 # encoding: utf-8
+# == Schema Information
+#
+# Table name: competitions
+#
+#  id               :integer         not null, primary key
+#  date_competition :date
+#  title            :string(255)
+#  place            :string(255)
+#  chrono_type      :string(255)
+#  pool_dist        :string(255)
+#  category         :string(255)
+#  user_id          :integer
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+
 
 class Competition < ActiveRecord::Base  
   before_update :add_to_recent_activity_update
@@ -20,6 +36,8 @@ class Competition < ActiveRecord::Base
   scope :jun, where(:category => "Junior")
   scope :abs, where(:category => "Absoluto")
   scope :mast, where(:category => "Master")
+  scope :short_pool, where(:pool_dist => "25m")
+  scope :long_pool, where(:pool_dist => "50m")
   # ------------------------------------
   
   validates_presence_of :date_competition, :title, :place, :chrono_type, :pool_dist, :category

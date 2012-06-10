@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'jquery-rails'
 gem 'acts-as-taggable-on'
+gem 'will_paginate'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -32,4 +33,5 @@ gem 'acts-as-taggable-on'
 group :development, :test do
   gem 'hirb'
   gem 'wirble'
+  gem 'annotate', '2.4.1.beta1'
 end

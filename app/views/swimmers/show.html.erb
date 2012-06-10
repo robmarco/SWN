@@ -11,7 +11,7 @@
 		<!-- Header  -->
 		<header>
 			<h2>
-				<%= "#{@swimmer.name} #{@swimmer.secname}" %>
+				<%= "#{@swimmer.swimmer_name_secname}" %>
 			</h2>
 			<nav>
 				<ul class="button-switch">
@@ -201,13 +201,16 @@
 									</tr>
 								</thead>
 								<tbody>
-									<% if @swimmer.competition_results.size > 0 %>
-										<% @swimmer.competition_results.each do |competition_result| %>
+									<% if @swimmer_competition_results.size > 0 %>
+										<% @swimmer_competition_results.each do |competition_result| %>
 											<tr>
 												<td><%= competition_result.competition.date_competition.strftime("%d/%m/%Y") %></td>
-												<td><%= competition_result.competition.place %></td>
+												<td><%= link_to "#{competition_result.competition.title} (#{competition_result.competition.pool_dist})", competition_path(competition_result.competition)%></td>
 												<td><%= competition_result.competition_set.name %></td>
-												<td><%= competition_result.time_result %></td>
+												<td>
+													<%= competition_result.time_result %> 
+													<span id="evolution"><%= increase_decrease_time(competition_result) %></span>
+												</td>
 												<td><ul class="actions"><li><%= link_to 'ver', competition_path(competition_result.competition), :class => "view", :title => "Ver competición", :rel => "tooltip" %></li></ul></td>
 											</tr>
 										<% end %>
@@ -251,8 +254,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<% if @swimmer.trial_results.size > 0 %>
-										<% @swimmer.trial_results.each do |trial_result| %>
+									<% if @swimmer_trial_results.size > 0 %>
+										<% @swimmer_trial_results.each do |trial_result| %>
 											<tr>
 												<td><%= trial_result.trial.date_trial.strftime("%d/%m/%Y") %></td>
 												<td><%= trial_result.trial.title %></td>

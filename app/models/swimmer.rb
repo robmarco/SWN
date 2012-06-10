@@ -1,4 +1,32 @@
 # encoding: utf-8
+# == Schema Information
+#
+# Table name: swimmers
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  secname     :string(255)
+#  born        :date
+#  licence     :integer
+#  email       :string(255)
+#  address     :string(255)
+#  postal      :integer
+#  city        :string(255)
+#  country     :string(255)
+#  phone       :integer
+#  parentname  :string(255)
+#  parentemail :string(255)
+#  parentphone :integer
+#  disease     :text
+#  observation :text
+#  category    :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  user_id     :integer
+#  state       :string(255)
+#  genre       :string(255)
+#
+
 
 class Swimmer < ActiveRecord::Base
   before_update :add_to_recent_activity_update
@@ -16,6 +44,8 @@ class Swimmer < ActiveRecord::Base
   scope :female, where(:genre => "Femenino")
   scope :male, where(:genre => "Masculino")
   scope :federado, where(:state => "Federado")
+  scope :no_federado, where(:state => "No Federado")
+  scope :baja, where(:state => "Baja")
   
   def swimmer_name_secname
     name + ' ' + secname

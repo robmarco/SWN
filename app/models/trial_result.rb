@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: trial_results
+#
+#  id          :integer         not null, primary key
+#  swimmer_id  :integer
+#  trial_value :string(255)
+#  observation :string(255)
+#  trial_id    :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class TrialResult < ActiveRecord::Base
   belongs_to :trial
   belongs_to :swimmer

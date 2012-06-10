@@ -18,7 +18,12 @@ $(function () {
 	$('.wysiwyg').wysiwyg({ iFrameClass:'wysiwyg-iframe' });
 	
 	// jQuery dataTables
+	$('.dt_swimmer_results').dataTable({
+		"aaSorting": [[ 0, "desc" ], [1, "desc"], [2, "asc"]]
+	});
+	
 	$('.datatable').dataTable();
+	
 
 	// jQuery Custome File Input
 	$('.fileupload').customFileInput();
@@ -157,7 +162,7 @@ $(function () {
 		function() { $(this).find('.image-actions').fadeOut(100); } // Hide actions menu
 	);
 
-		// Tickets
+	// Tickets
 	$('.tickets .ticket-details').hide(); // Hide all ticket details
 	$('.tickets .ticket-open-details').click( // On click hide all ticket details content and open clicked one
 		function() {
@@ -288,7 +293,7 @@ $(function () {
 	
 	// jQuery Masked input selectors
 	$("input#time_type_masked").live("focusin", function() {
-		$(this).mask("99:99:99")
+		$(this).mask("59:59:99")
 	});
 	
 	$(".phone_mask").mask("(999) 99 99 99");
@@ -307,7 +312,7 @@ $(function () {
 		});
 		
 	});
-	
+		
 	// Notification error fadeOut
 	$("div.notification.success").fadeOut(5000, function(){});
 });

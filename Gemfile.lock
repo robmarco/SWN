@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 6728166896d58412e4d10276f010eca8c299890f
+  specs:
+    paperclip (3.0.4)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -34,6 +45,7 @@ GEM
     arel (2.0.10)
     bcrypt-ruby (3.0.1)
     builder (2.1.2)
+    cocaine (0.2.1)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -96,6 +108,7 @@ DEPENDENCIES
   devise
   hirb
   jquery-rails
+  paperclip!
   rails (= 3.0.9)
   sqlite3
   will_paginate

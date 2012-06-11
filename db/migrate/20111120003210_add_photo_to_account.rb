@@ -1,9 +1,11 @@
 class AddPhotoToAccount < ActiveRecord::Migration
   def self.up
-    add_column :accounts, :photo, :string
+    change_table :accounts do |t|
+      t.has_attached_file :photo
+    end
   end
 
   def self.down
-    remove_column :accounts, :photo
+    drop_attached_file :accounts, :photo
   end
 end

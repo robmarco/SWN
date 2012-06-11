@@ -4,7 +4,6 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :name
       t.string :secname
       t.string :dni
-      t.date :born
       t.string :club
       t.string :web
       t.integer :phone

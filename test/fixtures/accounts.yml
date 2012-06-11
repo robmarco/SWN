@@ -6,7 +6,6 @@
 #  name       :string(255)
 #  secname    :string(255)
 #  dni        :string(255)
-#  born       :date
 #  club       :string(255)
 #  web        :string(255)
 #  phone      :integer

@@ -17,9 +17,7 @@
 #  updated_at             :datetime
 #
 
-class User < ActiveRecord::Base
-  after_create :create_account
-  
+class User < ActiveRecord::Base  
   has_one :account, :dependent => :destroy
   has_many :recent_activities, :dependent => :destroy
   has_many :swimmers, :dependent => :destroy
@@ -34,13 +32,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-
-  private
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :account_attributes
   
-  def create_account
-    @account = build_account
-    @account.save 
+  accepts_nested_attributes_for :account
+
+  def with_account
+    self.build_account
+    self
   end
   
+  def name
+    "#{self.account.name}"
+  end
+    
 end

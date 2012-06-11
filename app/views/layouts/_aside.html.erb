@@ -10,7 +10,7 @@
 	<section id="user-info">
 		<img src="/images/sample_user.png" alt="User Avatar">
 		<div>
-			<a href="#" title="Configuración de cuenta">Robert Tester</a>
+			<a href="#" title="Configuración de cuenta">¡Hola <%= current_user.name if user_signed_in? %>!</a>
 			<em>Entrenador</em>
 			<ul>
 				<li><a class="button-link" href="#" title="¡Web del Club!" rel="tooltip">ver sitio web</a></li>
@@ -69,7 +69,7 @@
 				<% if !user_signed_in? %>
 					<%= link_to 'Configuración', '#', :class => 'articles no-submenu' %>
 				<% else %>
-					<%= link_to 'Configuración', edit_account_path(current_user), :class => 'articles no-submenu' %>
+					<%= link_to 'Configuración', edit_account_path(current_user.account), :class => 'articles no-submenu' %>
 				<% end %>
 				
 			</li>

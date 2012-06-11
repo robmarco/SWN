@@ -10,7 +10,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'acts-as-taggable-on'
 gem 'will_paginate'
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip", "~> 3.0"
 # Use unicorn as the web server
 # gem 'unicorn'
 

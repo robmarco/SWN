@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+<head>
+  
+	<title>SWN</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<%= csrf_meta_tag %>
+	
+	<!-- CSS Links -->
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<link rel="stylesheet" href="/stylesheets/colors.css">
+	<link rel="stylesheet" href="/stylesheets/jquery.tipsy.css">
+	<link rel="stylesheet" href="/stylesheets/jquery.wysiwyg.css">
+	<link rel="stylesheet" href="/stylesheets/jquery.datatables.css">
+	<link rel="stylesheet" href="/stylesheets/jquery.nyromodal.css">
+	<link rel="stylesheet" href="/stylesheets/jquery.datepicker.css">
+	<link rel="stylesheet" href="/stylesheets/jquery.fileinput.css">
+	<link rel="stylesheet" href="/stylesheets/jquery.fullcalendar.css">
+	<link rel="stylesheet" href="/stylesheets/jquery.visualize.css">
+	<link rel="stylesheet" href="/stylesheets/custom.css">
+  
+	<!-- JS Links -->
+	<script src="/javascripts/libs/modernizr-1.7.min.js"></script>
+	
+	<!-- Google WebFonts -->
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+	
+</head>
+<body>	
+	<!-- Fixed Layout Wrapper -->
+	<div class="fixed-wraper">
+	
+	<div class="topbar"></div>
+
+	<!-- Aside Block -->
+	<%= render 'layouts/aside' %>
+	<!-- /Aside Block -->
+	
+	<!-- Main Content -->
+	<section role="main">
+		<% if notice %>
+			<div class="notification success">
+				<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
+				<p><strong>Éxito</strong> <%= notice %></p>
+			</div>
+		<% end %>
+		
+		<% if alert %>
+			<div class="notification error">
+				<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
+				<p><strong>Error</strong> <%= alert %></p>
+			</div>
+		<% end %>
+		
+		<%= yield %>		
+
+		<%= debug(params) if Rails.env.development? %>
+	</section>
+	<!-- /Main Content -->
+	
+	</div>
+	<!-- /Fixed Layout Wrapper -->
+
+	<!-- JS Libs at end for fast load. Care with orther: jquery.min.js before rails.js -->
+	<%= javascript_include_tag 'jquery.min', 'rails'  %>
+	<script src="/javascripts/application.js"></script>
+	<script src="/javascripts/libs/selectivizr.js"></script>
+	<script src="/javascripts/jquery/jquery.nyromodal.js"></script>
+	<script src="/javascripts/jquery/jquery.tipsy.js"></script>
+	<script src="/javascripts/jquery/jquery.wysiwyg.js"></script>
+	<script src="/javascripts/jquery/jquery.datatables.js"></script>
+	<script src="/javascripts/jquery/jquery.datepicker.js"></script>
+	<script src="/javascripts/jquery/jquery.fileinput.js"></script>
+	<script src="/javascripts/jquery/jquery.fullcalendar.min.js"></script>
+	<script src="/javascripts/jquery/excanvas.js"></script>
+	<script src="/javascripts/jquery/jquery.visualize.js"></script>
+	<script src="/javascripts/jquery/jquery.visualize.tooltip.js"></script>
+	<script src="/javascripts/jquery/jquery.maskedinput.min.js"></script>	
+	<script src="/javascripts/script.js"></script>	
+	
+	<%= yield :fullcalendar_script %>
+	
+</body>
+</html>

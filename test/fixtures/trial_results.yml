@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: trial_results
+#
+#  id          :integer         not null, primary key
+#  swimmer_id  :integer
+#  trial_value :string(255)
+#  observation :string(255)
+#  trial_id    :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  swimmer_id: 1
+  trial_value: MyString
+  observation: MyString
+
+two:
+  swimmer_id: 1
+  trial_value: MyString
+  observation: MyString

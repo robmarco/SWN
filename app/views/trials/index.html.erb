@@ -1,0 +1,118 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Tests preparatorios', trials_path %></li>
+	<li>Ver lista de tests preparatorios</li>
+</ul>
+
+<!-- Article Full Content Block - Test table -->
+<article class="third-quarter-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Gestión de tests preparatorios</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir test', new_trial_path, :class => 'button' %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<table class="datatable">
+			  <thead>
+			  	<tr>
+				    <th>Fecha</th>
+				    <th>Título</th>
+				    <th>Tipo</th>
+				    <th>Acción</th>
+				  </tr>
+			  </thead>
+
+				<tbody>
+					<%= render :partial => "trial", :collection => @trials %>
+				</tbody>
+			</table>
+		</section>
+				
+	</div>
+</article>
+<!-- \Article Full Content Block -->
+
+<!-- Trial Information -->
+<article class="quarter-block nested clearrm">
+	<div class="article-container">
+		<header><h2>Información</h2></header>
+		<section>
+			<p>Las capacidades que el entrenador puede evaluar sobre un nadador son las siguientes:</p>
+			<ul class="list-style-checkmark">
+				<% @trial_categories.each do |cat| %>
+					<li><strong><%= cat.name %></strong></li>
+				<% end %>
+			</ul>
+				
+		</section>
+	</div>
+</article>
+<!-- \Trial Information -->
+
+<br />
+
+<!-- Article Full Content Block - Calendar and statistics -->
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header><h2>Calendario y Estadísticas</h2></header>
+		
+		<section>
+			<div class="sidetabs">
+				<nav class="sidetab-switch">
+					<ul>
+						<li><%= link_to 'Calendario', '#sidetab1b', :class => "default-sidetab" %></li>
+					</ul>
+				</nav>
+				
+				<!-- jquery Full Calendar Sidetab Content -->
+				<div class="sidetab default-sidetab" id="sidetab1b">
+					<h3>Calendario de test</h3>
+					
+					<!-- jQuery Full Calendar Plugin -->
+					<div class="fullcalendar"></div>
+					<!-- /jQuery Full Calendar Plugin -->
+					<% content_for :fullcalendar_script do %>
+						<script type="text/javascript">
+							//jQuery Full Calendar
+							//var date = new Date(); // date must be with this format: '2010-10-02'
+							//var d = date.getDate();
+							//var m = date.getMonth();
+							//var y = date.getFullYear();
+
+							$('.fullcalendar').fullCalendar({
+								header: {
+									left: 'prev,next today',
+									center: 'title',
+									right: 'month'
+								},
+								editable: true,
+								firstDay: 1,
+								events: [
+									<% @trials.each do |trial| %>
+										{
+											title: '<%= trial.title + " " + "(#{trial.trial_category.name})" %>',
+											start: '<%= trial.date_trial.strftime("%Y/%m/%d") %>',
+											allDay: true, 
+											url: '<%= trial_path(trial) %>',
+											color: '<%= trial.trial_category.color_hex %>'
+										},
+									<% end %>
+								]
+							});
+						</script>
+					<% end %>					
+				</div>
+				<!-- \jquery Full Calendar Sidetab Content -->
+				
+			</div>
+		</section>
+	</div>
+</article>
+<!-- \Article Full Content Block - Calendar and statistics -->

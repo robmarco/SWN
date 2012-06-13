@@ -1,0 +1,21 @@
+ <tr>
+   <td><%= competition.date_competition.strftime("%d/%m/%Y") %></td>
+   <td><b><%= link_to competition.title, competition_path(competition), :class => "normal" %></b></td>
+   <td><%= competition.place %> (<%= competition.pool_dist %>)</td>
+   <td>
+	   <span class="tag tag2 <%= Category.where('name like ?', competition.category).map(&:color)[0] %>"><%= competition.category %></span>
+	 </td>
+	<td>
+		<ul class="actions">
+			<li>
+				<%= link_to 'ver', competition_path(competition), :class => "view", :title => "Ver competición", :rel => "tooltip" %>
+			</li>
+			<li>
+				<%= link_to 'editar', edit_competition_path(competition), :class => "edit", :title => "Editar competición", :rel => "tooltip" %>
+			</li>
+			<li>
+				<%= link_to 'eliminar', competition_path(competition), :confirm => '¿Está seguro de que desea eliminar la competición?', :method => :delete, :class => "delete", :title => "Eliminar competición", :rel => "tooltip" %>
+			</li>
+		</ul>
+	</td>
+ </tr>

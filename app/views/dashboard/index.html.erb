@@ -1,0 +1,106 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li>Dashboard</li>
+</ul>
+
+<!-- Dashboard main Block with Half -->
+<article class="half-block clearfix">
+	<div class="article-container">
+		<header><h2>Eventos para hoy</h2></header>
+		<section>
+			<!-- jQuery Full Calendar Plugin -->
+			<div class="fullcalendar"></div>
+			<!-- /jQuery Full Calendar Plugin -->
+			<% content_for :fullcalendar_script do %>
+				
+				<script type="text/javascript">
+					//jQuery Full Calendar
+					//var date = new Date(); // date must be with this format: '2010-10-02'
+					//var d = date.getDate();
+					//var m = date.getMonth();
+					//var y = date.getFullYear();
+
+					$('.fullcalendar').fullCalendar({
+						header: {
+							left: '',
+							center: '',
+							right: ''
+						},
+						defaultView: 'basicDay',
+						defaultEventMinutes: 480,
+						editable: true,
+						firstDay: 1,
+						events: [
+							<% @competitions.each do |competition| %>
+								{
+									title: '<%= "Competición - " + competition.title %>',
+									start: '<%= competition.date_competition.strftime("%Y/%m/%d") %>',
+									allDay: false, 
+									url: '<%= competition_path(competition) %>',
+									color: '#ae432e'
+								},
+							<% end %>
+							<% @trials.each do |trial| %>
+								{
+									title: '<%= "Test - " + trial.title + " " + "(#{trial.trial_category.name})" %>',
+									start: '<%= trial.date_trial.strftime("%Y/%m/%d") %>',
+									allDay: false, 
+									url: '<%= trial_path(trial) %>',
+									color: '#77ab13'
+								},
+							<% end %>
+							<% @trainnings.each do |trainning| %>
+								{
+									title: '<%= "Entrenamiento Macro " + trainning.macro.to_s + " / Micro " + trainning.micro.to_s +
+									  			"	- Volumen: #{trainning.volumen} m. / Carga #{trainning.carga} m." %>',
+									start: '<%= trainning.date_trainning.strftime("%Y/%m/%d") %>',
+									allDay: false, 
+									url: '<%= trainning_path(trainning) %>'
+								},
+							<% end %>
+						]
+					});
+				</script>
+				<script type="text/javascript">
+					// var div_var = "td.fc-wed.fc-widget-content.fc-day0.fc-first.fc-last.fc-today>div";
+					var event_count = $("span.fc-event-time").size();
+					
+					$("table.fc-header").css("display", "none"); // Dont need display the title
+					$(".fc-state-highlight").removeClass("fc-state-highlight"); // Change day format color
+					// $(div_var).css("min-height", 200); // Resize content div
+
+					$("span.fc-event-time").css("display", "none");
+					if (event_count == 0) $(".fc-day-content>div").html("<p><br />No hay eventos para hoy </p>");
+				</script>
+			<% end %>
+		</section>
+	</div>
+</article>
+<!-- \Dashboard main Block with Half -->
+
+<!-- Recent Activity Block with Half -->
+<article class="half-block clearrm">
+	<div class="article-container">
+		<header><h2>Actividad Reciente</h2></header>
+		<section>
+			<table class="recent-activity">
+				<% @recent_activities.each do |a| %>
+					<tr>
+						<td class="activity-description">
+							<p><strong>Roberto</strong> <%= activity_title(a.action, a.assoc_class) %></p>
+							<span><strong><%= a.description %></strong></span>
+						</td>
+						<td class="activity-date">
+							<img src="/images/recent-activity/<%= a.action %>.png" alt="" />
+							<p class="activity-time"><%= days_from_today(a.created_at.to_date) %></p>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+			<%= will_paginate @recent_activities %>
+		</section>
+	</div>
+</article>
+<!-- \Recent Activity Block with Half -->
+
+<div class="clearfix"></div>

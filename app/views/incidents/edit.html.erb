@@ -1,0 +1,26 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Diario de incidencias', incidents_path %></li>
+	<li><%= link_to "Id #{@incident.id}", @incident %></li>
+	<li>Modificar incidencia</li>
+</ul>
+
+<article class="full-bock clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Modificar incidencia - <%= @incident.title %></h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Eliminar', incident_path(@incident), :confirm => '¿Está seguro de que desea eliminar la incidencia?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Mostrar incidencia', incident_path(@incident), :class => "button" %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<%= render 'form' %>
+		</section>
+		
+	</div>
+</article>

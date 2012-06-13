@@ -1,0 +1,208 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Entrenamientos', trainnings_path %></li>
+	<li>Ver lista de entrenamientos</li>
+</ul>
+
+<div class="clearfix"></div>
+
+<!-- Trainnings Calendar Block -->
+<article class="third-quarter-block">
+	<div class="article-container">
+		
+		<header>
+			<h2>Gestión de entrenamientos</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir entrenamiento', new_trainning_path, :class => 'button' %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>			
+			<div class="third-quarter-reduced">
+				<!-- jQuery Full Calendar Plugin -->
+				<div class="fullcalendar"></div>
+				<!-- /jQuery Full Calendar Plugin -->
+				<% content_for :fullcalendar_script do %>
+					<script type="text/javascript">
+						//jQuery Full Calendar
+						//var date = new Date(); // date must be with this format: '2010-10-02'
+						//var d = date.getDate();
+						//var m = date.getMonth();
+						//var y = date.getFullYear();
+
+						$('.fullcalendar').fullCalendar({
+							header: {
+								left: 'prev,next today',
+								center: 'title',
+								right: 'month,basicWeek'
+							},
+							editable: true,
+							firstDay: 1,
+							events: [
+								<% @trainnings.each do |trainning| %>
+									{
+										title: '<%= "Micro #{trainning.micro.to_s} - Macro #{trainning.macro.to_s} Volumen: #{trainning.volumen} m - Carga: #{trainning.carga}" %>',
+										start: '<%= trainning.date_trainning.strftime("%Y/%m/%d") %>',
+										allDay: true, 
+										url: '<%= trainning_path(trainning) %>'
+									},
+								<% end %>
+							]
+						});
+					</script>
+				<% end %>
+			</div>
+		</section>
+		
+	</div>
+</article>
+<!-- \Trainnings Calendar Block -->
+
+<!-- Trainnings Basic Stats Block -->
+<article class="quarter-block clearrm">
+	<div class="article-container">
+		
+		<header>
+			<h2>Información básica</h2>
+		</header>
+		
+		<section>
+			<ul class="stats-summary">
+				<li>
+					<strong class="stats-count"><%= last_macro_volumen %></strong>
+					<p>Volumen Macro actual (<%= max_macro = current_user.trainnings.max_macro || "0" %>)</p>
+				</li>
+				
+				<li>
+					<strong class="stats-count"><%= last_macro_carga %></strong>
+					<p>Carga Macro actual (<%= max_macro %>)</p>
+				</li>
+			</ul>
+			<br />
+			<p>El <strong>índice de Mujika (ISFA)</strong> permite definir la intensidad de cada zona objetivo del entrenamiento utilizada y valorar el esfuerzo realizado por el nadador durante una sesión de entrenamiento de la resistencia. Mediante el mismo se pretenden controlar los procesos de carga y descarga dentro de los diferentes ciclos del entrenamiento.</p>
+			<p>Los <strong>tipos de ejercicios básicos</strong> definidos en teoría del entrenamiento comprenden los siguientes (entre paréntesis el valor del índice de Mujika para obtener su equivalente en carga):</p>
+			<ul class="list-style-checkmark"> 
+				<% ExerciseType.all.each do |c| %>
+					<li><%= c.description %> (<%= c.mujika %>)</li>
+				<% end %>				
+			</ul>
+		</section>
+		
+	</div>
+</article>
+<!-- \Trainnings Basic Stats Block -->
+
+<div class="clearfix"></div>
+
+<article class="full-block">
+	<div class="article-container">
+		
+		<header>
+			<h2>Estadísticas</h2>
+		</header>
+		
+		<section>
+			<div class="sidetabs">
+				<nav class="sidetab-switch">
+					<ul>
+						<li><a class="default-sidetab" href="#sidetab1b">Últimas sesiones (vol/carga)</a></li>
+						<li><a href="#sidetab2b">Volumen por tipo de ejercicio</a></li>
+						<li><a href="#sidetab3b">Carga por tipo de ejercicio</a></li>
+					</ul>
+				</nav>
+				
+				<!-- Gráfica volumen y carga de 12 últimas sesiones -->
+				<div class="sidetab default-sidetab" id="sidetab1b">
+					<h3>Volumen y carga de los últimos entrenamientos</h3>
+					
+					<table class="data" data-chart="line">
+						<thead>
+							<tr>
+								<% @last_12_trainnings.each do |tr| %>
+									<th scope="col"><%= tr.strftime("%d/%b") %></th>
+								<% end %>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Volumen</th>
+								<% @last_12_trainnings.each do |tr| %>
+									<td><%= trainning_volumen current_user.trainnings.find_by_date(tr) %></td>
+								<% end %>								
+							</tr>
+							
+							<tr>
+								<th scope="row">Carga</th>
+								<% @last_12_trainnings.each do |tr| %>
+									<td><%= trainning_carga current_user.trainnings.find_by_date(tr) %></td>
+								<% end %>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- /Gráfica volumen y carga de 12 últimas sesiones -->
+				
+				<!-- Gráfica volumen por tipo de ejercicio -->
+				<div class="sidetab" id="sidetab2b">
+					<h3>Volumen de los últimos entrenamientos por tipo de ejercicio</h3>
+					
+					<table class="data" data-chart="bar">
+						<thead>
+							<tr>
+								<% @last_12_trainnings.each do |tr| %>
+									<th scope="col"><%= tr.strftime("%d/%b") %></th>
+								<% end %>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<% ExerciseType.all.each do |e| %>
+								<tr>
+									<th scope="row"><%= e.description %></th>
+									<% @last_12_trainnings.each do |tr| %>
+										<td>
+											<%= volumen_or_carga_by_exercise(tr, e.id, "volumen") %>
+										</td>
+									<% end %>								
+								</tr>
+							<% end %>							
+						</tbody>
+					</table>
+				</div>
+				<!-- /Gráfica volumen por tipo de ejercicio -->
+				
+				<!-- Gráfica carga por tipo de ejercicio -->
+				<div class="sidetab" id="sidetab3b">
+					<h3>Carga de los últimos entrenamientos por tipo de ejercicio</h3>
+					<table class="data2" data-chart="bar">
+						<thead>
+							<tr>
+								<% @last_12_trainnings.each do |tr| %>
+									<th scope="col"><%= tr.strftime("%d/%b") %></th>
+								<% end %>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<% ExerciseType.all.each do |e| %>
+								<tr>
+									<th scope="row"><%= e.description %></th>
+									<% @last_12_trainnings.each do |tr| %>
+										<td>
+											<%= volumen_or_carga_by_exercise(tr, e.id, "carga") %>
+										</td>
+									<% end %>								
+								</tr>
+							<% end %>							
+						</tbody>
+					</table>
+				</div>
+				<!-- /Gráfica carga por tipo de ejercicio -->
+				
+			</div>			
+		</section>
+		
+	</div>
+</article>

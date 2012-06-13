@@ -1,0 +1,191 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Competiciones', competitions_path %></li>
+	<li>Ver lista de competiciones</li>
+</ul>
+
+<!-- Article Full Content Block -->
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Gestión de Competiciones</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir competición', new_competition_path, :class => "button" %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			
+			<div class="sidetabs">
+				<nav class="sidetab-switch">
+					<ul>
+						<li><%= link_to 'Todos', '#sidetab1a' %></li>
+						<li><%= link_to 'Mini', '#sidetab2a' %></li>
+						<li><%= link_to 'PreBenjamín', '#sidetab3a' %></li>
+						<li><%= link_to 'Alevín', '#sidetab4a' %></li>
+						<li><%= link_to 'Infantil', '#sidetab5a' %></li>
+						<li><%= link_to 'Junior', '#sidetab6a' %></li>
+						<li><%= link_to 'Absoluto', '#sidetab7a' %></li>
+						<li><%= link_to 'Master', '#sidetab8a' %></li>
+						<p>Se muestran las competiciones insertadas en el sistema por un entrenador y su equipo técnico.</p>
+					</ul>
+				</nav>
+			
+				<div class="sidetab default-sidetab" id="sidetab1a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.all %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab2a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.mini %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab3a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.preb %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab4a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.ale %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab5a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.inf %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab6a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.jun %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab7a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.abs %>
+						</tbody>			
+					</table>
+				</div>
+				
+				<div class="sidetab" id="sidetab8a">
+					<table class="datatable">
+					  <%= render 'thead_table_index' %>
+
+						<tbody>
+							<%= render :partial => "competition", :collection => @competitions.mast %>
+						</tbody>			
+					</table>
+				</div>
+							
+			</div>			
+			
+		</section>
+		
+	</div>
+
+</article>
+<!-- \Article Full Content Block -->
+
+<br />
+<!-- Article Full Content Block 2 -->
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Calendario y estadísticas</h2>
+		</header>
+		
+		<section>
+			<div class="sidetabs">
+				
+				<nav class="sidetab-switch">
+					<ul>
+						<li><%= link_to 'Calendario', '#sidetab1b', :class => "default-sidetab" %></li>
+					</ul>
+				</nav>
+				
+				<!-- jquery Full Calendar Sidetab Content -->
+				<div class="sidetab default-sidetab" id="sidetab1b">
+					<h3>Calendario de competiciones</h3>
+					
+					<!-- jQuery Full Calendar Plugin -->
+					<div class="fullcalendar"></div>
+					<!-- /jQuery Full Calendar Plugin -->
+					<% content_for :fullcalendar_script do %>
+						<script type="text/javascript">
+							//jQuery Full Calendar
+							//var date = new Date(); // date must be with this format: '2010-10-02'
+							//var d = date.getDate();
+							//var m = date.getMonth();
+							//var y = date.getFullYear();
+
+							$('.fullcalendar').fullCalendar({
+								header: {
+									left: 'prev,next today',
+									center: 'title',
+									right: 'month,basicWeek'
+								},
+								editable: true,
+								firstDay: 1,
+								events: [
+									<% @competitions.each do |competition| %>
+										{
+											title: '<%= competition.title %>',
+											start: '<%= competition.date_competition.strftime("%Y/%m/%d") %>',
+											allDay: true, 
+											url: '<%= competition_path(competition) %>',
+											color: '<%= Category.where(:name => competition.category).first.color_hex %>'
+										},
+									<% end %>
+								]
+							});
+						</script>
+					<% end %>
+					
+					
+				</div>
+				<!-- \jquery Full Calendar Sidetab Content -->
+			
+			</div>
+		</section>
+		
+	</div>
+</article>
+<!-- \Article Full Content Block 2 -->

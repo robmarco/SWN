@@ -1,0 +1,39 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Diario de incidencias', incidents_path %></li>
+	<li>Ver lista de incidencias</li>
+</ul>
+
+<!-- Article Full Block - Incidences table -->
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Gestión del diario de incidencias</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir incidencia', new_incident_path, :class => 'button' %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<table class="datatable">
+			  <thead>
+			  	<tr>
+				    <th>Fecha</th>
+				    <th>Título</th>
+				    <th>Descripción</th>
+				    <th>Acción</th>
+				  </tr>
+			  </thead>
+				
+				<tbody>
+					<%= render :partial => "incident", :collection => @incidents %>
+				</tbody>
+			</table>
+		</section>
+		
+	</div>
+</article>
+<!-- \Article Full Block - Incidences table -->

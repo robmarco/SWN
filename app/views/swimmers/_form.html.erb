@@ -1,0 +1,131 @@
+<%= form_for(@swimmer) do |f| %>
+  <% if @swimmer.errors.any? %>
+    <div id="error_explanation">
+			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
+      <h2><%= pluralize(@swimmer.errors.count, "error") %> prohibited this swimmer from being saved:</h2>
+
+      <ul>
+      <% @swimmer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<fieldset>
+		<legend>Datos personales</legend>
+		
+		<dl>
+			<dt><%= f.label :name, "Nombre*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dd><%= f.text_field :name, :class => "medium" %></dd>
+			<dt><%= f.label :secname, "Apellidos*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dd><%= f.text_field :secname, :class => "medium" %></dd>
+			<dt><%= f.label :genre, "Género*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dd>
+				<% if params[:action]=="edit" %>
+					<%= f.select :genre, options_for_select(["Masculino", "Femenino"], @swimmer.genre), {:prompt => "Seleccionar "}  %>
+				<% else %>
+					<%= f.select :genre, options_for_select(["Masculino", "Femenino"]), {:prompt => "Seleccionar "}  %>
+				<% end %>				
+			</dd>
+			<dt><%= f.label :licence, "Licencia*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dd><%= f.text_field :licence, :class => "small" %></dd>
+			
+			<!-- Born Field-->
+			<dt><%= f.label :born, "Fecha Nacimiento*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dd>
+				<% if params[:action]=="edit" %>
+					<%= f.text_field :born, :value => @swimmer.born.strftime("%d/%m/%Y"), :class => "datepicker small" %>
+				<% else %>
+					<%= f.text_field :born, :class => "datepicker small" %>
+				<% end %>
+			</dd>
+			<!-- /Born Field-->
+			
+			<!-- Category Field -->
+			<dt><%= f.label :category, "Categoría*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dd>
+				<% if params[:action] == "edit" %>
+					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), :class => "small"%>
+				<% else %>
+					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), {:prompt => "Seleccionar"}%>
+				<% end %>	
+			</dd>
+			<!-- \Category Field -->
+			
+			<!-- State Field -->
+			<dt><%= f.label :state, "Estado*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dd>
+				<% if params[:action] == "edit" %>
+					<%= f.select :state, options_from_collection_for_select(@states, "name", "name") %>
+				<% else %>
+					<%= f.select :state, options_from_collection_for_select(@states, "name", "name"), {:prompt => "Seleccionar"} %> 
+				<% end %>	
+				<p><em>Con estado no federado o baja, el nadador no podrá participar en competiciones</em></p>
+			</dd>
+			<!-- \State Field -->
+			
+		</dl>
+	
+	</fieldset>
+	
+	<fieldset>
+		<legend>Datos de contacto</legend>
+		
+		<dl>
+			<dt><%= f.label :email, "Email*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dd><%= f.text_field :email, :class => "medium" %></dd>
+			<dt><%= f.label :address, "Dirección" %></dt>
+			<dd><%= f.text_field :address, :class => "medium" %></dd>
+			<dt><%= f.label :postal, "Código Postal" %></dt>
+			<dd><%= f.text_field :postal, :class => "small" %></dd>
+			<dt><%= f.label :city, "Ciudad" %></dt>
+			<dd><%= f.text_field :city, :class => "small" %></dd>
+		
+			<!-- Country Field -->
+			<dt><%= f.label :country, "País" %></dt>
+			<dd>
+				<% if params[:action] == "edit" %>
+					<%= f.select :country, options_from_collection_for_select(@countries, "name", "name") %>
+				<% else %>
+					<%= f.select :country, options_from_collection_for_select(@countries, "name", "name"), :include_blank => true %>
+				<% end %>
+				
+			</dd>
+			<!-- \Country Field -->
+			
+			<dt><%= f.label :phone, "Teléfono" %></dt>
+			<dd><%= f.text_field :phone, :class => "small" %></dd>
+		</dl>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Datos de los padres</legend>
+		
+		<dl>
+			<dt><%= f.label :parentname, "Nombre Padre/Madre" %></dt>
+			<dd><%= f.text_field :parentname, :class => "medium" %></dd>
+			<dt><%= f.label :parentemail, "Email Padre/Madre" %><br /></dt>
+			<dd><%= f.text_field :parentemail, :class => "medium" %></dd>
+			<dt><%= f.label :parentphone, "Teléfono Padre/Madre" %></dt>
+			<dd><%= f.text_field :parentphone, :class => "small" %></dd>
+		</dl>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Otra información</legend>
+		
+		<dl>
+			<dt><%= f.label :disease, "Enfermedades" %></dt>
+			<dd>
+				<%= f.text_area :disease, :class => "wysiwyg medium" %>
+				<p>Inserte las enfermedades que padezca el niño, así como su tratamiento</p>
+			</dd>
+			<dt><%= f.label :observation, "Observaciones" %></dt>
+			<dd><%= f.text_area :observation, :class => "wysiwyg medium" %></dd>
+		</dl>
+		
+	</fieldset>
+	<div align="center"><%= f.submit 'Enviar', :class => "button" %> ó <%= link_to 'Cancelar', :back %></div>
+  
+<% end %>

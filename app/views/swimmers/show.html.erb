@@ -1,0 +1,290 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Nadadores', swimmers_path %></li>
+	<li>Id <%= @swimmer.id %></li>
+</ul>
+
+<!-- Information Block -->
+<article class="third-quarter-block">
+	<div class="article-container">
+		
+		<!-- Header  -->
+		<header>
+			<h2>
+				<%= "#{@swimmer.swimmer_name_secname}" %>
+			</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir nadador', new_swimmer_path, :class => "button" %></li>
+					<li><%= link_to 'Eliminar', swimmer_path(@swimmer), :confirm => '¿Está seguro de que desea eliminar al nadador?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Editar', edit_swimmer_path(@swimmer), :class => "button" %></li>					
+				</ul>
+			</nav>				
+		</header>
+		<!-- \Header  -->
+
+		<section>
+			<div class="sidetabs">
+				<nav class="sidetab-switch">
+					<ul>
+						<li><%= link_to 'Básico', "#sidetab1", :class => "default-sidetab" %></li>
+						<li><%= link_to 'Localización', "#sidetab2" %></li>
+						<li><%= link_to 'Enfermedades', "#sidetab3" %></li>
+					</ul>
+				</nav>
+				
+				<div class="sidetab default-sidetab" id="sidetab1">
+					<h3>Información personal del nadador</h3>
+					<form>
+						<fieldset>
+							<legend>Datos personales</legend>
+
+							<dl>
+								<dt><%= label :name, "Nombre" %></dt>
+								<dd class="text"><%= @swimmer.name %></dd>
+								<dt><%= label :secname, "Apellidos" %></dt>
+								<dd class="text"><%= @swimmer.secname %></dd>
+								<dt><%= label :licence, "Licencia" %></dt>
+								<dd class="text"><%= @swimmer.licence %></dd>
+								<dt><%= label :genre, "Género" %></dt>
+								<dd class="text"><%= @swimmer.genre %></dd>
+								<dt><%= label :born, "Año nacimiento" %></dt>
+								<dd class="text"><%= @swimmer.born.strftime("%d/%m/%Y") %></dd>
+								<dt><%= label :category, "Categoría" %></dt>
+								<dd class="text"><%= @swimmer.category %></dd>
+								<dt><%= label :state, "Estado" %></dt>
+								<dd class="text">
+									<% case @swimmer.state %>
+										<% when "Baja" %>
+											<span class='tag tag2 tag_show red'>
+										<% when "Federado" %>
+											<span class='tag tag2 tag_show green'>
+										<% when "No Federado" %>
+											<span class='tag tag2 tag_show orange'>
+									<% end %>
+									<%= @swimmer.state %></span>
+								</dd>
+							</dl>
+						</fieldset>
+
+					</form>
+					
+				</div>
+				
+				<div class="sidetab" id="sidetab2">
+
+					<h3>Información de localización</h3>
+					<form>
+						<fieldset>
+
+							<dl>
+								<dt><%= label :address, "Dirección" %></dt>
+								<dd class="text"><%= @swimmer.address.nil? ? "-" : @swimmer.address  %></dd>
+								<dt><%= label :postal, "Código Postal" %></dt>
+								<dd class="text"><%= @swimmer.postal.nil? ? "-" : @swimmer.postal  %></dd>
+								<dt><%= label :city, "Ciudad" %></dt>
+								<dd class="text"><%= @swimmer.city.nil? ? "-" : @swimmer.city  %></dd>
+								<dt><%= label :country, "País" %></dt>
+								<dd class="text"><%= @swimmer.country  %></dd>
+								<dt><%= label :phone, "Teléfono" %></dt>
+								<dd class="text"><%= @swimmer.phone.nil? ? "-" : @swimmer.phone  %></dd>
+								<dt><%= label :parentphone, "Teléfono Padre/Madre" %></dt>
+								<dd class="text"><%= @swimmer.parentphone.nil? ? "-" : @swimmer.parentphone  %></dd>
+							</dl>
+						</fieldset>
+					
+					</form>
+					
+				</div>
+				
+				<div class="sidetab" id="sidetab3">
+					<h3>Enfermedades y observaciones</h3>
+					<form>
+						<fieldset>
+							<dl>
+								<p><strong><%= label :disease, "Enfermedades" %></strong></p>
+								<textarea rows="5" cols="40" class="wysiwyg large"><%= @swimmer.disease %></textarea>
+								<br />
+								<p><strong><%= label :observation, "Observaciones" %></strong></p>
+								<textarea rows="5" cols="40" class="wysiwyg large"><%= @swimmer.observation %></textarea>
+								<br />
+							</dl>
+						</fieldset>
+					</form>
+				</div>
+				
+			</div>		
+			
+		</section>
+		
+	</div>
+</article>
+<!-- \Information Block -->
+
+<!-- Extra information block -->
+<article class="quarter-block clearrm">
+	<div class="article-container">
+		
+		<header>
+			<h2>Contacto</h2>
+		</header>
+		<section>
+			<!-- Contacts -->
+			<ul class="contacts">
+				<li>
+					<img src="/images/sample_user.png" alt="">
+					<a href="#" class="contacts-user"><%= @swimmer.swimmer_name_secname %></a>
+					<em><%= @swimmer.email %></em>
+					<ul>
+						<li><a class="button-link" href="#">Enviar email</a></li>
+					</ul>
+				</li>
+				
+				<% if !@swimmer.parentname.blank? %>
+				<li>
+					<img src="/images/sample_user.png" alt="">
+					<a href="#" class="contacts-user"><%= @swimmer.parentname %></a>
+					<em>Padres del nadador</em>
+					<% if !@swimmer.parentemail.blank? %>
+					<em><%= @swimmer.parentemail %></em>
+					<ul>
+						<li><a class="button-link" href="#">Enviar email</a></li>
+					</ul>
+					<% end %>					
+				</li>
+				<% end %>
+			</ul>
+			<!-- /Contacts -->
+		</section>
+	
+	</div>
+</article>
+<!-- \Extra information block -->
+
+<!-- Competition and test results Block -->
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Competiciones y test</h2>
+			<nav>
+				<ul class="tab-switch">
+					<li><%= link_to 'Competiciones', '#tab1', :class => "default-tab" %></li>
+					<li><%= link_to 'Test', '#tab2' %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+		
+			<!-- Competition tab -->
+				<div class="tab default-tab" id="tab1">
+					<div class="sidetabs">
+						<nav class="sidetab-switch">
+							<ul>
+								<li><%= link_to 'Resultados', '#sidetab1b', :class => "default-sidetab" %></li>
+								<li><%= link_to 'Estadísticas', '#sidetab2b' %></li>
+							</ul>
+						</nav>
+						
+						<!-- Competition Results Sidetab -->
+						<div class="sidetab default-sidetab" id="sidetab1b">
+							<h3>Resultados del nadador en competiciones</h3>
+							<table class="datatable">
+								<thead>
+									<tr>
+										<th>Fecha</th>
+										<th>Lugar</th>
+										<th>Prueba</th>
+										<th>Tiempo</th>
+										<th>Acción</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% if @swimmer_competition_results.size > 0 %>
+										<% @swimmer_competition_results.each do |competition_result| %>
+											<tr>
+												<td><%= competition_result.competition.date_competition.strftime("%d/%m/%Y") %></td>
+												<td><%= link_to "#{competition_result.competition.title} (#{competition_result.competition.pool_dist})", competition_path(competition_result.competition)%></td>
+												<td><%= competition_result.competition_set.name %></td>
+												<td>
+													<%= competition_result.time_result %> 
+													<span id="evolution"><%= increase_decrease_time(competition_result) %></span>
+												</td>
+												<td><ul class="actions"><li><%= link_to 'ver', competition_path(competition_result.competition), :class => "view", :title => "Ver competición", :rel => "tooltip" %></li></ul></td>
+											</tr>
+										<% end %>
+									<% end %>
+								</tbody>
+							</table>
+						</div>
+						<!-- \Competition Results Sidetab -->
+						
+						<!-- Competition Statistics Sidetab -->
+						<div class="sidetab" id="sidetab2b">
+							
+						</div>
+						<!-- \Competition Statistics Sidetab -->
+						
+					</div>
+				</div>
+			<!-- \Competition tab -->
+			
+			<!-- Test tab -->
+				<div class="tab" id="tab2">
+					<div class="sidetabs">
+						<nav class="sidetab-switch">
+							<ul>
+								<li><%= link_to 'Resultados', '#sidetab3b', :class => "default-sidetab" %></li>
+								<li><%= link_to 'Estadísticas', '#sidetab4b' %></li>
+							</ul>
+						</nav>
+						
+						<!-- Test Results Sidetab -->
+						<div class="sidetab default-sidetab" id="sidetab3b">
+							<h3>Resultados del nadador en test preparatorios</h3>
+							<table class="datatable">
+								<thead>
+									<tr>
+										<th>Fecha</th>
+										<th>Título</th>
+										<th>Tipo</th>
+										<th>Valor</th>
+										<th>Acción</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% if @swimmer_trial_results.size > 0 %>
+										<% @swimmer_trial_results.each do |trial_result| %>
+											<tr>
+												<td><%= trial_result.trial.date_trial.strftime("%d/%m/%Y") %></td>
+												<td><%= trial_result.trial.title %></td>
+												<td><%= trial_result.trial.trial_category.name %></td>
+												<td><%= trial_result.trial_value %> <%= "#{trial_result.trial.trial_category.type_value}" %></td>
+												<td><ul class="actions"><li><%= link_to 'ver', trial_path(trial_result.trial), :class => "view", :title => "Ver test", :rel => "tooltip" %></li></ul></td>
+											</tr>
+										<% end %>
+									<% end %>
+								</tbody>
+							</table>
+						</div>
+						<!-- \Test Results Sidetab -->
+						
+						<!-- Test Statistics Sidetab -->
+						<div class="sidetab" id="sidetab4b">
+							
+						</div>
+						<!-- \Test Statistics Sidetab -->
+						
+					</div>
+				</div>
+			<!-- \Test tab -->
+		
+		</section>
+		
+	</div>
+</article>
+<!-- \Competition and test results Block -->
+
+<%= link_to 'Ir Atrás', swimmers_path, :class => "button right" %>
+<br />	

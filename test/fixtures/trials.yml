@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: trials
+#
+#  id                :integer         not null, primary key
+#  date_trial        :date
+#  title             :string(255)
+#  user_id           :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#  trial_category_id :integer
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date_trial: 2011-10-26
+  title: MyString
+  user_id: 1
+
+two:
+  date_trial: 2011-10-26
+  title: MyString
+  user_id: 1

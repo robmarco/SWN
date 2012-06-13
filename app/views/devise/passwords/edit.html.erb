@@ -1,0 +1,24 @@
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
+
+	<fieldset>
+  	<legend>Change your password</legend>
+		<dl>
+			<dt>
+				<label>New password</label>
+			</dt>
+			<dd>
+				<%= f.password_field :password, :class => 'large' %>
+			</dd>
+			<dt>
+				<label>Confirm password</label>
+			</dt>
+			<dd>
+				<%= f.password_field :password_confirmation, :class => 'large' %>
+			</dd>			
+		</dl>
+  </fieldset>
+
+  <%= f.submit "Change my password", :class => 'button right' %>
+<% end %>

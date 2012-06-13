@@ -24,11 +24,17 @@
 
 class Account < ActiveRecord::Base
   belongs_to :user
-  validates_presence_of :name, :secname
-  
+    
   attr_accessible :user_id, :name, :secname, :dni, :club, :web, :phone, :address, :city, :country, :postal, :photo
   
   # User photo added to the account
-  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "56x56>" }
+  has_attached_file :photo, :styles => { :thumb => "56x56" },
+                            :url => "/avatars/:user_id/:hash.:extension",
+                            :hash_secret => "MzyHiTs36IARoAbX6FR7sC7pLrkpIm4u4oafNsY1nK0q9dQkWjBIVSiUgGVlBvW"
+  
+  validates_presence_of :name, :secname
+  validates_attachment_content_type :photo,  :content_type => ["image/jpg", "image/png", "image/gif"]
+  validates_attachment_size :photo, :in => 0..2.megabytes
+
   
 end

@@ -2,7 +2,7 @@
 <section role="navigation">
 	<!-- Header with logo and headline -->
 	<header>
-		<%= link_to '', root_path, :title => "Back to Homepage" %>
+		<%= link_to '', root_path, :title => "Ir a página de inicio" %>
 		<h1>Software de Gestión Deportiva para entrenadores de natación</h1>
 	</header>
 	
@@ -15,7 +15,7 @@
 		<% end %>
 		
 		<div>
-			<a href="#" title="Configuración de cuenta">¡Hola <%= current_user.name if user_signed_in? %>!</a>
+			<%= link_to "¡Hola #{current_user.name if user_signed_in?}!", root_path, :title => "Configuración de cuenta" %>
 			<em>Entrenador</em>
 			<ul>
 				<li><a class="button-link" href="#" title="¡Web del Club!" rel="tooltip">ver sitio web</a></li>

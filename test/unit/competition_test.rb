@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: competitions
@@ -14,6 +15,8 @@
 #  updated_at       :datetime
 #
 
+=======
+>>>>>>> origin/master
 require 'test_helper'
 
 class CompetitionTest < ActiveSupport::TestCase

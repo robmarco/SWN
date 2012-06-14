@@ -16,8 +16,12 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1.xml
   def show
     @competition = current_user.competitions.find(params[:id])
+<<<<<<< HEAD
     @competition_results = @competition.competition_results
     
+=======
+
+>>>>>>> origin/master
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @competition }

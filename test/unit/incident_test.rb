@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: incidents
@@ -11,6 +12,8 @@
 #  updated_at    :datetime
 #
 
+=======
+>>>>>>> origin/master
 require 'test_helper'
 
 class IncidentTest < ActiveSupport::TestCase

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: states
@@ -8,6 +9,8 @@
 #  updated_at :datetime
 #
 
+=======
+>>>>>>> origin/master
 class State < ActiveRecord::Base
   validates_uniqueness_of :name
 end

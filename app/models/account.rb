@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: accounts
@@ -37,4 +38,8 @@ class Account < ActiveRecord::Base
   validates_attachment_size :photo, :in => 0..2.megabytes
 
   
+=======
+class Account < ActiveRecord::Base
+  validates_presence_of :name, :secname
+>>>>>>> origin/master
 end

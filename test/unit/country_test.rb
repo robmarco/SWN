@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: countries
@@ -9,6 +10,8 @@
 #  updated_at :datetime
 #
 
+=======
+>>>>>>> origin/master
 require 'test_helper'
 
 class CountryTest < ActiveSupport::TestCase

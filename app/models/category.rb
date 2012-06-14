@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: categories
@@ -10,6 +11,8 @@
 #  color_hex  :string(255)
 #
 
+=======
+>>>>>>> origin/master
 class Category < ActiveRecord::Base
   validates_uniqueness_of :name
 end

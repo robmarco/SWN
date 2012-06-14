@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: incidents
@@ -11,6 +12,8 @@
 #  updated_at    :datetime
 #
 
+=======
+>>>>>>> origin/master
 class Incident < ActiveRecord::Base
   before_update :add_to_recent_activity_update
   after_create :add_to_recent_activity_create

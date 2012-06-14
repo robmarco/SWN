@@ -72,7 +72,11 @@
 			<ul class="stats-summary">
 				<li>
 					<strong class="stats-count"><%= last_macro_volumen %></strong>
+<<<<<<< HEAD
 					<p>Volumen Macro actual (<%= max_macro = current_user.trainnings.max_macro || "0" %>)</p>
+=======
+					<p>Volumen Macro actual (<%= max_macro = current_user.trainnings.maximum("macro") || "0" %>)</p>
+>>>>>>> origin/master
 				</li>
 				
 				<li>
@@ -129,14 +133,22 @@
 							<tr>
 								<th scope="row">Volumen</th>
 								<% @last_12_trainnings.each do |tr| %>
+<<<<<<< HEAD
 									<td><%= trainning_volumen current_user.trainnings.find_by_date(tr) %></td>
+=======
+									<td><%= trainning_volumen current_user.trainnings.where(:date_trainning => tr) %></td>
+>>>>>>> origin/master
 								<% end %>								
 							</tr>
 							
 							<tr>
 								<th scope="row">Carga</th>
 								<% @last_12_trainnings.each do |tr| %>
+<<<<<<< HEAD
 									<td><%= trainning_carga current_user.trainnings.find_by_date(tr) %></td>
+=======
+									<td><%= trainning_carga current_user.trainnings.where(:date_trainning => tr) %></td>
+>>>>>>> origin/master
 								<% end %>
 							</tr>
 						</tbody>
@@ -163,7 +175,11 @@
 									<th scope="row"><%= e.description %></th>
 									<% @last_12_trainnings.each do |tr| %>
 										<td>
+<<<<<<< HEAD
 											<%= volumen_or_carga_by_exercise(tr, e.id, "volumen") %>
+=======
+											<%= vol_trainnig_for_exercise(tr, e.id, 12,"volumen") %>
+>>>>>>> origin/master
 										</td>
 									<% end %>								
 								</tr>
@@ -191,7 +207,11 @@
 									<th scope="row"><%= e.description %></th>
 									<% @last_12_trainnings.each do |tr| %>
 										<td>
+<<<<<<< HEAD
 											<%= volumen_or_carga_by_exercise(tr, e.id, "carga") %>
+=======
+											<%= vol_trainnig_for_exercise(tr, e.id, 12,"carga") %>
+>>>>>>> origin/master
 										</td>
 									<% end %>								
 								</tr>

@@ -2,12 +2,17 @@
 <section role="navigation">
 	<!-- Header with logo and headline -->
 	<header>
+<<<<<<< HEAD
 		<%= link_to '', root_path, :title => "Ir a página de inicio" %>
+=======
+		<%= link_to '', root_path, :title => "Back to Homepage" %>
+>>>>>>> origin/master
 		<h1>Software de Gestión Deportiva para entrenadores de natación</h1>
 	</header>
 	
 	<!-- User Info -->
 	<section id="user-info">
+<<<<<<< HEAD
 		<% if user_signed_in? and current_user.photo? %>
 			<%= image_tag current_user.account.photo(:thumb) %>
 		<% else  %>
@@ -16,6 +21,11 @@
 		
 		<div>
 			<%= link_to "¡Hola #{current_user.name if user_signed_in?}!", root_path, :title => "Configuración de cuenta" %>
+=======
+		<img src="/images/sample_user.png" alt="User Avatar">
+		<div>
+			<a href="#" title="Configuración de cuenta">Robert Tester</a>
+>>>>>>> origin/master
 			<em>Entrenador</em>
 			<ul>
 				<li><a class="button-link" href="#" title="¡Web del Club!" rel="tooltip">ver sitio web</a></li>
@@ -74,7 +84,11 @@
 				<% if !user_signed_in? %>
 					<%= link_to 'Configuración', '#', :class => 'articles no-submenu' %>
 				<% else %>
+<<<<<<< HEAD
 					<%= link_to 'Configuración', edit_account_path(current_user.account), :class => 'articles no-submenu' %>
+=======
+					<%= link_to 'Configuración', edit_account_path(current_user), :class => 'articles no-submenu' %>
+>>>>>>> origin/master
 				<% end %>
 				
 			</li>

@@ -1,4 +1,5 @@
 # encoding: utf-8
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: trials
@@ -12,6 +13,8 @@
 #  trial_category_id :integer
 #
 
+=======
+>>>>>>> origin/master
 
 class Trial < ActiveRecord::Base
   before_update :add_to_recent_activity_update

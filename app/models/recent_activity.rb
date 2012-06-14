@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: recent_activities
@@ -12,6 +13,8 @@
 #  description :string(255)
 #
 
+=======
+>>>>>>> origin/master
 class RecentActivity < ActiveRecord::Base
   belongs_to :user
   

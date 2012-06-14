@@ -1,15 +1,30 @@
 class AccountsController < ApplicationController
   before_filter :authenticate_user!
+<<<<<<< HEAD
 
   def create
     @account = current_user.account.create(params[:account])
     @country = Country.all
   end
+=======
+>>>>>>> origin/master
   
   # GET /accounts/1/edit
   def edit
     @account = Account.find(params[:id])
+<<<<<<< HEAD
     @country = Country.all        
+=======
+    @country = Country.all
+    
+    if params[:photo]
+      uploaded_io = params[:account][:photo]
+      File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'w') do |file|
+        file.write(uploaded_io.read)
+      end
+    end
+    
+>>>>>>> origin/master
   end
 
   # PUT /accounts/1
@@ -18,9 +33,18 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
     @country = Country.all
 
+<<<<<<< HEAD
     respond_to do |format|
       if @account.update_attributes(params[:account])
         format.html { redirect_to( edit_account_url, :notice => 'Account was successfully updated.') }
+=======
+    uploaded_io = params[:account][:photo]
+
+    
+    respond_to do |format|
+      if @account.update_attributes(params[:account])
+        format.html { redirect_to( dashboard_url, :notice => 'Account was successfully updated.') }
+>>>>>>> origin/master
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -40,4 +64,14 @@ class AccountsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+<<<<<<< HEAD
+=======
+  
+  def upload
+    uploaded_io = params[:account][:photo]
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'w') do |file|
+      file.write(uploaded_io.read)
+    end
+  end
+>>>>>>> origin/master
 end

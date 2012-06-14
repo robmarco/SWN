@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: competition_sets
@@ -8,6 +9,8 @@
 #  updated_at :datetime
 #
 
+=======
+>>>>>>> origin/master
 class CompetitionSet < ActiveRecord::Base
   validates_uniqueness_of :name
   has_many :competition_results

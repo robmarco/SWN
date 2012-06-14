@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: trainnings
@@ -12,6 +13,8 @@
 #  updated_at     :datetime
 #
 
+=======
+>>>>>>> origin/master
 class Trainning < ActiveRecord::Base
   before_update :add_to_recent_activity_update
   after_create :add_to_recent_activity_create
@@ -27,9 +30,12 @@ class Trainning < ActiveRecord::Base
 
   validates_presence_of :micro, :macro, :date_trainning
   
+<<<<<<< HEAD
   scope :last_micro, where(:micro => self.maximum("micro"))
   scope :last_macro, where(:macro => self.maximum("macro"))
   
+=======
+>>>>>>> origin/master
   def volumen
     vol=0
     self.trainning_exercises.each do |t|
@@ -46,6 +52,7 @@ class Trainning < ActiveRecord::Base
     carga
   end
   
+<<<<<<< HEAD
   def self.find_by_date(date)
     self.where(:date_trainning => date)
   end
@@ -58,6 +65,8 @@ class Trainning < ActiveRecord::Base
     self.maximum("micro")
   end
   
+=======
+>>>>>>> origin/master
   private
   
   def add_to_recent_activity_update

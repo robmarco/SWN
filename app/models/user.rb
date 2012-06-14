@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: users
@@ -18,6 +19,11 @@
 #
 
 class User < ActiveRecord::Base  
+=======
+class User < ActiveRecord::Base
+  after_create :create_account
+  
+>>>>>>> origin/master
   has_one :account, :dependent => :destroy
   has_many :recent_activities, :dependent => :destroy
   has_many :swimmers, :dependent => :destroy
@@ -32,6 +38,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
+<<<<<<< HEAD
   attr_accessible :email, :password, :password_confirmation, :remember_me, :account_attributes
   
   accepts_nested_attributes_for :account
@@ -49,4 +56,15 @@ class User < ActiveRecord::Base
     self.account.photo?
   end
     
+=======
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  private
+  
+  def create_account
+    @account = build_account
+    @account.save 
+  end
+  
+>>>>>>> origin/master
 end

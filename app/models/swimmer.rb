@@ -1,4 +1,5 @@
 # encoding: utf-8
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: swimmers
@@ -27,6 +28,8 @@
 #  genre       :string(255)
 #
 
+=======
+>>>>>>> origin/master
 
 class Swimmer < ActiveRecord::Base
   before_update :add_to_recent_activity_update
@@ -44,8 +47,11 @@ class Swimmer < ActiveRecord::Base
   scope :female, where(:genre => "Femenino")
   scope :male, where(:genre => "Masculino")
   scope :federado, where(:state => "Federado")
+<<<<<<< HEAD
   scope :no_federado, where(:state => "No Federado")
   scope :baja, where(:state => "Baja")
+=======
+>>>>>>> origin/master
   
   def swimmer_name_secname
     name + ' ' + secname

@@ -2,6 +2,7 @@
 	<fieldset>
 		<legend>Datos de acceso</legend>
 		<dl>
+<<<<<<< HEAD
 			<dt><%= f.label :email %></dt>
 			<dd><%= f.email_field :email, :class => 'large' %></dd>
 			<dt><%= f.label :password %></dt>
@@ -9,12 +10,32 @@
 			
 			<% if devise_mapping.rememberable? -%>
 		    <dt class="checkbox"><label>Recordarme</label></dt>
+=======
+			<dt>
+				<label>Login</label>
+			</dt>
+			<dd>
+				<%= f.email_field :email, :class => 'large' %>
+			</dd>
+			<dt>
+				<label>Password</label>
+			</dt>
+			<dd>
+				<%= f.password_field :password, :class => 'large' %>
+			</dd>
+			<% if devise_mapping.rememberable? -%>
+		    <dt class="checkbox"><label>Remeber me</label></dt>
+>>>>>>> origin/master
 				<dd><%= f.check_box :remember_me %></dd>
 		  <% end -%>
 			
 		</dl>
 	</fieldset>
+<<<<<<< HEAD
 	<%= f.submit "Acceder", :class => 'button right' %>
+=======
+	<%= f.submit "Sign in", :class => 'button right' %>
+>>>>>>> origin/master
 <% end %>
 		
 		

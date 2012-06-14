@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: accounts
@@ -22,6 +23,8 @@
 #  photo_updated_at   :datetime
 #
 
+=======
+>>>>>>> origin/master
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:

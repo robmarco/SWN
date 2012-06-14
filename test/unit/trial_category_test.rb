@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: trial_categories
@@ -12,6 +13,8 @@
 #  color_hex   :string(255)
 #
 
+=======
+>>>>>>> origin/master
 require 'test_helper'
 
 class TrialCategoryTest < ActiveSupport::TestCase

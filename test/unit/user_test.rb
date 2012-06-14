@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: users
@@ -18,8 +17,6 @@
 #  updated_at             :datetime
 #
 
-=======
->>>>>>> origin/master
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase

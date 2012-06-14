@@ -1,5 +1,4 @@
 # encoding: utf-8
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: competitions
@@ -16,8 +15,6 @@
 #  updated_at       :datetime
 #
 
-=======
->>>>>>> origin/master
 
 class Competition < ActiveRecord::Base  
   before_update :add_to_recent_activity_update
@@ -39,11 +36,8 @@ class Competition < ActiveRecord::Base
   scope :jun, where(:category => "Junior")
   scope :abs, where(:category => "Absoluto")
   scope :mast, where(:category => "Master")
-<<<<<<< HEAD
   scope :short_pool, where(:pool_dist => "25m")
   scope :long_pool, where(:pool_dist => "50m")
-=======
->>>>>>> origin/master
   # ------------------------------------
   
   validates_presence_of :date_competition, :title, :place, :chrono_type, :pool_dist, :category

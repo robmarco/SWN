@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: trial_results
@@ -12,8 +11,6 @@
 #  updated_at  :datetime
 #
 
-=======
->>>>>>> origin/master
 require 'test_helper'
 
 class TrialResultTest < ActiveSupport::TestCase

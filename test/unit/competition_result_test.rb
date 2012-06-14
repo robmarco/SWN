@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: competition_results
@@ -14,8 +13,6 @@
 #  updated_at         :datetime
 #
 
-=======
->>>>>>> origin/master
 require 'test_helper'
 
 class CompetitionResultTest < ActiveSupport::TestCase

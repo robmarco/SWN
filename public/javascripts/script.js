@@ -18,16 +18,12 @@ $(function () {
 	$('.wysiwyg').wysiwyg({ iFrameClass:'wysiwyg-iframe' });
 	
 	// jQuery dataTables
-<<<<<<< HEAD
 	$('.dt_swimmer_results').dataTable({
 		"aaSorting": [[ 0, "desc" ], [1, "desc"], [2, "asc"]]
 	});
 	
 	$('.datatable').dataTable();
 	
-=======
-	$('.datatable').dataTable();
->>>>>>> origin/master
 
 	// jQuery Custome File Input
 	$('.fileupload').customFileInput();
@@ -166,11 +162,7 @@ $(function () {
 		function() { $(this).find('.image-actions').fadeOut(100); } // Hide actions menu
 	);
 
-<<<<<<< HEAD
 	// Tickets
-=======
-		// Tickets
->>>>>>> origin/master
 	$('.tickets .ticket-details').hide(); // Hide all ticket details
 	$('.tickets .ticket-open-details').click( // On click hide all ticket details content and open clicked one
 		function() {
@@ -301,11 +293,7 @@ $(function () {
 	
 	// jQuery Masked input selectors
 	$("input#time_type_masked").live("focusin", function() {
-<<<<<<< HEAD
 		$(this).mask("59:59:99")
-=======
-		$(this).mask("99:99:99")
->>>>>>> origin/master
 	});
 	
 	$(".phone_mask").mask("(999) 99 99 99");
@@ -324,11 +312,7 @@ $(function () {
 		});
 		
 	});
-<<<<<<< HEAD
 		
-=======
-	
->>>>>>> origin/master
 	// Notification error fadeOut
 	$("div.notification.success").fadeOut(5000, function(){});
 });

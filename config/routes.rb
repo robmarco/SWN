@@ -1,9 +1,5 @@
 SWN::Application.routes.draw do
-<<<<<<< HEAD
   resources :accounts
-=======
-  resources :accounts, :only => [:edit, :update, :destroy]
->>>>>>> origin/master
 
   get "accounts/upload"
   get "dashboard/index", :as => :dashboard

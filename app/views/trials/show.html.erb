@@ -90,11 +90,7 @@
 		</header>
 		
 		<section>
-<<<<<<< HEAD
 			<table class="dt_swimmer_results">
-=======
-			<table class="datatable">
->>>>>>> origin/master
 			  <thead>
 			  	<tr>
 				    <th>Nadador</th>
@@ -109,11 +105,7 @@
 					<% if %>
 						<% @trial.trial_results.each do |res| %>
 							<tr>
-<<<<<<< HEAD
 								<td><%= link_to res.swimmer.swimmer_secname_name, swimmer_path(res.swimmer)+'#tab2' %></td>
-=======
-								<td><%= res.swimmer.swimmer_name_secname %></td>
->>>>>>> origin/master
 								<td><%= @trial.trial_category.name %></td>
 								<td><%= "#{res.trial_value} #{@trial.trial_category.type_value}" %></td>
 								<td><%= res.observation.blank? ? "Sin observaciones" : res.observation %></td>

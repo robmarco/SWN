@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: trial_categories
@@ -13,8 +12,6 @@
 #  color_hex   :string(255)
 #
 
-=======
->>>>>>> origin/master
 class TrialCategory < ActiveRecord::Base
   has_many :trials
   

@@ -16,10 +16,6 @@ ActiveRecord::Schema.define(:version => 20111120003210) do
     t.string   "name"
     t.string   "secname"
     t.string   "dni"
-<<<<<<< HEAD
-=======
-    t.date     "born"
->>>>>>> origin/master
     t.string   "club"
     t.string   "web"
     t.integer  "phone"
@@ -30,14 +26,10 @@ ActiveRecord::Schema.define(:version => 20111120003210) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-=======
-    t.string   "photo"
->>>>>>> origin/master
   end
 
   create_table "categories", :force => true do |t|

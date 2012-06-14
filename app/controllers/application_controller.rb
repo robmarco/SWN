@@ -19,8 +19,4 @@ class ApplicationController < ActionController::Base
     end
   end
   
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> origin/master

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: countries
@@ -10,8 +9,6 @@
 #  updated_at :datetime
 #
 
-=======
->>>>>>> origin/master
 class Country < ActiveRecord::Base
   validates_uniqueness_of :name
 end

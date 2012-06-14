@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: competition_results
@@ -14,13 +13,10 @@
 #  updated_at         :datetime
 #
 
-=======
->>>>>>> origin/master
 class CompetitionResult < ActiveRecord::Base
   belongs_to :competition
   belongs_to :competition_set
   belongs_to :swimmer
-<<<<<<< HEAD
 
   validates_presence_of :swimmer_id, :competition_set_id, :time_result
   
@@ -42,9 +38,4 @@ class CompetitionResult < ActiveRecord::Base
     
     (self.time_result <= best_result.time_result) ? true : false
   end
-=======
-  
-  validates_presence_of :swimmer_id, :competition_set_id, :time_result
-  
->>>>>>> origin/master
 end

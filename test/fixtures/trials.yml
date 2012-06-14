@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: trials
@@ -12,8 +11,6 @@
 #  trial_category_id :integer
 #
 
-=======
->>>>>>> origin/master
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:

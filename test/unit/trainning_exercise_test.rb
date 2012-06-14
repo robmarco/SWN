@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: trainning_exercises
@@ -15,8 +14,6 @@
 #  updated_at       :datetime
 #
 
-=======
->>>>>>> origin/master
 require 'test_helper'
 
 class TrainningExerciseTest < ActiveSupport::TestCase

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: swimmers
@@ -27,8 +26,6 @@
 #  genre       :string(255)
 #
 
-=======
->>>>>>> origin/master
 require 'test_helper'
 
 class SwimmerTest < ActiveSupport::TestCase

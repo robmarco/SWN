@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: accounts
@@ -21,8 +20,6 @@
 #  photo      :string(255)
 #
 
-=======
->>>>>>> origin/master
 require 'test_helper'
 
 class AccountTest < ActiveSupport::TestCase

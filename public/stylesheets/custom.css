@@ -11,7 +11,6 @@
 .time_result_input, .desc_input { width: 100px;}
 .observation_input { width: 300px;}
 .remove { padding-top: 12px; padding-left: 10px; display:block; height: 23px; width: 20px; border:none; }
-<<<<<<< HEAD
 .remove a { }
 a.normal { color: #666; text-decoration: none; }
 span#evolution img { 
@@ -24,6 +23,3 @@ span#evolution img {
 	margin-left: 10px;
 	
 }
-=======
-.remove a { }
->>>>>>> origin/master

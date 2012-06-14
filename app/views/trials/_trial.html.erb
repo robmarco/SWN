@@ -1,10 +1,6 @@
 <tr>
 	<td><%= trial.date_trial.strftime("%d/%m/%Y") %></td>
-<<<<<<< HEAD
   <td><b><%= link_to trial.title, trial_path(trial), :class => "normal" %></b></td>
-=======
-  <td><b><%= trial.title %></b></td>
->>>>>>> origin/master
   <td><span class="tag tag2 <%= trial.trial_category.color %>"><%= trial.trial_category.name %></span></td>
 	<td>
 		<ul class="actions">

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: exercise_types
@@ -12,8 +11,6 @@
 #  updated_at  :datetime
 #
 
-=======
->>>>>>> origin/master
 class ExerciseType < ActiveRecord::Base
   has_many :trainning_exercises
   

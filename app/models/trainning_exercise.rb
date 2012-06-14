@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: trainning_exercises
@@ -15,8 +14,6 @@
 #  updated_at       :datetime
 #
 
-=======
->>>>>>> origin/master
 class TrainningExercise < ActiveRecord::Base
   belongs_to :trainning
   belongs_to :exercise_type
@@ -31,11 +28,8 @@ class TrainningExercise < ActiveRecord::Base
     self.volumen * self.exercise_type.mujika
   end
   
-<<<<<<< HEAD
   def self.find_by_exercise_type(type)
     self.where(:exercise_type_id => type)
   end
   
-=======
->>>>>>> origin/master
 end

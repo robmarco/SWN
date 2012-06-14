@@ -10,10 +10,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'acts-as-taggable-on'
 gem 'will_paginate'
-<<<<<<< HEAD
 gem "paperclip", "~> 3.0"
-=======
->>>>>>> origin/master
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -34,15 +31,9 @@ gem "paperclip", "~> 3.0"
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-<<<<<<< HEAD
 
 group :development, :test do
   gem 'hirb'
   gem 'wirble'
   gem 'annotate', '2.4.1.beta1'
-=======
-group :development, :test do
-  gem 'hirb'
-  gem 'wirble'
->>>>>>> origin/master
 end

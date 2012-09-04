@@ -13,7 +13,7 @@
   <% end %>
 
 	<fieldset>
-		<legend>Fotografía / Avatar</legend>
+		<legend><%= t('.header_picture_avatar') %></legend>
 		<dl>
 			<dd>
 				<% if current_user.photo? %>
@@ -26,42 +26,45 @@
 	</fieldset>
 		
 	<fieldset>
-		<legend>Datos personales</legend>
+		<legend><%= t('.header_personal_information') %></legend>
 		<dl>
-			<dt><%= f.label :name, "Nombre*", :rel => 'tooltip', :title => "Campo requerido" %></dt>
+			<dt><%= f.label :name, "#{Account.human_attribute_name(:name)}*", :rel => 'tooltip', :title => t('labels.required_field') %></dt>
 			<dd><%= f.text_field :name, :class => "medium" %></dd>
 			
-			<dt><%= f.label :secname, "Apellidos*", :rel => 'tooltip', :title => "Campo requerido" %></dt>
+			<dt><%= f.label :secname, "#{Account.human_attribute_name(:secname)}*", :rel => 'tooltip', :title => t('labels.required_field') %></dt>
 			<dd><%= f.text_field :secname, :class => "medium" %></dd>
 			
-			<dt><%= f.label :dni, "DNI" %></dt>
+			<dt><%= f.label :dni %></dt>
 			<dd>
 				<%= f.text_field :dni, :class => "small" %>
 				<p>Ejemplo: 12345678-X</p>
 			</dd>
 						
-			<dt><%= f.label :club, "Club" %></dt>
+			<dt><%= f.label :club %></dt>
 			<dd><%= f.text_field :club, :class => "medium" %></dd>
 			
-			<dt><%= f.label :web, "Web" %></dt>
+			<dt><%= f.label :web %></dt>
 			<dd><%= f.text_field :web, :class => "medium" %></dd>
 		</dl>
 	</fieldset>
 
 	<fieldset>
-		<legend>Datos de contacto</legend>
+		<legend><%= t('.header_contact_information') %></legend>
 		<dl>
-			<dt><%= f.label :address, "Dirección" %></dt>
+			<dt><%= f.label :address %></dt>
 			<dd><%= f.text_field :address, :class => "medium" %></dd>
 			
-			<dt><%= f.label :city, "Ciudad" %></dt>
+			<dt><%= f.label :city %></dt>
 			<dd><%= f.text_field :city, :class => "medium" %></dd>
 			
-			<dt><%= f.label :country, "País" %></dt>
+			<dt><%= f.label :country %></dt>
 			<dd><%= f.select :country, options_from_collection_for_select(@country, :name, :name, :prompt => true, :selected => @account.country), :class => "medium" %></dd>
 			
-			<dt><%= f.label :phone, "Teléfono" %></dt>
-			<dd><%= f.text_field :phone, :class => "phone_mask small", :placeholder => "Ejemplo: (928) 70 00 00" %></dd>
+			<dt><%= f.label :phone %></dt>
+			<dd>
+				<%= f.text_field :phone, :class => "phone_mask small" %>
+				<p>Ejemplo: (928) 12 34 56 </p>
+			</dd>
 		</dl>
 	</fieldset>
 

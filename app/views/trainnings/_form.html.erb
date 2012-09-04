@@ -13,10 +13,10 @@
   <% end %>
 
 	<fieldset>
-		<legend>Datos del entrenamiento</legend>
+		<legend><%= t('trainnings.form.trainning_information') %></legend>
 		
 		<dl>
-			<dt><%= f.label :date_trainning, "Fecha" %></dt>
+			<dt><%= f.label :date_trainning %></dt>
 			<dd>
 				<% if params[:action]=="edit" %>
 					<%= f.text_field :date_trainning, :value => @trainning.date_trainning.strftime("%d/%m/%Y"), :class => "datepicker" %>
@@ -25,27 +25,27 @@
 				<% end %>
 			</dd>
 			
-			<dt><%= f.label :macro, "Macrociclo" %></dt>
+			<dt><%= f.label :macro %></dt>
 			<dd><%= f.text_field :macro, :class => "mini" %></dd>
 			
-			<dt><%= f.label :micro, "Microciclo" %></dt>
+			<dt><%= f.label :micro %></dt>
 			<dd><%= f.text_field :micro, :class => "mini" %></dd>
 		</dl>
 	</fieldset>
 
 	<!-- Trainning Exercises Block -->
 	<fieldset>
-		<legend>Ejercicios del entrenamiento</legend>
+		<legend><%= t('trainnings.form.trainning_exercises') %></legend>
 		<table>
 			<thead>
 				<tr>
 					<th></th>
-					<th>Repeticiones</th>
-					<th>Series</th>
-					<th>Metros</th>
-					<th>Estilo</th>
-					<th>Tipo</th>
-					<th>Observaciones</th>
+					<th><%= TrainningExercise.human_attribute_name(:repetition) %></th>
+					<th><%= TrainningExercise.human_attribute_name(:heat) %></th>
+					<th><%= TrainningExercise.human_attribute_name(:distance) %></th>
+					<th><%= TrainningExercise.human_attribute_name(:style) %></th>
+					<th><%= TrainningExercise.human_attribute_name(:exercise_type_id) %></th>
+					<th><%= TrainningExercise.human_attribute_name(:observation) %></th>
 				</tr>
 			</thead>
 			
@@ -56,7 +56,7 @@
 			</tbody>
 			
 			<tfoot>
-				<tr><td colspan="7"><p class="res"><%= link_to_add_fields "Añadir resultado", f, :trainning_exercises %></p></td></tr>
+				<tr><td colspan="7"><p class="res"><%= link_to_add_fields "Añadir ejercicio", f, :trainning_exercises %></p></td></tr>
 				<tr><td colspan="12"><p class="res_vol">Volumen <span class="prueba">0</span> m</p></td></tr>
 				
 			</tfoot>
@@ -66,9 +66,9 @@
 	<!-- \Trainning Exercises Block -->
 
 	<fieldset>
-		<legend>Entrenamiento fuera del agua</legend>
+		<legend><%= t('trainnings.form.trainning_physics') %></legend>
 		<dl>
-			<dt><%= f.label :physical, "Física" %></dt>
+			<dt><%= f.label :physical %></dt>
 			<dd><%= f.text_area :physical, :class => "wysiwyg medium" %></dd>
 		</dl>
 	</fieldset>

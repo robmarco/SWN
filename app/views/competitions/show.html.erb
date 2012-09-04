@@ -1,6 +1,6 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Competiciones', competitions_path %></li>
+	<li><%= link_to t('competitions.breadcumbs.competitions'), competitions_path %></li>
 	<li>Id <%= @competition.id %></li>
 </ul>
 
@@ -21,18 +21,18 @@
 		<section>
 			<form>
 				<fieldset>
-					<legend>Datos del evento</legend>
+					<legend><%= t('.event_information') %></legend>
 
 					<dl>
-						<dt><%= label :competition_place, "Lugar" %></dt>
+						<dt><%= label :competition_place, Competition.human_attribute_name(:place) %></dt>
 						<dd class="text"><%= @competition.place %></dd>
 						<dt><%= label :competition_date, "Fecha de competición" %></dt>
 						<dd class="text"><%= @competition.date_competition.strftime("%d/%m/%Y") %></dd>
-						<dt><%= label :competition_pool_dist, "Tipo de Piscina" %></dt>
+						<dt><%= label :competition_pool_dist, Competition.human_attribute_name(:pool_dist) %></dt>
 						<dd class="text">De <%= @competition.pool_dist %></dd>
-						<dt><%= label :competition_chrono_type, "Tipo de Cronómetro" %></dt>
+						<dt><%= label :competition_chrono_type, Competition.human_attribute_name(:chrono_type) %></dt>
 						<dd class="text"><%= @competition.chrono_type %></dd>
-						<dt><%= label :competition_category, "Categoría" %></dt>
+						<dt><%= label :competition_category, Competition.human_attribute_name(:category) %></dt>
 						<dd class="text">
 							<span class="tag tag2 tag_show <%= Category.where('name like ?', @competition.category).map(&:color)[0] %>">
 								<%= @competition.category %>
@@ -51,7 +51,7 @@
 <article class="third-block">
 	<div class="article-container">
 		<header>
-			<h2>Estadísticas</h2>
+			<h2><%= t('.header_stats') %></h2>
 			<nav>
 				<ul class="button-switch">
 					<li><%= link_to 'Añadir Competición', new_competition_path, :class => "button" %></li>
@@ -62,33 +62,33 @@
 			<ul class="stats-summary">
 				<li>
 					<strong class="stats-count"><%= @competition_results.size %></strong>
-					<p>Total resultados añadidos</p>
+					<p><%= t('.total_results_added') %></p>
 				</li>
 				
 				<li>
 					<strong class="stats-count">
 						<%= @competition_results.map(&:swimmer_id).uniq.size %>
 					</strong>
-					<p>Total nadadores participantes</p>
+					<p><%= t('.total_swimmers_in') %></p>
 				</li>
 				
 				<li>
 					<strong class="stats-count">
 						<%= @competition_results.joins(:swimmer).merge(Swimmer.male).map(&:swimmer_id).uniq.size %>
 					</strong>
-					<p>Participantes masculinos</p>
+					<p><%= t('.masc_swimmers') %></p>
 				</li>
 				
 				<li>
 					<strong class="stats-count">
 						<%= @competition_results.joins(:swimmer).merge(Swimmer.female).map(&:swimmer_id).uniq.size %>
 					</strong>
-					<p>Participantes femeninos</p>
+					<p><%= t('.fem_swimmers') %></p>
 				</li>
 				
 				<li>
 					<strong class="stats-count"><%= @competition_results.disqualified.size %></strong>
-					<p>Descalificaciones</p>
+					<p><%= t('.disqualifieds') %></p>
 				</li>
 			</ul>
 		</section>
@@ -102,17 +102,17 @@
 <article class="full-block">
 	<div class="article-container">
 		<header>
-			<h2>Resultados de Nadadores</h2>
+			<h2><%= t('.header_swimmers_results') %></h2>
 		</header>
 		
 		<section>
 			<table class="dt_swimmer_results">
 			  <thead>
 			  	<tr>
-				    <th>Nadador</th>
-				    <th>Prueba</th>
-				    <th>Tiempo</th>
-				    <th>Observación</th>
+				    <th><%= t('.table_swimmer') %></th>
+				    <th><%= t('.table_comp') %></th>
+				    <th><%= t('.table_time') %></th>
+				    <th><%= t('.table_observation') %></th>
 				  </tr>
 			  </thead>
 

@@ -16,10 +16,10 @@
 		<legend>Datos del test</legend>
 		
 		<dl>
-			<dt><%= f.label :title, "Título*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dt><%= f.label :title, "#{Trial.human_attribute_name(:title)}*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :title, :class => "medium" %></dd>
 			
-			<dt><%= f.label :date_trial, "Fecha*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dt><%= f.label :date_trial, "#{Trial.human_attribute_name(:date_trial)}*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action]=="edit" %>
 					<%= f.text_field :date_trial, :value => @trial.date_trial.strftime("%d/%m/%Y"), :class => "datepicker" %>
@@ -28,7 +28,7 @@
 				<% end %>
 			</dd>
 			
-			<dt><%= f.label :trial_category_id, "Categoría*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dt><%= f.label :trial_category_id, "#{Trial.human_attribute_name(:trial_category_id)}*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% #= f.select :trial_category_id, options_from_collection_for_select(@trial_categories, "id", "name"), :class => "small" %>
 				<select name="trial[trial_category_id]" id="trial_trial_category_id" class="disabled">

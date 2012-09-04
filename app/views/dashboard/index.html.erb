@@ -1,12 +1,12 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li>Dashboard</li>
+	<li><%= t('.breadcumbs') %></li>
 </ul>
 
 <!-- Dashboard main Block with Half -->
 <article class="half-block clearfix">
 	<div class="article-container">
-		<header><h2>Eventos para hoy</h2></header>
+		<header><h2><%= t('.header_today_events') %></h2></header>
 		<section>
 			<!-- jQuery Full Calendar Plugin -->
 			<div class="fullcalendar"></div>
@@ -81,7 +81,7 @@
 <!-- Recent Activity Block with Half -->
 <article class="half-block clearrm">
 	<div class="article-container">
-		<header><h2>Actividad Reciente</h2></header>
+		<header><h2><%= t('.header_recent_activity') %></h2></header>
 		<section>
 			<table class="recent-activity">
 				<% @recent_activities.each do |a| %>

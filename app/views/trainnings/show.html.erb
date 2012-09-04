@@ -1,6 +1,6 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Entrenamientos', trainnings_path %></li>
+	<li><%= link_to t('trainnings.breadcrumbs.trainnings'), trainnings_path %></li>
 	<li>Id <%= @trainning.id %></li>
 </ul>
 
@@ -23,10 +23,10 @@
 				<table class="trainning_table">
 					<thead>
 						<tr>
-							<th>Ejercicio</th>
-							<th>Contenido</th>
-							<th>Tipo</th>
-							<th>Volumen</th>
+							<th><%= t('.table_exercise') %></th>
+							<th><%= t('.table_content') %></th>
+							<th><%= t('.table_type') %></th>
+							<th><%= t('.table_vol') %></th>
 						</tr>
 					</thead>
 					
@@ -34,7 +34,7 @@
 						<% i=1 %>						
 						<% @trainning_exercises.each do |ex| %>
 						<tr>
-							<td>Ejercicio <%= i %></td>
+							<td><%= t('.table_exercise') %> <%= i %></td>
 							<td class="text_left table_content">
 								<%= link_to "#{ex.repetition} x (#{ex.heat} x #{ex.distance} #{ex.style})", '#' %>
 								<br />
@@ -46,7 +46,7 @@
 						<% i+=1 %>						
 						<% end %>
 						<tr class="table_results">
-							<td class="text_right" colspan="3"><strong>Volumen total del entreno</strong></td>
+							<td class="text_right" colspan="3"><strong><%= t('.total_vol') %></strong></td>
 							<td><strong><%= @trainning.volumen %> m.</strong></td>
 						</tr>						
 					</tbody>
@@ -58,7 +58,7 @@
 					<fieldset>
 						<legend>Entrenamiento fuera del agua</legend>
 						<dl>
-							<dt><%= label :physical, "Física" %></dt>
+							<dt><%= label :physical, Trainning.human_attribute_name(:physical) %></dt>
 							<dd>
 								<textarea class="wysiwyg medium" cols="40" id="trainning_physical" name="trainning[physical]" rows="2">
 									<%= @trainning.physical %>
@@ -84,9 +84,9 @@
 		<section class="actions">
 			<!-- Stats Summary -->
 			<ul class="left">
-				<li><span class="extension empty">Imprimir</span></li>
-				<li><span class="extension pdf">Exportar a PDF</span></li>
-				<li><span class="extension access">Enviar por email</span></li>
+				<li><span class="extension empty"><%= t('.print') %></span></li>
+				<li><span class="extension pdf"><%= t('.export') %></span></li>
+				<li><span class="extension access"><%= t('.send_to_email') %></span></li>
 			</ul>
 			<!-- /Stats Summary -->
 		</section>

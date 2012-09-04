@@ -40,19 +40,19 @@
 							<legend>Datos personales</legend>
 
 							<dl>
-								<dt><%= label :name, "Nombre" %></dt>
+								<dt><%= label :name, Swimmer.human_attribute_name(:name) %></dt>
 								<dd class="text"><%= @swimmer.name %></dd>
-								<dt><%= label :secname, "Apellidos" %></dt>
+								<dt><%= label :secname, Swimmer.human_attribute_name(:secname) %></dt>
 								<dd class="text"><%= @swimmer.secname %></dd>
-								<dt><%= label :licence, "Licencia" %></dt>
+								<dt><%= label :licence, Swimmer.human_attribute_name(:licence) %></dt>
 								<dd class="text"><%= @swimmer.licence %></dd>
-								<dt><%= label :genre, "Género" %></dt>
+								<dt><%= label :genre, Swimmer.human_attribute_name(:genre) %></dt>
 								<dd class="text"><%= @swimmer.genre %></dd>
-								<dt><%= label :born, "Año nacimiento" %></dt>
+								<dt><%= label :born, Swimmer.human_attribute_name(:born) %></dt>
 								<dd class="text"><%= @swimmer.born.strftime("%d/%m/%Y") %></dd>
-								<dt><%= label :category, "Categoría" %></dt>
+								<dt><%= label :category, Swimmer.human_attribute_name(:category) %></dt>
 								<dd class="text"><%= @swimmer.category %></dd>
-								<dt><%= label :state, "Estado" %></dt>
+								<dt><%= label :state, Swimmer.human_attribute_name(:state) %></dt>
 								<dd class="text">
 									<% case @swimmer.state %>
 										<% when "Baja" %>

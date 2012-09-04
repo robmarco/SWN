@@ -1,7 +1,7 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Competiciones', competitions_path %></li>
-	<li>Ver lista de competiciones</li>
+	<li><%= link_to t('competitions.braedcumbs.competitions'), competitions_path %></li>
+	<li><%= t('competitions.breadcrumbs.competitions_list') %></li>
 </ul>
 
 <!-- Article Full Content Block -->
@@ -9,7 +9,7 @@
 	<div class="article-container">
 		
 		<header>
-			<h2>Gestión de Competiciones</h2>
+			<h2><%= t('.header_competitions') %></h2>
 			<nav>
 				<ul class="button-switch">
 					<li><%= link_to 'Añadir competición', new_competition_path, :class => "button" %></li>
@@ -22,15 +22,15 @@
 			<div class="sidetabs">
 				<nav class="sidetab-switch">
 					<ul>
-						<li><%= link_to 'Todos', '#sidetab1a' %></li>
-						<li><%= link_to 'Mini', '#sidetab2a' %></li>
-						<li><%= link_to 'PreBenjamín', '#sidetab3a' %></li>
-						<li><%= link_to 'Alevín', '#sidetab4a' %></li>
-						<li><%= link_to 'Infantil', '#sidetab5a' %></li>
-						<li><%= link_to 'Junior', '#sidetab6a' %></li>
-						<li><%= link_to 'Absoluto', '#sidetab7a' %></li>
-						<li><%= link_to 'Master', '#sidetab8a' %></li>
-						<p>Se muestran las competiciones insertadas en el sistema por un entrenador y su equipo técnico.</p>
+						<li><%= link_to t('.all'), '#sidetab1a' %></li>
+						<li><%= link_to t('.mini'), '#sidetab2a' %></li>
+						<li><%= link_to t('.pre'), '#sidetab3a' %></li>
+						<li><%= link_to t('.ale'), '#sidetab4a' %></li>
+						<li><%= link_to t('.inf'), '#sidetab5a' %></li>
+						<li><%= link_to t('.jun'), '#sidetab6a' %></li>
+						<li><%= link_to t('.abs'), '#sidetab7a' %></li>
+						<li><%= link_to t('.master'), '#sidetab8a' %></li>
+						<p><%= t('.category_text') %></p>
 					</ul>
 				</nav>
 			
@@ -129,7 +129,7 @@
 	<div class="article-container">
 		
 		<header>
-			<h2>Calendario y estadísticas</h2>
+			<h2><%= t('.header_calendar_stats') %></h2>
 		</header>
 		
 		<section>
@@ -137,13 +137,13 @@
 				
 				<nav class="sidetab-switch">
 					<ul>
-						<li><%= link_to 'Calendario', '#sidetab1b', :class => "default-sidetab" %></li>
+						<li><%= link_to t('.tabs.calendar'), '#sidetab1b', :class => "default-sidetab" %></li>
 					</ul>
 				</nav>
 				
 				<!-- jquery Full Calendar Sidetab Content -->
 				<div class="sidetab default-sidetab" id="sidetab1b">
-					<h3>Calendario de competiciones</h3>
+					<h3><%= t('.header_competitions_calendar') %></h3>
 					
 					<!-- jQuery Full Calendar Plugin -->
 					<div class="fullcalendar"></div>

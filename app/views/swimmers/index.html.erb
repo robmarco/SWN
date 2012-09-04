@@ -1,7 +1,7 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Nadadores', swimmers_path %></li>
-	<li>Ver lista de nadadores</li>
+	<li><%= link_to t('.breadcumbs_swimmers'), swimmers_path %></li>
+	<li><%= t('.breadcumbs_swimmers_list') %></li>
 </ul>
 
 <!-- Full Content Block -->
@@ -12,10 +12,10 @@
 		
 		<!-- Article header -->
 		<header>
-			<h2>Gestión de nadadores</h2>
+			<h2><%= t('.header') %></h2>
 			<nav>
 				<ul class="button-switch">
-					<li><%= link_to 'Añadir nadador', new_swimmer_path, :class => "button" %></li>
+					<li><%= link_to t('.buttons.add_swimmer'), new_swimmer_path, :class => "button" %></li>
 				</ul>
 			</nav>
 		</header>
@@ -30,28 +30,28 @@
 				<!-- Sidetabs Navigation -->
 				<nav class="sidetab-switch">
 					<ul>
-						<li><a class="default-sidetab" href="#sidetab1">Todos</a></li>
-						<li><a href="#sidetab2">Federados</a></li>
-						<li><a href="#sidetab3">No Federados</a></li>
-						<li><a href="#sidetab4">Bajas</a></li>
+						<li><a class="default-sidetab" href="#sidetab1"><%= t('.tabs.all') %></a></li>
+						<li><a href="#sidetab2"><%= t('.tabs.federates') %></a></li>
+						<li><a href="#sidetab3"><%= t('.tabs.not_federates') %></a></li>
+						<li><a href="#sidetab4"><%= t('.tabs.leave') %></a></li>
 					</ul>
 					<p>
-						Se muestran los nadadores insertados en el sistema por un entrenador y su equipo técnico. Aquellos nadadores <strong>no federados o baja</strong>, no podrán participar en competiciones.
+						<%= t('.tabs.message_tab_html') %>
 					</p>
 				</nav>
 				<!-- /Sidetabs Navigation -->
 				
 				<!-- Sidetab1 - Lista todos los nadadores-->
 				<div class="sidetab default-sidetab" id="sidetab1">
-					<h3>Todos</h3>
+					<h3><%= t('.tabs.all') %></h3>
 					<table class="datatable">
 						<thead>
 							<tr>
-								<th>Apellidos y nombre</th>
-								<th>Año</th>
-								<th>Categoría</th>
-								<th>Estado</th>
-								<th>Acción</th>
+								<th><%= t('.table.secname_and_name') %></th>
+								<th><%= t('.table.year') %></th>
+								<th><%= t('.table.category') %></th>
+								<th><%= t('.table.state') %></th>
+								<th><%= t('.action') %></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -62,15 +62,15 @@
 				<!-- /Sidetab1 -->
 				
 				<div class="sidetab" id="sidetab2">
-					<h3>Federados</h3>
+					<h3><%= t('.tabs.federates') %></h3>
 					<table class="datatable">
 						<thead>
 							<tr>
-								<th>Apellidos y nombre</th>
-								<th>Año</th>
-								<th>Categoría</th>
-								<th>Estado</th>
-								<th>Acción</th>
+								<th><%= t('.table.secname_and_name') %></th>
+								<th><%= t('.table.year') %></th>
+								<th><%= t('.table.category') %></th>
+								<th><%= t('.table.state') %></th>
+								<th><%= t('.action') %></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -80,15 +80,15 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab3">
-					<h3>No Federados</h3>
+					<h3><%= t('.tabs.not_federates') %></h3>
 					<table class="datatable">
 						<thead>
 							<tr>
-								<th>Apellidos y nombre</th>
-								<th>Año</th>
-								<th>Categoría</th>
-								<th>Estado</th>
-								<th>Acción</th>
+								<th><%= t('.table.secname_and_name') %></th>
+								<th><%= t('.table.year') %></th>
+								<th><%= t('.table.category') %></th>
+								<th><%= t('.table.state') %></th>
+								<th><%= t('.action') %></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -98,15 +98,15 @@
 				</div>
 			
 				<div class="sidetab" id="sidetab4">
-					<h3>Bajas</h3>
+					<h3><%= t('.tabs.leave') %></h3>
 					<table class="datatable">
 						<thead>
 							<tr>
-								<th>Apellidos y nombre</th>
-								<th>Año</th>
-								<th>Categoría</th>
-								<th>Estado</th>
-								<th>Acción</th>
+								<th><%= t('.table.secname_and_name') %></th>
+								<th><%= t('.table.year') %></th>
+								<th><%= t('.table.category') %></th>
+								<th><%= t('.table.state') %></th>
+								<th><%= t('.action') %></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -133,10 +133,10 @@
 	<div class="article-container">
 		
 		<header>
-			<h2>Estadísticas</h2>
+			<h2><%= t('.header_stats') %></h2>
 			<nav>
 				<ul class="tab-switch">
-					<li><a href="#tab0" class="default-tab">Gráficas</a></li>
+					<li><a href="#tab0" class="default-tab"><%= t('.tabs.chart') %></a></li>
 				</ul>
 			</nav>			
 		</header>
@@ -147,14 +147,14 @@
 				<div class="sidetabs">
 					<nav class="sidetab-switch">
 						<ul>
-							<li><a class="default-sidetab" href="#sidetab1b">Altas por mes</a></li>
-							<li><a href="#sidetab2b">Bajas por mes</a></li>
+							<li><a class="default-sidetab" href="#sidetab1b"><%= t('.tabs.new_swimmers_by_month') %></a></li>
+							<li><a href="#sidetab2b"><%= t('.tabs.leave_swimmers_by_month') %></a></li>
 						</ul>
 					</nav>
 					
 					<!-- Gráfica de altas por mes -->
 					<div class="sidetab default-sidetab" id="sidetab1b">
-						<h3>Altas de nadadores por mes</h3>
+						<h3><%= t('.new_swimmers_by_month_header') %></h3>
 						<table class="data" data-chart="area">
 							<thead>
 								<tr>
@@ -199,7 +199,7 @@
 					
 					<!-- Gráfica de bajas por mes -->
 					<div class="sidetab" id="sidetab2b">
-						<h3>Bajas de nadadores por mes</h3>
+						<h3><%= t('.leave_swimmers_by_month_header') %></h3>
 						<table class="data" data-chart="line">
 							<thead>
 								<tr>

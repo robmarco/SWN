@@ -8,10 +8,10 @@
 	<td>
 		<ul class="actions">
 			<li>
-				<%= link_to 'ver', competition_path(competition), :class => "view", :title => "Ver competición", :rel => "tooltip" %>
+				<%= link_to 'ver', competition_path(competition), :class => "view", :title => "#{t('labels.show')} competición", :rel => "tooltip" %>
 			</li>
 			<li>
-				<%= link_to 'editar', edit_competition_path(competition), :class => "edit", :title => "Editar competición", :rel => "tooltip" %>
+				<%= link_to 'editar', edit_competition_path(competition), :class => "edit", :title => "#{t('labels.edit')} competición", :rel => "tooltip" %>
 			</li>
 			<li>
 				<%= link_to 'eliminar', competition_path(competition), :confirm => '¿Está seguro de que desea eliminar la competición?', :method => :delete, :class => "delete", :title => "Eliminar competición", :rel => "tooltip" %>

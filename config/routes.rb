@@ -14,7 +14,7 @@ SWN::Application.routes.draw do
   get "pages/index"
   get "pages/about"
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations"}
 
   root :to => "pages#index"
 

@@ -10,8 +10,8 @@
 			<h2><%= t('.header') %></h2>
 			<nav>
 				<ul class="button-switch">
-					<li><%= link_to 'Cancelar cuenta', '#', :confirm => '¿Está seguro de que desea eliminar el entrenamiento?', :method => :delete, :class => "button gray" %></li>
-					<li><%= link_to 'Cambiar contraseña', edit_user_registration_path, :class => "open-modal button" %></li>
+					<li><%= link_to 'Cancelar cuenta', registration_path(current_user), :confirm => '¿Está seguro de que desea eliminar el entrenamiento?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Cambiar contraseña', edit_user_registration_path, :class => "button" %></li>
 				</ul>
 			</nav>
 		</header>

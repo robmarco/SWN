@@ -417,6 +417,12 @@ article footer {
 	float:left;
 }
 
+.two-quarters-block {
+	width: 40%;
+	margin-right: 2%;
+	float: left;
+}
+
 .third-quarter-block {
 	width: 74%;
 	margin-right: 2%;
@@ -1550,3 +1556,7 @@ p.activity-time { color: #AAA; font-style: italic; }
 }
 
 .actions > ul > li { background: none;}
+
+@media print {
+	body { background-color: red;}
+}

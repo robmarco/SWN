@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111120003210) do
+ActiveRecord::Schema.define(:version => 20120912200752) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -132,6 +132,10 @@ ActiveRecord::Schema.define(:version => 20111120003210) do
     t.integer  "user_id"
     t.string   "state"
     t.string   "genre"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "taggings", :force => true do |t|

@@ -129,3 +129,21 @@
 	<div align="center"><%= f.submit 'Enviar', :class => "button" %> ó <%= link_to 'Cancelar', :back %></div>
   
 <% end %>
+
+<div id="change_photo">
+	<div class="change_photo">
+		<%= form_for(@swimmer, :html => {:multipart => true} ) do |f| %>
+			<fieldset>
+				<legend>Cambiar foto del nadador</legend>
+				<dl>
+					<dt><%= f.label :photo, "URL" %></dt>
+					<dd>
+						<%= f.file_field :photo %>
+						<p>Tamaño máximo de 2Mb</p>
+					</dd>
+				</dl>
+			</fieldset>
+			<div align="center"><%= f.submit "Guardar", :class => "button" %></div>
+		<% end %>
+	</div>	
+</div>

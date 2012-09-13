@@ -8,14 +8,17 @@ SWN::Application.routes.draw do
   resources :incidents, :path => "incidencias"
   resources :trials, :path => "tests"
   resources :competitions, :path => "competiciones"
-  resources :swimmers, :path => "nadadores"
+  resources :swimmers, :path => "nadadores" do 
+    member do
+      delete 'delete_photo', :path => "eliminar_foto"
+    end
+  end
 
   get "dashboard/index", :as => :dashboard
   get "pages/index"
   get "pages/about"
-
-  devise_for :users, :controllers => { :registrations => "registrations"}
-
+  
+  devise_for :users
   root :to => "pages#index"
 
   # Sample resource route with options:

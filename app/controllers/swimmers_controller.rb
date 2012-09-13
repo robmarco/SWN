@@ -4,7 +4,7 @@ class SwimmersController < ApplicationController
   # GET /swimmers
   # GET /swimmers.xml
   def index
-    @swimmers = current_user.swimmers.all
+    @swimmers = current_user.swimmers.order('genre ASC, category ASC, secname ASC')
     
     # Nadadores filtrados por estado para los render del index
     @swimmers_fed = current_user.swimmers.federado
@@ -14,6 +14,7 @@ class SwimmersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @swimmers }
+      format.xls
     end
   end
 
@@ -131,4 +132,18 @@ class SwimmersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def delete_photo
+    @swimmer = current_user.swimmers.find(params[:id])
+    @swimmer.photo = nil
+
+    respond_to do |format|
+      if @swimmer.save
+        format.html { redirect_to(@swimmer, :notice => 'Swimmer Photo was successfully deleted.') }
+      else
+        format.html { redirect_to(@swimmer) }
+      end      
+    end    
+  end
+
 end

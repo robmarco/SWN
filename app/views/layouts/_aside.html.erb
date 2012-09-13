@@ -72,9 +72,9 @@
 			<!-- Account configuration -->
 			<li <%= params[:controller].eql?("accounts") ? "class='current'" : "" %>>
 				<% if !user_signed_in? %>
-					<%= link_to 'Configuración', '#', :class => 'articles no-submenu' %>
+					<%= link_to 'Configuración', '#', :class => 'settings no-submenu' %>
 				<% else %>
-					<%= link_to 'Configuración', edit_account_path(current_user.account), :class => 'articles no-submenu' %>
+					<%= link_to 'Configuración', edit_account_path(current_user.account), :class => 'settings no-submenu' %>
 				<% end %>
 				
 			</li>

@@ -15,7 +15,10 @@
 			<h2><%= t('.header') %></h2>
 			<nav>
 				<ul class="button-switch">
+					<li><%= link_to "Imprimir PDF", '#', :class => "button" %></li>
+					<li><%= link_to "Exportar a Excel", swimmers_path(:format => :xls), :class => "button open-modal" %></li>
 					<li><%= link_to t('.buttons.add_swimmer'), new_swimmer_path, :class => "button" %></li>
+
 				</ul>
 			</nav>
 		</header>

@@ -5,13 +5,13 @@
 </ul>
 
 <!-- Information Block -->
-<article class="full-block nested">
+<article class="third-quarter-block">
 	<div class="article-container">
 		
 		<!-- Header  -->
 		<header>
 			<h2>
-				Ficha del nadador
+				<%= "#{@swimmer.swimmer_name_secname}" %>
 			</h2>
 			<nav>
 				<ul class="button-switch">
@@ -24,52 +24,36 @@
 		<!-- \Header  -->
 
 		<section>
-			
-			<article class="block" style="width: 230px">
-				<ul class="image-gallery">
-					<li class="image-frame">
-						<% if @swimmer.photo? %>
-							<%= image_tag @swimmer.photo.url(:thumb) %>
-						<% else %>
-							<%= image_tag "sample_avatar.png", :size => "180x180" %>
-						<% end %>
-						
-						<ul class="image-actions">
-							<li class="change"><%= link_to "Cambiar", edit_swimmer_path(@swimmer)+"#change_photo", :class => "open-modal" %></li>
-							<% if @swimmer.photo?  %>
-							<li class="delete"><%= link_to "Eliminar", delete_photo_swimmer_path(@swimmer), :confirm => "¿Está seguro de que desea eliminar la foto del nadador?", :method => :delete %></li>
-							<% end %>
-						</ul>
-					</li>
-				</ul>
-			</article>
+			<div class="sidetabs">
+				<nav class="sidetab-switch">
+					<ul>
+						<li><%= link_to 'Básico', "#sidetab1", :class => "default-sidetab" %></li>
+						<li><%= link_to 'Localización', "#sidetab2" %></li>
+						<li><%= link_to 'Enfermedades', "#sidetab3" %></li>
+					</ul>
+				</nav>
+				
+				<div class="sidetab default-sidetab" id="sidetab1">
+					<h3>Información personal del nadador</h3>
+					<form>
+						<fieldset>
+							<legend>Datos personales</legend>
 
-			<div class="article-container">
-
-				<article class="block-42" id="profile_information">
-					<h3><%= @swimmer.swimmer_name_secname %></h3>
-					<p><%= link_to "Enviar mensaje", '#', :class => "button-link send_message" %></p>
-					<div class="detail_information">
-						<table id="swimmer_info">
-							<tr>
-								<td class="right">Licencia</td>
-								<td class="darker"><%= @swimmer.licence %></td>
-							</tr>
-							<tr>
-								<td class="right">Fecha Nacimiento</td>
-								<td class="darker"><%= @swimmer.born.strftime("%d/%m/%Y") %></td>
-							</tr>
-							<tr>
-								<td class="right">Categoría</td>
-								<td class="darker"><%= @swimmer.category %></td>
-							</tr>
-							<tr>
-								<td class="right">Género</td>
-								<td class="darker"><%= @swimmer.genre %></td>
-							</tr>
-							<tr>
-								<td class="right">Estado</td>
-								<td class="darker">
+							<dl>
+								<dt><%= label :name, Swimmer.human_attribute_name(:name) %></dt>
+								<dd class="text"><%= @swimmer.name %></dd>
+								<dt><%= label :secname, Swimmer.human_attribute_name(:secname) %></dt>
+								<dd class="text"><%= @swimmer.secname %></dd>
+								<dt><%= label :licence, Swimmer.human_attribute_name(:licence) %></dt>
+								<dd class="text"><%= @swimmer.licence %></dd>
+								<dt><%= label :genre, Swimmer.human_attribute_name(:genre) %></dt>
+								<dd class="text"><%= @swimmer.genre %></dd>
+								<dt><%= label :born, Swimmer.human_attribute_name(:born) %></dt>
+								<dd class="text"><%= @swimmer.born.strftime("%d/%m/%Y") %></dd>
+								<dt><%= label :category, Swimmer.human_attribute_name(:category) %></dt>
+								<dd class="text"><%= @swimmer.category %></dd>
+								<dt><%= label :state, Swimmer.human_attribute_name(:state) %></dt>
+								<dd class="text">
 									<% case @swimmer.state %>
 										<% when "Baja" %>
 											<span class='tag tag2 tag_show red'>
@@ -79,49 +63,103 @@
 											<span class='tag tag2 tag_show orange'>
 									<% end %>
 									<%= @swimmer.state %></span>
-								</td>
-							</tr>
-							<tr>
-								<td class="right">Enfermedades</td>
-								<td class="darker">									
-									<% if @swimmer.disease_html_clean.blank? %>
-										<%= link_to 'No', swimmer_path(@swimmer)+"#diseases", :class => "open-modal" %>
-									<% else %>
-										<%= link_to 'Sí', swimmer_path(@swimmer)+"#diseases", :class => "open-modal" %>
-									<% end %>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</article>
+								</dd>
+							</dl>
+						</fieldset>
 
-				<article class="block-56 clearrm" id="contact_information">
-					<ul>
-						<li class="address-icon">
-							<% if @swimmer.address or @swimmer.postal or @swimmer.city %>
-								<p><b>Contacto</b><%= " - #{@swimmer.address} " + "- #{@swimmer.city}" + " (#{@swimmer.country})" %></p>
-								<p><%= "CP #{@swimmer.postal}" %></p>
-								<p><%= "T: #{@swimmer.phone}" %></p>
-								<p><%= "E: #{@swimmer.email}" %></p>
-							<% end %>
-						</li>
-						<li class="parents-icon">
-							<% if @swimmer.parentname or @swimmer.parentphone or @swimmer.parentemail  %>
-								<p><b>Padre/Madre</b><%= " - #{@swimmer.parentname}" %></p>
-								<p><%= "T: #{@swimmer.parentphone}" %></p>
-								<p><%= "E: #{@swimmer.parentemail}" %></p>
-							<% end %>
-						</li>
-					</ul>
-				</article>
+					</form>
+					
+				</div>
+				
+				<div class="sidetab" id="sidetab2">
 
-			</div>
+					<h3>Información de localización</h3>
+					<form>
+						<fieldset>
+
+							<dl>
+								<dt><%= label :address, "Dirección" %></dt>
+								<dd class="text"><%= @swimmer.address.nil? ? "-" : @swimmer.address  %></dd>
+								<dt><%= label :postal, "Código Postal" %></dt>
+								<dd class="text"><%= @swimmer.postal.nil? ? "-" : @swimmer.postal  %></dd>
+								<dt><%= label :city, "Ciudad" %></dt>
+								<dd class="text"><%= @swimmer.city.nil? ? "-" : @swimmer.city  %></dd>
+								<dt><%= label :country, "País" %></dt>
+								<dd class="text"><%= @swimmer.country  %></dd>
+								<dt><%= label :phone, "Teléfono" %></dt>
+								<dd class="text"><%= @swimmer.phone.nil? ? "-" : @swimmer.phone  %></dd>
+								<dt><%= label :parentphone, "Teléfono Padre/Madre" %></dt>
+								<dd class="text"><%= @swimmer.parentphone.nil? ? "-" : @swimmer.parentphone  %></dd>
+							</dl>
+						</fieldset>
+					
+					</form>
+					
+				</div>
+				
+				<div class="sidetab" id="sidetab3">
+					<h3>Enfermedades y observaciones</h3>
+					<form>
+						<fieldset>
+							<dl>
+								<p><strong><%= label :disease, "Enfermedades" %></strong></p>
+								<textarea rows="5" cols="40" class="wysiwyg large"><%= @swimmer.disease %></textarea>
+								<br />
+								<p><strong><%= label :observation, "Observaciones" %></strong></p>
+								<textarea rows="5" cols="40" class="wysiwyg large"><%= @swimmer.observation %></textarea>
+								<br />
+							</dl>
+						</fieldset>
+					</form>
+				</div>
+				
+			</div>		
 			
 		</section>
 		
 	</div>
 </article>
 <!-- \Information Block -->
+
+<!-- Extra information block -->
+<article class="quarter-block clearrm">
+	<div class="article-container">
+		
+		<header>
+			<h2>Contacto</h2>
+		</header>
+		<section>
+			<!-- Contacts -->
+			<ul class="contacts">
+				<li>
+					<img src="/images/sample_user.png" alt="">
+					<a href="#" class="contacts-user"><%= @swimmer.swimmer_name_secname %></a>
+					<em><%= @swimmer.email %></em>
+					<ul>
+						<li><a class="button-link" href="#">Enviar email</a></li>
+					</ul>
+				</li>
+				
+				<% if !@swimmer.parentname.blank? %>
+				<li>
+					<img src="/images/sample_user.png" alt="">
+					<a href="#" class="contacts-user"><%= @swimmer.parentname %></a>
+					<em>Padres del nadador</em>
+					<% if !@swimmer.parentemail.blank? %>
+					<em><%= @swimmer.parentemail %></em>
+					<ul>
+						<li><a class="button-link" href="#">Enviar email</a></li>
+					</ul>
+					<% end %>					
+				</li>
+				<% end %>
+			</ul>
+			<!-- /Contacts -->
+		</section>
+	
+	</div>
+</article>
+<!-- \Extra information block -->
 
 <!-- Competition and test results Block -->
 <article class="full-block clearfix">
@@ -250,21 +288,3 @@
 
 <%= link_to 'Ir Atrás', swimmers_path, :class => "button right" %>
 <br />	
-
-<div id="diseases">
-	<div class="diseases">
-		<h2>Enfermedades:</h2>
-		<% if @swimmer.disease_html_clean.blank? %>
-			<p>El nadador no padece ninguna enfermedad relevante</p>
-		<% else %>
-			<p><%= @swimmer.disease_html_clean %></p>
-		<% end %>
-		<br>
-		<h2>Observaciones</h2>
-		<% if @swimmer.observation_html_clean.blank? %>
-			<p>No se ha realizado ninguna anotación sobre el nadador</p>
-		<% else %>
-			<p><%= @swimmer.observation_html_clean %></p>
-		<% end %>
-	</div>
-</div>

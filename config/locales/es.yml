@@ -208,7 +208,7 @@ es:
 
     index:
       header: "Gestión de entrenamientos"
-      header_basic_information: "Información básica"
+      header_basic_information: "Información"
       header_stats: "Estadísticas"
       header_vol_car_lastsessions: "Volumen y carga de los últimos entrenamientos"
       header_vol_last_type_ex: "Volumen de los últimos entrenamientos por tipo de ejercicio"
@@ -301,6 +301,17 @@ es:
     edit:
       header: "Datos de su cuenta"
 
+  devise:
+    registrations:
+      edit:
+        breadcumbs:
+          profile_configuration: "Configuración de perfil"
+          change_password: "Cambiar contraseña"
+
+        header: "Cambiar contraseña"
+        password: "Nueva contraseña"
+        password_confirmation: "Confirmación contraseña"
+        current_password: "Contraseña actual"
   labels:
     required_field: "Campo requerido"
     show: "Ver"

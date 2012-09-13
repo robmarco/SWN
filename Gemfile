@@ -11,7 +11,7 @@ gem 'jquery-rails'
 gem 'acts-as-taggable-on'
 gem 'will_paginate'
 gem "paperclip", "~> 3.0"
-
+# gem 'pdfkit'
 # Use unicorn as the web server
 # gem 'unicorn'
 

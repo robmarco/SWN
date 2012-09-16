@@ -1,12 +1,11 @@
-<tr>
-  <td><%= incident.date_incident.strftime("%d/%m/%Y") %></td>
-  <td><strong><%= incident.title %></strong></td>
-  <td><%= remove_html_tag incident.description %></td>
-  <td>
-		<ul class="actions">
-			<li><%= link_to 'ver', incident_path(incident), :class => "view", :title => "Ver incidencia", :rel => "tooltip" %></li>
-			<li><%= link_to 'editar', edit_incident_path(incident), :class => "edit", :title => "Editar incidencia", :rel => "tooltip" %></li>
-			<li><%= link_to 'eliminar', incident_path(incident), :confirm => '¿Está seguro de que desea eliminar la incidencia?', :method => :delete, :class => "delete", :title => "Eliminar incidencia", :rel => "tooltip" %></li>
-		</ul>
-	</td>
-</tr>
+<li class="event">
+	<span class="logs-timestamp"><%= incident.date_incident.strftime("%A, %d %B %Y") %></span>
+	<h4><%= link_to "#{incident.title}", edit_incident_path(incident), :class => "logs-event" %></h4>
+	<div><%=raw incident.description %></div>
+	<hr>
+	<em class="logs-meta">
+		Etiquetas 
+		<%= link_to "Etiqueta 1", '#' %>,
+		<%= link_to "Etiqueta 2", '#' %>
+	</em>
+</li>

@@ -13,7 +13,7 @@
 			<nav>
 				<ul class="button-switch">
 					<li><%= link_to 'Eliminar', incident_path(@incident), :confirm => '¿Está seguro de que desea eliminar la incidencia?', :method => :delete, :class => "button gray" %></li>
-					<li><%= link_to 'Mostrar incidencia', incident_path(@incident), :class => "button" %></li>
+					<li><%= link_to 'Mostrar incidencias', incidents_path, :class => "button" %></li>
 				</ul>
 			</nav>
 		</header>

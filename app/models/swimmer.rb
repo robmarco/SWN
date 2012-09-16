@@ -45,8 +45,16 @@ class Swimmer < ActiveRecord::Base
 
   validates_presence_of :name, :secname, :born, :licence, :category, :state, :genre, :email
   
-  has_attached_file :photo, :styles => { :thumb => "180x180#" }
+  ## Paperclip configuration and file attachment  
+  has_attached_file :photo, :styles => { :thumb => "180x180#" },
+                    :url => "/uploads/swimmers/:id/:hash.:extension",
+                    :hash_secret => "MzyHiTs36IARoAbX6FR7sC7pLrkpIm4u4oafNsY1nK0q9dQkWjBIVSiUgGVlBvW"
 
+  #validates_attachment_content_type :photo,  :content_type => ["image/jpg", "image/png", "image/gif"]
+  #validates_attachment_size :photo, :in => 0..2.megabytes
+  ##
+  
+  ## Swimmer scopes
   scope :female, where(:genre => "Femenino")
   scope :male, where(:genre => "Masculino")
   scope :federado, where(:state => "Federado")

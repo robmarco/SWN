@@ -8,31 +8,42 @@
 <article class="full-block clearfix">
 	<div class="article-container">
 		
-		<header>
-			<h2>Gestión del diario de incidencias</h2>
-			<nav>
-				<ul class="button-switch">
-					<li><%= link_to 'Añadir incidencia', new_incident_path, :class => 'button' %></li>
-				</ul>
-			</nav>
-		</header>
-		
-		<section>
-			<table class="datatable">
-			  <thead>
-			  	<tr>
-				    <th>Fecha</th>
-				    <th>Título</th>
-				    <th>Descripción</th>
-				    <th>Acción</th>
-				  </tr>
-			  </thead>
+		<article class="third-quarter-block">
+			<header>
+				<h2>Gestión del diario de incidencias</h2>
+				<nav>
+					<ul class="button-switch">
+						<li><%= link_to 'Añadir incidencia', new_incident_path, :class => 'button' %></li>
+					</ul>
+				</nav>
+			</header>
+
+			<section>
+				<div align="right" id="incidents_find_bar">
+					<%= form_tag "#", :class => "incidents_form" do %>
+						<%= label_tag "Buscar:" %>
+						<%= text_field_tag "Buscar", "", :class => "medium", :placeholder => "Inserte su criterio de búsqueda" %>
+					<% end %>
+				</div>
 				
-				<tbody>
+				<ul class="logs" id="incident_logs">					
 					<%= render :partial => "incident", :collection => @incidents %>
-				</tbody>
-			</table>
-		</section>
+				</ul>
+				<%= will_paginate @incidents %>
+			</section>
+		</article>
+	
+		<article class="quarter-block clearrm nested">
+			<header><h2>Etiquetas</h2></header>
+			<section>
+				<p>Se listan las etiquetas asociadas a los registros del diario de incidencias del entrenador. Haciendo clic en cada una de ellas puede acceder directamente a las incidencias por categorías.</p>
+				<ul class="list-style">
+					<li><%= link_to "Etiqueta 1", '#' %></li>
+					<li><%= link_to "Etiqueta 2", '#' %></li>
+					<li><%= link_to "Etiqueta 3", '#' %></li>
+				</ul>
+			</section>
+		</article>		
 		
 	</div>
 </article>

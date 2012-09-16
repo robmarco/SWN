@@ -29,7 +29,7 @@ class Account < ActiveRecord::Base
   
   # User photo added to the account
   has_attached_file :photo, :styles => { :thumb => "56x56" },
-                            :url => "/avatars/:user_id/:hash.:extension",
+                            :url => "/uploads/avatars/:user_id/:hash.:extension",
                             :hash_secret => "MzyHiTs36IARoAbX6FR7sC7pLrkpIm4u4oafNsY1nK0q9dQkWjBIVSiUgGVlBvW"
   
   validates_presence_of :name, :secname

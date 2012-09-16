@@ -5,7 +5,7 @@ SWN::Application.routes.draw do
   resources :accounts, :except => [:new, :show, :index]
 
   resources :trainnings, :path => "entrenamientos"
-  resources :incidents, :path => "incidencias"
+  resources :incidents, :path => "incidencias", :except => [:show]
   resources :trials, :path => "tests"
   resources :competitions, :path => "competiciones"
   resources :swimmers, :path => "nadadores" do 

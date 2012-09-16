@@ -4,21 +4,11 @@ class IncidentsController < ApplicationController
   # GET /incidents
   # GET /incidents.xml
   def index
-    @incidents = current_user.incidents.all
+    @incidents = current_user.incidents.order("date_incident DESC").paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @incidents }
-    end
-  end
-
-  # GET /incidents/1
-  # GET /incidents/1.xml
-  def show
-    @incident = current_user.incidents.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @incident }
     end
   end
 
@@ -47,11 +37,9 @@ class IncidentsController < ApplicationController
       if @incident.save
         session[:incidents_size] = current_user.incidents.size  # Update incidents size
                 
-        format.html { redirect_to(@incident, :notice => 'Incident was successfully created.') }
-        format.xml  { render :xml => @incident, :status => :created, :location => @incident }
+        format.html { redirect_to(incidents_url, :notice => 'Incident was successfully created.') }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @incident.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,7 +51,7 @@ class IncidentsController < ApplicationController
 
     respond_to do |format|
       if @incident.update_attributes(params[:incident])
-        format.html { redirect_to(@incident, :notice => 'Incident was successfully updated.') }
+        format.html { redirect_to(incidents_url, :notice => 'Incident was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -18,7 +18,8 @@ class TrainningExercise < ActiveRecord::Base
   belongs_to :trainning
   belongs_to :exercise_type
   
-  validates_presence_of :repetition, :heat, :distance, :style, :exercise_type_id
+  validates_presence_of  :style, :exercise_type_id
+  validates :repetition, :heat, :distance, :presence => true, :numericality => true
       
   def volumen
     self.repetition * self.heat * self.distance

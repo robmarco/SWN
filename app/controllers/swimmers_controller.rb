@@ -114,8 +114,8 @@ class SwimmersController < ApplicationController
         format.html { redirect_to(@swimmer, :notice => 'Swimmer was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @swimmer.errors, :status => :unprocessable_entity }
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @swimmer.errors, :status => :unprocessable_entity }
       end
     end
   end

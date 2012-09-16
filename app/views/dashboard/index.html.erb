@@ -1,3 +1,5 @@
+<%= render 'widgets' %>
+
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
 	<li><%= t('.breadcumbs') %></li>
@@ -97,7 +99,7 @@
 					</tr>
 				<% end %>
 			</table>
-			<%= will_paginate @recent_activities %>
+			<%= will_paginate @recent_activities, :class => "digg_pagination" %>
 		</section>
 	</div>
 </article>

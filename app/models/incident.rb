@@ -15,6 +15,8 @@ class Incident < ActiveRecord::Base
   before_update :add_to_recent_activity_update
   after_create :add_to_recent_activity_create
   after_destroy :add_to_recent_activity_destroy
+
+  acts_as_taggable_on :tags
    
   belongs_to :user
   

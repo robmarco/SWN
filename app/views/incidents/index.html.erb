@@ -26,10 +26,13 @@
 					<% end %>
 				</div>
 				
+				<% if params[:tag].present? %>
+					<div>Incidencias filtradas por: <b><%= params[:tag] %></b> <%= link_to "(eliminar filtro)", incidents_path %></div>
+				<% end %>
 				<ul class="logs" id="incident_logs">					
 					<%= render :partial => "incident", :collection => @incidents %>
 				</ul>
-				<%= will_paginate @incidents %>
+				<%= will_paginate @incidents, :class => "custom_pagination"%>
 			</section>
 		</article>
 	
@@ -38,9 +41,9 @@
 			<section>
 				<p>Se listan las etiquetas asociadas a los registros del diario de incidencias del entrenador. Haciendo clic en cada una de ellas puede acceder directamente a las incidencias por categorías.</p>
 				<ul class="list-style">
-					<li><%= link_to "Etiqueta 1", '#' %></li>
-					<li><%= link_to "Etiqueta 2", '#' %></li>
-					<li><%= link_to "Etiqueta 3", '#' %></li>
+					<% @tags.each do |tag| %>
+					<li><%= link_to tag.name, incidents_path(:tag => tag.name) %></li>
+					<% end %>
 				</ul>
 			</section>
 		</article>		

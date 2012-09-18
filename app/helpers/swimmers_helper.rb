@@ -3,7 +3,8 @@ module SwimmersHelper
     if competition_result.is_disqualified?
       image_tag("widgets/widget_desc.png", :title => "Descalificado", :rel => 'tooltip')
     else
-      competition_result.is_improved? ? image_tag("widgets/widget_downtime.png") : image_tag("widgets/widget_uptime.png")
+      competition_result.is_improved? ? image_tag("widgets/widget_downtime.png", :title => "Baja tiempo", :rel => "tooltip")
+      																: image_tag("widgets/widget_uptime.png", :title => "Sube tiempo", :rel => "tooltip")
     end
   end
 end

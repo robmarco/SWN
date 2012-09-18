@@ -35,13 +35,24 @@ function sum_total_volumen(){
 			if (isNaN(rep)||isNaN(heat)||isNaN(dist)) {
 				volumen = "NaN"; //Poner en rojo la casilla debido a error
 			} else {
-				if (!isNaN(volumen)) { volumen += rep * heat * dist; };
+				if (!isNaN(volumen)) { volumen += heat * rep * dist; };
 			}	
 		}
 	});
 	$("span.total_vol").text(volumen + " m");
 };
-	
+
+// Update trial results fields with the correct value	
+function change_value_trial_fields(name, unit){
+	$.each($("tr.fields"), function(){
+		if ($(this).css("display")!="none"){
+			//Actualizar campo correspondiente
+			$(this).children("#result_trial_category").text(name);
+			$(this).children("#result_trial_category_type").text(unit);
+		}
+	});
+};
+
 $(function(){
 	sum_total_volumen();
 
@@ -51,6 +62,12 @@ $(function(){
 
 	$("td.remove a").click(function(){
 		sum_total_volumen();
+	});
+
+	$("#trial_trial_category_id").bind('change', function(){
+		var name = $(this).children(":selected").text()
+		var unit = $(this).children(":selected").data("value");
+		change_value_trial_fields(name, unit);
 	});
 });
 

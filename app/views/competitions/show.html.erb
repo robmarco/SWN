@@ -112,6 +112,7 @@
 				    <th><%= t('.table_swimmer') %></th>
 				    <th><%= t('.table_comp') %></th>
 				    <th><%= t('.table_time') %></th>
+				    <th><%= t('.table_diff') %></th>
 				    <th><%= t('.table_observation') %></th>
 				  </tr>
 			  </thead>
@@ -127,6 +128,7 @@
 									<%= res.time_result %>
 									<span id="evolution"><%= increase_decrease_time(res) %></span>
 								</td>
+								<td><%= "#{res.diff_with_best_result_until_date} s" %></td>
 								<td><%= res.is_disqualified? ? "Descalificado" : res.observation %></td>
 							</tr>
 						<% end %>							

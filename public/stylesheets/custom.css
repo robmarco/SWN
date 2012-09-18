@@ -137,3 +137,52 @@ form.incidents_form label { margin-right: 5px; font-weight: normal;}
 * html .digg_pagination { height: 1%; }  
 *:first-child + html .digg_pagination { overflow: hidden; }
 /* ---------------------------------------- End Pagination in dashboard */
+
+/* ------------------------------------------- Pagination in dashboard */
+.custom_pagination {
+	margin-top: 20px;
+  background: white;
+  cursor: default;
+  float: right;
+  /* self-clearing method: */ 
+}
+.custom_pagination a, .custom_pagination span, .custom_pagination em {
+  padding: 0.2em 0.5em;
+  display: block;
+  float: left;
+  margin-right: 1px; 
+}
+.custom_pagination .disabled { color: #999999; border: 1px solid #dddddd; }
+.custom_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background: #808080;
+  color: white;
+  border: 1px solid #e6e6e6; 
+}
+.custom_pagination a {
+  text-decoration: none;
+  color: #808080;
+  border: 1px solid #808080; }
+
+.custom_pagination a:hover, .custom_pagination a:focus { color: #000033; border-color: #000033; }
+.custom_pagination .page_info {
+  background: #2e6ab1;
+  color: white;
+  padding: 0.4em 0.6em;
+  width: 22em;
+  margin-bottom: 0.3em;
+  text-align: center; 
+}
+
+.custom_pagination .page_info b { color: #000033; background: #6aa6ed; padding: 0.1em 0.25em; }
+.custom_pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+* html .custom_pagination { height: 1%; }  
+*:first-child + html .custom_pagination { overflow: hidden; }
+/* ---------------------------------------- End Pagination in dashboard */

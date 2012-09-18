@@ -19,6 +19,7 @@
 			<dd><%= f.text_field :title, :class => "medium" %></dd>
 			
 			<dt><%= f.label :date_incident, "Fecha*", :title => "Campo requerido", :rel => "tooltip" %></dt>
+			
 			<dd>
 				<% if params[:action]=="edit" %>
 					<%= f.text_field :date_incident, :value => @incident.date_incident.strftime("%d/%m/%Y"), :class => "datepicker" %>
@@ -27,6 +28,8 @@
 				<% end %>
 			</dd>
 			
+			<dt><%= f.label :tags, "Etiquetas", :title => "Las etiquetas le servirán para filtrar incidencias", :rel => "tooltip" %></dt>
+			<dd><%= f.text_field :tag_list, :class => "medium" %><p>Inserte las etiquetas que desee separadas por comas</p></dd>
 			<dt><%= f.label :description %></dt>
 			<dd><%= f.text_area :description, :class => "wysiwyg medium" %></dd>
 		</dl>

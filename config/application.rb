@@ -48,5 +48,8 @@ module SWN
     config.filter_parameters += [:password]
 
     # config.middleware.use "PDFKit::Middleware", :print_media_type => true
+
+    # ActsAsTaggableOn - If you would like to remove unused tag objects after removing taggings
+    ActsAsTaggableOn.remove_unused_tags = true
   end
 end

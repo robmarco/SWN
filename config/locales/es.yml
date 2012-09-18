@@ -133,6 +133,7 @@ es:
       table_swimmer: "Nadador"
       table_comp: "Prueba"
       table_time: "Tiempo"
+      table_diff: "Dif. MM"
       table_observation: "Observación"
 
   dashboard:

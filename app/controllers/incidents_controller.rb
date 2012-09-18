@@ -4,7 +4,13 @@ class IncidentsController < ApplicationController
   # GET /incidents
   # GET /incidents.xml
   def index
-    @incidents = current_user.incidents.order("date_incident DESC").paginate(:page => params[:page], :per_page => 10)
+    if params[:tag].present?
+      @incidents = current_user.incidents.tagged_with(params[:tag]).order("date_incident DESC").paginate(:page => params[:page], :per_page => 10)
+    else
+      @incidents = current_user.incidents.order("date_incident DESC").paginate(:page => params[:page], :per_page => 10)
+    end
+    
+    @tags = current_user.incidents.tag_counts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -70,6 +76,14 @@ class IncidentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(incidents_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  def tagged
+    if params[:tag].present?
+      
+    else
+      @incidents = current_user.incidents.order("date_incident DESC").paginate(:page => params[:page], :per_page => 10)
     end
   end
 end

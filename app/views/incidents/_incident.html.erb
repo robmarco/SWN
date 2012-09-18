@@ -4,8 +4,13 @@
 	<div><%=raw incident.description %></div>
 	<hr>
 	<em class="logs-meta">
-		Etiquetas 
-		<%= link_to "Etiqueta 1", '#' %>,
-		<%= link_to "Etiqueta 2", '#' %>
+		Etiquetas -
+		<% if incident.tags.any? %>
+			<% incident.tags.each do |tag| %>
+				<%= link_to tag.name, incidents_url(:tag => tag.name) %>,
+			<% end %>
+		<% else %>
+			<i>No se ha añadido ninguna</i>
+		<% end %>
 	</em>
 </li>

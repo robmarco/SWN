@@ -128,11 +128,12 @@
 	<div class="article-container">
 		
 		<header>
-			<h2>Competiciones y test</h2>
+			<h2>Resultados en Competiciones y Test</h2>
 			<nav>
 				<ul class="tab-switch">
 					<li><%= link_to 'Competiciones', '#tab1', :class => "default-tab" %></li>
 					<li><%= link_to 'Test', '#tab2' %></li>
+					<li><%= link_to 'Mejores Marcas', '#tab3' %></li>
 				</ul>
 			</nav>
 		</header>
@@ -141,109 +142,99 @@
 		
 			<!-- Competition tab -->
 				<div class="tab default-tab" id="tab1">
-					<div class="sidetabs">
-						<nav class="sidetab-switch">
-							<ul>
-								<li><%= link_to 'Resultados', '#sidetab1b', :class => "default-sidetab" %></li>
-								<li><%= link_to 'Estadísticas', '#sidetab2b' %></li>
-							</ul>
-						</nav>
-						
-						<!-- Competition Results Sidetab -->
-						<div class="sidetab default-sidetab" id="sidetab1b">
-							<h3>Resultados del nadador en competiciones</h3>
-							<table class="datatable">
-								<thead>
+					<table class="datatable_sort_by_date_desc">
+						<thead>
+							<tr>
+								<th>Fecha</th>
+								<th>Lugar</th>
+								<th>Prueba</th>
+								<th>Tiempo</th>
+								<th>Dif. MM</th>
+								<th>Categoría</th>
+								<th>Acción</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% if @swimmer_competition_results.size > 0 %>
+								<% @swimmer_competition_results.each do |competition_result| %>
 									<tr>
-										<th>Fecha</th>
-										<th>Lugar</th>
-										<th>Prueba</th>
-										<th>Tiempo</th>
-										<th>Acción</th>
+										<td><%= competition_result.competition.date_competition.strftime("%d/%m/%Y") %></td>
+										<td><%= link_to "#{competition_result.competition.title} (#{competition_result.competition.pool_dist})", competition_path(competition_result.competition)%></td>
+										<td><%= competition_result.competition_set.name %></td>
+										<td>
+											<%= competition_result.time_result %> 
+											<span id="evolution"><%= increase_decrease_time(competition_result) %></span>
+										</td>
+										<td><%= "#{competition_result.diff_with_best_result_until_date} s " %></td>
+										<td><%= competition_result.competition.category %></td>
+										<td><ul class="actions"><li><%= link_to 'ver', competition_path(competition_result.competition), :class => "view", :title => "Ver competición", :rel => "tooltip" %></li></ul></td>
 									</tr>
-								</thead>
-								<tbody>
-									<% if @swimmer_competition_results.size > 0 %>
-										<% @swimmer_competition_results.each do |competition_result| %>
-											<tr>
-												<td><%= competition_result.competition.date_competition.strftime("%d/%m/%Y") %></td>
-												<td><%= link_to "#{competition_result.competition.title} (#{competition_result.competition.pool_dist})", competition_path(competition_result.competition)%></td>
-												<td><%= competition_result.competition_set.name %></td>
-												<td>
-													<%= competition_result.time_result %> 
-													<span id="evolution"><%= increase_decrease_time(competition_result) %></span>
-												</td>
-												<td><ul class="actions"><li><%= link_to 'ver', competition_path(competition_result.competition), :class => "view", :title => "Ver competición", :rel => "tooltip" %></li></ul></td>
-											</tr>
-										<% end %>
-									<% end %>
-								</tbody>
-							</table>
-						</div>
-						<!-- \Competition Results Sidetab -->
-						
-						<!-- Competition Statistics Sidetab -->
-						<div class="sidetab" id="sidetab2b">
-							
-						</div>
-						<!-- \Competition Statistics Sidetab -->
-						
-					</div>
+								<% end %>
+							<% end %>
+						</tbody>
+					</table>
 				</div>
-			<!-- \Competition tab -->
+			<!-- /Competition tab -->
 			
 			<!-- Test tab -->
 				<div class="tab" id="tab2">
-					<div class="sidetabs">
-						<nav class="sidetab-switch">
-							<ul>
-								<li><%= link_to 'Resultados', '#sidetab3b', :class => "default-sidetab" %></li>
-								<li><%= link_to 'Estadísticas', '#sidetab4b' %></li>
-							</ul>
-						</nav>
-						
-						<!-- Test Results Sidetab -->
-						<div class="sidetab default-sidetab" id="sidetab3b">
-							<h3>Resultados del nadador en test preparatorios</h3>
-							<table class="datatable">
-								<thead>
+					<table class="datatable_sort_by_date_desc">
+						<thead>
+							<tr>
+								<th>Fecha</th>
+								<th>Título</th>
+								<th>Tipo</th>
+								<th>Valor</th>
+								<th>Acción</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% if @swimmer_trial_results.size > 0 %>
+								<% @swimmer_trial_results.each do |trial_result| %>
 									<tr>
-										<th>Fecha</th>
-										<th>Título</th>
-										<th>Tipo</th>
-										<th>Valor</th>
-										<th>Acción</th>
+										<td><%= trial_result.trial.date_trial.strftime("%d/%m/%Y") %></td>
+										<td><%= trial_result.trial.title %></td>
+										<td><%= trial_result.trial.trial_category.name %></td>
+										<td><%= trial_result.trial_value %> <%= "#{trial_result.trial.trial_category.type_value}" %></td>
+										<td><ul class="actions"><li><%= link_to 'ver', trial_path(trial_result.trial), :class => "view", :title => "Ver test", :rel => "tooltip" %></li></ul></td>
 									</tr>
-								</thead>
-								<tbody>
-									<% if @swimmer_trial_results.size > 0 %>
-										<% @swimmer_trial_results.each do |trial_result| %>
-											<tr>
-												<td><%= trial_result.trial.date_trial.strftime("%d/%m/%Y") %></td>
-												<td><%= trial_result.trial.title %></td>
-												<td><%= trial_result.trial.trial_category.name %></td>
-												<td><%= trial_result.trial_value %> <%= "#{trial_result.trial.trial_category.type_value}" %></td>
-												<td><ul class="actions"><li><%= link_to 'ver', trial_path(trial_result.trial), :class => "view", :title => "Ver test", :rel => "tooltip" %></li></ul></td>
-											</tr>
-										<% end %>
-									<% end %>
-								</tbody>
-							</table>
-						</div>
-						<!-- \Test Results Sidetab -->
-						
-						<!-- Test Statistics Sidetab -->
-						<div class="sidetab" id="sidetab4b">
-							
-						</div>
-						<!-- \Test Statistics Sidetab -->
-						
-					</div>
+								<% end %>
+							<% end %>
+						</tbody>
+					</table>
 				</div>
-			<!-- \Test tab -->
+			<!-- /Test tab -->
+
+			<!-- Mejores Marcas tab -->
+			<div class="tab" id="tab3">
+				<table class="datatable">
+					<thead>
+						<th>Prueba</th>
+						<th>Lugar</th>
+						<th>Fecha</th>
+						<th>Tiempo</th>
+						<th>Acción</th>
+					</thead>
+					<tbody>
+						<% @swimmer.competition_results.best_results_by_set_id(@swimmer).each do |res| %>
+							<tr>
+								<td><%= res.competition_set.name %></td>
+								<td><%= link_to "#{res.competition.title} (#{res.competition.pool_dist})", competition_path(res.competition)%></td>								
+								<td><%= res.competition.date_competition.strftime("%d/%m/%Y") %></td>								
+								<td><%= res.time_result %></td>
+								<td><ul class="actions"><li><%= link_to 'ver', competition_path(res.competition), :class => "view", :title => "Ver competición", :rel => "tooltip" %></li></ul></td>
+							</tr>	
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+			<!-- /Mejores Marcas tab -->
 		
 		</section>
 		
+		<footer>
+			<p>Diff. MM: Es el tiempo de diferencia que existe con la mejor marca hasta el momento</p>
+		</footer>
 	</div>
 </article>
 <!-- \Competition and test results Block -->

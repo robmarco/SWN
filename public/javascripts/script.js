@@ -23,6 +23,9 @@ $(function () {
 	});
 	
 	$('.datatable').dataTable();
+	$('.datatable_sort_by_date_desc').dataTable({
+		"aaSorting": [[0, "desc"]]
+	});
 	
 
 	// jQuery Custome File Input

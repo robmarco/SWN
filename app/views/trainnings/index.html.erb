@@ -102,108 +102,41 @@
 		
 		<header>
 			<h2><%= t('.header_stats') %></h2>
+			<nav>
+				<ul class="tab-switch">
+					<li><a class="default-tab current" href="#tab0">Gráficas Volumen/Carga</a></li>
+					<li><a href="#tab1">Otra información</a></li>
+				</ul>
+			</nav>
 		</header>
 		
 		<section>
-			<div class="sidetabs">
-				<nav class="sidetab-switch">
-					<ul>
-						<li><a class="default-sidetab" href="#sidetab1b"><%= t('.tabs.last_sessions') %></a></li>
-						<li><a href="#sidetab2b"><%= t('.tabs.vol_by_ex_type') %></a></li>
-						<li><a href="#sidetab3b"><%= t('.tabs.car_by_ex_type') %></a></li>
-					</ul>
-				</nav>
-				
-				<!-- Gráfica volumen y carga de 12 últimas sesiones -->
-				<div class="sidetab default-sidetab" id="sidetab1b">
-					<h3><%= t('.header_vol_car_lastsessions') %></h3>
-					
-					<table class="data" data-chart="line">
-						<thead>
-							<tr>
-								<% @last_12_trainnings.each do |tr| %>
-									<th scope="col"><%= tr.strftime("%d/%b") %></th>
-								<% end %>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">Volumen</th>
-								<% @last_12_trainnings.each do |tr| %>
-									<td><%= trainning_volumen current_user.trainnings.find_by_date(tr) %></td>
-								<% end %>								
-							</tr>
-							
-							<tr>
-								<th scope="row">Carga</th>
-								<% @last_12_trainnings.each do |tr| %>
-									<td><%= trainning_carga current_user.trainnings.find_by_date(tr) %></td>
-								<% end %>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<!-- /Gráfica volumen y carga de 12 últimas sesiones -->
-				
-				<!-- Gráfica volumen por tipo de ejercicio -->
-				<div class="sidetab" id="sidetab2b">
-					<h3><%= t('.header_vol_last_type_ex') %></h3>
-					
-					<table class="data" data-chart="bar">
-						<thead>
-							<tr>
-								<% @last_12_trainnings.each do |tr| %>
-									<th scope="col"><%= tr.strftime("%d/%b") %></th>
-								<% end %>
-							</tr>
-						</thead>
-						<tbody>
-							
-							<% ExerciseType.all.each do |e| %>
-								<tr>
-									<th scope="row"><%= e.description %></th>
-									<% @last_12_trainnings.each do |tr| %>
-										<td>
-											<%= volumen_or_carga_by_exercise(tr, e.id, "volumen") %>
-										</td>
-									<% end %>								
-								</tr>
-							<% end %>							
-						</tbody>
-					</table>
-				</div>
-				<!-- /Gráfica volumen por tipo de ejercicio -->
-				
-				<!-- Gráfica carga por tipo de ejercicio -->
-				<div class="sidetab" id="sidetab3b">
-					<h3><%= t('.header_car_last_type_ex') %></h3>
-					<table class="data2" data-chart="bar">
-						<thead>
-							<tr>
-								<% @last_12_trainnings.each do |tr| %>
-									<th scope="col"><%= tr.strftime("%d/%b") %></th>
-								<% end %>
-							</tr>
-						</thead>
-						<tbody>
-							
-							<% ExerciseType.all.each do |e| %>
-								<tr>
-									<th scope="row"><%= e.description %></th>
-									<% @last_12_trainnings.each do |tr| %>
-										<td>
-											<%= volumen_or_carga_by_exercise(tr, e.id, "carga") %>
-										</td>
-									<% end %>								
-								</tr>
-							<% end %>							
-						</tbody>
-					</table>
-				</div>
-				<!-- /Gráfica carga por tipo de ejercicio -->
-				
-			</div>			
+
+			<div class="tab default-tab" id="tab0">
+				<div id="orders_chart" style="height: 500px; min-width: 500px;"></div>
+			</div>
+
+			<div class="tab" id="tab1">
+				<div id="orders_chart_2" style="height: 500px; min-width: 500px;"></div>
+			</div>
 		</section>
 		
 	</div>
 </article>
+
+<% content_for :fullcalendar_script do %>
+	<script type="text/javascript">
+		require("javascripts/charts_script.js");
+
+		// Params
+		var data 					= <%= array_date_volumen_carga %>,
+				chart_title 	= 'Comparativa Volumen/Carga de los entrenamientos',
+				yAxis_title1 	= 'Volumen', 
+				yAxis_title2	= 'Carga',
+				serie_name1		= 'Volumen',
+				serie_name2		= 'Carga'
+		
+		double_bar_chart(data, chart_title, yAxis_title1, yAxis_title2, serie_name1, serie_name2);
+
+	</script>
+<% end %>

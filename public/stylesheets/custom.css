@@ -89,6 +89,12 @@ form.incidents_form { margin-top: 5px;}
 form.incidents_form label { margin-right: 5px; font-weight: normal;}
 #incident_logs { margin-top: 10px;}
 
+.datatable_custom_filter { float: right; }
+.datatable_custom_filter span { margin-right: 20px;}
+.datatable_custom_filter input { width: 70px;} 
+.datatable_custom_filter input#fmin { margin-right: 10px;}
+hr.gray_color { border-color: #e6e6e6; }
+
 /* ------------------------------------------- Pagination in dashboard */
 .digg_pagination {
 	margin-top: 20px;

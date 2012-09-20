@@ -1,4 +1,32 @@
-// This file is automatically included by javascript_include_tag :defaults
+/*
+ * File:        script.js
+ * Version:     1.0
+ * Author:      Roberto Marco
+ * Info:        Function callings
+ * 
+ * This source file is free software
+ * 
+ * This source file is distributed in the hope that it will be useful, but 
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
+ *	
+ * This file is automatically included by javascript_include_tag :defaults
+ */
+
+function require(script) {
+  $.ajax({
+    url: script,
+    dataType: "script",
+    async: false,
+    success: function () {
+        // all good...
+    },
+    error: function () {
+        throw new Error("Could not load script " + script);
+    }
+  });
+}
+
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".fields").hide();

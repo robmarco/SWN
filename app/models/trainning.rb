@@ -30,6 +30,18 @@ class Trainning < ActiveRecord::Base
   scope :last_micro, where(:micro => self.maximum("micro"))
   scope :last_macro, where(:macro => self.maximum("macro"))
   
+  def self.find_by_date(date)
+    self.where(:date_trainning => date)
+  end
+
+  def self.first_trainning(user)
+    user.trainnings.order("date_trainning ASC").first
+  end
+
+  def self.last_trainning(user)
+    user.trainnings.order("date_trainning DESC").first
+  end
+
   def volumen
     vol=0
     self.trainning_exercises.each do |t|
@@ -45,11 +57,24 @@ class Trainning < ActiveRecord::Base
     end
     carga
   end
-  
-  def self.find_by_date(date)
-    self.where(:date_trainning => date)
+
+  def self.volumen_by_date(user, date)
+    vol=0
+    user.trainnings.find_by_date(date).each do |trainning|
+      vol += trainning.volumen
+    end
+    vol
   end
   
+  def self.carga_by_date(user, date)
+    carga=0
+    user.trainnings.find_by_date(date).each do |trainning|
+      carga += trainning.carga
+    end
+    carga
+  end
+
+  # ----------------------------------------------------------  
   def self.max_macro
     self.maximum("macro")
   end
@@ -57,7 +82,7 @@ class Trainning < ActiveRecord::Base
   def self.max_micro
     self.maximum("micro")
   end
-  
+  # ----------------------------------------------------------
   private
   
   def add_to_recent_activity_update

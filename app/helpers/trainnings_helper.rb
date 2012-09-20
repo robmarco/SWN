@@ -1,5 +1,22 @@
 module TrainningsHelper
-  
+ 
+ # array_date_volumen: Return an array with [day in secs, volumen_by_date]
+  def array_date_volumen_carga
+    a = []
+    first_day = Trainning.first_trainning(current_user).date_trainning
+    last_day  = Trainning.last_trainning(current_user).date_trainning
+
+    first_day.upto(last_day) do |day|
+      a.push [  (day.to_datetime.to_i) * 1000, 
+                Trainning.volumen_by_date(current_user,day),
+                Trainning.carga_by_date(current_user,day)
+              ]
+    end 
+    a
+  end
+
+  # ---------------------------------------------------------
+
   def last_micro_volumen
     t = current_user.trainnings.last_micro
     total=0

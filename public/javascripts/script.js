@@ -1,5 +1,17 @@
-$(function () {
+/*
+ * File:        script.js
+ * Version:     1.0
+ * Author:      Roberto Marco
+ * Info:        Function callings
+ * 
+  * This source file is free software
+ * 
+ * This source file is distributed in the hope that it will be useful, but 
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
+ */
 
+$(function () {
 	// Notification Close Button
 	$('.close-notification').click(
 		function () {
@@ -300,6 +312,7 @@ $(function () {
 	});
 	
 	$(".phone_mask").mask("(999) 99 99 99");
+	$(".date_mask").mask("99/99/9999");
 	
 	// trialCategory labels in table
 	$(".res>a").live("click", function(){

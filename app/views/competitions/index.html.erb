@@ -35,7 +35,8 @@
 				</nav>
 			
 				<div class="sidetab default-sidetab" id="sidetab1a">
-					<table class="datatable_sort_by_date_desc">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -45,7 +46,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab2a">
-					<table class="datatable_sort_by_date_desc">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -55,7 +57,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab3a">
-					<table class="datatable_sort_by_date_desc">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -65,7 +68,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab4a">
-					<table class="datatable_sort_by_date_desc">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -75,7 +79,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab5a">
-					<table class="datatable_sort_by_date_desc">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -85,7 +90,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab6a">
-					<table class="datatable_sort_by_date_desc">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -95,7 +101,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab7a">
-					<table class="datatable_sort_by_date_desc">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -105,7 +112,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab8a">
-					<table class="datatable_sort_by_date_desc">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -176,6 +184,13 @@
 									<% end %>
 								]
 							});
+
+							// dateTable Filter 
+							require("/javascripts/dateFilter_dataTable.js");
+		
+							// Params: table_selector, min_selector, max_selector, column_sort, type_sort
+							dateFilter_dataTable(".datatable_datefilter_sort", "#fmin", "#fmax",
+													0, "desc")
 						</script>
 					<% end %>
 					

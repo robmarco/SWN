@@ -142,7 +142,10 @@
 		
 			<!-- Competition tab -->
 				<div class="tab default-tab" id="tab1">
-					<table class="datatable_sort_by_date_desc">
+					
+					<%= render "layouts/dateFilter" %>
+
+					<table class="datatable_datefilter_sort">
 						<thead>
 							<tr>
 								<th>Fecha</th>
@@ -178,7 +181,9 @@
 			
 			<!-- Test tab -->
 				<div class="tab" id="tab2">
-					<table class="datatable_sort_by_date_desc">
+					<%= render "layouts/dateFilter" %>
+
+					<table class="datatable_datefilter_sort">
 						<thead>
 							<tr>
 								<th>Fecha</th>
@@ -259,3 +264,13 @@
 		<% end %>
 	</div>
 </div>
+
+<% content_for :fullcalendar_script do %>
+	<script type="text/javascript">
+		require("/javascripts/dateFilter_dataTable.js");
+		
+		// Params: table_selector, min_selector, max_selector, column_sort, type_sort
+		dateFilter_dataTable(".datatable_datefilter_sort", "#fmin", "#fmax",
+													0, "desc")
+	</script>
+<% end %>

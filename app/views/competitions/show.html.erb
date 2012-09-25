@@ -12,6 +12,7 @@
 			<h2><%= @competition.title %></h2>
 			<nav>
 				<ul class="button-switch">
+					<li><%= link_to 'Imprimir PDF', competition_path(@competition, format: "pdf"), :class => "button" %></li>
 					<li><%= link_to 'Eliminar', competition_path(@competition), :confirm => '¿Está seguro de que desea eliminar la competición?', :method => :delete, :class => "button gray" %></li>
 					<li><%= link_to 'Editar', edit_competition_path(@competition), :class => "button" %></li>					
 				</ul>
@@ -137,6 +138,9 @@
 				</tbody>			
 			</table>
 		</section>
+		<footer>
+			<p>Diff. MM: Es el tiempo de diferencia que existe con la mejor marca hasta el momento</p>
+		</footer>
 	</div>
 </article>
 <!-- \Results Block -->

@@ -1,6 +1,7 @@
 SWN::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
+  get "ajax/swimmers"
 
   resources :accounts, :except => [:new, :show, :index]
   resources :trainnings, :path => "entrenamientos"  
@@ -10,6 +11,12 @@ SWN::Application.routes.draw do
   resources :swimmers, :path => "nadadores" do 
     member do
       delete 'delete_photo', :path => "eliminar_foto"
+      post 'send_message_private', :path => "enviar_mensaje"      
+    end
+
+    collection do
+      get 'send_message', :path => "enviar_mensajes"
+      post 'send_message_post', :path => "enviar_mensajes"
     end
   end
 
@@ -19,38 +26,5 @@ SWN::Application.routes.draw do
   
   devise_for :users
   root :to => "pages#index"
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 
 end

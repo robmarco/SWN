@@ -332,4 +332,11 @@ $(function () {
 	// Notification error fadeOut
 	$("div.notification.success").fadeOut(5000, function(){});
 
+	// TokenInput
+	$(".tags").tokenInput("/ajax/swimmers.json", {
+			theme: "facebook",
+			tokenLimit: 40,
+			preventDuplicates: true
+	});
+
 });

@@ -12,6 +12,7 @@
 			<h2><%= t('.header_competitions') %></h2>
 			<nav>
 				<ul class="button-switch">
+					<li><%= link_to 'Imprimir PDF', competitions_path(format: "pdf"), :class => "button" %></li>
 					<li><%= link_to 'Añadir competición', new_competition_path, :class => "button" %></li>
 				</ul>
 			</nav>

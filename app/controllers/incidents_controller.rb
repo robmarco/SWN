@@ -2,7 +2,6 @@ class IncidentsController < ApplicationController
   before_filter :authenticate_user!
   
   # GET /incidents
-  # GET /incidents.xml
   def index
     if params[:tag].present?
       @incidents = current_user.incidents.tagged_with(params[:tag]).order("date_incident DESC").paginate(:page => params[:page], :per_page => 10)
@@ -14,18 +13,23 @@ class IncidentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @incidents }
+      format.pdf do
+        html = render_to_string(:layout => "pdf", :action => "pdf/incidents.html.erb")
+        kit = PDFKit.new(html)
+        kit.stylesheets << "#{Rails.root}/public/stylesheets/print.css" 
+        send_data kit.to_pdf, :filename =>  "qs_diario.pdf", 
+                              :type => 'application/pdf',
+                              disposition: "inline"
+      end
     end
   end
 
   # GET /incidents/new
-  # GET /incidents/new.xml
   def new
     @incident = current_user.incidents.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @incident }
     end
   end
 
@@ -35,7 +39,6 @@ class IncidentsController < ApplicationController
   end
 
   # POST /incidents
-  # POST /incidents.xml
   def create
     @incident = current_user.incidents.new(params[:incident])
 
@@ -51,23 +54,19 @@ class IncidentsController < ApplicationController
   end
 
   # PUT /incidents/1
-  # PUT /incidents/1.xml
   def update
     @incident = current_user.incidents.find(params[:id])
 
     respond_to do |format|
       if @incident.update_attributes(params[:incident])
         format.html { redirect_to(incidents_url, :notice => 'Incident was successfully updated.') }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @incident.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # DELETE /incidents/1
-  # DELETE /incidents/1.xml
   def destroy
     @incident = current_user.incidents.find(params[:id])
     @incident.destroy
@@ -75,7 +74,6 @@ class IncidentsController < ApplicationController
         
     respond_to do |format|
       format.html { redirect_to(incidents_url) }
-      format.xml  { head :ok }
     end
   end
 

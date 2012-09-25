@@ -12,6 +12,7 @@
 			<h2><%= @trial.title %></h2>
 			<nav>
 				<ul class="button-switch">
+					<li><%= link_to 'Imprimir PDF', trial_path(@trial, format: "pdf"), :class => "button" %></li>
 					<li><%= link_to 'Eliminar', trial_path(@trial), :confirm => '¿Está seguro de que desea eliminar el test?', :method => :delete, :class => "button gray" %></li>
 					<li><%= link_to 'Editar', edit_trial_path(@trial), :class => "button" %></li>
 				</ul>

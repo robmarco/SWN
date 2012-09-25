@@ -12,6 +12,7 @@
 			<h2><%= "[#{@trainning.date_trainning.strftime('%d/%m/%Y')}] " + "Micro " + @trainning.micro.to_s + " del Macro " + @trainning.macro.to_s %></h2>
 			<nav>
 				<ul class="button-switch">
+					<li><%= link_to 'Imprimir PDF', trainning_path(@trainning, format: "pdf"), :class => "button" %></li>
 					<li><%= link_to 'Eliminar', trainning_path(@trainning), :confirm => '¿Está seguro de que desea eliminar el entrenamiento?', :method => :delete, :class => "button gray" %></li>
 					<li><%= link_to 'Editar', edit_trainning_path(@trainning), :class => "button" %></li>
 				</ul>
@@ -31,10 +32,9 @@
 					</thead>
 					
 					<tbody>
-						<% i=1 %>						
-						<% @trainning_exercises.each do |ex| %>
+						<% @trainning_exercises.each_with_index do |ex, i| %>
 						<tr>
-							<td><%= t('.table_exercise') %> <%= i %></td>
+							<td><%= "#{t('.table_exercise')} #{i+1}" %></td>
 							<td class="text_left table_content">
 								<%= link_to "#{ex.heat} x (#{ex.repetition} x #{ex.distance} #{ex.style})", '#' %>
 								<br />
@@ -43,7 +43,6 @@
 							<td><span class='tag tag2 <%= ex.exercise_type.color %>'><%= ex.exercise_type.name %></span></td>
 							<td><%= ex.volumen %> m.</td>
 						</tr>
-						<% i+=1 %>						
 						<% end %>
 						<tr class="table_results">
 							<td class="text_right" colspan="3"><strong><%= t('.total_vol') %></strong></td>

@@ -15,6 +15,7 @@
 			</h2>
 			<nav>
 				<ul class="button-switch">
+					<li><%= link_to 'Imprimir PDF', swimmer_path(@swimmer, format: "pdf"), :class => "button" %></li>
 					<li><%= link_to 'Añadir nadador', new_swimmer_path, :class => "button" %></li>
 					<li><%= link_to 'Eliminar', swimmer_path(@swimmer), :confirm => '¿Está seguro de que desea eliminar al nadador?', :method => :delete, :class => "button gray" %></li>
 					<li><%= link_to 'Editar', edit_swimmer_path(@swimmer), :class => "button" %></li>					
@@ -48,7 +49,7 @@
 
 				<article class="block-42" id="profile_information">
 					<h3><%= @swimmer.swimmer_name_secname %></h3>
-					<p><%= link_to "Enviar mensaje", '#', :class => "button-link send_message" %></p>
+					<p><%= link_to "Enviar mensaje", swimmer_path(@swimmer)+"#private_message", :class => "button-link send_message open-modal" %></p>
 					<div class="detail_information">
 						<table id="swimmer_info">
 							<tr>
@@ -102,14 +103,14 @@
 								<p><b>Contacto</b><%= " - #{@swimmer.address} " + "- #{@swimmer.city}" + " (#{@swimmer.country})" %></p>
 								<p><%= "CP #{@swimmer.postal}" %></p>
 								<p><%= "T: #{@swimmer.phone}" %></p>
-								<p><%= "E: #{@swimmer.email}" %></p>
+								<p>E: <%= link_to "#{@swimmer.email}", '#' %></p>
 							<% end %>
 						</li>
 						<li class="parents-icon">
 							<% if @swimmer.parentname or @swimmer.parentphone or @swimmer.parentemail  %>
 								<p><b>Padre/Madre</b><%= " - #{@swimmer.parentname}" %></p>
 								<p><%= "T: #{@swimmer.parentphone}" %></p>
-								<p><%= "E: #{@swimmer.parentemail}" %></p>
+								<p>E: <%= link_to "#{@swimmer.parentemail}", '#' %></p>
 							<% end %>
 						</li>
 					</ul>
@@ -264,6 +265,8 @@
 		<% end %>
 	</div>
 </div>
+
+<%= render "private_message" %>
 
 <% content_for :fullcalendar_script do %>
 	<script type="text/javascript">

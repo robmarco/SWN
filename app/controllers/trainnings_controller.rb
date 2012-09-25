@@ -13,7 +13,6 @@ class TrainningsController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @trainnings }
     end
   end
 
@@ -25,7 +24,14 @@ class TrainningsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @trainning }
+      format.pdf do      
+        html = render_to_string(:layout => "pdf", :action => "pdf/trainning.html.erb")
+        kit = PDFKit.new(html)
+        kit.stylesheets << "#{Rails.root}/public/stylesheets/print.css" 
+        send_data kit.to_pdf, :filename =>  "qs_entrenamiento_#{@trainning.date_trainning.strftime('%d%m%Y')}.pdf", 
+                              :type => 'application/pdf',
+                              disposition: "inline"
+      end
     end
   end
 
@@ -39,7 +45,6 @@ class TrainningsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @trainning }
     end
   end
 
@@ -58,10 +63,8 @@ class TrainningsController < ApplicationController
         session[:trainnings_size] = current_user.trainnings.size
                 
         format.html { redirect_to(@trainning, :notice => 'Trainning was successfully created.') }
-        format.xml  { render :xml => @trainning, :status => :created, :location => @trainning }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @trainning.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -74,10 +77,8 @@ class TrainningsController < ApplicationController
     respond_to do |format|
       if @trainning.update_attributes(params[:trainning])
         format.html { redirect_to(@trainning, :notice => 'Trainning was successfully updated.') }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @trainning.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -91,7 +92,6 @@ class TrainningsController < ApplicationController
     
     respond_to do |format|
       format.html { redirect_to(trainnings_url) }
-      format.xml  { head :ok }
     end
   end
 end

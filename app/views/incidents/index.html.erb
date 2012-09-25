@@ -13,6 +13,7 @@
 				<h2>Gestión del diario de incidencias</h2>
 				<nav>
 					<ul class="button-switch">
+						<li><%= link_to 'Imprimir PDF', incidents_path(format: "pdf"), :class => 'button' %></li>
 						<li><%= link_to 'Añadir incidencia', new_incident_path, :class => 'button' %></li>
 					</ul>
 				</nav>
@@ -20,9 +21,9 @@
 
 			<section>
 				<div align="right" id="incidents_find_bar">
-					<%= form_tag "#", :class => "incidents_form" do %>
+					<%= form_tag incidents_path, :method => 'get', :class => "incidents_form", :id => "incidents_search", :remote => true do %>
 						<%= label_tag "Buscar:" %>
-						<%= text_field_tag "Buscar", "", :class => "medium", :placeholder => "Inserte su criterio de búsqueda" %>
+						<%= text_field_tag :search, params[:search], :id => "filter", :class => "medium", :placeholder => "Inserte su criterio de búsqueda" %>
 					<% end %>
 				</div>
 				
@@ -30,7 +31,7 @@
 					<div>Incidencias filtradas por: <b><%= params[:tag] %></b> <%= link_to "(eliminar filtro)", incidents_path %></div>
 				<% end %>
 				<ul class="logs" id="incident_logs">					
-					<%= render :partial => "incident", :collection => @incidents %>
+					<div id="incident_partial"><%= render :partial => "incident", :collection => @incidents %></div>
 				</ul>
 				<%= will_paginate @incidents, :class => "custom_pagination"%>
 			</section>

@@ -12,6 +12,7 @@
 			<h2><%= t('.header') %></h2>
 			<nav>
 				<ul class="button-switch">
+					<li><%= link_to 'Imprimir PDF', trials_path(format: "pdf"), :class => 'button' %></li>
 					<li><%= link_to 'Añadir test', new_trial_path, :class => 'button' %></li>
 				</ul>
 			</nav>

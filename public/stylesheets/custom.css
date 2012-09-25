@@ -71,11 +71,6 @@ li.parents-icon {
 	padding-left: 50px;
 	min-height: 50px;
 }
-#diseases { display: none;}
-.diseases h1 { font-size: ;}
-
-.change_photo { width: 500px; }
-#change_photo { display: none; }
 
 td.remove a { 
 	display: block;
@@ -94,6 +89,14 @@ form.incidents_form label { margin-right: 5px; font-weight: normal;}
 .datatable_custom_filter input { width: 70px;} 
 .datatable_custom_filter input#fmin { margin-right: 10px;}
 hr.gray_color { border-color: #e6e6e6; }
+
+
+/* --------------------------------------- Open Modal Windows and syles */
+#diseases, #change_photo, #private_message { display: none;}
+.diseases h1 { font-size: ;}
+.change_photo, .private_message { width: 500px; }
+.private_message { height: 500px;}
+/* ------------------------------------End Open Modal Windows and syles */
 
 /* ------------------------------------------- Pagination in dashboard */
 .digg_pagination {

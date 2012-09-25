@@ -77,6 +77,11 @@ class Swimmer < ActiveRecord::Base
     self.observation.gsub(%r{</?[^>]+?>},'')
   end
   
+  def self.find_by_ids(ids_string)
+    array_ids = ids_string.split(',').map{|a| a.to_i}
+    self.find(array_ids)
+  end
+
   private
   
   def add_to_recent_activity_update

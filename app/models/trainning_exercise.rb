@@ -20,7 +20,7 @@ class TrainningExercise < ActiveRecord::Base
   
   validates_presence_of  :style, :exercise_type_id
   validates :repetition, :heat, :distance, :presence => true, :numericality => true
-      
+  
   def volumen
     self.repetition * self.heat * self.distance
   end

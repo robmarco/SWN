@@ -1,0 +1,41 @@
+<section>
+	<div class="trainer_info">
+		<div class="personal_info">
+			<ul>
+				<li><%= current_user.full_name %></li>
+				<li><%= current_user.account.try(:club) %></li>
+				<li><%= "#{current_user.account.try(:country)}, #{current_user.account.try(:city)}" %></li>
+				<li><%= current_user.try(:email) %></li>
+			</ul>
+		</div>
+		<div class="page_info">
+			<h2>Informe de Tests</h2>
+			<p><%= Time.now.strftime("Generado %m/%d/%Y a %I:%M%p") %></p>
+		</div>
+	</div>
+
+	<div align="center">
+		<% if @trials.count > 0 %>
+		<table id="hor-minimalist-b">
+			<thead>
+				<tr>
+					<tr><th colspan="5" id="colspan_title"><b>LISTADO TESTS</b></th></tr>
+					<th>Fecha</th>
+					<th>Título</th>
+					<th>Tipo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @trials.each do |trial| %>
+					<tr>
+						<td><%= trial.date_trial.strftime("%d/%m/%Y") %></td>
+						<td><%= trial.title %></td>
+						<td><%= trial.trial_category.name %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% end %>
+	</div>
+</section>
+

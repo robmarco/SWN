@@ -38,6 +38,24 @@ $(function () {
 	$('.datatable_sort_by_date_desc').dataTable({
 		"aaSorting": [[0, "desc"]]
 	});
+	$('.datatable_trainings').dataTable({
+		"aoColumns": [
+			null,
+			null,
+			null,
+			null,
+			{ "bSortable": false },
+			{ "bSortable": false },
+			{ "bSortable": false },
+			{ "bSortable": false },
+			{ "bSortable": false },
+			{ "bSortable": false },
+			{ "bSortable": false },
+			{ "bSortable": false },
+			{ "bSortable": false },
+			{ "bSortable": false }
+		]
+	});
 	
 
 	// jQuery Custome File Input

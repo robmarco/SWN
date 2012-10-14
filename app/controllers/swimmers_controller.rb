@@ -7,6 +7,7 @@ class SwimmersController < ApplicationController
   def index
     # Ordenado para el Excel
     @swimmers = current_user.swimmers.select(INDEX_COLUMNS).order('genre ASC, category ASC, secname ASC')
+    @categories = Category.all.map(&:name)
     
     # Nadadores filtrados por estado para los render del index
     @swimmers_fed = current_user.swimmers.select(INDEX_COLUMNS).federado.order('genre ASC, category ASC, secname ASC')

@@ -21,6 +21,7 @@ es:
         city: "Ciudad"
         country: "País"
         postal: "Código postal"
+        language: "Idioma"
 
       category:
         name: "Nombre"
@@ -86,6 +87,31 @@ es:
         title: "Título"
         trial_category_id: "Categoría"
 
+  widgets:
+    swimmer: "Nadador"
+    training: "Entrenamiento"
+    competition: "Competición"
+    test: "Test"
+    diary: "Diario"
+    add_swimmer: "Añadir nadador"
+    add_training: "Añadir entrenamiento"
+    add_competition: "Añadir competición"
+    add_trial: "Añadir test"
+    add_incident: "Añadir incidencia"
+
+  main_sidebar:
+    subtitle: "Software de Gestión Deportiva para entrenadores de natación"
+    coach: "Entrenador"
+    go_site: "ver sitio web"
+    close_session: "cerrar sesión"
+    swimmers: "Nadadores"
+    trainnings: "Entrenamientos"
+    competitions: "Competiciones"
+    test: "Test preparatorios"
+    incidents: "Diario de incidencias"
+    settings: "Configuración"
+    select_lang: "Idiomas disponibles:"
+
   competitions:
     breadcumbs:
       competitions: "Competiciones"
@@ -108,7 +134,7 @@ es:
       abs: "Absoluto"
       master: "Master"
       category_text: "Se muestran las competiciones insertadas en el sistema por un entrenador y su equipo técnico."
-      header_calendar_stats: "Calendario y estadísticas"
+      header_calendar_stats: "Calendario"
       header_competitions_calendar: "Calendario de Competiciones"
       table_action: "Acción"
 
@@ -124,23 +150,57 @@ es:
     show:
       event_information: "Datos del evento"
       header_stats: "Estadísticas"
-      total_results_added: "Total resultados añadidos"
-      total_swimmers_in: "Total nadadores participantes"
-      masc_swimmers: "Participantes masculinos"
-      fem_swimmers: "Participantes femeninos"
+      total_results_added: "Resultados añadidos"
+      total_swimmers_in: "Nadadores"
       disqualifieds: "Descalificaciones"
       header_swimmers_results: "Resultados de Nadadores" 
+      chrono: "Crono"
       table_swimmer: "Nadador"
       table_comp: "Prueba"
       table_time: "Tiempo"
       table_diff: "Dif. MM"
       table_observation: "Observación"
+      footer: "Diff. MM: Es el tiempo de diferencia que existe con la mejor marca hasta el momento"
 
   dashboard:
     index:
       breadcumbs: "Dashboard"
-      header_today_events: "Eventos para hoy"
+      header_week_events: "Eventos para esta semana"
       header_recent_activity: "Actividad Reciente"
+
+  incidents:
+    form:
+      legend: "Datos de la incidencia"
+      tag_tooltip: "Las etiquetas le servirán para filtrar incidencias"
+      tag_text: "Inserte las etiquetas que desee separadas por comas"
+
+    breadcumbs:
+      incidents: "Diario de incidencias"
+      show_incidents_list: "Ver lista de incidencias"
+      modify_incident: "Modificar incidencia"
+      add_incident: "Añadir incidencia"
+
+    index:
+      header_incidents: "Gestión del diario de incidencias"
+      filter: "Incidencias filtradas por:"
+      filter_remove: "(eliminar filtro)"
+      find: "Buscar:"
+      find_placeholder: "Inserte su criterio de búsqueda"
+      tags: "Etiquetas -"
+
+      tag_sidebar:
+        header: "Etiquetas"
+        text: "Se listan las etiquetas asociadas a los registros del diario de incidencias del entrenador. Haciendo clic en cada una de ellas puede acceder directamente a las incidencias por categorías."
+
+      buttons:
+        add_incident: "Añadir incidencia"
+        print_pdf: "Imprimir PDF"
+
+    edit:
+      header: "Modificar incidencia -"
+
+    new:
+      header: "Añadir incidencia"
 
   swimmers:
     form:
@@ -156,14 +216,13 @@ es:
       header: "Gestión de nadadores"
       header_stats: "Estadísticas"
       action: "Acción"
-      new_swimmers_by_month_header: "Altas de nadadores por mes"
-      leave_swimmers_by_month_header: "Bajas de nadadores por mes"
 
       table:
         secname_and_name: "Apellidos y nombre"
         year: "Año"
         category: "Categoría"
         state: "Estado"
+        genre: "Género"
 
       buttons:
         add_swimmer: "Añadir nadador"
@@ -174,9 +233,39 @@ es:
         not_federates: "No Federados"
         leave: "Bajas"
         message_tab_html: "Se muestran los nadadores insertados en el sistema por un entrenador y su equipo técnico. Aquellos nadadores <strong>no federados o baja</strong>, no podrán participar en competiciones."
-        chart: "Gráficas"
-        new_swimmers_by_month: "Altas por mes"
-        leave_swimmers_by_month: "Bajas por mes"
+        chart_swimmers_by_category: "Categorías de nadadores"
+
+    show:
+      header_swimmer_show: "Ficha del nadador"
+      change_photo: "Cambiar"
+      delete_photo: "Eliminar"
+      send_message: "Enviar mensaje"
+      contact: "Contacto"
+      parents: "Padre/Madre"
+      header_results_in_comp_tests: "Resultados en Competiciones y Test"
+      footer: "Diff. MM: Es el tiempo de diferencia que existe con la mejor marca hasta el momento"
+      no_disease: "El nadador no padece ninguna enfermedad relevante"
+      no_observation: "No se ha realizado ninguna anotación sobre el nadador"
+
+      table:
+        date: "Fecha"
+        place: "Lugar"
+        set: "Prueba"
+        time: "Tiempo"
+        diff_with: "Dif. MM"
+        category: "Categoría"
+        action: "Acción"
+        title: "Título"
+        type: "Tipo"
+        value: "Valor"
+
+      tabs:
+        competitions: "Competiciones"
+        test: "Test"
+        best_results: "Mejores marcas"
+
+      breadcumbs:
+        swimmers: "Nadadores"
 
     new:
       header: "Añadir nadador"
@@ -211,18 +300,29 @@ es:
       header: "Gestión de entrenamientos"
       header_basic_information: "Información"
       header_stats: "Estadísticas"
-      header_vol_car_lastsessions: "Volumen y carga de los últimos entrenamientos"
-      header_vol_last_type_ex: "Volumen de los últimos entrenamientos por tipo de ejercicio"
-      header_car_last_type_ex: "Carga de los últimos entrenamientos por tipo de ejercicio"
-      vol_current_macro: "Volumen Macro actual"
-      car_current_macro: "Carga Macro actual"
+      vol_current_micro: "Volum Micro actual (m)"
+      car_current_micro: "Carga Micro actual"
       about_mujika_1_html: "<p>El <strong>índice de Mujika (ISFA)</strong> permite definir la intensidad de cada zona objetivo del entrenamiento utilizada y valorar el esfuerzo realizado por el nadador durante una sesión de entrenamiento de la resistencia. Mediante el mismo se pretenden controlar los procesos de carga y descarga dentro de los diferentes ciclos del entrenamiento.</p>"
       about_mujika_2_html: "<p>Los <strong>tipos de ejercicios básicos</strong> definidos en teoría del entrenamiento comprenden los siguientes (entre paréntesis el valor del índice de Mujika para obtener su equivalente en carga):</p>"
+      table_analyze_season_header: "Datos Volumen/Carga por Microciclo durante la temporada"
+      table_micro: "Micro"
+      table_start: "F Inicio"
+      table_total_vol: "Vol Total (m)"
+      table_total_car: "Car Total"
+      table_vtec: "V Téc"
+      table_ctec: "C Téc"
+      table_val: "V AL"
+      table_cal: "C AL"
+      table_vam: "V AM"
+      table_cam: "C AM"
+      table_vai: "V AI"
+      table_cai: "C AI"
+      table_vvel: "V Vel"
+      table_cvel: "C Vel"
 
       tabs:
-        last_sessions: "Últimas sesion (vol/carga)"
-        vol_by_ex_type: "Volumen por tipo de ejercicio"
-        car_by_ex_type: "Carga por tipo de ejercicio"
+        current_micro_analyze: "Análisis de Microciclo actual"
+        all_season_analyze: "Análisis de Temporada"
 
     new:
       header_add_trainning: "Añadir entrenamiento"
@@ -236,10 +336,11 @@ es:
       table_type: "Tipo"
       table_vol: "Volumen"
       total_vol: "Volumen total del entreno"
+      total_car: "Carga total del entreno"
       physic_trainning: "Entrenamiento fuera del agua"
       header_actions: "Acciones"
       print: "Imprimir"
-      export: "Exportar a PDF"
+      export: "Imprimir PDF"
       send_to_email: "Enviar por email"
 
   trials:
@@ -272,7 +373,7 @@ es:
       table_action: "Acción"
       header_information: "Información"
       trials_text: "Las capacidades que el entrenador puede evaluar sobre un nadador son las siguientes:"
-      header_calendar_stats: "Calendario y Estadísticas"
+      header_calendar_stats: "Calendario"
       header_test_calendar: "Calendario de test"
 
       tabs:
@@ -289,6 +390,7 @@ es:
       table_type_test: "Tipo de Test"
       table_value: "Valor"
       table_observation: "Observación"
+      date: "Fecha"
 
   accounts:
     breadcumbs:
@@ -298,6 +400,11 @@ es:
       header_picture_avatar: "Fotografía/Avatar"
       header_personal_information: "Datos personales"
       header_contact_information: "Datos de contacto"
+      photo_in_use: "Fotografía en uso"
+      photo_max_size: "Tamaño máximo de 2Mb"
+      dni_example: "Ejemplo: 12345678-X"
+      phone_example: "Ejemplo: (928) 12 34 56"
+      header_language: "Idioma de la aplicación"
 
     edit:
       header: "Datos de su cuenta"

@@ -17,10 +17,10 @@
 		<dl>
 			<dd>
 				<% if current_user.photo? %>
-					<b>Fotografía en uso: </b><%= current_user.account.photo_file_name %>
+					<b><%= t('.photo_in_use') %> </b><%= current_user.account.photo_file_name %>
 				<% end %>
 				<%= f.file_field :photo, :class => 'fileupload customfile-input' %>
-				<p>Tamaño máximo de 2Mb</p>
+				<p><%= t('.photo_max_size') %></p>
 			</dd>
 		</dl>
 	</fieldset>
@@ -37,7 +37,7 @@
 			<dt><%= f.label :dni %></dt>
 			<dd>
 				<%= f.text_field :dni, :class => "small" %>
-				<p>Ejemplo: 12345678-X</p>
+				<p><%= t('.dni_example') %></p>
 			</dd>
 						
 			<dt><%= f.label :club %></dt>
@@ -63,8 +63,16 @@
 			<dt><%= f.label :phone %></dt>
 			<dd>
 				<%= f.text_field :phone, :class => "phone_mask small" %>
-				<p>Ejemplo: (928) 12 34 56 </p>
+				<p><%= t('.phone_example') %></p>
 			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend><%= t('.header_language') %></legend>
+		<dl>
+			<dt><%= f.label :language %></dt>
+			<dd><%= f.select :language, options_for_select([["Español", "es"],["Inglés", "en"]], :selected => f.object.language) %></dd>
 		</dl>
 	</fieldset>
 

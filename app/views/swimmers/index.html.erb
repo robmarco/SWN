@@ -54,6 +54,7 @@
 								<th><%= t('.table.secname_and_name') %></th>
 								<th><%= t('.table.year') %></th>
 								<th><%= t('.table.category') %></th>
+								<th><%= t('.table.genre') %></th>
 								<th><%= t('.table.state') %></th>
 								<th><%= t('.action') %></th>
 							</tr>
@@ -73,6 +74,7 @@
 								<th><%= t('.table.secname_and_name') %></th>
 								<th><%= t('.table.year') %></th>
 								<th><%= t('.table.category') %></th>
+								<th><%= t('.table.genre') %></th>
 								<th><%= t('.table.state') %></th>
 								<th><%= t('.action') %></th>
 							</tr>
@@ -91,6 +93,7 @@
 								<th><%= t('.table.secname_and_name') %></th>
 								<th><%= t('.table.year') %></th>
 								<th><%= t('.table.category') %></th>
+								<th><%= t('.table.genre') %></th>
 								<th><%= t('.table.state') %></th>
 								<th><%= t('.action') %></th>
 							</tr>
@@ -109,6 +112,7 @@
 								<th><%= t('.table.secname_and_name') %></th>
 								<th><%= t('.table.year') %></th>
 								<th><%= t('.table.category') %></th>
+								<th><%= t('.table.genre') %></th>
 								<th><%= t('.table.state') %></th>
 								<th><%= t('.action') %></th>
 							</tr>
@@ -140,7 +144,7 @@
 			<h2><%= t('.header_stats') %></h2>
 			<nav>
 				<ul class="tab-switch">
-					<li><a href="#tab0" class="default-tab"><%= t('.tabs.chart') %></a></li>
+					<li><a href="#tab0" class="default-tab"><%= t('.tabs.chart_swimmers_by_category') %></a></li>
 				</ul>
 			</nav>			
 		</header>
@@ -148,117 +152,7 @@
 		<section>
 			<!-- Tab Grafícas de estadísticas de nadadores -->
 			<div class="tab default-tab" id="tab0">
-				<div class="sidetabs">
-					<nav class="sidetab-switch">
-						<ul>
-							<li><a class="default-sidetab" href="#sidetab1b"><%= t('.tabs.new_swimmers_by_month') %></a></li>
-							<li><a href="#sidetab2b"><%= t('.tabs.leave_swimmers_by_month') %></a></li>
-						</ul>
-					</nav>
-					
-					<!-- Gráfica de altas por mes -->
-					<div class="sidetab default-sidetab" id="sidetab1b">
-						<h3><%= t('.new_swimmers_by_month_header') %></h3>
-						<table class="data" data-chart="area">
-							<thead>
-								<tr>
-									<td></td>
-									<th scope="col">01/Nov</th>
-									<th scope="col">02/Nov</th>
-									<th scope="col">03/Nov</th>
-									<th scope="col">04/Nov</th>
-									<th scope="col">05/Nov</th>
-									<th scope="col">06/Nov</th>
-									<th scope="col">07/Nov</th>
-									<th scope="col">07/Nov</th>
-									<th scope="col">07/Nov</th>
-									<th scope="col">07/Nov</th>
-									<th scope="col">07/Nov</th>
-									<th scope="col">07/Nov</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">volumen</th>
-									<td>100</td>
-									<td>160</td>
-									<td>40</td>
-									<td>120</td>
-									<td>30</td>
-									<td>70</td>
-								</tr>
-								<tr>
-									<th scope="row">Tom</th>
-									<td>3</td>
-									<td>40</td>
-									<td>30</td>
-									<td>45</td>
-									<td>35</td>
-									<td>49</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<!-- /Gráfica de altas por mes -->
-					
-					<!-- Gráfica de bajas por mes -->
-					<div class="sidetab" id="sidetab2b">
-						<h3><%= t('.leave_swimmers_by_month_header') %></h3>
-						<table class="data" data-chart="line">
-							<thead>
-								<tr>
-									<td></td>
-									<th scope="col">food</th>
-									<th scope="col">auto</th>
-									<th scope="col">household</th>
-									<th scope="col">furniture</th>
-									<th scope="col">kitchen</th>
-									<th scope="col">bath</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">Mary</th>
-									<td>190</td>
-									<td>160</td>
-									<td>40</td>
-									<td>120</td>
-									<td>30</td>
-									<td>70</td>
-								</tr>
-								<tr>
-									<th scope="row">Tom</th>
-									<td>3</td>
-									<td>40</td>
-									<td>30</td>
-									<td>45</td>
-									<td>35</td>
-									<td>49</td>
-								</tr>
-								<tr>
-									<th scope="row">Brad</th>
-									<td>10</td>
-									<td>180</td>
-									<td>10</td>
-									<td>85</td>
-									<td>25</td>
-									<td>79</td>
-								</tr>
-								<tr>
-									<th scope="row">Kate</th>
-									<td>40</td>
-									<td>80</td>
-									<td>90</td>
-									<td>25</td>
-									<td>15</td>
-									<td>119</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<!-- /Gráfica de bajas por mes -->
-					
-				</div>
+				<div id="swimmers_chart" style="height:250px; min-width: 400px;"></div>
 			</div>	
 			<!-- \Tab Grafícas de estadísticas de nadadores -->
 						
@@ -269,3 +163,12 @@
 	
 </article>
 <!-- \Full Content Block -->
+<% content_for :fullcalendar_script do %>
+	<script type="text/javascript">
+		require("/javascripts/charts_script.js");
+		var categ 	= <%= raw @categories %>,
+				male 		= <%= @swimmers.swimmers_by_category[0].values %>,
+				female 	= <%= @swimmers.swimmers_by_category[1].values %>;
+		category_chart(categ, male, female, <%= @swimmers.count %>);
+	</script>
+<% end %>

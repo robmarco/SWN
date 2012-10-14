@@ -1476,17 +1476,18 @@ p.activity-time { color: #AAA; font-style: italic; }
 
 
 /*  Login Page  */
+body.login { border-top: 3px solid #d33c14;}
 .login { background-image:none; }
 .login section[role=main] {
 	margin:100px auto 0;
 	min-width:380px;
 	width:380px;
-	background:none;
+	background: none;
 }
 .login section[role=main] > a {
-	background:url('../images/quswimming_logo.png') no-repeat;
-	width:160px;
-	height:31px;
+	background:url('../images/theme/logo.png') no-repeat;
+	width:291px;
+	height:67px;
 	text-indent:-9999em;
 	display:block;
 }

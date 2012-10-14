@@ -20,12 +20,15 @@
 #  photo_content_type :string(255)
 #  photo_file_size    :integer
 #  photo_updated_at   :datetime
+#  language           :string(255)
 #
 
 class Account < ActiveRecord::Base
   belongs_to :user
     
-  attr_accessible :user_id, :name, :secname, :dni, :club, :web, :phone, :address, :city, :country, :postal, :photo
+  attr_accessible :user_id, :name, :secname, :dni, :club, :web, 
+  								:phone, :address, :city, :country, :postal, 
+  								:photo, :language
   
   # User photo added to the account
   has_attached_file :photo, :styles => { :thumb => "56x56" },

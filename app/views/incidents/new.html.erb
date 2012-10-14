@@ -1,14 +1,14 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Diario de incidencias', incidents_path %></li>
-	<li>Añadir incidencia</li>
+	<li><%= link_to t('incidents.breadcumbs.incidents'), incidents_path %></li>
+	<li><%= t('incidents.breadcumbs.add_incident') %></li>
 </ul>
 
 <article class="full-block clearfix">
 	<div class="article-container">
 		
 		<header>
-			<h2>Añadir incidencia</h2>
+			<h2><%= t('.header') %></h2>
 		</header>
 			
 		<section>

@@ -1,0 +1,34 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to t('.breadcumbs.swimmers'), swimmers_path %></li>
+	<li>Enviar mensajes a nadadores</li>
+</ul>
+
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2>Enviar mensaje por email a nadadores</h2>
+		</header>
+
+		<section>
+			<%= form_tag send_message_post_swimmers_path do %>
+			
+				<fieldset>
+					<dl>
+						<dt>Nadadores</dt>
+						<dd id="tags">
+							<%= text_field_tag :swimmers_list, nil, :class => "disabled tags medium" %>
+							<p>Seleccione los nadadores a los que enviar el mensaje</p>
+						</dd>
+						<dt>Mensaje</dt>
+						<dd><%= text_area_tag :message, nil, :class => "wysiwyg medium" %></dd>
+					</dl>
+				</fieldset>				
+				
+				<div align="center"><%= submit_tag "Enviar mensaje", :class => "button" %> ó <%= link_to 'Cancelar', swimmers_path %></div>
+			<% end %>
+		</section>
+
+	</div>
+</article>

@@ -1,0 +1,108 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs -->
+	<meta charset="utf-8" />
+	<title>Quality Swimming - Gestión deportiva para entrenadores de natación</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<!-- Mobile Specific Metas
+    ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<!-- CSS
+    ================================================== -->
+  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans_3A400,700italic,700,600italic,600,400italic,300italic,300" %> 
+  <%= stylesheet_link_tag "theme/base", "theme/skeleton" %>
+  <%= stylesheet_link_tag "theme/prettyPhoto", :media => "screen" %>
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="/images/theme/favicon.ico">
+
+</head>
+<body>
+
+
+	<div id="header" class="container container-twelve">
+		<div id="logo" class="four columns"><%= link_to image_tag("theme/logo.png"), root_path %></div>
+		<div id="nav" class="eight columns">
+			<ul>
+				<li <% if params[:action]=="index" %>class="active"<% end %>><%= link_to 'Inicio', root_path %></li>
+				<li <% if params[:action]=="tour" %>class="active"<% end %>><%= link_to "Tour", pages_tour_path %></li>
+				<li <% if params[:action]=="about" %>class="active"<% end %>><%= link_to "Equipo", pages_about_path %></li>
+				<li <% if params[:action]=="contact" %>class="active"<% end %>><%= link_to "Contacto", pages_contact_path %></li>
+				<li><%= link_to "Identificarse", new_user_session_path %></li>
+			</ul>
+		</div>
+		<div class="clear"></div>		
+	</div><!-- //header -->
+
+	<%= yield %>
+
+	<div id="footer">
+		<div class="container container-twelve">
+			<div class="four columns">
+				<h4>Envía tus sugerencias.</h4>
+				<p>La versión de QuSwimming está en fase Beta, por lo que pedimos a nuestros usuarios que nos ayuden a mejorar enviando sus sugerencias a través del formulario de contacto, teléfono o email.</p>
+				<p>
+					Teléfono: (+34) 928 458 719<br />
+					Email: <a href="#">admin@quswimming.com</a>
+				</p>
+			</div>
+			<div class="four columns offset-by-four">
+				<h4>Sigue Conectado.</h4>
+				<p>A través de las redes sociales y de nuestro perfiles en las páginas multimedia, podrás conocer todas las novedades que se añaden a la aplicación.</p>
+				<ul class="social-icons dark">
+					<li class="skype"><a href="#"></a></li>
+					<li class="flickr"><a href="#"></a></li>
+					<li class="twitter"><a href="#"></a></li>
+					<li class="dribbble"><a href="#"></a></li>
+					<li class="facebook"><a href="#"></a></li>
+					<li class="googleplus"><a href="#"></a></li>
+					<li class="forrest"><a href="#"></a></li>
+					<li class="vimeo"><a href="#"></a></li>
+					<li class="rss"><a href="#"></a></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div><!-- //footer-->
+
+
+
+	<div id="copyrights">
+		<div class="container container-twelve">
+			<div class="align-left six columns">
+				<p>Creative Commons © 2012 <%= link_to "QuSwimming", '#' %>. Todos los derechos reservados.</p>
+			</div>
+			<div class="six columns align-right">
+				<p><%= link_to "Contacto", pages_contact_path %> / <%= link_to "Términos de uso", pages_terms_path %></p>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div><!-- //copyrights -->
+
+	<%= javascript_include_tag 'jquery.min', 'rails', "theme/jquery.ui.min"  %>
+	<%= javascript_include_tag "theme/jquery.easing" %>
+	<%= javascript_include_tag "theme/responsiveslides.min" %>
+	<%= javascript_include_tag "theme/jquery.cookies" %>
+	<%= javascript_include_tag "theme/jquery.tooltip" %>
+	<%= javascript_include_tag "theme/dareslider" %>
+	<%= javascript_include_tag "theme/isotope.min" %>
+	<%= javascript_include_tag "theme/jquery.placeholder.min" %>
+	<%= javascript_include_tag "theme/jquery.fitvids" %>
+	<%= javascript_include_tag "theme/jquery.prettyPhoto" %>
+	<%= javascript_include_tag "theme/jquery.flexslider-min" %>
+	<%= javascript_include_tag "theme/custom" %>
+
+</body>
+</html>

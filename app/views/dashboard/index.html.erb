@@ -8,7 +8,7 @@
 <!-- Dashboard main Block with Half -->
 <article class="half-block clearfix">
 	<div class="article-container">
-		<header><h2><%= t('.header_today_events') %></h2></header>
+		<header><h2><%= t('.header_week_events') %></h2></header>
 		<section>
 			<!-- jQuery Full Calendar Plugin -->
 			<div class="fullcalendar"></div>
@@ -28,16 +28,19 @@
 							center: '',
 							right: ''
 						},
-						defaultView: 'basicDay',
+						columnFormat: {
+							week: 'ddd d/M'
+						},
+						defaultView: 'basicWeek',
 						defaultEventMinutes: 480,
 						editable: true,
 						firstDay: 1,
 						events: [
 							<% @competitions.each do |competition| %>
 								{
-									title: '<%= "Competición - " + competition.title %>',
+									title: '<%= "Competición - #{competition.title} (#{competition.category})"%>',
 									start: '<%= competition.date_competition.strftime("%Y/%m/%d") %>',
-									allDay: false, 
+									allDay: true, 
 									url: '<%= competition_path(competition) %>',
 									color: '#ae432e'
 								},
@@ -46,17 +49,17 @@
 								{
 									title: '<%= "Test - " + trial.title + " " + "(#{trial.trial_category.name})" %>',
 									start: '<%= trial.date_trial.strftime("%Y/%m/%d") %>',
-									allDay: false, 
+									allDay: true, 
 									url: '<%= trial_path(trial) %>',
 									color: '#77ab13'
 								},
 							<% end %>
 							<% @trainnings.each do |trainning| %>
 								{
-									title: '<%= "Entrenamiento Macro " + trainning.macro.to_s + " / Micro " + trainning.micro.to_s +
-									  			"	- Volumen: #{trainning.volumen} m. / Carga #{trainning.carga} m." %>',
+									title: '<%= "Entreno" +
+									  			"	- Volumen: #{trainning.volumen} m. / Carga #{trainning.carga}" %>',
 									start: '<%= trainning.date_trainning.strftime("%Y/%m/%d") %>',
-									allDay: false, 
+									allDay: true, 
 									url: '<%= trainning_path(trainning) %>'
 								},
 							<% end %>
@@ -72,7 +75,7 @@
 					// $(div_var).css("min-height", 200); // Resize content div
 
 					$("span.fc-event-time").css("display", "none");
-					if (event_count == 0) $(".fc-day-content>div").html("<p><br />No hay eventos para hoy </p>");
+					//if (event_count == 0) $(".fc-day-content>div").html("<p><br />No hay eventos para hoy </p>");
 				</script>
 			<% end %>
 		</section>
@@ -89,7 +92,7 @@
 				<% @recent_activities.each do |a| %>
 					<tr>
 						<td class="activity-description">
-							<p><strong>Roberto</strong> <%= activity_title(a.action, a.assoc_class) %></p>
+							<p><strong><%= current_user.name %></strong> <%= activity_title(a.action, a.assoc_class) %></p>
 							<span><strong><%= a.description %></strong></span>
 						</td>
 						<td class="activity-date">

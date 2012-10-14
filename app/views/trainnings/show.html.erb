@@ -9,10 +9,9 @@
 	<div class="article-container">
 		
 		<header>
-			<h2><%= "[#{@trainning.date_trainning.strftime('%d/%m/%Y')}] " + "Micro " + @trainning.micro.to_s + " del Macro " + @trainning.macro.to_s %></h2>
+			<h2><span class="ical"><%= "Entrenamiento #{@trainning.date_trainning.strftime('%a %d %b %Y')}" %></span></h2>
 			<nav>
 				<ul class="button-switch">
-					<li><%= link_to 'Imprimir PDF', trainning_path(@trainning, format: "pdf"), :class => "button" %></li>
 					<li><%= link_to 'Eliminar', trainning_path(@trainning), :confirm => '¿Está seguro de que desea eliminar el entrenamiento?', :method => :delete, :class => "button gray" %></li>
 					<li><%= link_to 'Editar', edit_trainning_path(@trainning), :class => "button" %></li>
 				</ul>
@@ -47,7 +46,11 @@
 						<tr class="table_results">
 							<td class="text_right" colspan="3"><strong><%= t('.total_vol') %></strong></td>
 							<td><strong><%= @trainning.volumen %> m.</strong></td>
-						</tr>						
+						</tr>	
+						<tr class="table_results">
+							<td class="text_right" colspan="3"><strong><%= t('.total_car') %></strong></td>
+							<td><strong><%= @trainning.carga %></strong></td>
+						</tr>					
 					</tbody>
 					
 				</table>
@@ -55,7 +58,7 @@
 				<% if !remove_html_tag(@trainning.physical).blank? %>
 				<form>
 					<fieldset>
-						<legend>Entrenamiento fuera del agua</legend>
+						<legend><%= t('.physic_trainning') %></legend>
 						<dl>
 							<dt><%= label :physical, Trainning.human_attribute_name(:physical) %></dt>
 							<dd>
@@ -77,15 +80,14 @@
 <article class="quarter-block nested clearrm">
 	<div class="article-container">
 		<header>
-			<h2>Acciones</h2>
+			<h2><%= t('.header_actions') %></h2>
 		</header>
 		
 		<section class="actions">
 			<!-- Stats Summary -->
 			<ul class="left">
-				<li><span class="extension empty"><%= t('.print') %></span></li>
-				<li><span class="extension pdf"><%= t('.export') %></span></li>
-				<li><span class="extension access"><%= t('.send_to_email') %></span></li>
+				<li><span class="extension pdf"><%= link_to t('.export'), trainning_path(@trainning, format: "pdf") %></span></li>
+				<li><span class="extension access"><%= link_to t('.send_to_email'), send_by_email_trainning_path(@trainning) %></span></li>
 			</ul>
 			<!-- /Stats Summary -->
 		</section>

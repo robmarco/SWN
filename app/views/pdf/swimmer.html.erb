@@ -1,0 +1,131 @@
+<section>
+	<div class="trainer_info">
+		<div class="personal_info">
+			<ul>
+				<li><%= current_user.full_name %></li>
+				<li><%= current_user.account.try(:club) %></li>
+				<li><%= "#{current_user.account.try(:country)}, #{current_user.account.try(:city)}" %></li>
+				<li><%= current_user.try(:email) %></li>
+			</ul>
+		</div>
+		<div class="page_info">
+			<h2>Informe de Nadador</h2>
+			<p><%= Time.now.strftime("Generado %m/%d/%Y a %I:%M%p") %></p>
+		</div>
+	</div>
+
+	<!-- Swimmer Personal Information --> 
+	<div class="swimmer_info">
+		<div class="info">
+			<h2><%= @swimmer.swimmer_name_secname %></h2>
+			<ul class="data_info">
+				<li>Licencia <span><%= @swimmer.licence %></span></li>
+				<li>Fecha Nacimiento <span><%= @swimmer.born.strftime("%d/%m/%Y") %></span></li>
+				<li>Categoría <span><%= @swimmer.category %></span></li>
+				<li>Género <span><%= @swimmer.genre %></span></li>
+				<li>Estado <span><%= @swimmer.state %></span></li>				
+			</ul>
+
+			<h3>Información de contacto</h3>
+			<ul id="contact_info" class="data_info">
+				<li>Dirección <span><%= @swimmer.address? ? @swimmer.address : "-" %></span></li>
+				<li>País/Ciudad <span><%= "#{@swimmer.country}, #{@swimmer.city} (#{@swimmer.postal})" %></span></li>
+				<li>Email <span><%= @swimmer.email %></span></li>
+				<li>Teléfono <span><%= @swimmer.phone? ? @swimmer.phone : "-" %></span></li>
+				<li id="parents">Nombre Padre/Madre/Tutor <span><%= @swimmer.parentname? ? @swimmer.parentname : "-" %></span></li>
+				<li>Email Padre/Madre/Tutor <span><%= @swimmer.parentemail? ? @swimmer.parentemail : "-" %></span></li>				
+				<li>Teléfono Padre/Madre/Tutor <span><%= @swimmer.parentphone? ? @swimmer.parentphone : "-" %></span></li>				
+			</ul>
+
+			<h3>Enferdades/Lesiones/Observaciones</h3>
+			<ul id="diseases" class="data_info">
+				<li>Enfermedades <span><%= @swimmer.disease? ? @swimmer.disease : "-" %></span></li>
+				<li id="parents">Observaciones <span><%= @swimmer.observation? ? @swimmer.observation : "-" %></span></li>
+			</ul>
+		</div>
+		<div class="picture">
+			<%= image_tag "#{Rails.root}/public/images/sample_avatar.png" %>
+		</div>		
+	</div>
+	<div class="clear"></div>
+
+	<!-- Competition & Trial Results / With Best Results -->
+	<div align="center">
+		
+		<% if @swimmer_competition_results.count > 0 %>
+			<table id="hor-minimalist-b">
+				<thead>
+					<tr>
+						<tr><th colspan="5" id="colspan_title"><b>MEJORES MARCAS</b></th></tr>
+						<th>Prueba</th>
+						<th>Tiempo</th>
+						<th>Lugar</th>
+						<th>Fecha</th>					
+					</tr>
+				</thead>
+				<tbody>
+					<% @swimmer.competition_results.best_results_by_set_id(@swimmer).each do |result| %>
+						<tr>
+							<td><%= result.competition_set.name %></td>
+							<td><%= result.time_result %></td>						
+							<td><%= "#{result.competition.title} (#{result.competition.pool_dist})" %></td>
+							<td><%= result.competition.date_competition.strftime("%d/%m/%Y") %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+			<table id="hor-minimalist-b">
+				<thead>
+					<tr>
+						<tr><th colspan="5" id="colspan_title"><b>RESULTADOS EN COMPETICIONES</b></th></tr>
+						<th>Fecha</th>
+						<th>Lugar</th>
+						<th>Prueba</th>
+						<th>Tiempo</th>
+						<th>Categ</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @swimmer_competition_results.each do |result| %>
+						<tr>
+							<td><%= result.competition.date_competition.strftime("%d/%m/%Y") %></td>
+							<td><%= "#{result.competition.title} (#{result.competition.pool_dist})" %></td>
+							<td><%= result.competition_set.name %></td>
+							<td><%= result.time_result %>
+								<span id="evolution"><%= increase_decrease_time_pdf(result) %></span>
+							</td>
+							<td><%= result.competition.category %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% end %>
+
+		<% if @swimmer_trial_results.count > 0 %>
+			<table id="hor-minimalist-b">
+				<thead>
+					<tr>
+						<tr><th colspan="5" id="colspan_title"><b>RESULTADOS EN TEST</b></th></tr>
+						<th>Fecha</th>
+						<th>Título</th>
+						<th>Tipo</th>
+						<th>Valor</th>					
+					</tr>
+				</thead>
+				<tbody>
+					<% @swimmer_trial_results.each do |trial_result| %>
+						<tr>
+							<td><%= trial_result.trial.date_trial.strftime("%d/%m/%Y") %></td>
+							<td><%= trial_result.trial.title %></td>
+							<td><%= trial_result.trial.trial_category.name %></td>
+							<td><%= trial_result.trial_value %> <%= "#{trial_result.trial.trial_category.type_value}" %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% end %>
+
+	</div>
+</section>
+

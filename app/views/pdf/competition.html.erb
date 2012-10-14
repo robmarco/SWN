@@ -1,0 +1,79 @@
+<section>
+	<div class="trainer_info">
+		<div class="personal_info">
+			<ul>
+				<li><%= current_user.full_name %></li>
+				<li><%= current_user.account.try(:club) %></li>
+				<li><%= "#{current_user.account.try(:country)}, #{current_user.account.try(:city)}" %></li>
+				<li><%= current_user.try(:email) %></li>
+			</ul>
+		</div>
+		<div class="page_info">
+			<h2>Informe de Competición</h2>
+			<p><%= Time.now.strftime("Generado %m/%d/%Y a %I:%M%p") %></p>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<!-- Competition_Basic Information -->
+	<div class="basic_information">
+		<div class="left_80">
+			<h2><%= @competition.title %></h2>
+			<p><%= "#{@competition.place}, #{@competition.pool_dist} (#{@competition.chrono_type})"  %></p>
+		</div>
+		<div class="right_20">
+			<h3><%= @competition.date_competition.strftime("%d/%m/%Y") %></h3>
+			<p class="category"><%= @competition.category %></p>
+		</div>
+	</div>
+
+	<div class="clear"></div>
+
+	<!-- Competition & Trial Results / With Best Results -->
+	<div align="center">
+		<% if @competition_results.count > 0 %>
+			<table id="hor-minimalist-b">
+				<thead>
+					<tr>
+						<tr><th colspan="5" id="colspan_title"><b>RESULTADOS DE COMPETICIÓN</b></th></tr>
+						<th>Nadador</th>
+						<th>Prueba</th>
+						<th>Tiempo</th>
+						<th>Dif.MM</th>					
+					</tr>
+				</thead>
+				<tbody>
+					<% @competition_results.each do |result| %>
+						<tr>
+							<td><%= result.swimmer.swimmer_secname_name %></td>
+							<td><%= result.competition_set.name %></td>						
+							<td>
+								<%= result.time_result %>
+								<span id="evolution"><%= increase_decrease_time_pdf(result) %></span>
+							</td>
+							<td><%= "#{result.diff_with_best_result_until_date} s " %></td>
+						</tr>
+					<% end %>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4"></td>
+					</tr>
+					<tr>
+						<td colspan="3" class="text_right">Total de resultados</td>
+						<td><%= @competition_results.size %></td>
+					</tr>
+					<tr>
+						<td colspan="3" class="text_right">Participantes</td>
+						<td><%= @competition_results.map(&:swimmer_id).uniq.size %></td>
+					</tr>
+					<tr>
+						<td colspan="3" class="text_right">Descalificaciones</td>
+						<td><%= @competition_results.disqualified.size %></td>
+					</tr>
+				</tfoot>
+			</table>
+		<% end %>
+	</div>
+</section>
+

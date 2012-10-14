@@ -53,23 +53,23 @@
 					<div class="detail_information">
 						<table id="swimmer_info">
 							<tr>
-								<td class="right">Licencia</td>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:licence)}" %></td>
 								<td class="darker"><%= @swimmer.licence %></td>
 							</tr>
 							<tr>
-								<td class="right">Fecha Nacimiento</td>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:born)}" %></td>
 								<td class="darker"><%= @swimmer.born.strftime("%d/%m/%Y") %></td>
 							</tr>
 							<tr>
-								<td class="right">Categoría</td>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:category)}" %></td>
 								<td class="darker"><%= @swimmer.category %></td>
 							</tr>
 							<tr>
-								<td class="right">Género</td>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:genre)}" %></td>
 								<td class="darker"><%= @swimmer.genre %></td>
 							</tr>
 							<tr>
-								<td class="right">Estado</td>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:state)}" %></td>
 								<td class="darker">
 									<% case @swimmer.state %>
 										<% when "Baja" %>
@@ -83,7 +83,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="right">Enfermedades</td>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:disease)}" %></td>
 								<td class="darker">									
 									<% if @swimmer.disease_html_clean.blank? %>
 										<%= link_to 'No', swimmer_path(@swimmer)+"#diseases", :class => "open-modal" %>
@@ -100,7 +100,7 @@
 					<ul>
 						<li class="address-icon">
 							<% if @swimmer.address or @swimmer.postal or @swimmer.city %>
-								<p><b>Contacto</b><%= " - #{@swimmer.address} " + "- #{@swimmer.city}" + " (#{@swimmer.country})" %></p>
+								<p><b><%= t('.contact') %></b><%= " - #{@swimmer.address} " + "- #{@swimmer.city}" + " (#{@swimmer.country})" %></p>
 								<p><%= "CP #{@swimmer.postal}" %></p>
 								<p><%= "T: #{@swimmer.phone}" %></p>
 								<p>E: <%= link_to "#{@swimmer.email}", '#' %></p>
@@ -108,7 +108,7 @@
 						</li>
 						<li class="parents-icon">
 							<% if @swimmer.parentname or @swimmer.parentphone or @swimmer.parentemail  %>
-								<p><b>Padre/Madre</b><%= " - #{@swimmer.parentname}" %></p>
+								<p><b><%= t('.parents') %></b><%= " - #{@swimmer.parentname}" %></p>
 								<p><%= "T: #{@swimmer.parentphone}" %></p>
 								<p>E: <%= link_to "#{@swimmer.parentemail}", '#' %></p>
 							<% end %>
@@ -129,12 +129,12 @@
 	<div class="article-container">
 		
 		<header>
-			<h2>Resultados en Competiciones y Test</h2>
+			<h2><%= t('.header_results_in_comp_tests') %></h2>
 			<nav>
 				<ul class="tab-switch">
-					<li><%= link_to 'Competiciones', '#tab1', :class => "default-tab" %></li>
-					<li><%= link_to 'Test', '#tab2' %></li>
-					<li><%= link_to 'Mejores Marcas', '#tab3' %></li>
+					<li><%= link_to t('.tabs.competitions'), '#tab1', :class => "default-tab" %></li>
+					<li><%= link_to t('.tabs.test'), '#tab2' %></li>
+					<li><%= link_to t('.tabs.best_results'), '#tab3' %></li>
 				</ul>
 			</nav>
 		</header>
@@ -149,13 +149,13 @@
 					<table class="datatable_datefilter_sort">
 						<thead>
 							<tr>
-								<th>Fecha</th>
-								<th>Lugar</th>
-								<th>Prueba</th>
-								<th>Tiempo</th>
-								<th>Dif. MM</th>
-								<th>Categoría</th>
-								<th>Acción</th>
+								<th><%= t('.table.date') %></th>
+								<th><%= t('.table.place') %></th>
+								<th><%= t('.table.set') %></th>
+								<th><%= t('.table.time') %></th></th>
+								<th><%= t('.table.diff_with') %></th></th>
+								<th><%= t('.table.category') %></th></th>
+								<th><%= t('.table.action') %></th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -187,11 +187,11 @@
 					<table class="datatable_datefilter_sort">
 						<thead>
 							<tr>
-								<th>Fecha</th>
-								<th>Título</th>
-								<th>Tipo</th>
-								<th>Valor</th>
-								<th>Acción</th>
+								<th><%= t('.table.date') %></th></th>
+								<th><%= t('.table.title') %></th></th>
+								<th><%= t('.table.type') %></th></th>
+								<th><%= t('.table.value') %></th></th>
+								<th><%= t('.table.action') %></th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -215,11 +215,11 @@
 			<div class="tab" id="tab3">
 				<table class="datatable">
 					<thead>
-						<th>Prueba</th>
-						<th>Lugar</th>
-						<th>Fecha</th>
-						<th>Tiempo</th>
-						<th>Acción</th>
+						<th><%= t('.table.set') %></th></th>
+						<th><%= t('.table.place') %></th></th>
+						<th><%= t('.table.date') %></th></th>
+						<th><%= t('.table.time') %></th></th>
+						<th><%= t('.table.action') %></th></th>
 					</thead>
 					<tbody>
 						<% @swimmer.competition_results.best_results_by_set_id(@swimmer).each do |res| %>
@@ -239,7 +239,7 @@
 		</section>
 		
 		<footer>
-			<p>Diff. MM: Es el tiempo de diferencia que existe con la mejor marca hasta el momento</p>
+			<p><%= t('.footer') %></p>
 		</footer>
 	</div>
 </article>
@@ -250,16 +250,16 @@
 
 <div id="diseases">
 	<div class="diseases">
-		<h2>Enfermedades:</h2>
+		<h2><%= Swimmer.human_attribute_name(:disease) %></h2>
 		<% if @swimmer.disease_html_clean.blank? %>
-			<p>El nadador no padece ninguna enfermedad relevante</p>
+			<p><%= t('.no_disease') %></p>
 		<% else %>
 			<p><%= @swimmer.disease_html_clean %></p>
 		<% end %>
 		<br>
-		<h2>Observaciones</h2>
+		<h2><%= Swimmer.human_attribute_name(:observation) %></h2>
 		<% if @swimmer.observation_html_clean.blank? %>
-			<p>No se ha realizado ninguna anotación sobre el nadador</p>
+			<p><%= t('.no_observation') %></p>
 		<% else %>
 			<p><%= @swimmer.observation_html_clean %></p>
 		<% end %>

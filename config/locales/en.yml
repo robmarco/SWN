@@ -1,5 +1,316 @@
-# Sample localization file for English. Add more files in this directory for other locales.
+# Sample localization file for Spanish. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      accounts: "Cuenta"
+      swimmer: "Nadador"
+      trainning: "Entrenamiento"
+      competition: "Competición"
+
+    attributes:
+      account:
+        name: "Nombre"
+        secname: "Apellidos"
+        dni: "DNI"
+        club: "Club"
+        web: "Web"
+        phone: "Teléfono"
+        address: "Dirección"
+        city: "Ciudad"
+        country: "País"
+        postal: "Código postal"
+
+      category:
+        name: "Nombre"
+        color: "Color"
+
+      competition_result:
+        swimmer_id: "Nadador"
+        competition_set_id: "Prueba"
+        time_result: "Tiempo"
+        disqualify: "Descalificado"
+        observation: "Observaciones"
+
+      competition_set:
+        name: "Nombre"
+
+      competition:
+        date_competition: "Fecha"
+        title: "Título"
+        place: "Lugar"
+        chrono_type: "Tipo de Cronómetro"
+        pool_dist: "Tipo de Piscina"
+        category: "Categoría"
+
+      country:
+        name: "Nombre"
+
+      swimmer:
+        name: "Nombre"
+        secname: "Apellidos"
+        born: "Año nacimiento"
+        licence: "Licencia"
+        email: "Email"
+        address: "Dirección"
+        postal: "Código Postal"
+        city: "Ciudad"
+        country: "País"
+        phone: "Teléfono"
+        parentname: "Nombre Padre/Madre"
+        parentemail: "Email Padre/Madre"
+        parentphone: "Teléfono Padre/Madre"
+        disease: "Enfermedades"
+        observation: "Observaciones"
+        category: "Categoría"
+        state: "Estado"
+        genre: "Género"
+
+      trainning_exercise:
+        repetition: "Repeticiones"
+        heat: "Series"
+        distance: "Metros"
+        style: "Estilo"
+        exercise_type_id: "Tipo"
+        observation: "Observaciones"
+
+      trainning:
+        date_trainning: "Fecha"
+        macro: "Macrociclo"
+        micro: "Microciclo"
+        physical: "Física"
+
+      trial:
+        date_trial: "Fecha"
+        title: "Título"
+        trial_category_id: "Categoría"
+
+  competitions:
+    breadcumbs:
+      competitions: "Competiciones"
+      competitions_list: "Ver lista de competiciones"
+      modify_competition: "Modificar competición"
+      add_competition: "Añadir competición"
+
+    form:
+      competition_information: "Datos de competición"
+      competition_results: "Resultados de competición"
+
+    index: 
+      header_competitions: "Gestión de Competiciones"
+      all: "Todos"
+      mini: "Mini"
+      pre: "PreBenjamín"
+      ale: "Alevín"
+      inf: "Infantil"
+      jun: "Junior"
+      abs: "Absoluto"
+      master: "Master"
+      category_text: "Se muestran las competiciones insertadas en el sistema por un entrenador y su equipo técnico."
+      header_calendar_stats: "Calendario y estadísticas"
+      header_competitions_calendar: "Calendario de Competiciones"
+      table_action: "Acción"
+
+      tabs:
+        calendar: "Calendario"
+
+    edit:
+      header_competition: "Modificar competición"
+
+    new:
+      header_add_competition: "Añadir Competición"  
+
+    show:
+      event_information: "Datos del evento"
+      header_stats: "Estadísticas"
+      total_results_added: "Resultados añadidos"
+      total_swimmers_in: "Nadadores"
+      disqualifieds: "Descalificaciones"
+      header_swimmers_results: "Resultados de Nadadores" 
+      table_swimmer: "Nadador"
+      table_comp: "Prueba"
+      table_time: "Tiempo"
+      table_diff: "Dif. MM"
+      table_observation: "Observación"
+
+  dashboard:
+    index:
+      breadcumbs: "Dashboard"
+      header_today_events: "Eventos para hoy"
+      header_recent_activity: "Actividad Reciente"
+
+  swimmers:
+    form:
+      personal_information: "Datos personales"
+      state_notice: "Con estado no federado o baja, el nadador no podrá participar en competiciones"
+      contact_information: "Datos de contacto"
+      other_information: "Otra información"
+      disease_notice: "Inserte las enfermedades que padezca el niño, así como su tratamiento"
+
+    index:
+      breadcumbs_swimmers: "Nadadores" 
+      breadcumbs_swimmers_list: "Ver lista de nadadores"
+      header: "Gestión de nadadores"
+      header_stats: "Estadísticas"
+      action: "Acción"
+
+      table:
+        secname_and_name: "Apellidos y nombre"
+        year: "Año"
+        category: "Categoría"
+        state: "Estado"
+
+      buttons:
+        add_swimmer: "Añadir nadador"
+
+      tabs:
+        all: "Todos"
+        federates: "Federados"
+        not_federates: "No Federados"
+        leave: "Bajas"
+        message_tab_html: "Se muestran los nadadores insertados en el sistema por un entrenador y su equipo técnico. Aquellos nadadores <strong>no federados o baja</strong>, no podrán participar en competiciones."
+        chart_swimmers_by_category: "Categorías de nadadores"
+
+
+    new:
+      header: "Añadir nadador"
+      breadcumbs:
+        swimmers: "Nadadores"
+        add_swimmer: "Añadir nadador"
+
+    edit:
+      header: "Modificar nadador"
+
+      breadcumbs:
+        swimmers: "Nadadores"
+        modify_swimmer: "Modificar nadador"
+
+      buttons:
+        show_swimmer: "Mostrar nadador"
+        delete_swimmer: "Eliminar"
+
+  trainnings:
+    breadcumbs:
+      trainnings: "Entrenamientos"
+      trainnings_list: "Ver lista de entrenamientos"
+      add_trainning: "Añadir entrenamiento"
+      modify_trainning: "Modificar entrenamiento"
+
+    form:
+      trainning_information: "Datos del entrenamiento"
+      trainning_exercises: "Ejercicios del entrenamiento"
+      trainning_physics: "Entrenamiento fuera del agua"
+
+    index:
+      header: "Gestión de entrenamientos"
+      header_basic_information: "Información"
+      header_stats: "Estadísticas"
+      header_vol_car_lastsessions: "Volumen y carga de los últimos entrenamientos"
+      header_vol_last_type_ex: "Volumen de los últimos entrenamientos por tipo de ejercicio"
+      header_car_last_type_ex: "Carga de los últimos entrenamientos por tipo de ejercicio"
+      vol_current_macro: "Volumen Macro actual"
+      car_current_macro: "Carga Macro actual"
+      about_mujika_1_html: "<p>El <strong>índice de Mujika (ISFA)</strong> permite definir la intensidad de cada zona objetivo del entrenamiento utilizada y valorar el esfuerzo realizado por el nadador durante una sesión de entrenamiento de la resistencia. Mediante el mismo se pretenden controlar los procesos de carga y descarga dentro de los diferentes ciclos del entrenamiento.</p>"
+      about_mujika_2_html: "<p>Los <strong>tipos de ejercicios básicos</strong> definidos en teoría del entrenamiento comprenden los siguientes (entre paréntesis el valor del índice de Mujika para obtener su equivalente en carga):</p>"
+
+      tabs:
+        last_sessions: "Últimas sesion (vol/carga)"
+        vol_by_ex_type: "Volumen por tipo de ejercicio"
+        car_by_ex_type: "Carga por tipo de ejercicio"
+
+    new:
+      header_add_trainning: "Añadir entrenamiento"
+
+    edit:
+      header_modify_trainning: "Modificar entrenamiento"
+
+    show:
+      table_exercise: "Ejercicio"
+      table_content: "Contenido"
+      table_type: "Tipo"
+      table_vol: "Volumen"
+      total_vol: "Volumen total del entreno"
+      physic_trainning: "Entrenamiento fuera del agua"
+      header_actions: "Acciones"
+      print: "Imprimir"
+      export: "Exportar a PDF"
+      send_to_email: "Enviar por email"
+
+  trials:
+    breadcumbs:
+      tests: "Tests preparatorios"
+      add_test: "Añadir test"
+      modify_test: "Modificar test preparatorio"
+      tests_lists: "Ver lista de tests preparatorios"
+
+    form:
+      test_information: "Datos del test"
+      trial_results: "Resultados de Test"
+      table_swimmer: "Nadador"
+      table_trial_type: "Tipo de Test"
+      table_result: "Valor"
+      table_unit: "Unidad"
+      table_observation: "Observaciones"
+
+    new:
+      header_add_test: "Añadir Test preparatorio"
+
+    edit:
+      header_modify_test: "Modificar test preparatorio"
+
+    index:
+      header: "Gestión de tests preparatorios"
+      table_date: "Fecha"
+      table_title: "Título"
+      table_type: "Tipo"
+      table_action: "Acción"
+      header_information: "Información"
+      trials_text: "Las capacidades que el entrenador puede evaluar sobre un nadador son las siguientes:"
+      header_calendar_stats: "Calendario y Estadísticas"
+      header_test_calendar: "Calendario de test"
+
+      tabs:
+        calendar: "Calendario"
+
+    show:
+      header_test_information: "Datos del test"
+      header_stats: "Estadísticas"
+      total_results_added: "Total de resultados añadidos"
+      masc_swimmers: "Participantes masculinos"
+      fem_swimmers: "Participantes femeninos"
+      header_swimmer_results: "Resultados de Nadadores"
+      table_swimmer: "Nadador"
+      table_type_test: "Tipo de Test"
+      table_value: "Valor"
+      table_observation: "Observación"
+
+  accounts:
+    breadcumbs:
+      profile_configuration: "Configuración de perfil"
+
+    form:
+      header_picture_avatar: "Fotografía/Avatar"
+      header_personal_information: "Datos personales"
+      header_contact_information: "Datos de contacto"
+
+    edit:
+      header: "Datos de su cuenta"
+
+  devise:
+    registrations:
+      edit:
+        breadcumbs:
+          profile_configuration: "Configuración de perfil"
+          change_password: "Cambiar contraseña"
+
+        header: "Cambiar contraseña"
+        password: "Nueva contraseña"
+        password_confirmation: "Confirmación contraseña"
+        current_password: "Contraseña actual"
+  labels:
+    required_field: "Campo requerido"
+    show: "Ver"
+    edit: "Editar"
+    delete: "Eliminar"
+

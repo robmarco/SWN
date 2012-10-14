@@ -1,0 +1,97 @@
+<section>
+	<div class="trainer_info">
+		<div class="personal_info">
+			<ul>
+				<li><%= current_user.full_name %></li>
+				<li><%= current_user.account.try(:club) %></li>
+				<li><%= "#{current_user.account.try(:country)}, #{current_user.account.try(:city)}" %></li>
+				<li><%= current_user.try(:email) %></li>
+			</ul>
+		</div>
+		<div class="page_info">
+			<h2>Informe de Nadadores</h2>
+			<p><%= Time.now.strftime("Generado %m/%d/%Y a %I:%M%p") %></p>
+		</div>
+	</div>
+
+	<div align="center">
+		<% if @swimmers_fed.count > 0 %>
+		<table id="hor-minimalist-b">
+			<thead>
+				<tr>
+					<tr><th colspan="5" id="colspan_title"><b>LISTADO NADADORES FEDERADOS</b></th></tr>
+					<th>Nombre y Apellidos</th>
+					<th>Categoría</th>
+					<th>Año</th>
+					<th>Género</th>
+					<th>Licencia</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @swimmers_fed.each do |swimmer| %>
+					<tr>
+						<td><%= swimmer.secname + ', ' + swimmer.name %></td>
+						<td><%= swimmer.category %></td>
+						<td><%= swimmer.born.strftime("%Y") %></td>
+						<td><%= swimmer.genre%></td>
+						<td><%= swimmer.licence %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% end %>
+
+		<% if @swimmers_nofed.count > 0 %>
+		<table id="hor-minimalist-b">
+			<thead>
+				<tr>
+					<tr><th colspan="5" id="colspan_title"><b>LISTADO NADADORES NO FEDERADOS</b></th></tr>
+					<th>Nombre y Apellidos</th>
+					<th>Categoría</th>
+					<th>Año</th>
+					<th>Género</th>
+					<th>Licencia</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @swimmers_nofed.each do |swimmer| %>
+					<tr>
+						<td><%= swimmer.secname + ', ' + swimmer.name %></td>
+						<td><%= swimmer.category %></td>
+						<td><%= swimmer.born.strftime("%Y") %></td>
+						<td><%= swimmer.genre%></td>
+						<td><%= swimmer.licence %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% end %>
+
+		<% if @swimmers_baja.count > 0 %>
+		<table id="hor-minimalist-b">
+			<thead>
+				<tr>
+					<tr><th colspan="5" id="colspan_title"><b>LISTADO NADADORES DE BAJA</b></th></tr>
+					<th>Nombre y Apellidos</th>
+					<th>Categoría</th>
+					<th>Año</th>
+					<th>Género</th>
+					<th>Licencia</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @swimmers_baja.each do |swimmer| %>
+					<tr>
+						<td><%= swimmer.secname + ', ' + swimmer.name %></td>
+						<td><%= swimmer.category %></td>
+						<td><%= swimmer.born.strftime("%Y") %></td>
+						<td><%= swimmer.genre%></td>
+						<td><%= swimmer.licence %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% end %>
+	</div>
+</section>
+

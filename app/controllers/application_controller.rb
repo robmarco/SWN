@@ -1,6 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :initialize_sessions
+  before_filter :set_locale
+ 
+  def set_locale
+    if user_signed_in?
+      I18n.locale = current_user.account.language
+    else
+      I18n.locale = params[:locale] || I18n.default_locale
+    end    
+  end
   
   #rescue_from ActiveRecord::RecordNotFound do
   #  render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404

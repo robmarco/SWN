@@ -13,7 +13,7 @@
   <% end %>
 
 	<fieldset>
-		<legend>Datos de la incidencia</legend>
+		<legend><%= t('incidents.form.legend') %></legend>
 		<dl>
 			<dt><%= f.label :title, "Título*", :title => "Campo requerido", :rel => "tooltip" %></dt>
 			<dd><%= f.text_field :title, :class => "medium" %></dd>
@@ -28,8 +28,8 @@
 				<% end %>
 			</dd>
 			
-			<dt><%= f.label :tags, "Etiquetas", :title => "Las etiquetas le servirán para filtrar incidencias", :rel => "tooltip" %></dt>
-			<dd><%= f.text_field :tag_list, :class => "medium" %><p>Inserte las etiquetas que desee separadas por comas</p></dd>
+			<dt><%= f.label :tags, "Etiquetas", :title => t('incidents.form.tag_tooltip'), :rel => "tooltip" %></dt>
+			<dd><%= f.text_field :tag_list, :class => "medium" %><p><%= t('incidents.form.tag_text') %></p></dd>
 			<dt><%= f.label :description %></dt>
 			<dd><%= f.text_area :description, :class => "wysiwyg medium" %></dd>
 		</dl>

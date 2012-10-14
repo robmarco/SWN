@@ -69,6 +69,10 @@ class Swimmer < ActiveRecord::Base
     secname + ', ' + name
   end
 
+  def age
+    Time.now.year - self.born.year - (self.born.change(:year => Time.now.year) > Time.now.to_date ? 1 : 0)
+  end
+
   def disease_html_clean
     self.disease.gsub(%r{</?[^>]+?>},'')
   end
@@ -80,6 +84,20 @@ class Swimmer < ActiveRecord::Base
   def self.find_by_ids(ids_string)
     array_ids = ids_string.split(',').map{|a| a.to_i}
     self.find(array_ids)
+  end
+
+  def self.swimmers_by_category
+    male = Hash.new
+    female = Hash.new
+    Category.all.map(&:name).each {|c| male[c]=0; female[c]=0}
+    self.group(:genre, :category).count.each do |key,value|
+      if key[0]=="Masculino"
+        male[key[1]]=-value 
+      elsif key[0]=="Femenino"
+        female[key[1]]=value 
+      end
+    end
+    [male, female] 
   end
 
   private

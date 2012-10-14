@@ -1,7 +1,7 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Diario de incidencias', incidents_path %></li>
-	<li>Ver lista de incidencias</li>
+	<li><%= link_to t('incidents.breadcumbs.incidents'), incidents_path %></li>
+	<li><%= t('incidents.breadcumbs.show_incidents_list') %></li>
 </ul>
 
 <!-- Article Full Block - Incidences table -->
@@ -10,11 +10,11 @@
 		
 		<article class="third-quarter-block">
 			<header>
-				<h2>Gestión del diario de incidencias</h2>
+				<h2><%= t('.header_incidents') %></h2>
 				<nav>
 					<ul class="button-switch">
-						<li><%= link_to 'Imprimir PDF', incidents_path(format: "pdf"), :class => 'button' %></li>
-						<li><%= link_to 'Añadir incidencia', new_incident_path, :class => 'button' %></li>
+						<li><%= link_to t('.buttons.print_pdf'), incidents_path(format: "pdf"), :class => 'button' %></li>
+						<li><%= link_to t('.buttons.add_incident'), new_incident_path, :class => 'button' %></li>
 					</ul>
 				</nav>
 			</header>
@@ -22,13 +22,13 @@
 			<section>
 				<div align="right" id="incidents_find_bar">
 					<%= form_tag incidents_path, :method => 'get', :class => "incidents_form", :id => "incidents_search", :remote => true do %>
-						<%= label_tag "Buscar:" %>
-						<%= text_field_tag :search, params[:search], :id => "filter", :class => "medium", :placeholder => "Inserte su criterio de búsqueda" %>
+						<%= label_tag t('.find') %>
+						<%= text_field_tag :search, params[:search], :id => "filter", :class => "medium", :placeholder => t('.find_placeholder') %>
 					<% end %>
 				</div>
 				
 				<% if params[:tag].present? %>
-					<div>Incidencias filtradas por: <b><%= params[:tag] %></b> <%= link_to "(eliminar filtro)", incidents_path %></div>
+					<div><%= t('.filter') %> <b><%= params[:tag] %></b> <%= link_to t('.filter_remove'), incidents_path %></div>
 				<% end %>
 				<ul class="logs" id="incident_logs">					
 					<div id="incident_partial"><%= render :partial => "incident", :collection => @incidents %></div>
@@ -38,9 +38,9 @@
 		</article>
 	
 		<article class="quarter-block clearrm nested">
-			<header><h2>Etiquetas</h2></header>
+			<header><h2><%= t('.tag_sidebar.header') %></h2></header>
 			<section>
-				<p>Se listan las etiquetas asociadas a los registros del diario de incidencias del entrenador. Haciendo clic en cada una de ellas puede acceder directamente a las incidencias por categorías.</p>
+				<p><%= t('.tag_sidebar.text') %></p>
 				<ul class="list-style">
 					<% @tags.each do |tag| %>
 					<li><%= link_to tag.name, incidents_path(:tag => tag.name) %></li>

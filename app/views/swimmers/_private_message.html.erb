@@ -1,0 +1,16 @@
+<div id="private_message">
+	<div class="private_message">
+		
+		<script type="text/javascript">
+			// Editor in Open modal must instanciate 
+			$(function(){
+				$(".wysiwyg_modal").wysiwyg({ iFrameClass:'wysiwyg-iframe' });
+			});
+		</script>
+
+		<%= form_tag send_message_private_swimmer_path(@swimmer) do %>
+			<%= text_area_tag :message, nil, :class => "wysiwyg_modal" %>
+			<div align="center"><%= submit_tag "Enviar mensaje", :class => "button" %></div>
+		<% end %>
+	</div>
+</div>

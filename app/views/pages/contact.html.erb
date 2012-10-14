@@ -1,0 +1,67 @@
+<div id="pageinfo">
+	<div class="container container-twelve">
+		<div class="pagetitle eight columns">
+			<h1>Contacta</h1><h2>Envíanos un mensaje sin compromiso</h2>
+		</div>
+		<div class="pagesnav four columns">
+			<div class="breadcrumbs">
+				<%= link_to 'Inicio', root_path %> &nbsp;&nbsp;/&nbsp;&nbsp; <%= link_to 'Contacto', '#', :class => 'active' %>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div><!-- //pageinfo -->
+
+<iframe id="google-maps" width="100%" height="360" src="https://maps.google.es/maps/ms?msa=0&amp;msid=208405636712106387754.0004cb10e6a5436e07f8f&amp;ie=UTF8&amp;t=m&amp;ll=28.07323,-15.451455&amp;spn=0.006627,0.00912&amp;z=16&amp;output=embed"></iframe><br /><small>Ver <a href="https://maps.google.es/maps/ms?msa=0&amp;msid=208405636712106387754.0004cb10e6a5436e07f8f&amp;ie=UTF8&amp;t=m&amp;ll=28.07323,-15.451455&amp;spn=0.006627,0.00912&amp;z=16&amp;source=embed"></iframe>
+
+<div id="content" class="contact-us container container-twelve">
+
+	<div class="twelve columns">
+		<h4>¿Tienes alguna sugerencia que hacernos?</h4>
+		<p>Si crees que puedes ayudarnos a mejorar la aplicación o ves algún fallo mientras estás usándola, no dudes en ponerte en contacto con nosotros. Te lo agracederemos. ¡Juntos podremos conseguir que hayan más aplicaciones para este deporte!</p>
+	</div>
+
+	<div class="clear"></div>
+	<hr />
+
+	<div class="four columns">
+
+		<h4>Envíanos un mensaje</h4>
+		<p>
+			Escuela de Ingeniería Informática<br />
+			Edifico de Informática y Matemáticas<br />
+			Campus Universitario de Tafira <br />
+			35017 Las Palmas de Gran Canaria
+		</p>
+		<p>
+			Teléfono: (+34) 928 458 719<br />
+			Email: <a href="#">admin@quswimming.com</a>
+		</p>
+
+		<h4>Sigue Conectado</h4>
+		<ul class="social-icons light">
+			<li class="skype"><a href="#"></a></li>
+			<li class="flickr"><a href="#"></a></li>
+			<li class="twitter"><a href="#"></a></li>
+			<li class="dribbble"><a href="#"></a></li>
+			<li class="facebook"><a href="#"></a></li>
+			<li class="googleplus"><a href="#"></a></li>
+			<li class="forrest"><a href="#"></a></li>
+			<li class="vimeo"><a href="#"></a></li>
+		</ul>
+
+	</div>
+
+	<div class="eight columns">
+		<%= form_tag '#' do %>
+			<h4>Te responderemos lo antes posible</h4>
+			<p><%= text_field_tag "name", "", :placeholder => "Nombre" %></p>
+			<p><%= email_field_tag "email", "", :placeholder => "Email" %></p>
+			<p><%= text_area_tag "message", nil, :rows => 8, :placeholder => "Tu mensaje" %></p>
+			<p><%= submit_tag "Enviar" %></p>
+		<% end %>
+	</div>
+
+	<div class="clear"></div>
+
+</div><!-- //content -->

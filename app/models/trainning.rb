@@ -35,11 +35,11 @@ class Trainning < ActiveRecord::Base
   end
 
   def self.first_trainning(user)
-    user.trainnings.order("date_trainning ASC").first
+    user.trainnings.order("date_trainning ASC").limit(1).first
   end
 
   def self.last_trainning(user)
-    user.trainnings.order("date_trainning DESC").first
+    user.trainnings.order("date_trainning DESC").limit(1).first
   end
 
   def volumen
@@ -74,15 +74,6 @@ class Trainning < ActiveRecord::Base
     carga
   end
 
-  # ----------------------------------------------------------  
-  def self.max_macro
-    self.maximum("macro")
-  end
-  
-  def self.max_micro
-    self.maximum("micro")
-  end
-  # ----------------------------------------------------------
   private
   
   def add_to_recent_activity_update

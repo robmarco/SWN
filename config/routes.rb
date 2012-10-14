@@ -4,7 +4,11 @@ SWN::Application.routes.draw do
   get "ajax/swimmers"
 
   resources :accounts, :except => [:new, :show, :index]
-  resources :trainnings, :path => "entrenamientos"  
+  resources :trainnings, :path => "entrenamientos" do
+    member do 
+      get 'send_by_email'
+    end
+  end
   resources :incidents, :path => "incidencias", :except => [:show]  
   resources :trials, :path => "tests"
   resources :competitions, :path => "competiciones"
@@ -23,6 +27,9 @@ SWN::Application.routes.draw do
   get "dashboard/index", :as => :dashboard
   get "pages/index"
   get "pages/about"
+  get "pages/contact"
+  get "pages/tour"
+  get "pages/terms"
   
   devise_for :users
   root :to => "pages#index"

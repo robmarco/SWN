@@ -5,12 +5,11 @@ class TrainningsController < ApplicationController
   # GET /trainnings.xml
   def index
     @trainnings = current_user.trainnings.order(:date_trainning)
-    @last_trainning = current_user.trainnings.last
-    
-    #@last_12_trainnings = current_user.trainnings.where('date_trainning < ?', current_user.trainnings.maximum("date_trainning")+1).limit(12).reverse_order
-    #@last_12_trainnings = @trainnings.take_while {|i| i.date_trainning < (@trainnings.last.date_trainning)+1}.last(12)
-    @last_12_trainnings = @trainnings.last(12).map(&:date_trainning).uniq
-    
+   
+    wkBegin = Date.commercial(Date.today.cwyear, Date.today.cweek, 1) # Obtain date of current week micro
+    wkEnd = Date.commercial(Date.today.cwyear, Date.today.cweek, 7)    
+    @trainnings_current_micro = current_user.trainnings.where(:date_trainning => wkBegin..wkEnd)
+
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -93,5 +92,16 @@ class TrainningsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(trainnings_url) }
     end
+  end
+
+  def send_by_email
+    @trainning = current_user.trainnings.find(params[:id])
+    @trainning_exercises = @trainning.trainning_exercises
+
+    html = render_to_string(:layout => "pdf", :action => "pdf/trainning.html.erb")
+    kit = PDFKit.new(html)
+    kit.stylesheets << "#{Rails.root}/public/stylesheets/print.css" 
+    SwimmerMailer.trainning_message(current_user, kit.to_pdf, @trainning).deliver
+    redirect_to(@trainning, :notice => "Email was sent successfully to swimmers.")
   end
 end

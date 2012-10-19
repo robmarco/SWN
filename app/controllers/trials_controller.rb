@@ -82,7 +82,7 @@ class TrialsController < ApplicationController
       if @trial.save
         session[:trials_size] = current_user.trials.size
                                                     
-        format.html { redirect_to(@trial, :notice => 'Trial was successfully created.') }
+        format.html { redirect_to(@trial, :notice => t('controllers.successfully_created', :model => Trial.model_name.human) ) }
       else
         format.html { render :action => "new" }
       end
@@ -101,7 +101,7 @@ class TrialsController < ApplicationController
     
     respond_to do |format|
       if @trial.update_attributes(params[:trial])
-        format.html { redirect_to(@trial, :notice => 'Trial was successfully updated.') }
+        format.html { redirect_to(@trial, :notice => t('controllers.successfully_updated', :model => Trial.model_name.human) ) }
       else
         format.html { render :action => "edit" }
       end

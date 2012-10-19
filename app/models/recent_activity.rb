@@ -14,6 +14,8 @@
 
 class RecentActivity < ActiveRecord::Base
   belongs_to :user
-  
+	
+	serialize :description
+	  
   validates_presence_of :user_id, :action, :assoc_class, :assoc_id
 end

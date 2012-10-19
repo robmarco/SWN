@@ -64,7 +64,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @swimmer.competition_results.best_results_by_set_id(@swimmer).each do |result| %>
+					<% @swimmer_best_competition_results.each do |result| %>
 						<tr>
 							<td><%= result.competition_set.name %></td>
 							<td><%= result.time_result %></td>						

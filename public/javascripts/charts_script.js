@@ -24,7 +24,7 @@ function chart_lines(data, max_volumen, max_carga){
    * data[i][j][3] = AI
    * data[i][j][4] = TEC
    * data[i][j][5] = VEL */
-
+   
   var volumen = [],
       carga   = [],
       vol_al  = [],

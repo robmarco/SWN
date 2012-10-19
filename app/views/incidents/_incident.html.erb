@@ -1,5 +1,5 @@
 <li class="event">
-	<span class="logs-timestamp"><%= incident.date_incident.strftime("%A, %d %B %Y") %></span>
+	<span class="logs-timestamp"><%= I18n.localize(incident.date_incident, :format => :long) %></span>
 	<h4><%= link_to "#{incident.title}", edit_incident_path(incident), :class => "logs-event" %></h4>
 	<div class="body_incident"><%=raw incident.description %></div>
 	<hr>

@@ -72,7 +72,7 @@ class CompetitionsController < ApplicationController
       if @competition.save
         session[:competitions_size] = current_user.competitions.size  # Update competitions size
         
-        format.html { redirect_to(@competition, :notice => 'Competition was successfully created.') }
+        format.html { redirect_to(@competition, :notice => t('controllers.successfully_created', :model => Competition.model_name.human) ) }
       else
         format.html { render :action => "new" }
       end
@@ -91,7 +91,7 @@ class CompetitionsController < ApplicationController
     
     respond_to do |format|
       if @competition.update_attributes(params[:competition]) and @competition.errors.blank?
-        format.html { redirect_to(@competition, :notice => 'Competition was successfully updated.') }
+        format.html { redirect_to(@competition, :notice => t('controllers.successfully_updated', :model => Competition.model_name.human) ) }
       else
         format.html { render :action => "edit" }
       end

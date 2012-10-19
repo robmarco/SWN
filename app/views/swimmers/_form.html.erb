@@ -2,7 +2,7 @@
   <% if @swimmer.errors.any? %>
     <div id="error_explanation">
 			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
-      <h2><%= pluralize(@swimmer.errors.count, "error") %> prohibited this swimmer from being saved:</h2>
+      <h2><%= t('activerecord.errors.template.header', :model => Swimmer.model_name.human, :count => @swimmer.errors.count) %></h2>
 
       <ul>
       <% @swimmer.errors.full_messages.each do |msg| %>

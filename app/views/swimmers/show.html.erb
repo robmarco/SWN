@@ -154,6 +154,7 @@
 								<th><%= t('.table.set') %></th>
 								<th><%= t('.table.time') %></th></th>
 								<th><%= t('.table.diff_with') %></th></th>
+								<th><%= t('.table.diff_with_percent') %></th>
 								<th><%= t('.table.category') %></th></th>
 								<th><%= t('.table.action') %></th></th>
 							</tr>
@@ -168,8 +169,10 @@
 										<td>
 											<%= competition_result.time_result %> 
 											<span id="evolution"><%= increase_decrease_time(competition_result) %></span>
+											<span id="comp_best_result"><%= best_result_icon(competition_result) %></span>
 										</td>
-										<td><%= "#{competition_result.diff_with_best_result_until_date} s " %></td>
+										<td><%= "#{competition_result.diff_with_best_result_until_date} s" %></td>
+										<td><%= "#{competition_result.diffpercent_with_best_result_until_date}%" %></td>
 										<td><%= competition_result.competition.category %></td>
 										<td><ul class="actions"><li><%= link_to 'ver', competition_path(competition_result.competition), :class => "view", :title => "Ver competición", :rel => "tooltip" %></li></ul></td>
 									</tr>
@@ -222,7 +225,7 @@
 						<th><%= t('.table.action') %></th></th>
 					</thead>
 					<tbody>
-						<% @swimmer.competition_results.best_results_by_set_id(@swimmer).each do |res| %>
+						<% @swimmer_best_competition_results.each do |res| %>
 							<tr>
 								<td><%= res.competition_set.name %></td>
 								<td><%= link_to "#{res.competition.title} (#{res.competition.pool_dist})", competition_path(res.competition)%></td>								

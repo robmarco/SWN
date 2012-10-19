@@ -19,7 +19,7 @@
 .remove { padding-top: 12px; padding-left: 10px; display:block; height: 23px; width: 20px; border:none; }
 .remove a { }
 a.normal { color: #666; text-decoration: none; }
-span#evolution img { 
+span#evolution img, span#comp_best_result img { 
 	height: 12px;
 	background: none;
 	border: none;
@@ -28,6 +28,12 @@ span#evolution img {
 	top: 5px;
 	margin-left: 10px;
 	
+}
+span#comp_best_result img { 
+  width: 20px;
+  height: 10px;
+  top: 4px;
+  margin-left: 0px;
 }
 
 #profile_information > h3 { margin-bottom: 2px;}
@@ -89,6 +95,7 @@ td.remove a {
 form.incidents_form { margin-top: 5px;}
 form.incidents_form label { margin-right: 5px; font-weight: normal;}
 #incident_logs { margin-top: 10px;}
+.no_incidents { margin-top: 20px; text-align: center;}
 
 .datatable_custom_filter { float: right; }
 .datatable_custom_filter span { margin-right: 20px;}

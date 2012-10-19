@@ -2,7 +2,7 @@
   <% if @trainning.errors.any? %>
     <div id="error_explanation">
 			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
-      <h2><%= pluralize(@trainning.errors.count, "error") %> prohibited this trainning from being saved:</h2>
+      <h2><%= t('activerecord.errors.template.header', :model => Trainning.model_name.human, :count => @trainning.errors.count) %></h2>
 
       <ul>
       <% @trainning.errors.full_messages.each do |msg| %>

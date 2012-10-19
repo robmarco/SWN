@@ -17,17 +17,15 @@
 
 
 class Competition < ActiveRecord::Base  
-  before_update :add_to_recent_activity_update
-  after_create :add_to_recent_activity_create
-  after_destroy :add_to_recent_activity_destroy
-  
   belongs_to :user
   has_many :competition_results, :dependent => :destroy
+
   accepts_nested_attributes_for :competition_results, 
     #:reject_if => lambda {|attrs| attrs['swimmer_id'].blank? || attrs['competition_set_id'].blank? || attrs['time_result'].blank? },
     :allow_destroy => true
+
+  validates_presence_of :date_competition, :title, :place, :chrono_type, :pool_dist, :category
   
-  # scopes for competition categories --
   scope :mini, where(:category => "Mini")
   scope :preb, where(:category => "PreBenjamin")
   scope :benj, where(:category => "Benjamin")
@@ -38,26 +36,12 @@ class Competition < ActiveRecord::Base
   scope :mast, where(:category => "Master")
   scope :short_pool, where(:pool_dist => "25m")
   scope :long_pool, where(:pool_dist => "50m")
-  # ------------------------------------
-  
-  validates_presence_of :date_competition, :title, :place, :chrono_type, :pool_dist, :category
 
-  private
-  
-  def add_to_recent_activity_update
-    if self.changed?
-      RecentActivity.create!( :user_id => self.user_id, :action => "update", :assoc_class => "Competition", 
-        :assoc_id => self.id, :description => "Se ha modificado la competición #{self.title}")
-    end
+  def self.this_week
+    today = Date.today
+    wkBegin = Date.commercial(today.cwyear, today.cweek, 1)
+    wkEnd = Date.commercial(today.cwyear, today.cweek, 7)
+    self.where(:date_competition => wkBegin..wkEnd)
   end
   
-  def add_to_recent_activity_create
-    RecentActivity.create!( :user_id => self.user_id, :action => "create", :assoc_class => "Competition", 
-      :assoc_id => self.id, :description => "#{self.title} en #{self.place} (#{self.category})")
-  end
-  
-  def add_to_recent_activity_destroy
-    RecentActivity.create!( :user_id => self.user_id, :action => "destroy", :assoc_class => "Competition", 
-      :assoc_id => self.id, :description => "#{self.title} en #{self.place} (#{self.category})")
-  end
 end

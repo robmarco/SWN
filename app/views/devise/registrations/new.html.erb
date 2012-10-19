@@ -11,8 +11,27 @@
 				
 				<dt><%= user_account.label :secname, "Apellidos*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 				<dd><%= user_account.text_field :secname, :class => 'large' %></dd>
+				
+				<dt><%= user_account.label :club, "Club*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.text_field :club, :class => 'large' %></dd>
+
+				<dt><%= user_account.label :address, "Dirección*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.text_field :address, :class => 'large' %></dd>
+
+				<dt><%= user_account.label :city, "Ciudad*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.text_field :city, :class => 'large' %></dd>
+
+				<dt><%= user_account.label :country, "País*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.select :country, options_from_collection_for_select(Country.all, :name, :name, :prompt => true), :class => 'large' %></dd>
+
+				<dt><%= user_account.label :phone, "Teléfono*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.text_field :phone, :class => 'phone_mask large' %></dd>
+
+				<dt><%= user_account.label :language, "Idioma*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.select :language, options_for_select([["Español", "es"],["Inglés", "en"]]), :class => 'large' %></dd>
 			<% end %>
-			
+			<hr>
+			<br>
 			<dt><%= f.label :email, "Email*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.email_field :email, :class => 'large' %></dd>
 			

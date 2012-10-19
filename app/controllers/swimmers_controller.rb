@@ -33,6 +33,7 @@ class SwimmersController < ApplicationController
     @swimmer = current_user.swimmers.find(params[:id])
     @swimmer_competition_results = @swimmer.competition_results.joins(:competition).order("date_competition DESC")
     @swimmer_trial_results = @swimmer.trial_results.joins(:trial).order("date_trial DESC")
+    @swimmer_best_competition_results = @swimmer.competition_results.best_results_by_set_id(@swimmer)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -93,7 +94,7 @@ class SwimmersController < ApplicationController
       if @swimmer.save
         session[:swimmers_size] = current_user.swimmers.size
 
-        format.html { redirect_to(@swimmer, :notice => 'Swimmer was successfully created.') }
+        format.html { redirect_to(@swimmer, :notice => t('controllers.successfully_created', :model => Swimmer.model_name.human) ) }
       else
         format.html { render :action => "new" }
       end
@@ -121,7 +122,7 @@ class SwimmersController < ApplicationController
     
     respond_to do |format|
       if @swimmer.update_attributes(params[:swimmer])
-        format.html { redirect_to(@swimmer, :notice => 'Swimmer was successfully updated.') }
+        format.html { redirect_to(@swimmer, :notice => t('controllers.successfully_updated', :model => Swimmer.model_name.human) ) }
       else
           format.html { render :action => "edit" }
       end
@@ -145,7 +146,7 @@ class SwimmersController < ApplicationController
 
     respond_to do |format|
       if @swimmer.save
-        format.html { redirect_to(@swimmer, :notice => 'Swimmer Photo was successfully deleted.') }
+        format.html { redirect_to(@swimmer, :notice => t('controllers.swimmer_photo_deleted') ) }
       else
         format.html { redirect_to(@swimmer) }
       end      
@@ -161,9 +162,9 @@ class SwimmersController < ApplicationController
         # Send email using Swimmer_email Mailer
         SwimmerMailer.personal_message(current_user, @swimmer, @message).deliver
         
-        format.html { redirect_to(@swimmer, :notice => 'Email was sent successfully to swimmer.')}
+        format.html { redirect_to(@swimmer, :notice => t('controllers.email_to_swimmer_sent') )}
       else
-        format.html { redirect_to(@swimmer, :alert => 'Email was not sent because message is blank.')}
+        format.html { redirect_to(@swimmer, :alert => t('controllers.email_blank_not_sent') )}
       end
     end
   end
@@ -178,9 +179,9 @@ class SwimmersController < ApplicationController
     respond_to do |format|
       if params[:swimmers_list].present? && params[:message].present?
         SwimmerMailer.message_to(current_user, @swimmers_list, @message).deliver        
-        format.html { redirect_to(swimmers_url, :notice => "Email was sent successfully to swimmers.")}
+        format.html { redirect_to(swimmers_url, :notice => t('controllers.email_to_swimmers_sent') )}
       else
-        format.html { redirect_to(send_message_swimmers_url, :alert => 'Email was not sent because swimmer destinatary or message are blank.')}
+        format.html { redirect_to(send_message_swimmers_url, :alert => t('controllers.email_to_swimmers_not_sent') )}
       end
     end
   end

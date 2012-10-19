@@ -5,10 +5,7 @@ class TrainningsController < ApplicationController
   # GET /trainnings.xml
   def index
     @trainnings = current_user.trainnings.order(:date_trainning)
-   
-    wkBegin = Date.commercial(Date.today.cwyear, Date.today.cweek, 1) # Obtain date of current week micro
-    wkEnd = Date.commercial(Date.today.cwyear, Date.today.cweek, 7)    
-    @trainnings_current_micro = current_user.trainnings.where(:date_trainning => wkBegin..wkEnd)
+    @trainnings_current_micro = current_user.trainnings.this_week
 
     respond_to do |format|
       format.html # index.html.erb
@@ -61,7 +58,7 @@ class TrainningsController < ApplicationController
       if @trainning.save
         session[:trainnings_size] = current_user.trainnings.size
                 
-        format.html { redirect_to(@trainning, :notice => 'Trainning was successfully created.') }
+        format.html { redirect_to(@trainning, :notice => t('controllers.successfully_created', :model => Trainning.model_name.human) ) }
       else
         format.html { render :action => "new" }
       end
@@ -75,7 +72,7 @@ class TrainningsController < ApplicationController
 
     respond_to do |format|
       if @trainning.update_attributes(params[:trainning])
-        format.html { redirect_to(@trainning, :notice => 'Trainning was successfully updated.') }
+        format.html { redirect_to(@trainning, :notice => t('controllers.successfully_updated', :model => Trainning.model_name.human) ) }
       else
         format.html { render :action => "edit" }
       end
@@ -102,6 +99,6 @@ class TrainningsController < ApplicationController
     kit = PDFKit.new(html)
     kit.stylesheets << "#{Rails.root}/public/stylesheets/print.css" 
     SwimmerMailer.trainning_message(current_user, kit.to_pdf, @trainning).deliver
-    redirect_to(@trainning, :notice => "Email was sent successfully to swimmers.")
+    redirect_to(@trainning, :notice => t('controllers.email_to_swimmers_sent'))
   end
 end

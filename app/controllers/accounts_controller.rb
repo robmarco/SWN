@@ -19,7 +19,7 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.update_attributes(params[:account])
-        format.html { redirect_to( edit_account_url, :notice => 'Account was successfully updated.') }
+        format.html { redirect_to( edit_account_url, :notice => t('controllers.successfully_updated', :model => Account.model_name.human) ) }
       else
         format.html { render :action => "edit" }
       end

@@ -9,7 +9,7 @@
 	<div class="article-container">
 		
 		<header>
-			<h2><span class="ical"><%= "Entrenamiento #{@trainning.date_trainning.strftime('%a %d %b %Y')}" %></span></h2>
+			<h2><span class="ical"><%= "Entrenamiento de #{I18n.localize(@trainning.date_trainning, :format => :short)}" %></span></h2>
 			<nav>
 				<ul class="button-switch">
 					<li><%= link_to 'Eliminar', trainning_path(@trainning), :confirm => '¿Está seguro de que desea eliminar el entrenamiento?', :method => :delete, :class => "button gray" %></li>

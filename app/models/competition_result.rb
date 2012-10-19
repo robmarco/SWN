@@ -24,26 +24,42 @@ class CompetitionResult < ActiveRecord::Base
   scope :not_disqualified, where(:disqualify => "")
   scope :in_short_pool, joins(:competition) & Competition.short_pool
   scope :in_long_pool, joins(:competition) & Competition.long_pool
-  
+  scope :not_me, lambda{ |id| where("competition_results.id != ?", id) }
+
   def is_disqualified?
     self.disqualify.eql?("Descalificado") ? true : false
   end
+
+  def is_best_result?
+    # Return true if current result id is included in array with the best results by set_id 
+    CompetitionResult.best_results_by_set_id(self.swimmer).map(&:id).include? self.id
+  end
   
-  # Return the best result until date in same competition set
   def best_result_until_date
+    # Return the best result until date in same competition set
     distance = self.competition.pool_dist
-    best_result = CompetitionResult.joins(:competition).where(:swimmer_id => self.swimmer_id,
+    best_result = CompetitionResult.joins(:competition).not_me(self.id).where(:swimmer_id => self.swimmer_id,
       :competition_set_id => self.competition_set_id).not_disqualified.where("competitions.pool_dist = ?", 
-      distance).where("competitions.date_competition <= ?", self.competition.date_competition ).order("time_result ASC").first
+      distance).where("competitions.date_competition <= ?", self.competition.date_competition ).order("time_result ASC").limit(1).first
   end
 
-  # True if this result is better than others in same competition_set swam before
   def is_improved?
-    (self.time_result <= self.best_result_until_date.time_result) ? true : false
+    # True if this result is better than others in same competition_set swam before
+    best_result = self.best_result_until_date
+    ( (self.time_result <= best_result.time_result) ? (return true) : (return false) ) unless best_result.nil?
+    true
   end
 
   def diff_with_best_result_until_date
-    (self.time_in_secs - self.best_result_until_date.time_in_secs).round(2)
+    best_result = self.best_result_until_date
+    return (self.time_in_secs - best_result.time_in_secs).round(2) unless best_result.nil?
+    0.0
+  end
+
+  def diffpercent_with_best_result_until_date
+    best_result = self.best_result_until_date
+    return ( (self.time_in_secs - best_result.time_in_secs) * 100/best_result.time_in_secs).round(2) unless best_result.nil?
+    0.0
   end
 
   def time_in_secs
@@ -55,17 +71,9 @@ class CompetitionResult < ActiveRecord::Base
     min*60 + sec + cent/100
   end
 
-  # Refactor. Look for N+1 problem solution
-  # Must be both 25/50m pool dist results. No disqualify results
   def self.best_results_by_set_id(swimmer)
-    results = []
-    CompetitionSet.all.each do |set|
-      results << joins(:competition).where(:swimmer_id => swimmer.id, 
-                      :competition_set_id => set.id).in_short_pool.not_disqualified.order("time_result ASC").first
-      results << joins(:competition).where(:swimmer_id => swimmer.id, 
-                      :competition_set_id => set.id).in_long_pool.not_disqualified.order("time_result ASC").first
-    end
-    results.compact
+    joins(:competition).select('competition_results.id, swimmer_id, competition_set_id, MIN(time_result) as time_result, 
+      disqualify, observation, competition_id').group(:pool_dist, :competition_set_id).where(:swimmer_id => swimmer).not_disqualified.sort_by(&:competition_set_id)
   end
 
 end

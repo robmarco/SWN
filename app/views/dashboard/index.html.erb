@@ -93,7 +93,7 @@
 					<tr>
 						<td class="activity-description">
 							<p><strong><%= current_user.name %></strong> <%= activity_title(a.action, a.assoc_class) %></p>
-							<span><strong><%= a.description %></strong></span>
+							<span><strong><%= description_dashboard(a.description, a.action, a.assoc_class) %></strong></span>
 						</td>
 						<td class="activity-date">
 							<img src="/images/recent-activity/<%= a.action %>.png" alt="" />

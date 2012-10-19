@@ -46,7 +46,7 @@ class IncidentsController < ApplicationController
       if @incident.save
         session[:incidents_size] = current_user.incidents.size  # Update incidents size
                 
-        format.html { redirect_to(incidents_url, :notice => 'Incident was successfully created.') }
+        format.html { redirect_to(incidents_url, :notice => t('controllers.successfully_created', :model => Incident.model_name.human) ) }
       else
         format.html { render :action => "new" }
       end
@@ -59,7 +59,7 @@ class IncidentsController < ApplicationController
 
     respond_to do |format|
       if @incident.update_attributes(params[:incident])
-        format.html { redirect_to(incidents_url, :notice => 'Incident was successfully updated.') }
+        format.html { redirect_to(incidents_url, :notice => t('controllers.successfully_updated', :model => Incident.model_name.human) ) }
       else
         format.html { render :action => "edit" }
       end
@@ -77,11 +77,4 @@ class IncidentsController < ApplicationController
     end
   end
 
-  def tagged
-    if params[:tag].present?
-      
-    else
-      @incidents = current_user.incidents.order("date_incident DESC").paginate(:page => params[:page], :per_page => 10)
-    end
-  end
 end

@@ -2,7 +2,7 @@
   <% if @incident.errors.any? %>
     <div id="error_explanation">
 			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
-      <h2><%= pluralize(@incident.errors.count, "error") %> prohibited this incident from being saved:</h2>
+      <h2><%= t('activerecord.errors.template.header', :model => Incident.model_name.human, :count => @incident.errors.count) %></h2>
 
       <ul>
       <% @incident.errors.full_messages.each do |msg| %>

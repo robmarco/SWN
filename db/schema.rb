@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20120925234402) do
     t.string   "dni"
     t.string   "club"
     t.string   "web"
-    t.integer  "phone"
+    t.string   "phone"
     t.string   "address"
     t.string   "city"
     t.string   "country"

@@ -31,7 +31,13 @@
 					<div><%= t('.filter') %> <b><%= params[:tag] %></b> <%= link_to t('.filter_remove'), incidents_path %></div>
 				<% end %>
 				<ul class="logs" id="incident_logs">					
-					<div id="incident_partial"><%= render :partial => "incident", :collection => @incidents %></div>
+					<div id="incident_partial">
+						<% if @incidents.size == 0 %>
+							<div class="no_incidents">No se han añadido incidencias</div>
+						<% else %>
+							<%= render :partial => "incident", :collection => @incidents %>
+						<% end %>
+					</div>
 				</ul>
 				<%= will_paginate @incidents, :class => "custom_pagination"%>
 			</section>

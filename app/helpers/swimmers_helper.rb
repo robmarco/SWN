@@ -16,4 +16,12 @@ module SwimmersHelper
       																: image_tag("#{Rails.root}/public/images/widgets/widget_uptime_pdf.png", :title => "Sube tiempo", :rel => "tooltip")
     end
   end
+
+  def best_result_icon(competition_result)
+    if competition_result.is_best_result? 
+      image_tag("widgets/widget_best.png", :title => "Mejor Marca", :rel => 'tooltip') 
+    else
+      image_tag("_blank.png")
+    end
+  end
 end

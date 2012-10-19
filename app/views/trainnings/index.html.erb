@@ -190,8 +190,8 @@
 		require("/javascripts/charts_script.js");
 		
 		var datos = <%= raw all_season_data.to_json %>,
-				max_volumen = <%= all_season_data.map(&:volumen).max %>,
-				max_carga = <%= all_season_data.map(&:carga).max %>
+				max_volumen = <%= all_season_data.map(&:volumen).max || 0 %>,
+				max_carga = <%= all_season_data.map(&:carga).max || 0 %>
 		
 		chart_lines(datos, max_volumen, max_carga);
 

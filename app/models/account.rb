@@ -8,7 +8,7 @@
 #  dni                :string(255)
 #  club               :string(255)
 #  web                :string(255)
-#  phone              :integer
+#  phone              :string(255)
 #  address            :string(255)
 #  city               :string(255)
 #  country            :string(255)

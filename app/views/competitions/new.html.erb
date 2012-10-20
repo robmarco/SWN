@@ -1,7 +1,7 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Competiciones', competitions_path %></li>
-	<li>Añadir competición</li>
+	<li><%= link_to t('competitions.breadcumbs.competitions'), competitions_path %></li>
+	<li><%= t('competitions.breadcumbs.add_competition') %></li>
 </ul>
 
 <article class="full-block clearfix">
@@ -9,7 +9,7 @@
 		
 		<!-- Header  -->
 		<header>
-			<h2>Añadir Competición</h2>
+			<h2><%= t('.header_add_competition') %></h2>
 		</header>
 		<!-- \Header  -->
 

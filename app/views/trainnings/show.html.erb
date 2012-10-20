@@ -1,6 +1,6 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Entrenamientos', trainnings_path %></li>
+	<li><%= link_to t('trainnings.breadcumbs.trainnings'), trainnings_path %></li>
 	<li>Id <%= @trainning.id %></li>
 </ul>
 
@@ -9,7 +9,7 @@
 	<div class="article-container">
 		
 		<header>
-			<h2><%= "[#{@trainning.date_trainning.strftime('%d/%m/%Y')}] " + "Micro " + @trainning.micro.to_s + " del Macro " + @trainning.macro.to_s %></h2>
+			<h2><span class="ical"><%= "Entrenamiento de #{I18n.localize(@trainning.date_trainning, :format => :short)}" %></span></h2>
 			<nav>
 				<ul class="button-switch">
 					<li><%= link_to 'Eliminar', trainning_path(@trainning), :confirm => '¿Está seguro de que desea eliminar el entrenamiento?', :method => :delete, :class => "button gray" %></li>
@@ -23,32 +23,34 @@
 				<table class="trainning_table">
 					<thead>
 						<tr>
-							<th>Ejercicio</th>
-							<th>Contenido</th>
-							<th>Tipo</th>
-							<th>Volumen</th>
+							<th><%= t('.table_exercise') %></th>
+							<th><%= t('.table_content') %></th>
+							<th><%= t('.table_type') %></th>
+							<th><%= t('.table_vol') %></th>
 						</tr>
 					</thead>
 					
 					<tbody>
-						<% i=1 %>						
-						<% @trainning_exercises.each do |ex| %>
+						<% @trainning_exercises.each_with_index do |ex, i| %>
 						<tr>
-							<td>Ejercicio <%= i %></td>
+							<td><%= "#{t('.table_exercise')} #{i+1}" %></td>
 							<td class="text_left table_content">
-								<%= link_to "#{ex.repetition} x (#{ex.heat} x #{ex.distance} #{ex.style})", '#' %>
+								<%= link_to "#{ex.heat} x (#{ex.repetition} x #{ex.distance} #{ex.style})", '#' %>
 								<br />
 								<%= ex.observation %>
 							</td>
 							<td><span class='tag tag2 <%= ex.exercise_type.color %>'><%= ex.exercise_type.name %></span></td>
 							<td><%= ex.volumen %> m.</td>
 						</tr>
-						<% i+=1 %>						
 						<% end %>
 						<tr class="table_results">
-							<td class="text_right" colspan="3"><strong>Volumen total del entreno</strong></td>
+							<td class="text_right" colspan="3"><strong><%= t('.total_vol') %></strong></td>
 							<td><strong><%= @trainning.volumen %> m.</strong></td>
-						</tr>						
+						</tr>	
+						<tr class="table_results">
+							<td class="text_right" colspan="3"><strong><%= t('.total_car') %></strong></td>
+							<td><strong><%= @trainning.carga %></strong></td>
+						</tr>					
 					</tbody>
 					
 				</table>
@@ -56,9 +58,9 @@
 				<% if !remove_html_tag(@trainning.physical).blank? %>
 				<form>
 					<fieldset>
-						<legend>Entrenamiento fuera del agua</legend>
+						<legend><%= t('.physic_trainning') %></legend>
 						<dl>
-							<dt><%= label :physical, "Física" %></dt>
+							<dt><%= label :physical, Trainning.human_attribute_name(:physical) %></dt>
 							<dd>
 								<textarea class="wysiwyg medium" cols="40" id="trainning_physical" name="trainning[physical]" rows="2">
 									<%= @trainning.physical %>
@@ -78,15 +80,14 @@
 <article class="quarter-block nested clearrm">
 	<div class="article-container">
 		<header>
-			<h2>Acciones</h2>
+			<h2><%= t('.header_actions') %></h2>
 		</header>
 		
 		<section class="actions">
 			<!-- Stats Summary -->
 			<ul class="left">
-				<li><span class="extension empty">Imprimir</span></li>
-				<li><span class="extension pdf">Exportar a PDF</span></li>
-				<li><span class="extension access">Enviar por email</span></li>
+				<li><span class="extension pdf"><%= link_to t('.export'), trainning_path(@trainning, format: "pdf") %></span></li>
+				<li><span class="extension access"><%= link_to t('.send_to_email'), send_by_email_trainning_path(@trainning) %></span></li>
 			</ul>
 			<!-- /Stats Summary -->
 		</section>

@@ -13,10 +13,6 @@
 #
 
 class Trainning < ActiveRecord::Base
-  before_update :add_to_recent_activity_update
-  after_create :add_to_recent_activity_create
-  after_destroy :add_to_recent_activity_destroy
-  
   belongs_to :user
   has_many :trainning_exercises, :dependent => :destroy
   
@@ -27,8 +23,8 @@ class Trainning < ActiveRecord::Base
 
   validates_presence_of :micro, :macro, :date_trainning
   
-  scope :last_micro, where(:micro => self.maximum("micro"))
-  scope :last_macro, where(:macro => self.maximum("macro"))
+  # scope :last_micro, where(:micro => self.maximum("micro"))
+  # scope :last_macro, where(:macro => self.maximum("macro"))
   
   def volumen
     vol=0
@@ -45,36 +41,41 @@ class Trainning < ActiveRecord::Base
     end
     carga
   end
-  
-  def self.find_by_date(date)
-    self.where(:date_trainning => date)
+
+  def self.this_week
+    today = Date.today
+    wkBegin = Date.commercial(today.cwyear, today.cweek, 1)
+    wkEnd = Date.commercial(today.cwyear, today.cweek, 7)
+    self.where(:date_trainning => wkBegin..wkEnd)
   end
+
+  # def self.find_by_date(date)
+  #   self.where(:date_trainning => date)
+  # end
+
+  # def self.first_trainning(user)
+  #   user.trainnings.order("date_trainning ASC").limit(1).first
+  # end
+
+  # def self.last_trainning(user)
+  #   user.trainnings.order("date_trainning DESC").limit(1).first
+  # end
+
+  # def self.volumen_by_date(user, date)
+  #   vol=0
+  #   user.trainnings.find_by_date(date).each do |trainning|
+  #     vol += trainning.volumen
+  #   end
+  #   vol
+  # end
   
-  def self.max_macro
-    self.maximum("macro")
-  end
-  
-  def self.max_micro
-    self.maximum("micro")
-  end
-  
-  private
-  
-  def add_to_recent_activity_update
-    if self.changed?
-      RecentActivity.create!( :user_id => self.user_id, :action => "update", :assoc_class => "Trainning", 
-        :assoc_id => self.id, :description => "Se ha modificado el entrenamiento micro #{self.micro} / macro #{self.macro}")
-    end
-  end
-  
-  def add_to_recent_activity_create
-    RecentActivity.create!( :user_id => self.user_id, :action => "create", :assoc_class => "Trainning", 
-      :assoc_id => self.id, :description => "Entrenamiento micro #{self.micro} / macro #{self.macro}")
-  end
-  
-  def add_to_recent_activity_destroy
-    RecentActivity.create!( :user_id => self.user_id, :action => "destroy", :assoc_class => "Trainning", 
-      :assoc_id => self.id, :description => "Entrenamiento micro #{self.micro} / macro #{self.macro}")
-  end
-  
+  # def self.carga_by_date(user, date)
+  #   carga=0
+  #   user.trainnings.find_by_date(date).each do |trainning|
+  #     carga += trainning.carga
+  #   end
+  #   carga
+  # end
 end
+
+

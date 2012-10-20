@@ -1,0 +1,68 @@
+<section>
+	<div class="trainer_info">
+		<div class="personal_info">
+			<ul>
+				<li><%= current_user.full_name %></li>
+				<li><%= current_user.account.try(:club) %></li>
+				<li><%= "#{current_user.account.try(:country)}, #{current_user.account.try(:city)}" %></li>
+				<li><%= current_user.try(:email) %></li>
+			</ul>
+		</div>
+		<div class="page_info">
+			<h2>Informe de Entrenamiento</h2>
+			<p><%= Time.now.strftime("Generado %m/%d/%Y a %I:%M%p") %></p>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<!-- Competition_Basic Information -->
+	<div class="basic_information">
+		<div class="left_80"></div>
+		<div class="right_20">
+			<h3><%= @trainning.date_trainning.strftime("%d/%m/%Y") %></h3>
+			<p class="category"><%= "Macro #{@trainning.macro}/Micro #{@trainning.micro}" %></p>
+		</div>
+	</div>
+
+	<div class="clear"></div>
+
+	<!-- Competition & Trial Results / With Best Results -->
+	<div align="center">
+		<% if @trainning_exercises.count > 0 %>
+			<table id="hor-minimalist-b">
+				<thead>
+					<tr>
+						<tr><th colspan="5" id="colspan_title"><b>RUTINA DE ENTRENAMIENTO</b></th></tr>
+						<th>Ejercicio</th>
+						<th>Contenido</th>
+						<th>Tipo</th>
+						<th>Volumen</th>
+						<th>Carga</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @trainning_exercises.each_with_index do |ex,i| %>
+						<tr>
+							<td><%= "Ejercicio #{i+1}" %></td>
+							<td id="ex">
+								<%= "#{ex.heat} x (#{ex.repetition} x #{ex.distance} #{ex.style})"%>
+								<span><%= ex.observation %></span>
+							</td>
+							<td><%= ex.exercise_type.name %></td>
+							<td><%= ex.volumen %> m</td>
+							<td><%= ex.carga %></td>
+						</tr>
+					<% end %>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="3" class="text_right">Total Acumulado</td>
+						<td><%= @trainning.volumen %> m</td>
+						<td><%= @trainning.carga %></td>
+					</tr>
+				</tfoot>
+			</table>
+		<% end %>
+	</div>
+</section>
+

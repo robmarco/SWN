@@ -8,10 +8,11 @@ gem 'rails', '3.0.9'
 gem 'sqlite3'
 gem 'devise'
 gem 'jquery-rails'
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'will_paginate'
-gem "paperclip", "~> 3.0"
-
+gem 'paperclip', '~> 3.0'
+#gem 'prawn'
+gem 'pdfkit'
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -2,7 +2,7 @@
   <% if @swimmer.errors.any? %>
     <div id="error_explanation">
 			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
-      <h2><%= pluralize(@swimmer.errors.count, "error") %> prohibited this swimmer from being saved:</h2>
+      <h2><%= t('activerecord.errors.template.header', :model => Swimmer.model_name.human, :count => @swimmer.errors.count) %></h2>
 
       <ul>
       <% @swimmer.errors.full_messages.each do |msg| %>
@@ -13,14 +13,14 @@
   <% end %>
 
 	<fieldset>
-		<legend>Datos personales</legend>
+		<legend><%= t('swimmers.form.personal_information') %></legend>
 		
 		<dl>
-			<dt><%= f.label :name, "Nombre*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dt><%= f.label :name, "#{Swimmer.human_attribute_name(:name)}*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :name, :class => "medium" %></dd>
-			<dt><%= f.label :secname, "Apellidos*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dt><%= f.label :secname, "#{Swimmer.human_attribute_name(:secname)}*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :secname, :class => "medium" %></dd>
-			<dt><%= f.label :genre, "Género*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dt><%= f.label :genre, "#{Swimmer.human_attribute_name(:genre)}*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action]=="edit" %>
 					<%= f.select :genre, options_for_select(["Masculino", "Femenino"], @swimmer.genre), {:prompt => "Seleccionar "}  %>
@@ -28,11 +28,11 @@
 					<%= f.select :genre, options_for_select(["Masculino", "Femenino"]), {:prompt => "Seleccionar "}  %>
 				<% end %>				
 			</dd>
-			<dt><%= f.label :licence, "Licencia*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dt><%= f.label :licence, "#{Swimmer.human_attribute_name(:licence)}*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :licence, :class => "small" %></dd>
 			
 			<!-- Born Field-->
-			<dt><%= f.label :born, "Fecha Nacimiento*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dt><%= f.label :born, "#{Swimmer.human_attribute_name(:born)}*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action]=="edit" %>
 					<%= f.text_field :born, :value => @swimmer.born.strftime("%d/%m/%Y"), :class => "datepicker small" %>
@@ -43,7 +43,7 @@
 			<!-- /Born Field-->
 			
 			<!-- Category Field -->
-			<dt><%= f.label :category, "Categoría*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dt><%= f.label :category, "#{Swimmer.human_attribute_name(:category)}*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action] == "edit" %>
 					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), :class => "small"%>
@@ -54,14 +54,14 @@
 			<!-- \Category Field -->
 			
 			<!-- State Field -->
-			<dt><%= f.label :state, "Estado*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dt><%= f.label :state, "#{Swimmer.human_attribute_name(:state)}*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd>
 				<% if params[:action] == "edit" %>
 					<%= f.select :state, options_from_collection_for_select(@states, "name", "name") %>
 				<% else %>
 					<%= f.select :state, options_from_collection_for_select(@states, "name", "name"), {:prompt => "Seleccionar"} %> 
 				<% end %>	
-				<p><em>Con estado no federado o baja, el nadador no podrá participar en competiciones</em></p>
+				<p><em><%= t('swimmers.form.state_notice') %></em></p>
 			</dd>
 			<!-- \State Field -->
 			
@@ -70,20 +70,20 @@
 	</fieldset>
 	
 	<fieldset>
-		<legend>Datos de contacto</legend>
+		<legend><%= t('swimmers.form.contact_information') %></legend>
 		
 		<dl>
-			<dt><%= f.label :email, "Email*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dt><%= f.label :email, "#{Swimmer.human_attribute_name(:email)}*", :rel => "tooltip", :title => "Campo requerido" %></dt>
 			<dd><%= f.text_field :email, :class => "medium" %></dd>
-			<dt><%= f.label :address, "Dirección" %></dt>
+			<dt><%= f.label :address %></dt>
 			<dd><%= f.text_field :address, :class => "medium" %></dd>
-			<dt><%= f.label :postal, "Código Postal" %></dt>
+			<dt><%= f.label :postal %></dt>
 			<dd><%= f.text_field :postal, :class => "small" %></dd>
-			<dt><%= f.label :city, "Ciudad" %></dt>
+			<dt><%= f.label :city %></dt>
 			<dd><%= f.text_field :city, :class => "small" %></dd>
 		
 			<!-- Country Field -->
-			<dt><%= f.label :country, "País" %></dt>
+			<dt><%= f.label :country %></dt>
 			<dd>
 				<% if params[:action] == "edit" %>
 					<%= f.select :country, options_from_collection_for_select(@countries, "name", "name") %>
@@ -94,7 +94,7 @@
 			</dd>
 			<!-- \Country Field -->
 			
-			<dt><%= f.label :phone, "Teléfono" %></dt>
+			<dt><%= f.label :phone %></dt>
 			<dd><%= f.text_field :phone, :class => "small" %></dd>
 		</dl>
 	</fieldset>
@@ -103,11 +103,11 @@
 		<legend>Datos de los padres</legend>
 		
 		<dl>
-			<dt><%= f.label :parentname, "Nombre Padre/Madre" %></dt>
+			<dt><%= f.label :parentname %></dt>
 			<dd><%= f.text_field :parentname, :class => "medium" %></dd>
-			<dt><%= f.label :parentemail, "Email Padre/Madre" %><br /></dt>
+			<dt><%= f.label :parentemail %><br /></dt>
 			<dd><%= f.text_field :parentemail, :class => "medium" %></dd>
-			<dt><%= f.label :parentphone, "Teléfono Padre/Madre" %></dt>
+			<dt><%= f.label :parentphone %></dt>
 			<dd><%= f.text_field :parentphone, :class => "small" %></dd>
 		</dl>
 	</fieldset>
@@ -116,12 +116,12 @@
 		<legend>Otra información</legend>
 		
 		<dl>
-			<dt><%= f.label :disease, "Enfermedades" %></dt>
+			<dt><%= f.label :disease %></dt>
 			<dd>
 				<%= f.text_area :disease, :class => "wysiwyg medium" %>
-				<p>Inserte las enfermedades que padezca el niño, así como su tratamiento</p>
+				<p><%= t('swimmers.form.disease_notice') %></p>
 			</dd>
-			<dt><%= f.label :observation, "Observaciones" %></dt>
+			<dt><%= f.label :observation %></dt>
 			<dd><%= f.text_area :observation, :class => "wysiwyg medium" %></dd>
 		</dl>
 		
@@ -129,3 +129,21 @@
 	<div align="center"><%= f.submit 'Enviar', :class => "button" %> ó <%= link_to 'Cancelar', :back %></div>
   
 <% end %>
+
+<div id="change_photo">
+	<div class="change_photo">
+		<%= form_for(@swimmer, :html => {:multipart => true} ) do |f| %>
+			<fieldset>
+				<legend>Cambiar foto del nadador</legend>
+				<dl>
+					<dt><%= f.label :photo, "URL" %></dt>
+					<dd>
+						<%= f.file_field :photo %>
+						<p>Tamaño máximo de 2Mb</p>
+					</dd>
+				</dl>
+			</fieldset>
+			<div align="center"><%= f.submit "Guardar", :class => "button" %></div>
+		<% end %>
+	</div>	
+</div>

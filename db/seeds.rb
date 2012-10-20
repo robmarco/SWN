@@ -201,6 +201,7 @@ TrialCategory.create([
         {:name => "Test 2000 metros", :description => "Capacidad de resistencia básica del nadador (referencia umbral) en min/seg", :type_value => "min/seg/cent", :color => 'semigreen', :color_hex => '#669966'}, 
         {:name => "Test 25 metros", :description => "Velocidad máxima de nado en 25m a estilo crol en seg", :type_value => "min/seg/cent", :color => 'cian', :color_hex => '#99cccc'},
         {:name => "Potencia MMII", :description => "Fuerza de los miembros inferiores en cm", :type_value => "cm", :color => 'semired', :color_hex => '#ff6666'},
+        {:name => "Potencia MMSS", :description => "Fuerza de los miembros superiores", :type_value => "dominadas", :color => 'semired', :color_hex => '#ff6666'},
         {:name => "Hidrodinámica", :description => "Capacidad o resistencia hidrodinámica que ofrece el nadador en cm", :type_value => "cm", :color => 'semipurple', :color_hex => '#9999ff'},
         {:name => "Test 300 metros piernas", :description => "Resistencia aeróbica máxima en miebros inferiores del nadador en min/seg", :type_value => "min/seg/cent", :color => 'semiorange', :color_hex => '#cc9966'}
 ])

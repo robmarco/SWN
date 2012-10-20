@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
   def name
     "#{self.account.name}"
   end
+
+  def full_name
+    "#{self.account.name} #{self.account.secname}"
+  end
   
   def photo?
     self.account.photo?

@@ -1,38 +1,59 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Diario de incidencias', incidents_path %></li>
-	<li>Ver lista de incidencias</li>
+	<li><%= link_to t('incidents.breadcumbs.incidents'), incidents_path %></li>
+	<li><%= t('incidents.breadcumbs.show_incidents_list') %></li>
 </ul>
 
 <!-- Article Full Block - Incidences table -->
 <article class="full-block clearfix">
 	<div class="article-container">
 		
-		<header>
-			<h2>Gestión del diario de incidencias</h2>
-			<nav>
-				<ul class="button-switch">
-					<li><%= link_to 'Añadir incidencia', new_incident_path, :class => 'button' %></li>
-				</ul>
-			</nav>
-		</header>
-		
-		<section>
-			<table class="datatable">
-			  <thead>
-			  	<tr>
-				    <th>Fecha</th>
-				    <th>Título</th>
-				    <th>Descripción</th>
-				    <th>Acción</th>
-				  </tr>
-			  </thead>
+		<article class="third-quarter-block">
+			<header>
+				<h2><%= t('.header_incidents') %></h2>
+				<nav>
+					<ul class="button-switch">
+						<li><%= link_to t('.buttons.print_pdf'), incidents_path(format: "pdf"), :class => 'button' %></li>
+						<li><%= link_to t('.buttons.add_incident'), new_incident_path, :class => 'button' %></li>
+					</ul>
+				</nav>
+			</header>
+
+			<section>
+				<div align="right" id="incidents_find_bar">
+					<%= form_tag incidents_path, :method => 'get', :class => "incidents_form", :id => "incidents_search", :remote => true do %>
+						<%= label_tag t('.find') %>
+						<%= text_field_tag :search, params[:search], :id => "filter", :class => "medium", :placeholder => t('.find_placeholder') %>
+					<% end %>
+				</div>
 				
-				<tbody>
-					<%= render :partial => "incident", :collection => @incidents %>
-				</tbody>
-			</table>
-		</section>
+				<% if params[:tag].present? %>
+					<div><%= t('.filter') %> <b><%= params[:tag] %></b> <%= link_to t('.filter_remove'), incidents_path %></div>
+				<% end %>
+				<ul class="logs" id="incident_logs">					
+					<div id="incident_partial">
+						<% if @incidents.size == 0 %>
+							<div class="no_incidents">No se han añadido incidencias</div>
+						<% else %>
+							<%= render :partial => "incident", :collection => @incidents %>
+						<% end %>
+					</div>
+				</ul>
+				<%= will_paginate @incidents, :class => "custom_pagination"%>
+			</section>
+		</article>
+	
+		<article class="quarter-block clearrm nested">
+			<header><h2><%= t('.tag_sidebar.header') %></h2></header>
+			<section>
+				<p><%= t('.tag_sidebar.text') %></p>
+				<ul class="list-style">
+					<% @tags.each do |tag| %>
+					<li><%= link_to tag.name, incidents_path(:tag => tag.name) %></li>
+					<% end %>
+				</ul>
+			</section>
+		</article>		
 		
 	</div>
 </article>

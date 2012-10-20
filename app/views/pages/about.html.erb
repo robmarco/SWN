@@ -1,0 +1,83 @@
+	<div id="orange-hero">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<ul class="breadcrumb">
+					<li><%= link_to "Inicio", root_path %> <span class="divider">/</span></li>
+					<li class="active">Equipo</li>
+				</ul>
+			</div><!--/span12-->
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/orange hero-->
+	
+<div id="grey-content" class="grey-inner-headings">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<h2>Sobre el equipo de desarrollo</h2>
+				<p>Un equipo especializado en realizar aplicaciones informáticas que puedan cubrir las necesidades de los clientes, <br> luchando por obtener el grado máximo de satisfacción y una calidad demostrable. ¡Confía en nosotros! No te arrepentirás.</p>
+			</div><!--/span12-->
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/grey content -->
+	
+	<div id="white-content" class="pull-center team-headings">
+		<div class="container">
+			<div class="row">
+				<div class="span12 column-divider">
+					<span class="column-divider-icon pull-left">
+						<%= image_tag "frontend/team-icon.png", :alt => "team-icon", :class => "small-icon-fix" %>
+					</span>
+					<h4>Nuestro equipo</h4>
+				</div><!--/span 12-->
+			</div><!--/row-->
+      <div class="row" id="filterSection_menu">
+      	<ul>
+          	<li class="muted">Ordenar por:</li>
+          	<li><a href="javascript:void(0);" data-filter="" class="active">Todos</a></li>
+          	<li><a href="javascript:void(0);" data-filter="tutor">Tutores</a></li>
+              <li><a href="javascript:void(0);" data-filter="developer">Desarrolladores</a></li>
+          </ul>
+      </div>
+			<div class="row" id="filterSection">
+				<div class="span3 filterable tutor">
+	      	<div class="opacity-fade">
+						<a href="#">
+							<img class="img-rounded" src="/images/frontend/team-member.jpg" alt="three" />
+							<h4>Enrique Rubio Royo</h4>
+						</a>
+						<p class="muted-small">Tutor de proyecto</p>
+						<p>Profesor a cargo de la supervisión de PFC en la ULPGC. Actualmente desempeña un cargo en el Cento de Innovación para la Sociedad de la Información (CICEI).</p>
+					</div><!--/span 4-->
+        </div>
+                
+        <div class="span3 filterable tutor">
+          <div class="opacity-fade">
+            <a href="#">
+              <img class="img-rounded" src="/images/frontend/team-member.jpg" alt="three" />
+              <h4>Borja Rubio Reyes</h4>
+            </a>
+            <p class="muted-small">Co-Tutor de proyecto</p>
+            <p>Profesor a cargo de la supervisión de PFC en la ULPGC. Actualmente desempeña un cargo en el Cento de Innovación para la Sociedad de la Información (CICEI).</p>
+          </div><!--/span 4-->
+        </div>
+        
+                
+        <div class="span3 filterable developer">
+	        <div class="opacity-fade">
+            <a href="#">
+              <img class="img-rounded" src="/images/frontend/team-member.jpg" alt="three" />
+              <h4>Roberto Marco Sánchez</h4>
+            </a>
+            <p class="muted-small">Desarrollador</p>
+            <p>Apasionado del desarrollo de aplicaciones software y amante de las nuevas tecnologías. Experiencia trabajando como programador web y en la gestión de la innovación.</p>
+	        </div><!--/span 3-->
+        </div>
+                
+			</div><!--/row-->
+			
+			
+		</div><!--/container-->
+		
+	</div><!--/white content-->

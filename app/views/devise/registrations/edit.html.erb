@@ -1,25 +1,38 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<ul id="breadcrumbs">
+  <li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+  <li><%= link_to t('.breadcumbs.profile_configuration'), edit_account_path(current_user) %></li>
+  <li><%= t('.breadcumbs.change_password') %></li>
+</ul>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+<article clas="full-block clearfix">
+  <div class="article-container">
+    <header><h2><%= t('.header') %></h2></header>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+    <section>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></div>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+        
+        <%= devise_error_messages! %>
+        <fieldset>
+          <dl>
+            <dt><%= f.label :password, t('.password') %></dt>
+            <dd><%= f.password_field :password, :class => "medium" %></dd>
+            
+            <dt><%= f.label :password_confirmation, t('.password_confirmation') %></dt>
+            <dd><%= f.password_field :password_confirmation, :class => "medium" %></dd>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+            <dt><%= f.label :current_password, t('.current_password') %></dt>
+            <dd><%= f.password_field :current_password, :class => "medium" %></dd>
+          </dl>
+        </fieldset>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+        <div align="center">
+          <%= f.submit "Guardar", :class => "button" %> ó 
+          <%= link_to "Cancelar", :back %>
+      </div>
+      <% end %>      
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+    </section>
+  </div>
+</article>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>

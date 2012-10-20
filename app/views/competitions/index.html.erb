@@ -1,7 +1,7 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Competiciones', competitions_path %></li>
-	<li>Ver lista de competiciones</li>
+	<li><%= link_to t('competitions.breadcumbs.competitions'), competitions_path %></li>
+	<li><%= t('competitions.breadcumbs.competitions_list') %></li>
 </ul>
 
 <!-- Article Full Content Block -->
@@ -9,9 +9,10 @@
 	<div class="article-container">
 		
 		<header>
-			<h2>Gestión de Competiciones</h2>
+			<h2><%= t('.header_competitions') %></h2>
 			<nav>
 				<ul class="button-switch">
+					<li><%= link_to 'Imprimir PDF', competitions_path(format: "pdf"), :class => "button" %></li>
 					<li><%= link_to 'Añadir competición', new_competition_path, :class => "button" %></li>
 				</ul>
 			</nav>
@@ -22,20 +23,21 @@
 			<div class="sidetabs">
 				<nav class="sidetab-switch">
 					<ul>
-						<li><%= link_to 'Todos', '#sidetab1a' %></li>
-						<li><%= link_to 'Mini', '#sidetab2a' %></li>
-						<li><%= link_to 'PreBenjamín', '#sidetab3a' %></li>
-						<li><%= link_to 'Alevín', '#sidetab4a' %></li>
-						<li><%= link_to 'Infantil', '#sidetab5a' %></li>
-						<li><%= link_to 'Junior', '#sidetab6a' %></li>
-						<li><%= link_to 'Absoluto', '#sidetab7a' %></li>
-						<li><%= link_to 'Master', '#sidetab8a' %></li>
-						<p>Se muestran las competiciones insertadas en el sistema por un entrenador y su equipo técnico.</p>
+						<li><%= link_to t('.all'), '#sidetab1a' %></li>
+						<li><%= link_to t('.mini'), '#sidetab2a' %></li>
+						<li><%= link_to t('.pre'), '#sidetab3a' %></li>
+						<li><%= link_to t('.ale'), '#sidetab4a' %></li>
+						<li><%= link_to t('.inf'), '#sidetab5a' %></li>
+						<li><%= link_to t('.jun'), '#sidetab6a' %></li>
+						<li><%= link_to t('.abs'), '#sidetab7a' %></li>
+						<li><%= link_to t('.master'), '#sidetab8a' %></li>
+						<p><%= t('.category_text') %></p>
 					</ul>
 				</nav>
 			
 				<div class="sidetab default-sidetab" id="sidetab1a">
-					<table class="datatable">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -45,7 +47,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab2a">
-					<table class="datatable">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -55,7 +58,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab3a">
-					<table class="datatable">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -65,7 +69,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab4a">
-					<table class="datatable">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -75,7 +80,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab5a">
-					<table class="datatable">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -85,7 +91,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab6a">
-					<table class="datatable">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -95,7 +102,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab7a">
-					<table class="datatable">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -105,7 +113,8 @@
 				</div>
 				
 				<div class="sidetab" id="sidetab8a">
-					<table class="datatable">
+					<%= render "layouts/dateFilter" %>
+					<table class="datatable_datefilter_sort">
 					  <%= render 'thead_table_index' %>
 
 						<tbody>
@@ -129,7 +138,7 @@
 	<div class="article-container">
 		
 		<header>
-			<h2>Calendario y estadísticas</h2>
+			<h2><%= t('.header_calendar_stats') %></h2>
 		</header>
 		
 		<section>
@@ -137,13 +146,13 @@
 				
 				<nav class="sidetab-switch">
 					<ul>
-						<li><%= link_to 'Calendario', '#sidetab1b', :class => "default-sidetab" %></li>
+						<li><%= link_to t('.tabs.calendar'), '#sidetab1b', :class => "default-sidetab" %></li>
 					</ul>
 				</nav>
 				
 				<!-- jquery Full Calendar Sidetab Content -->
 				<div class="sidetab default-sidetab" id="sidetab1b">
-					<h3>Calendario de competiciones</h3>
+					<h3><%= t('.header_competitions_calendar') %></h3>
 					
 					<!-- jQuery Full Calendar Plugin -->
 					<div class="fullcalendar"></div>
@@ -176,6 +185,12 @@
 									<% end %>
 								]
 							});
+
+							// dateTable Filter 
+							require("/javascripts/dateFilter_dataTable.js");
+		
+							// Params: table_selector, min_selector, max_selector, column_sort, type_sort
+							dateFilter_dataTable(".datatable_datefilter_sort", "#fmin", "#fmax", 0, "desc")
 						</script>
 					<% end %>
 					

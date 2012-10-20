@@ -1,13 +1,13 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Entrenamientos', trainnings_path %></li>
-	<li>Añadir entrenamiento</li>
+	<li><%= link_to t('trainnings.breadcumbs.trainnings'), trainnings_path %></li>
+	<li><%= t('trainnings.breadcumbs.add_trainning') %></li>
 </ul>
 
 <article class="full-block clearfix">
 	<div class="article-container">
 		<header>
-			<h2>Añadir entrenamiento</h2>
+			<h2><%= t('.header_add_trainning') %></h2>
 		</header>
 		
 		<section>

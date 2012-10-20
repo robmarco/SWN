@@ -1,7 +1,7 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Tests preparatorios', trials_path %></li>
-	<li>Ver lista de tests preparatorios</li>
+	<li><%= link_to t('trials.breadcumbs.tests'), trials_path %></li>
+	<li><%= t('trials.breadcumbs.tests_lists') %></li>
 </ul>
 
 <!-- Article Full Content Block - Test table -->
@@ -9,22 +9,24 @@
 	<div class="article-container">
 		
 		<header>
-			<h2>Gestión de tests preparatorios</h2>
+			<h2><%= t('.header') %></h2>
 			<nav>
 				<ul class="button-switch">
+					<li><%= link_to 'Imprimir PDF', trials_path(format: "pdf"), :class => 'button' %></li>
 					<li><%= link_to 'Añadir test', new_trial_path, :class => 'button' %></li>
 				</ul>
 			</nav>
 		</header>
 		
 		<section>
-			<table class="datatable">
+			<%= render "layouts/dateFilter" %>
+			<table class="datatable_datefilter_sort">
 			  <thead>
 			  	<tr>
-				    <th>Fecha</th>
-				    <th>Título</th>
-				    <th>Tipo</th>
-				    <th>Acción</th>
+				    <th><%= t('.table_date') %></th>
+				    <th><%= t('.table_title') %></th>
+				    <th><%= t('.table_type') %></th>
+				    <th><%= t('.table_action') %></th>
 				  </tr>
 			  </thead>
 
@@ -41,12 +43,12 @@
 <!-- Trial Information -->
 <article class="quarter-block nested clearrm">
 	<div class="article-container">
-		<header><h2>Información</h2></header>
+		<header><h2><%= t('.header_information') %></h2></header>
 		<section>
-			<p>Las capacidades que el entrenador puede evaluar sobre un nadador son las siguientes:</p>
+			<p><%= t('.trials_text') %></p>
 			<ul class="list-style-checkmark">
 				<% @trial_categories.each do |cat| %>
-					<li><strong><%= cat.name %></strong></li>
+					<li><strong rel="tooltip" title="<%= cat.description %>"><%= cat.name %></strong></li>
 				<% end %>
 			</ul>
 				
@@ -61,19 +63,19 @@
 <article class="full-block clearfix">
 	<div class="article-container">
 		
-		<header><h2>Calendario y Estadísticas</h2></header>
+		<header><h2><%= t('.header_calendar_stats') %></h2></header>
 		
 		<section>
 			<div class="sidetabs">
 				<nav class="sidetab-switch">
 					<ul>
-						<li><%= link_to 'Calendario', '#sidetab1b', :class => "default-sidetab" %></li>
+						<li><%= link_to t('.tabs.calendar'), '#sidetab1b', :class => "default-sidetab" %></li>
 					</ul>
 				</nav>
 				
 				<!-- jquery Full Calendar Sidetab Content -->
 				<div class="sidetab default-sidetab" id="sidetab1b">
-					<h3>Calendario de test</h3>
+					<h3><%= t('.header_test_calendar') %></h3>
 					
 					<!-- jQuery Full Calendar Plugin -->
 					<div class="fullcalendar"></div>
@@ -106,6 +108,13 @@
 									<% end %>
 								]
 							});
+
+							// DateFilter 
+							require("/javascripts/dateFilter_dataTable.js");
+		
+							// Params: table_selector, min_selector, max_selector, column_sort, type_sort
+							dateFilter_dataTable(".datatable_datefilter_sort", "#fmin", "#fmax",
+													0, "desc")
 						</script>
 					<% end %>					
 				</div>

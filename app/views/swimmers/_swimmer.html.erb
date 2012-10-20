@@ -2,6 +2,7 @@
 	<td><%= link_to "#{swimmer.swimmer_secname_name}", swimmer_path(swimmer), :class => "normal" %></td>
 	<td><%= swimmer.born.strftime("%Y") %></td>
 	<td><%= swimmer.category %></td>
+	<td><%= swimmer.genre %></td>
 
 	<!-- State Tags-->
 	<td>
@@ -20,13 +21,13 @@
 	<td>
 		<ul class="actions">
 			<li>
-				<%= link_to 'ver', swimmer_path(swimmer), :class => "view", :title => "Ver nadador", :rel => "tooltip" %>
+				<%= link_to 'ver', swimmer_path(swimmer), :class => "view", :title => "#{t('labels.show')} #{Swimmer.model_name.human}", :rel => "tooltip" %>
 			</li>
 			<li>
-				<%= link_to 'editar', edit_swimmer_path(swimmer), :class => "edit", :title => "Editar nadador", :rel => "tooltip" %>
+				<%= link_to 'editar', edit_swimmer_path(swimmer), :class => "edit", :title => "#{t('labels.edit')} #{Swimmer.model_name.human}", :rel => "tooltip" %>
 			</li>
 			<li>
-				<%= link_to 'eliminar', swimmer_path(swimmer), :confirm => '¿Está seguro de que desea eliminar al nadador?', :method => :delete, :class => "delete", :title => "Eliminar nadador", :rel => "tooltip" %>
+				<%= link_to 'eliminar', swimmer_path(swimmer), :confirm => '¿Está seguro de que desea eliminar al nadador?', :method => :delete, :class => "delete", :title => "#{t('labels.delete')} #{Swimmer.model_name.human}", :rel => "tooltip" %>
 			</li>
 		</ul>
 	</td>

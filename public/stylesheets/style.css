@@ -55,7 +55,7 @@ body {
 body section[role=navigation] {
 	width:271px;
 	height:auto;
-	padding:85px 0;
+	padding:65px 0;
 	position:absolute;
 	top:0;
 	left:0;
@@ -415,6 +415,12 @@ article footer {
 	width:32%;
 	margin-right:2%;
 	float:left;
+}
+
+.two-quarters-block {
+	width: 40%;
+	margin-right: 2%;
+	float: left;
 }
 
 .third-quarter-block {
@@ -1199,7 +1205,7 @@ form span.invalid-side-note { background-image:url(../images/icons/icon_error.pn
 	top:-3px;
 	left:-15px;
 }
-input:disabled, input.disabled {
+input:disabled, input.disabled, #tags.input.disabled{
 	box-shadow:none;
 	cursor:not-allowed;
 }
@@ -1470,17 +1476,18 @@ p.activity-time { color: #AAA; font-style: italic; }
 
 
 /*  Login Page  */
+/*body.login { border-top: 3px solid #d33c14;}*/
 .login { background-image:none; }
 .login section[role=main] {
 	margin:100px auto 0;
 	min-width:380px;
 	width:380px;
-	background:none;
+	background: none;
 }
 .login section[role=main] > a {
-	background:url('../images/quswimming_logo.png') no-repeat;
-	width:160px;
-	height:31px;
+	background:url('/images/frontend/logo.png') no-repeat;
+	width:291px;
+	height:67px;
 	text-indent:-9999em;
 	display:block;
 }
@@ -1550,3 +1557,7 @@ p.activity-time { color: #AAA; font-style: italic; }
 }
 
 .actions > ul > li { background: none;}
+
+@media print {
+	body { background-color: red;}
+}

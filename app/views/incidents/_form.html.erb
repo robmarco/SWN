@@ -2,7 +2,7 @@
   <% if @incident.errors.any? %>
     <div id="error_explanation">
 			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
-      <h2><%= pluralize(@incident.errors.count, "error") %> prohibited this incident from being saved:</h2>
+      <h2><%= t('activerecord.errors.template.header', :model => Incident.model_name.human, :count => @incident.errors.count) %></h2>
 
       <ul>
       <% @incident.errors.full_messages.each do |msg| %>
@@ -13,12 +13,13 @@
   <% end %>
 
 	<fieldset>
-		<legend>Datos de la incidencia</legend>
+		<legend><%= t('incidents.form.legend') %></legend>
 		<dl>
 			<dt><%= f.label :title, "Título*", :title => "Campo requerido", :rel => "tooltip" %></dt>
 			<dd><%= f.text_field :title, :class => "medium" %></dd>
 			
 			<dt><%= f.label :date_incident, "Fecha*", :title => "Campo requerido", :rel => "tooltip" %></dt>
+			
 			<dd>
 				<% if params[:action]=="edit" %>
 					<%= f.text_field :date_incident, :value => @incident.date_incident.strftime("%d/%m/%Y"), :class => "datepicker" %>
@@ -27,6 +28,8 @@
 				<% end %>
 			</dd>
 			
+			<dt><%= f.label :tags, "Etiquetas", :title => t('incidents.form.tag_tooltip'), :rel => "tooltip" %></dt>
+			<dd><%= f.text_field :tag_list, :class => "medium" %><p><%= t('incidents.form.tag_text') %></p></dd>
 			<dt><%= f.label :description %></dt>
 			<dd><%= f.text_area :description, :class => "wysiwyg medium" %></dd>
 		</dl>

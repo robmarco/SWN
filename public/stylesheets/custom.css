@@ -1,10 +1,59 @@
 .topbar {
-	background: url(../images/bgs/bg_topbar.png);
-	height: 60px;
-	width: 100%;
-	box-shadow: 0 0 3px #000;
-	opacity: 0.9999999;
+  background: url(../images/bgs/bg_topbar.png);
+  height: 60px;
+  width: 100%;
+  box-shadow: 0 0 3px #000;
+  opacity: 0.9999999;
 }
+/* ---------- Main Container Responsive --------- */
+.container { width: 100%;}
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  *zoom: 1;
+}
+/* ----------------- Social Top Links ----------------- */
+#social-top {
+  background: #332c29;
+  height: 34px;
+  border-bottom: 1px solid #454951;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+#social-top ul {
+  float: right;
+  position: relative;
+  top: 8px;
+  right: 0;
+}
+#social-top ul li {
+  list-style: none;
+  float: left;
+  padding-left: 5px;
+}
+#social-top ul li a {
+  color: #545861;
+}
+#social-top ul li a:hover {
+  color: #ff7361;
+}
+/* ----------------- Icon Links ----------------- */
+[class^="icon-"],
+[class*=" icon-"] {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  *margin-right: .3em;
+  line-height: 14px;
+  vertical-align: text-top;
+}
+
+/* --------------------------------------- Lang image style - sidebar */
+#flags { text-align: center;}
+#flags span img { margin: 0; border: none; background: none; vertical-align: -5px;}
+#flags span { margin-left: 10px; }
+/* ----------------------------------- End Lang image style - sidebar */
 
 .result { padding-right: 10px;}
 .swimmer_input { width: 250px; }
@@ -13,7 +62,7 @@
 .remove { padding-top: 12px; padding-left: 10px; display:block; height: 23px; width: 20px; border:none; }
 .remove a { }
 a.normal { color: #666; text-decoration: none; }
-span#evolution img { 
+span#evolution img, span#comp_best_result img { 
 	height: 12px;
 	background: none;
 	border: none;
@@ -23,3 +72,251 @@ span#evolution img {
 	margin-left: 10px;
 	
 }
+span#comp_best_result img { 
+  width: 20px;
+  height: 10px;
+  top: 4px;
+  margin-left: 0px;
+}
+
+#profile_information > h3 { margin-bottom: 2px;}
+.detail_information { padding: 10px 0 0 30px;}
+
+table#swimmer_info > tbody > tr > td, table#swimmer_info > tbody > tr {
+	background: none;
+	border: none;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	height: auto;
+	font-size: 13px;
+}
+table#swimmer_info { width: auto;}
+
+td.right { text-align: right; margin-right: 20px;}
+td.darker { color: #666;}
+.send_message { font-size: 80%; line-height: 15px;}
+
+.block { display: block; float: left;}
+
+.block-42 { 
+	width: 42%;
+	margin-right: 2%;
+	float:left;
+}
+
+.block-56 {
+	width: 56%;
+	float:left;	
+}
+.photo { float: left;}
+
+#contact_information { margin-top: 40px;}
+#contact_information ul li p { margin: 0px;} 
+#contact_information ul li { margin-bottom: 20px;}
+#contact_information ul { list-style-type: none;}
+
+li.address-icon { 
+	background-image: url("../images/location-plus.png"); 
+	padding-left: 50px;
+	min-height: 50px;
+}
+
+li.parents-icon { 
+	background-image: url("../images/user.png"); 
+	padding-left: 50px;
+	min-height: 50px;
+}
+
+td.remove a { 
+	display: block;
+	height: 16px;
+	width: 16px;
+	text-indent: -9999px;
+	background: url("../images/icons/icon_table_delete.png") 0 0 no-repeat;
+}
+
+form.incidents_form { margin-top: 5px;}
+form.incidents_form label { margin-right: 5px; font-weight: normal;}
+#incident_logs { margin-top: 10px;}
+.no_incidents { margin-top: 20px; text-align: center;}
+
+.datatable_custom_filter { float: right; }
+.datatable_custom_filter span { margin-right: 20px;}
+.datatable_custom_filter input { width: 70px;} 
+.datatable_custom_filter input#fmin { margin-right: 10px;}
+hr.gray_color { border-color: #e6e6e6; }
+
+#comp_test li.ticket-data { background: none; border: none; margin-top: 10px;}
+#comp_test li.ticket-data-ticket strong { color: #666;}
+#comp_test .ticket-data .ticket-data-ticket, #comp_test .ticket-data .ticket-data-priority, #comp_test .ticket-data .ticket-data-age {
+  padding-top: 0px;
+}
+
+img#blank { border:none; background: none;}
+li.ticket-stats { margin-top: 20px;} 
+li.ticket-stats-info span {color: #999;}
+li.ticket-stats-info span strong {padding-left: 6px;}
+.ticket-stats-info { width: 100%; text-align: right; }
+.ticket-stats-results, .ticket-stats-swimmers { margin-right: 20px;}
+.ticket-stats-disq { margin-right: 10px;}
+
+span.ical { 
+  background: url('../images/icons/calendar-icon.png') -2px no-repeat;
+  background-size: 22px 22px;
+  padding-left: 26px;
+}
+/* --------------------------------------------- Wysiwyg Custom styles */
+.body_incident ol li { 
+  border: none;
+  background-image:url('../images/icons/list-style/icon_list_style.png');
+  background-position: 0;
+  padding-left: 15px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* ----------------------------------------- End Wysiwyg Custom styles */
+
+
+/* --------------------------------------- Open Modal Windows and syles */
+#diseases, #change_photo, #private_message { display: none;}
+.diseases h1 { font-size: ;}
+.change_photo, .private_message { width: 500px; }
+.private_message { height: 500px;}
+/* ------------------------------------End Open Modal Windows and syles */
+
+/* ------------------------------------------- Pagination in dashboard */
+.digg_pagination {
+	margin-top: 20px;
+  background: white;
+  cursor: default;
+  float: right;
+  /* self-clearing method: */ 
+}
+.digg_pagination a, .digg_pagination span, .digg_pagination em {
+  padding: 0.2em 0.5em;
+  display: block;
+  float: left;
+  margin-right: 1px; 
+}
+.digg_pagination .disabled { color: #999999; border: 1px solid #dddddd; }
+.digg_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background: #2e6ab1;
+  color: white;
+  border: 1px solid #2e6ab1; 
+}
+.digg_pagination a {
+  text-decoration: none;
+  color: #105cb6;
+  border: 1px solid #9aafe5; }
+
+.digg_pagination a:hover, .digg_pagination a:focus { color: #000033; border-color: #000033; }
+.digg_pagination .page_info {
+  background: #2e6ab1;
+  color: white;
+  padding: 0.4em 0.6em;
+  width: 22em;
+  margin-bottom: 0.3em;
+  text-align: center; 
+}
+
+.digg_pagination .page_info b { color: #000033; background: #6aa6ed; padding: 0.1em 0.25em; }
+.digg_pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+* html .digg_pagination { height: 1%; }  
+*:first-child + html .digg_pagination { overflow: hidden; }
+/* ---------------------------------------- End Pagination in dashboard */
+
+/* ------------------------------------------- Pagination in dashboard */
+.custom_pagination {
+	margin-top: 20px;
+  background: white;
+  cursor: default;
+  float: right;
+  /* self-clearing method: */ 
+}
+.custom_pagination a, .custom_pagination span, .custom_pagination em {
+  padding: 0.2em 0.5em;
+  display: block;
+  float: left;
+  margin-right: 1px; 
+}
+.custom_pagination .disabled { color: #999999; border: 1px solid #dddddd; }
+.custom_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background: #808080;
+  color: white;
+  border: 1px solid #e6e6e6; 
+}
+.custom_pagination a {
+  text-decoration: none;
+  color: #808080;
+  border: 1px solid #808080; }
+
+.custom_pagination a:hover, .custom_pagination a:focus { color: #000033; border-color: #000033; }
+.custom_pagination .page_info {
+  background: #2e6ab1;
+  color: white;
+  padding: 0.4em 0.6em;
+  width: 22em;
+  margin-bottom: 0.3em;
+  text-align: center; 
+}
+
+.custom_pagination .page_info b { color: #000033; background: #6aa6ed; padding: 0.1em 0.25em; }
+.custom_pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+* html .custom_pagination { height: 1%; }  
+*:first-child + html .custom_pagination { overflow: hidden; }
+/* ---------------------------------------- End Pagination in dashboard */
+
+/* ----------------------------------------- Table Styles for Trainings */
+#table_analyze_season {margin-top: 60px;}
+#table_analyze_season h3 {margin-bottom: 40px;}
+.bordered-left { border-left: solid 1px #e6e6e6;}
+.datatable_trainings thead th {padding: 5px 0;}
+.datatable_trainings tbody td {padding: 0;}
+
+.datatable_trainings tbody tr.even:hover, .datatable_trainings tbody tr.even td.highlighted {
+  background-color: #FFFFCC;
+}
+.datatable_trainings tbody tr.odd:hover, .datatable_trainings tbody tr.odd td.highlighted {
+  background-color: #FFFFCC;
+}
+.datatable_trainings tr.even:hover {
+  background-color: #FFFFCC;
+}
+.datatable_trainings tr.even:hover td.sorting_1 {
+  background-color: #ffff99;
+}
+.datatable_trainings tr.even:hover td.sorting_2 {
+  background-color: #ffff99;
+}
+.datatable_trainings tr.even:hover td.sorting_3 {
+  background-color: #ffff99;
+}
+.datatable_trainings tr.odd:hover {
+  background-color: #FFFFCC;
+}
+.datatable_trainings tr.odd:hover td.sorting_1 {
+  background-color: #ffff99;
+}
+.datatable_trainings tr.odd:hover td.sorting_2 {
+  background-color: #ffff99;
+}
+.datatable_trainings tr.odd:hover td.sorting_3 {
+  background-color: #ffff99;
+}
+/* ------------------------------------- End Table Styles for Trainings */

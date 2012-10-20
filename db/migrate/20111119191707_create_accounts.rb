@@ -6,7 +6,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :dni
       t.string :club
       t.string :web
-      t.integer :phone
+      t.string :phone
       t.string :address
       t.string :city
       t.string :country

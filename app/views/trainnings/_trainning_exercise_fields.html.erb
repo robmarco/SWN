@@ -1,8 +1,8 @@
 <tr class="fields">
 	<td class="remove"><%= link_to_remove_fields "X", f %></td>
-	<td class="result"><%= f.text_field :repetition, :class => "mini_px"  %></td>
-	<td class="result"><%= f.text_field :heat, :class => "mini_px" %></td>
-	<td class="result"><%= f.text_field :distance, :class => "mini_px" %></td>
+	<td class="result" id="heat"><%= f.text_field :heat, :class => "mini_px" %></td>
+	<td class="result" id="rep"><%= f.text_field :repetition, :class => "mini_px"  %></td>	
+	<td class="result" id="dist"><%= f.text_field :distance, :class => "mini_px" %></td>
 	<td class="result">
 		<% if params[:action] == 'edit' %>
 			<%= f.select :style, options_for_select(["Mariposa", "Espalda", "Braza", "Crol", "Estilos", "Estilo Propio"], f.object.style) %>

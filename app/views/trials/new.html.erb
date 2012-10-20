@@ -1,7 +1,7 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Tests preparatorios', trials_path %></li>
-	<li>Añadir test</li>
+	<li><%= link_to t('trials.breadcumbs.tests'), trials_path %></li>
+	<li><%= t('trials.breadcumbs.add_test') %></li>
 </ul>
 
 <article class="full-block clearfix">
@@ -9,7 +9,7 @@
 		
 		<!-- Header  -->
 		<header>
-			<h2>Añadir Test preparatorio</h2>
+			<h2><%= t('.header_add_test') %></h2>
 		</header>
 		<!-- \Header  -->
 

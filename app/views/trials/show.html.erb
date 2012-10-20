@@ -1,17 +1,19 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li><%= link_to 'Tests preparatorios', trials_path %></li>
+	<li><%= link_to t('trials.breadcumbs.tests'), trials_path %></li>
 	<li>Id <%= @trial.id %></li>
 </ul>
 
 <!-- Test Information Block -->
-<article class="second-third-block">
+<article class="full-block clearrm nested">
 	<div class="article-container">
 		
 		<header>
 			<h2><%= @trial.title %></h2>
 			<nav>
 				<ul class="button-switch">
+					<li><%= link_to 'Imprimir PDF', trial_path(@trial, format: "pdf"), :class => "button" %></li>
+					<li><%= link_to 'Añadir Test', new_trial_path, :class => "button" %></li>
 					<li><%= link_to 'Eliminar', trial_path(@trial), :confirm => '¿Está seguro de que desea eliminar el test?', :method => :delete, :class => "button gray" %></li>
 					<li><%= link_to 'Editar', edit_trial_path(@trial), :class => "button" %></li>
 				</ul>
@@ -19,84 +21,64 @@
 		</header>
 		
 		<section>
-			<form>
-				<fieldset>
-					<legend>Datos del test</legend>
-					
-					<dl>
-						<dt><%= label :date_trial, 'Fecha del test'%></dt>
-						<dd class="text"><%= @trial.date_trial.strftime("%d/%m/%Y") %></dd>
-						<dt><%= label :trial_category_id, 'Categoría' %></dt>
-						<dd class="text">
-							<td>
-								<span class="tag tag2 tag_show <%= @trial.trial_category.color %>">
-									<%= @trial.trial_category.name %>
-								</span>
-							</td>
-						</dd>
-					</dl>
-				</fieldset>
-			</form>
-		</section>
-		
-	</div>
-</article>
 
-<!-- Tests Basic Statistics Block -->
-<article class="third-block">
-	<div class="article-container">
-		<header>
-			<h2>Estadísticas</h2>
-			<nav>
-				<ul class="button-switch">
-					<li><%= link_to 'Añadir Test', new_trial_path, :class => "button" %></li>
-				</ul>
-			</nav>
-		</header>
-		<section>
-			<ul class="stats-summary">
-				<li>
-					<strong class="stats-count"><%= @trial.trial_results.size %></strong>
-					<p>Total de resultados añadidos</p>
+			<ul class="tickets" id="comp_test">
+				<li class="ticket-data">
+					<div class="ticket-overview">
+						<ul>
+							<li class="ticket-data-ticket"><%= image_tag "_blank.png", :id => "blank" %></li>
+							<li class="ticket-data-activity"><%= image_tag "_blank.png", :id => "blank"%></li>
+							<li class="ticket-data-user">
+								<%= t('.date') %> <strong><%= @trial.date_trial.strftime("%d/%m/%Y") %></strong>
+							</li>
+							<li class="ticket-data-priority">
+								<span class="tag <%= @trial.trial_category.color %>"><%= @trial.trial_category.name %></span>
+							</li>
+							<li class="ticket-data-age">
+								<%= days_until_event (@trial.date_trial - Date.today).to_i %>
+							</li>
+						</ul>
+					</div>
 				</li>
-				
-				<li>
-					<strong class="stats-count">
-						<%= @trial.trial_results.joins(:swimmer).merge(Swimmer.male).map(&:swimmer_id).uniq.size %>
-					</strong>
-					<p>Participantes masculinos</p>
+				<hr>
+				<!-- Estadísticas -->
+				<li class="ticket-stats">
+					<ul>
+						<li class="ticket-stats-info">
+							<span class="ticket-stats-results">
+								<%= t('.total_results_added') %> <strong><%= @trial.trial_results.size %></strong>
+							</span>
+							<span class="ticket-stats-swimmers">
+								<%= t('.masc_swimmers') %> <strong><%= @trial.trial_results.joins(:swimmer).merge(Swimmer.male).map(&:swimmer_id).uniq.size %></strong>
+							</span>
+							<span class="ticket-stats-disq">
+								<%= t('.fem_swimmers') %> <strong><%= @trial.trial_results.joins(:swimmer).merge(Swimmer.female).map(&:swimmer_id).uniq.size %></strong>
+							</span>
+						</li>
+					</ul>
 				</li>
-				
-				<li>
-					<strong class="stats-count">
-						<%= @trial.trial_results.joins(:swimmer).merge(Swimmer.female).map(&:swimmer_id).uniq.size %>
-					</strong>
-					<p>Participantes femeninos</p>
-				</li>
-				
 			</ul>
+
 		</section>
+
 	</div>
 </article>
-<!-- \Tests Basic Statistics Block -->
-
-<div class="clearfix"></div>
 
 <!-- Results Block -->
 <article class="full-block">
 	<div class="article-container">
 		<header>
-			<h2>Resultados de Nadadores</h2>
+			<h2><%= t('.header_swimmer_results') %></h2>
 		</header>
 		
 		<section>
 			<table class="dt_swimmer_results">
 			  <thead>
 			  	<tr>
-				    <th>Nadador</th>
-				    <th>Tipo de Test</th>
-				    <th>Valor</th>
-				    <th>Observación</th>
+				    <th><%= t('.table_swimmer') %></th>
+				    <th><%= t('.table_type_test') %></th>
+				    <th><%= t('.table_value') %></th>
+				    <th><%= t('.table_observation') %></th>
 				  </tr>
 			  </thead>
 

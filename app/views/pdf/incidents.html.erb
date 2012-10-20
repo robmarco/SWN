@@ -1,0 +1,33 @@
+<section>
+	<div class="trainer_info">
+		<div class="personal_info">
+			<ul>
+				<li><%= current_user.full_name %></li>
+				<li><%= current_user.account.try(:club) %></li>
+				<li><%= "#{current_user.account.try(:country)}, #{current_user.account.try(:city)}" %></li>
+				<li><%= current_user.try(:email) %></li>
+			</ul>
+		</div>
+		<div class="page_info">
+			<h2>Diario de Incidencias</h2>
+			<p><%= Time.now.strftime("Generado %m/%d/%Y a %I:%M%p") %></p>
+		</div>
+	</div>
+
+	<div align="center">
+		<% if @incidents.count > 0 %>
+			<% @incidents.each do |incident| %>
+				<div class="incident">
+					<div id="incident_title">
+						<h2><%= incident.title %></h2>
+						<p><%= incident.date_incident.strftime("%A, %d %B %Y") %></p>
+					</div>
+					<div id="incident_content">
+						<%= raw incident.description %>
+					</div>	
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</section>
+

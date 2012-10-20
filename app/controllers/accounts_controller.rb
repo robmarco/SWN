@@ -13,31 +13,26 @@ class AccountsController < ApplicationController
   end
 
   # PUT /accounts/1
-  # PUT /accounts/1.xml
   def update
     @account = Account.find(params[:id])
     @country = Country.all
 
     respond_to do |format|
       if @account.update_attributes(params[:account])
-        format.html { redirect_to( edit_account_url, :notice => 'Account was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to( edit_account_url, :notice => t('controllers.successfully_updated', :model => Account.model_name.human) ) }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @account.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # DELETE /accounts/1
-  # DELETE /accounts/1.xml
   def destroy
     @account = Account.find(params[:id])
     @account.destroy
 
     respond_to do |format|
       format.html { redirect_to(accounts_url) }
-      format.xml  { head :ok }
     end
   end
 end

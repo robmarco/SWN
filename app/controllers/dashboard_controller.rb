@@ -3,10 +3,9 @@ class DashboardController < ApplicationController
   
   def index
     @recent_activities = current_user.recent_activities.paginate(:page => params[:page], :per_page => 7).order("created_at DESC")
-    
-    @trainnings = current_user.trainnings.where(:date_trainning => Date.today)
-    @trials = current_user.trials.where(:date_trial => Date.today)
-    @competitions = current_user.competitions.where(:date_competition => Date.today)
+    @trainnings = current_user.trainnings.this_week
+    @trials = current_user.trials.this_week
+    @competitions = current_user.competitions.this_week
     
     respond_to do |format|
       format.html

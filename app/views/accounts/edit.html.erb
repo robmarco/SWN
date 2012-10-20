@@ -1,13 +1,19 @@
 <ul id="breadcrumbs">
 	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
-	<li>Configuración de perfil</li>
+	<li><%= t('accounts.breadcumbs.profile_configuration') %></li>
 </ul>
 
 <article class="full-block clearfix">
 	<div class="article-container">
 		
 		<header>
-			<h2>Datos de su cuenta</h2>
+			<h2><%= t('.header') %></h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Cancelar cuenta', registration_path(current_user), :confirm => '¿Está seguro de que desea eliminar el entrenamiento?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Cambiar contraseña', edit_user_registration_path, :class => "button" %></li>
+				</ul>
+			</nav>
 		</header>
 		
 		<section>

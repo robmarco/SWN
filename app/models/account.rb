@@ -8,7 +8,7 @@
 #  dni                :string(255)
 #  club               :string(255)
 #  web                :string(255)
-#  phone              :integer
+#  phone              :string(255)
 #  address            :string(255)
 #  city               :string(255)
 #  country            :string(255)
@@ -20,16 +20,19 @@
 #  photo_content_type :string(255)
 #  photo_file_size    :integer
 #  photo_updated_at   :datetime
+#  language           :string(255)
 #
 
 class Account < ActiveRecord::Base
   belongs_to :user
     
-  attr_accessible :user_id, :name, :secname, :dni, :club, :web, :phone, :address, :city, :country, :postal, :photo
+  attr_accessible :user_id, :name, :secname, :dni, :club, :web, 
+  								:phone, :address, :city, :country, :postal, 
+  								:photo, :language
   
   # User photo added to the account
   has_attached_file :photo, :styles => { :thumb => "56x56" },
-                            :url => "/avatars/:user_id/:hash.:extension",
+                            :url => "/uploads/avatars/:user_id/:hash.:extension",
                             :hash_secret => "MzyHiTs36IARoAbX6FR7sC7pLrkpIm4u4oafNsY1nK0q9dQkWjBIVSiUgGVlBvW"
   
   validates_presence_of :name, :secname

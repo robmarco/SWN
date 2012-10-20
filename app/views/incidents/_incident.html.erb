@@ -1,12 +1,16 @@
-<tr>
-  <td><%= incident.date_incident.strftime("%d/%m/%Y") %></td>
-  <td><strong><%= incident.title %></strong></td>
-  <td><%= remove_html_tag incident.description %></td>
-  <td>
-		<ul class="actions">
-			<li><%= link_to 'ver', incident_path(incident), :class => "view", :title => "Ver incidencia", :rel => "tooltip" %></li>
-			<li><%= link_to 'editar', edit_incident_path(incident), :class => "edit", :title => "Editar incidencia", :rel => "tooltip" %></li>
-			<li><%= link_to 'eliminar', incident_path(incident), :confirm => '¿Está seguro de que desea eliminar la incidencia?', :method => :delete, :class => "delete", :title => "Eliminar incidencia", :rel => "tooltip" %></li>
-		</ul>
-	</td>
-</tr>
+<li class="event">
+	<span class="logs-timestamp"><%= I18n.localize(incident.date_incident, :format => :long) %></span>
+	<h4><%= link_to "#{incident.title}", edit_incident_path(incident), :class => "logs-event" %></h4>
+	<div class="body_incident"><%=raw incident.description %></div>
+	<hr>
+	<em class="logs-meta">
+		<%= t('incidents.index.tags') %>
+		<% if incident.tags.any? %>
+			<% incident.tags.each do |tag| %>
+				<%= link_to tag.name, incidents_url(:tag => tag.name) %>,
+			<% end %>
+		<% else %>
+			<i>No se ha añadido ninguna</i>
+		<% end %>
+	</em>
+</li>

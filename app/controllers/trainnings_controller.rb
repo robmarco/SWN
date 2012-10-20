@@ -5,15 +5,10 @@ class TrainningsController < ApplicationController
   # GET /trainnings.xml
   def index
     @trainnings = current_user.trainnings.order(:date_trainning)
-    @last_trainning = current_user.trainnings.last
-    
-    #@last_12_trainnings = current_user.trainnings.where('date_trainning < ?', current_user.trainnings.maximum("date_trainning")+1).limit(12).reverse_order
-    #@last_12_trainnings = @trainnings.take_while {|i| i.date_trainning < (@trainnings.last.date_trainning)+1}.last(12)
-    @last_12_trainnings = @trainnings.last(12).map(&:date_trainning).uniq
-    
+    @trainnings_current_micro = current_user.trainnings.this_week
+
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @trainnings }
     end
   end
 
@@ -25,7 +20,14 @@ class TrainningsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @trainning }
+      format.pdf do      
+        html = render_to_string(:layout => "pdf", :action => "pdf/trainning.html.erb")
+        kit = PDFKit.new(html)
+        kit.stylesheets << "#{Rails.root}/public/stylesheets/print.css" 
+        send_data kit.to_pdf, :filename =>  "qs_entrenamiento_#{@trainning.date_trainning.strftime('%d%m%Y')}.pdf", 
+                              :type => 'application/pdf',
+                              disposition: "inline"
+      end
     end
   end
 
@@ -39,7 +41,6 @@ class TrainningsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @trainning }
     end
   end
 
@@ -57,11 +58,9 @@ class TrainningsController < ApplicationController
       if @trainning.save
         session[:trainnings_size] = current_user.trainnings.size
                 
-        format.html { redirect_to(@trainning, :notice => 'Trainning was successfully created.') }
-        format.xml  { render :xml => @trainning, :status => :created, :location => @trainning }
+        format.html { redirect_to(@trainning, :notice => t('controllers.successfully_created', :model => Trainning.model_name.human) ) }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @trainning.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -73,11 +72,9 @@ class TrainningsController < ApplicationController
 
     respond_to do |format|
       if @trainning.update_attributes(params[:trainning])
-        format.html { redirect_to(@trainning, :notice => 'Trainning was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to(@trainning, :notice => t('controllers.successfully_updated', :model => Trainning.model_name.human) ) }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @trainning.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -91,7 +88,17 @@ class TrainningsController < ApplicationController
     
     respond_to do |format|
       format.html { redirect_to(trainnings_url) }
-      format.xml  { head :ok }
     end
+  end
+
+  def send_by_email
+    @trainning = current_user.trainnings.find(params[:id])
+    @trainning_exercises = @trainning.trainning_exercises
+
+    html = render_to_string(:layout => "pdf", :action => "pdf/trainning.html.erb")
+    kit = PDFKit.new(html)
+    kit.stylesheets << "#{Rails.root}/public/stylesheets/print.css" 
+    SwimmerMailer.trainning_message(current_user, kit.to_pdf, @trainning).deliver
+    redirect_to(@trainning, :notice => t('controllers.email_to_swimmers_sent'))
   end
 end

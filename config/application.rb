@@ -21,6 +21,9 @@ module SWN
 
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+    config.active_record.observers =  :swimmer_activity_observer, :competition_activity_observer,
+                                      :trial_activity_observer, :incident_activity_observer,
+                                      :trainning_activity_observer
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
@@ -28,7 +31,7 @@ module SWN
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = :es
 
     # JavaScript files you want as :defaults (application.js is always included).
     config.action_view.javascript_expansions[:defaults] = %w(jquery_ujs)
@@ -46,5 +49,10 @@ module SWN
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # config.middleware.use "PDFKit::Middleware", :print_media_type => true
+
+    # ActsAsTaggableOn - If you would like to remove unused tag objects after removing taggings
+    ActsAsTaggableOn.remove_unused_tags = true
   end
 end

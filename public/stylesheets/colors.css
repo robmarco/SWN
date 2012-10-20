@@ -44,7 +44,7 @@ body, body.error-page, tbody tr:hover, .tickets .ticket-data .ticket-details dl 
 .widget.add-new-widget, .htmlcalendar tr:nth-child(even) .day, tbody tr:nth-child(even), .tickets .ticket-data:nth-child(2n+1),
 .jq-datepicker .datepick-month-header select, input:disabled, input.disabled, input, textarea, select, input.datepicker { background-color:#fafafa; }
 #user-info { background-color:#d9d9d9; }
-body.login { background: url('../images/theme/bg5.jpg'); }
+body.login { background: #E6E6E6; }
 .htmlcalendar .calendar-event .event.blue { background-color:#058dc7; }
 .htmlcalendar .calendar-event .event.green { background-color:#77ab13; }
 .htmlcalendar .calendar-event .event.orange { background-color:#ef561a; }

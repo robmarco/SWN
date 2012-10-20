@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="/stylesheets/custom_devise.css">
 	<link rel="stylesheet" href="/stylesheets/colors.css">
 	<link rel="stylesheet" href="/stylesheets/jquery.tipsy.css">
+	<%= stylesheet_link_tag "frontend/font-awesome" %>
 	
 	<!-- Google WebFonts -->
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
@@ -25,10 +26,30 @@
 </head>
 
 <body class="login">
+	<div id="social-top">
+		<div class="container">
+			<ul>
+				<li><a href="#"><i class="icon-google-plus-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-github-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-linkedin-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-pinterest-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-facebook-sign icon-large"></i></a></li> 
+				<li><a href="#"><i class="icon-twitter-sign icon-large"></i></a></li>
+			</ul>
+		</div><!--/container-->	
+	</div><!--/social top-->
+
+	<!-- Navbar
+	  ================================================== -->
+		<div class="navbar">
+		  <div class="navbar-inner">
+		    <div class="container">
+		      <%= link_to image_tag("frontend/logo.png", :alt => "QuSwimming", :size => "300x22"), root_path, :class => "brand pull-left" %>
+		    </div>
+		  </div>
+		</div>
+
 	<section role="main">
-
-		<a href="/" title="Back to Homepage"></a>
-
 		<!-- Login box -->
 		<article id="login-box">
 

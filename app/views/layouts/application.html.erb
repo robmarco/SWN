@@ -26,6 +26,7 @@
 	<link rel="stylesheet" href="/stylesheets/jquery.fullcalendar.css">
 	<link rel="stylesheet" href="/stylesheets/jquery.visualize.css">
 	<link rel="stylesheet" href="/stylesheets/custom.css">
+	<%= stylesheet_link_tag "frontend/font-awesome" %>
 	<%= stylesheet_link_tag 'token-input-facebook' %>
   
 	<!-- JS Links -->
@@ -36,11 +37,22 @@
 	
 </head>
 <body>	
+	<!-- Social top -->
+	<div id="social-top">
+		<div class="container">
+			<ul>
+				<li><a href="#"><i class="icon-google-plus-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-github-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-linkedin-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-pinterest-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-facebook-sign icon-large"></i></a></li> 
+				<li><a href="#"><i class="icon-twitter-sign icon-large"></i></a></li>
+			</ul>
+		</div><!--/container-->	
+	</div><!--/social top-->
+		
 	<!-- Fixed Layout Wrapper -->
 	<div class="fixed-wraper">
-	
-		<div class="topbar"></div>
-
 		<!-- Aside Block -->
 		<%= render 'layouts/aside' %>
 		<!-- /Aside Block -->

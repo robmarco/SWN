@@ -1,2 +1,110 @@
 .login div#error_explanation { margin: 0 0 30px 0;}
 .login section[role="main"] { margin: 100px auto 50px;}
+
+/* ----------------- Social Top Links ----------------- */
+#social-top {
+	background: #2f3239;
+	height: 34px;
+	border-bottom: 1px solid #454951;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+#social-top ul {
+	float: right;
+	position: relative;
+	top: 8px;
+	right: 0;
+}
+#social-top ul li {
+	list-style: none;
+	float: left;
+	padding-left: 5px;
+}
+#social-top ul li a {
+	color: #545861;
+}
+#social-top ul li a:hover {
+	color: #ff7361;
+}
+/* ----------------- Icon Links ----------------- */
+[class^="icon-"],
+[class*=" icon-"] {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  *margin-right: .3em;
+  line-height: 14px;
+  vertical-align: text-top;
+}
+
+/* ----------------- NavBar with Logo ----------------- */
+.pull-right {
+  float: right;
+}
+
+.navbar {
+  *position: relative;
+  *z-index: 2;
+  overflow: visible;
+  color: #777777;
+}
+
+.navbar-inner {
+  height: 65px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: #373b43;
+  background-repeat: repeat-x;
+  border-bottom: 7px solid #ff9f93;
+
+  *zoom: 1;
+}
+
+.navbar .brand {
+  display: block;
+  float: left;
+  padding: 10px 20px 10px;
+  margin-left: -20px;
+  font-size: 20px;
+  font-weight: 200;
+  color: #777777;
+  text-shadow: 0 1px 0 #ffffff;
+  position: relative;
+  top: 10px;
+}
+
+.navbar .brand:hover {
+  text-decoration: none;
+}
+
+/* ---------- Main Container Responsive --------- */
+.container { width: 940px;}
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  *zoom: 1;
+}
+
+@media (min-width: 1200px) {
+	.container { width: 1170px;} 
+}
+@media (max-width: 979px) {
+  .navbar .container {
+    width: auto;
+    padding: 0;
+  }
+  .navbar .brand {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 0 0 0 -5px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	.container { width: 724px; }
+}
+
+@media (max-width: 767px) {
+	.container { width: auto;}
+}

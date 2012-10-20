@@ -1,67 +1,139 @@
-<div id="pageinfo">
-	<div class="container container-twelve">
-		<div class="pagetitle eight columns">
-			<h1>Contacta</h1><h2>Envíanos un mensaje sin compromiso</h2>
-		</div>
-		<div class="pagesnav four columns">
-			<div class="breadcrumbs">
-				<%= link_to 'Inicio', root_path %> &nbsp;&nbsp;/&nbsp;&nbsp; <%= link_to 'Contacto', '#', :class => 'active' %>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-</div><!-- //pageinfo -->
+<% content_for :google_maps do %>
+	<!--/ Google Maps -->
+	<%= javascript_include_tag "frontend/jquery" %>
+  <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <%= javascript_include_tag "frontend/gmap3" %>
+    
+  <script type="text/javascript">
+    $(function(){
+      $('#gMap').gmap3(
+        { action: 'addMarker',
+          address: "Universidad de Las Palmas de Gran Canaria, Las Palmas",
+          map:{
+            center: true,
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          }
+        }
+      );
+    });
+  </script>
+<% end %>
 
-<iframe id="google-maps" width="100%" height="360" src="https://maps.google.es/maps/ms?msa=0&amp;msid=208405636712106387754.0004cb10e6a5436e07f8f&amp;ie=UTF8&amp;t=m&amp;ll=28.07323,-15.451455&amp;spn=0.006627,0.00912&amp;z=16&amp;output=embed"></iframe><br /><small>Ver <a href="https://maps.google.es/maps/ms?msa=0&amp;msid=208405636712106387754.0004cb10e6a5436e07f8f&amp;ie=UTF8&amp;t=m&amp;ll=28.07323,-15.451455&amp;spn=0.006627,0.00912&amp;z=16&amp;source=embed"></iframe>
+<% content_for :google_maps_footer do %>
+	<%= javascript_include_tag "frontend/contact" %>
+  <script type="text/javascript">
+		$(document).ready(function() {
+			// Placeholder input fields 
+			$('.placeholder').each(function() {
+		    var $this = $(this);
+		    var defaultVal = $this.attr('title');
+				
+				$this.val(defaultVal);
+									
+        $this.focus(function() {
+          if ($this.val() === defaultVal) {
+            $this.val('');
+          }
+        });
 
-<div id="content" class="contact-us container container-twelve">
+        $this.blur(function() {
+          if ($this.val().length === 0) {
+            $this.val(defaultVal);
+          }
+        });
+	    });
+		});
+	</script>
+<% end %>
 
-	<div class="twelve columns">
-		<h4>¿Tienes alguna sugerencia que hacernos?</h4>
-		<p>Si crees que puedes ayudarnos a mejorar la aplicación o ves algún fallo mientras estás usándola, no dudes en ponerte en contacto con nosotros. Te lo agracederemos. ¡Juntos podremos conseguir que hayan más aplicaciones para este deporte!</p>
-	</div>
+<div id="orange-hero">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<ul class="breadcrumb">
+					<li><%= link_to "Inicio", root_path %> <span class="divider">/</span></li>
+					<li class="active">Contacto</li>
+				</ul>
+			</div><!--/span12-->
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/orange hero-->
 
-	<div class="clear"></div>
-	<hr />
+<div id="grey-content" class="grey-inner-headings">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<h2>Ponte en contacto con nosotros</h2>
+				<p>¿Necesitas ayuda con algún componente de nuestra aplicación, o simplemente quieres comentarnos cualquier sugerencia de mejora?<br>
+				No dudes en contactar con nosotros enviándonos un mensaje a través de cualquiera de los medios que se listan a continuación.</p>
+			</div><!--/span12-->
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/grey content -->
 
-	<div class="four columns">
+<div id="gMap" class="gmap3"></div>
 
-		<h4>Envíanos un mensaje</h4>
-		<p>
-			Escuela de Ingeniería Informática<br />
-			Edifico de Informática y Matemáticas<br />
-			Campus Universitario de Tafira <br />
-			35017 Las Palmas de Gran Canaria
-		</p>
-		<p>
-			Teléfono: (+34) 928 458 719<br />
-			Email: <a href="#">admin@quswimming.com</a>
-		</p>
+<div id="white-content">
+	<div class="container">
+		<div class="row">
+			<div class="span9">
+				<h4>Envíanos un mensaje</h4>
+				<hr>
+				
+        <div class="alert" id="smoothieContactResponse" style="display: none;"></div>
+                  
+				<div id="contact_form">
+					<form action="#" id="form" method="post" class="smoothieContact"> 
+            <div class="control-group">
+              <div class="controls">
+								<input class="placeholder span3 required" type="text" name="name" title="Tu Nombre" placeholder="Tu Nombre" />
+                <span class="help-inline"></span>
+              </div>
+						</div>
+            <div class="control-group">
+            	<div class="controls">
+                <input class="placeholder span3 required" type="email" name="email" title="Tu Email"  placeholder="Tu Email" />
+                <span class="help-inline"></span> 
+              </div>
+						</div>
+            <div class="control-group">
+            	<div class="controls">
+								<textarea rows="10" class="placeholder span9 required" name="message" placeholder="Tu Mensaje" title="Tu Mensaje"></textarea>
+           			<span class="help-inline"></span>
+              </div> 
+            </div>
+						<input class="submit darkbtn" type="submit" value="Enviar mensaje" />
+					</form> 
+				</div><!--/contact form-->
+						
+			</div><!--/span 12-->
+			
+			<div class="span3">
+				<div class="sidebar-wrap">
+					<h4>Información de contacto</h4>
+					<hr>
+					<address>
+						<strong>Universidad Las Palmas de GC</strong><br>
+						Escuela de Ingeniería Informática<br>
+						Las Palmas de GC, CP 35017<br>
+						<abbr title="Phone">P:</abbr> (928) 458 719
+					</address>
 
-		<h4>Sigue Conectado</h4>
-		<ul class="social-icons light">
-			<li class="skype"><a href="#"></a></li>
-			<li class="flickr"><a href="#"></a></li>
-			<li class="twitter"><a href="#"></a></li>
-			<li class="dribbble"><a href="#"></a></li>
-			<li class="facebook"><a href="#"></a></li>
-			<li class="googleplus"><a href="#"></a></li>
-			<li class="forrest"><a href="#"></a></li>
-			<li class="vimeo"><a href="#"></a></li>
-		</ul>
-
-	</div>
-
-	<div class="eight columns">
-		<%= form_tag '#' do %>
-			<h4>Te responderemos lo antes posible</h4>
-			<p><%= text_field_tag "name", "", :placeholder => "Nombre" %></p>
-			<p><%= email_field_tag "email", "", :placeholder => "Email" %></p>
-			<p><%= text_area_tag "message", nil, :rows => 8, :placeholder => "Tu mensaje" %></p>
-			<p><%= submit_tag "Enviar" %></p>
-		<% end %>
-	</div>
-
-	<div class="clear"></div>
-
-</div><!-- //content -->
+					<address class="nomarg">
+					  <strong>Roberto Marco</strong><br>
+					  <a href="mailto:#">quswimming@gmail.com</a>
+					</address>
+				</div><!--/sidebar wrap-->
+				
+				<div class="sidebar-wrap">
+					<h4>Agradecimiento</h4>
+					<p>Gracias por colaborar con nosotros comentando aquellos detalles que puedan ser mejorados.</p>
+				</div><!--/sidebar wrap-->
+			</div><!--/span3-->
+			
+		</div><!--/row-->
+		
+	</div><!--/container-->
+	
+</div><!--/white content-->

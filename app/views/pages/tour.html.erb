@@ -1,70 +1,77 @@
-<div id="pageinfo">
-	<div class="container container-twelve">
-		<div class="pagetitle eight columns">
-			<h1>Tour</h1><h2>Conoce todas las novedades</h2>
-		</div>
-		<div class="pagesnav four columns">
-			<div class="breadcrumbs">
-				<%= link_to 'Inicio', root_path %> &nbsp;&nbsp;/&nbsp;&nbsp; <%= link_to 'Tour', '#', :class => "active" %>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-</div><!-- //pageinfo -->
+<div id="orange-hero">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<ul class="breadcrumb">
+  					<li><%= link_to 'Inicio', root_path %> <span class="divider">/</span></li>
+  					<li class="active">Tour</li>
+				</ul>
+			</div><!--/span12-->
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/orange hero-->
 
-<div id="content" class="container container-twelve">
+<div id="grey-content" class="grey-inner-headings">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<h2>Conoce la Aplicación</h2>
+				<p>Queremos enseñarte las principales funcionalidades de la aplicación. <br>Si eres entrenador ¡te invitamos a que te registres para comenzar a usarla desde ya! </p>
+			</div><!--/span12-->
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/grey content -->
 
-	<div id="blog-posts2" class="nine columns">
+<div id="white-content">
+	<div class="container">
+		<div class="row">
+			<!-- Main content block -->
+			<div class="span9">
+				<%= image_tag "frontend/full-icon.png", :alt => "full-icon", :class => "img-rounded opacity-fade" %>
+				<hr>
+				<h4>I think it looks nifty, you should too.</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue. 
+				Pellentesque nec lacus elit. Pellentesque convallis nisi ac augue pharetra eu tristique neque consequat. 
+				Mauris ornare tempor nulla, vel sagittis diam convallis eget. Ut ultricies ornare dui, ac accumsan diam 
+				convallis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue. 
+				Pellentesque nec lacus elit. Pellentesque convallis nisi ac augue pharetra eu tristique neque consequat. 
+				Mauris ornare tempor nulla, vel sagittis diam convallis eget. Ut ultricies ornare dui, ac accumsan diam 
+				convallis eget.</p>
+				
+				<h5>Just one last bit to show.</h5>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue. 
+				Pellentesque nec lacus elit. Pellentesque convallis nisi ac augue pharetra eu tristique neque consequat. 
+				Mauris ornare tempor nulla, vel sagittis diam convallis eget. Ut ultricies ornare dui, ac accumsan diam 
+				convallis eget.</p>
+				
+				<blockquote>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+					<small>Someone famous <cite title="Source Title">Source Title</cite></small>
+				</blockquote>
+				
+			</div><!--/span 12-->
+			
+			<div class="span3">
+				<div class="sidebar-wrap">
+					<h5>Navegación</h5>
+					<ul class="cats">
+						<li><%= link_to "Enlace", '#' %></li>
+						<li><%= link_to "Enlace", '#' %></li>
+						<li><%= link_to "Enlace", '#' %></li>
+						<li><%= link_to "Enlace", '#' %></li>
+					</ul>
+				</div><!--/sidebar wrap-->
+				
+				<div class="sidebar-wrap">
+					<h5>Text Blurb</h5>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue. 
+					Pellentesque nec lacus elit.</p>
+				</div><!--/sidebar wrap-->
+				
+			</div><!--/span3-->
+			
+		</div><!--/row-->
 		
-		<div class="post">
-			<div class="post-slideshow">
-				<ul class="slideshow">
-	        <li><%= image_tag "theme/media/post-1-2.jpg" %></li>
-	        <li><%= image_tag "theme/media/post-2-2.jpg" %></li>
-      	</ul>
-			</div>
-			<div class="post-content">
-				<h4><span class="post-type gallery-post"></span><a href="blog_post.html">Facer labore ut ius, ex per utamur</a></h4>
-				<div class="details">Esto es un detalle más</div>
-				<p>Mea regione tota prodesset at eum. Ornatus insolens concludaturque mei, eos ex sint patrioque. Movet utinam eos in, ius modo tincidunt reprimique. Periculis efficiendi eos te, an vidit eleifend complectitur vim.</p>
-				<p><a href="blog_post.html">Read More</a></p>
-			</div>
-		</div>
-		
-		<hr />
-		
-		
-	</div>
-
-	<div id="sidebar" class="three columns">
-
-		<div class="widget">
-			<h4>What People Say</h4>
-			<div class="testimonials-wrapper">
-				<div class="testimonial">
-					<div class="testimonial-content">Vim aperiri gloriatur cu. Et dicat democritum eam, iudicabit cum an, prima nostrud laboramus eos id. Mea vel homero due no aeterno, te pro prima.</div>
-					<div class="testimonial-author"><a href="#">John Doe</a></div>
-				</div>
-				<div class="testimonial">
-					<div class="testimonial-content">Vim aperiri gloriatur cu. Et dicat democritum eam, iudicabit cum an, prima nostrud laboramus eos id. Mea vel homero due no aeterno, te pro prima.</div>
-					<div class="testimonial-author"><a href="#">Annah More</a></div>
-				</div>
-				<div class="testimonial">
-					<div class="testimonial-content">Vim aperiri gloriatur cu. Et dicat democritum eam, iudicabit cum an, prima nostrud laboramus eos id. Mea vel homero due no aeterno, te pro prima.</div>
-					<div class="testimonial-author"><a href="#">Robert Doe</a></div>
-				</div>
-				<div class="testimonial">
-					<div class="testimonial-content">Vim aperiri gloriatur cu. Et dicat democritum eam, iudicabit cum an, prima nostrud laboramus eos id. Mea vel homero due no aeterno, te pro prima.</div>
-					<div class="testimonial-author"><a href="#">Evelynn Mo</a></div>
-				</div>
-				<div class="testimonial-next"></div>
-				<div class="testimonial-prev"></div>
-			</div>
-		</div>
-
-	</div><!-- #sidebar -->
-
-
-	<div class="clear"></div>
-
-</div><!-- //content -->
+	</div><!--/container-->
+	
+</div><!--/white content-->

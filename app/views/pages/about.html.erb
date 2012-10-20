@@ -1,128 +1,83 @@
-<div id="pageinfo">
-	<div class="container container-twelve">
-		<div class="pagetitle eight columns">
-			<h1>Nuestro Equipo</h1><h2>Conoce a sus integrantes</h2>
-		</div>
-		<div class="pagesnav four columns">
-			<div class="breadcrumbs">
-				<%= link_to 'Inicio', root_path %> &nbsp;&nbsp;/&nbsp;&nbsp; <%= link_to 'Equipo', '#', :class => "active" %>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-</div><!-- //pageinfo -->
-
-<div id="content2" class="white">
-	<div class="container container-twelve">
-		<div class="twelve columns">
-			<div class="team-members">
-				<div class="ten columns first">
-
-					<div class="member">
-						<div class="picture"><%= image_tag "theme/team-member.png" %></div>
-						<div class="desc">
-							<h2>Roberto Marco</h2>
-							<h5>Desarrollador &amp; UX/UI del proyecto</h5>
-							<p>Mea regione persecuti ne. Tota suscipiantur duo ne, elitr voluptua conceptam at insolens concludaturque ut mei, eos ex sint patrioque. Movet utinam eos in, ex ius modo tincidunt reprimique. Periculis efficiendi eos te, an vidit eleifend complectitur vim.</p>
-							<ul class="social-icons light">
-								<li class="skype"><a href="#"></a></li>
-								<li class="flickr"><a href="#"></a></li>
-								<li class="twitter"><a href="#"></a></li>
-								<li class="dribbble"><a href="#"></a></li>
-								<li class="facebook"><a href="#"></a></li>
-								<li class="googleplus"><a href="#"></a></li>
-								<li class="forrest"><a href="#"></a></li>
-								<li class="vimeo"><a href="#"></a></li>
-							</ul>
-						</div>
-						<div class="clear"></div>
-					</div>
-
-					<div class="member">
-						<div class="picture"><%= image_tag "theme/team-member.png" %></div>
-						<div class="desc">
-							<h2>Borja Rubio</h2>
-							<h5>Co-Tutor del proyecto</h5>
-							<p>Mea regione persecuti ne. Tota suscipiantur duo ne, elitr voluptua conceptam at insolens concludaturque ut mei, eos ex sint patrioque. Movet utinam eos in, ex ius modo tincidunt reprimique. Periculis efficiendi eos te, an vidit eleifend complectitur vim.</p>
-							<ul class="social-icons light">
-								<li class="flickr"><a href="#"></a></li>
-								<li class="twitter"><a href="#"></a></li>
-								<li class="dribbble"><a href="#"></a></li>
-								<li class="facebook"><a href="#"></a></li>
-								<li class="forrest"><a href="#"></a></li>
-							</ul>
-						</div>
-						<div class="clear"></div>
-					</div>
-
-					<div class="member">
-						<div class="picture"><%= image_tag "theme/team-member.png" %></div>
-						<div class="desc">
-							<h2>Enrique Rubio</h2>
-							<h5>Tutor del proyecto</h5>
-							<p>Mea regione persecuti ne. Tota suscipiantur duo ne, elitr voluptua conceptam at insolens concludaturque ut mei, eos ex sint patrioque. Movet utinam eos in, ex ius modo tincidunt reprimique. Periculis efficiendi eos te, an vidit eleifend complectitur vim.</p>
-							<ul class="social-icons light">
-								<li class="twitter"><a href="#"></a></li>
-								<li class="dribbble"><a href="#"></a></li>
-								<li class="facebook"><a href="#"></a></li>
-								<li class="googleplus"><a href="#"></a></li>
-								<li class="forrest"><a href="#"></a></li>
-								<li class="vimeo"><a href="#"></a></li>
-							</ul>
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-
-				<div class="nav two columns last">
-					<div class="up"></div>
-					<div class="down"></div>
-				</div>
-
-				<div class="clear"></div>
-
-			</div><!-- //team-members -->
-		</div>
-	</div>
-</div>
-
-<div id="content" class="container container-twelve">
-	<div class="four columns">
-		<h4>Our Legacy</h4>
-		<p>Placerat qualisque pri no, ei noster feugait sit. possit timeam vel, soleat prodesset in, in meliore convenire. Mundi suscipiantur quo et, eos posse veniam ex. Eos nulla reprehendunt ne, vidit splendide eu qui. At nam unum autem molestiae, exerci graece, vix ea novum sonet graeci due no timeam.</p>
-	</div>
-
-	<div class="four columns">
-		<h4>What We Do</h4>
-		<p>Placerat qualisque pri no, ei noster feugait sit. possit timeam vel, soleat prodesset in, in meliore convenire. Mundi suscipiantur quo et, eos posse veniam ex. Eos nulla reprehendunt ne, vidit splendide eu qui. At nam unum autem molestiae, exerci graece, vix ea novum sonet graeci due no timeam.</p>
-	</div>
-
-	<div class="four columns">
-		<h4>Our Principles</h4>
-		<p>Placerat qualisque pri no, ei noster feugait sit. possit timeam vel, soleat prodesset in, in meliore convenire. Mundi suscipiantur quo et, eos posse veniam ex. Eos nulla reprehendunt ne, vidit splendide eu qui. At nam unum autem molestiae, exerci graece, vix ea novum sonet graeci due no timeam.</p>
-	</div>
-
-	<div class="clear"></div>
-	<hr />
-
-	<div class="twelve columns">
-		<div class="infobox">
-			<div class="content">
-				<h3>Fase Beta - Estamos abiertos a recibir sugerencias</h3>
-				<h4>Si eres un entrenador y has detectado mejoras no dudes en ponerte en contacto con nosotros.</h4>
-			</div>
-			<div class="action">
-				<%= link_to "CONTACTA", pages_contact_path, :class => "button small" %>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="clear"></div>
-	<hr />
-
-	<%= render "pages/partners" %>
-
-	<div class="clear"></div>
-
-</div><!-- //content -->
+	<div id="orange-hero">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<ul class="breadcrumb">
+					<li><%= link_to "Inicio", root_path %> <span class="divider">/</span></li>
+					<li class="active">Equipo</li>
+				</ul>
+			</div><!--/span12-->
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/orange hero-->
+	
+<div id="grey-content" class="grey-inner-headings">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<h2>Sobre el equipo de desarrollo</h2>
+				<p>Un equipo especializado en realizar aplicaciones informáticas que puedan cubrir las necesidades de los clientes, <br> luchando por obtener el grado máximo de satisfacción y una calidad demostrable. ¡Confía en nosotros! No te arrepentirás.</p>
+			</div><!--/span12-->
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/grey content -->
+	
+	<div id="white-content" class="pull-center team-headings">
+		<div class="container">
+			<div class="row">
+				<div class="span12 column-divider">
+					<span class="column-divider-icon pull-left">
+						<%= image_tag "frontend/team-icon.png", :alt => "team-icon", :class => "small-icon-fix" %>
+					</span>
+					<h4>Nuestro equipo</h4>
+				</div><!--/span 12-->
+			</div><!--/row-->
+      <div class="row" id="filterSection_menu">
+      	<ul>
+          	<li class="muted">Ordenar por:</li>
+          	<li><a href="javascript:void(0);" data-filter="" class="active">Todos</a></li>
+          	<li><a href="javascript:void(0);" data-filter="tutor">Tutores</a></li>
+              <li><a href="javascript:void(0);" data-filter="developer">Desarrolladores</a></li>
+          </ul>
+      </div>
+			<div class="row" id="filterSection">
+				<div class="span3 filterable tutor">
+	      	<div class="opacity-fade">
+						<a href="#">
+							<img class="img-rounded" src="/images/frontend/team-member.jpg" alt="three" />
+							<h4>Enrique Rubio Royo</h4>
+						</a>
+						<p class="muted-small">Tutor de proyecto</p>
+						<p>Profesor a cargo de la supervisión de PFC en la ULPGC. Actualmente desempeña un cargo en el Cento de Innovación para la Sociedad de la Información (CICEI).</p>
+					</div><!--/span 4-->
+        </div>
+                
+        <div class="span3 filterable tutor">
+          <div class="opacity-fade">
+            <a href="#">
+              <img class="img-rounded" src="/images/frontend/team-member.jpg" alt="three" />
+              <h4>Borja Rubio Reyes</h4>
+            </a>
+            <p class="muted-small">Co-Tutor de proyecto</p>
+            <p>Profesor a cargo de la supervisión de PFC en la ULPGC. Actualmente desempeña un cargo en el Cento de Innovación para la Sociedad de la Información (CICEI).</p>
+          </div><!--/span 4-->
+        </div>
+        
+                
+        <div class="span3 filterable developer">
+	        <div class="opacity-fade">
+            <a href="#">
+              <img class="img-rounded" src="/images/frontend/team-member.jpg" alt="three" />
+              <h4>Roberto Marco Sánchez</h4>
+            </a>
+            <p class="muted-small">Desarrollador</p>
+            <p>Apasionado del desarrollo de aplicaciones software y amante de las nuevas tecnologías. Experiencia trabajando como programador web y en la gestión de la innovación.</p>
+	        </div><!--/span 3-->
+        </div>
+                
+			</div><!--/row-->
+			
+			
+		</div><!--/container-->
+		
+	</div><!--/white content-->

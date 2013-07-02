@@ -1,0 +1,563 @@
+# Sample localization file for Spanish. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  will_paginate:
+    previous_label: "&#8592; Previous"
+    next_label: "Next &#8594;"
+    page_gap: "&hellip;"
+
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%d/%m/%Y"
+      short: "%a %d %b %Y"
+      long: "%A, %d %B %Y"
+
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    # Used in date_select and datetime_select.
+    order:
+      - :year
+      - :month
+      - :day
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: must be accepted
+      blank: can't be blank
+      confirmation: doesn't match confirmation
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      record_invalid: ! 'Validation failed: %{errors}'
+      taken: has already been taken
+      too_long: is too long (maximum is %{count} characters)
+      too_short: is too short (minimum is %{count} characters)
+      wrong_length: is the wrong length (should be %{count} characters)
+    template:
+      body: ! 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: ! '%{count} errors prohibited this %{model} from being saved'
+
+  activerecord:
+    errors:
+      <<: *errors
+
+    models:
+      accounts: "Account"
+      category: "Category"
+      competition_result: "Competition Result"
+      competition_set: "Competition Set"
+      competition: "Competition"
+      country: "Country"
+      exercise_type: "Exercise Type"
+      incident: "Incident"
+      recent_activity: "Recent Activity"
+      state: "State"
+      swimmer: "Swimmer"
+      trainning_exercise: "Training Exercise"
+      trainning: "Training"
+      trial_category: "Test Category"
+      trial_result: "Test Results"
+      trial: "Test"
+      user: "User"
+
+    attributes:
+      account:
+        name: "Name"
+        secname: "Secname"
+        dni: "DNI"
+        club: "Club"
+        web: "Web"
+        phone: "Phone"
+        address: "Address"
+        city: "City"
+        country: "Country"
+        postal: "Postal"
+        language: "Language"
+
+      category:
+        name: "Name"
+        color: "Color"
+
+      competition_result:
+        swimmer_id: "Swimmer"
+        competition_set_id: "Set"
+        time_result: "Time"
+        disqualify: "Disqualified"
+        observation: "Observations"
+
+      competition_set:
+        name: "Name"
+
+      competition:
+        date_competition: "Date"
+        title: "Title"
+        place: "Place"
+        chrono_type: "Chrono Type"
+        pool_dist: "Pool Distance"
+        category: "Category"
+
+        competition_results:
+          swimmer_id: "Swimmer"
+          competition_set_id: "Set"
+          time_result: "Time"
+
+      country:
+        name: "Name"
+
+      incident:
+        date_incident: "DAte"
+        title: "Title"
+        description: "Description"
+
+      state:
+        name: "Name"
+
+      swimmer:
+        name: "Name"
+        secname: "Secname"
+        born: "Born"
+        licence: "Licence"
+        email: "Email"
+        address: "Address"
+        postal: "Postal"
+        city: "City"
+        country: "Country"
+        phone: "Phone"
+        parentname: "Parents Name"
+        parentemail: "Parents Email"
+        parentphone: "Parents Phone"
+        disease: "Diseases"
+        observation: "Observations"
+        category: "Category"
+        state: "State"
+        genre: "Genre"
+
+      trainning_exercise:
+        repetition: "Repetitions"
+        heat: "Heats"
+        distance: "Distance"
+        style: "Style"
+        exercise_type_id: "Type"
+        observation: "Observations"
+
+      trainning:
+        date_trainning: "Date"
+        macro: "Macrociclo"
+        micro: "Microciclo"
+        physical: "Physical"
+
+        trainning_exercises:
+          repetition: "Repetitions"
+          heat: "Heats"
+          distance: "Distance"
+
+      trial_result:
+        swimmer_id: "Swimmer"
+        trial_value: "Value"
+        observation: "Observations"
+
+      trial:
+        date_trial: "Date"
+        title: "Title"
+        trial_category_id: "Category"
+
+        trial_results:
+          swimmer_id: "Swimmer"
+          trial_value: "Test Result"
+
+  activemodel:
+    errors:
+      <<: *errors
+
+  widgets:
+    swimmer: "Swimmer"
+    training: "Trainning"
+    competition: "Competition"
+    test: "Test"
+    diary: "Diary"
+    add_swimmer: "Add swimmer"
+    add_training: "Add training"
+    add_competition: "Add competition"
+    add_trial: "Add test"
+    add_incident: "Add incident"
+
+  main_sidebar:
+    subtitle: "Software de Gestión Deportiva para entrenadores de natación"
+    coach: "Coach"
+    go_site: "visit website"
+    close_session: "close session"
+    swimmers: "Swimmers"
+    trainnings: "Trainings"
+    competitions: "Competitions"
+    test: "Tests"
+    incidents: "Diary of incidents"
+    settings: "Settings"
+    select_lang: "Languages avaibles:"
+
+  competitions:
+    breadcumbs:
+      competitions: "Competitions"
+      competitions_list: "Show competition list"
+      modify_competition: "Edit competition"
+      add_competition: "Add competition"
+
+    form:
+      competition_information: "Competition information"
+      competition_results: "Competition Results"
+
+    index: 
+      header_competitions: "Manage Competitions"
+      all: "All"
+      mini: "Mini"
+      pre: "PreBenjamín"
+      ale: "Alevín"
+      inf: "Infantil"
+      jun: "Junior"
+      abs: "Absoluto"
+      master: "Master"
+      category_text: "It shows all competitions added by a coach and his staff team."
+      header_calendar_stats: "Calendar"
+      header_competitions_calendar: "Competition Calendar"
+      table_action: "Action"
+
+      tabs:
+        calendar: "Calendar"
+
+    edit:
+      header_competition: "Edit Competition"
+
+    new:
+      header_add_competition: "Add Competition"  
+
+    show:
+      event_information: "Event Information"
+      header_stats: "Statistics"
+      total_results_added: "Results added"
+      total_swimmers_in: "Swimmers"
+      disqualifieds: "Disqualifieds"
+      header_swimmers_results: "Swimmer Results" 
+      chrono: "Chrono"
+      table_swimmer: "Swimmer"
+      table_comp: "Set"
+      table_time: "Time"
+      table_diff: "Dif. MM"
+      table_diff_percent: "Diff. MM (%)"
+      table_observation: "Observation"
+      footer: "Diff. MM: Difference in time between this and best results untill this moment"
+
+  dashboard:
+    index:
+      breadcumbs: "Dashboard"
+      header_week_events: "Weeks Events"
+      header_recent_activity: "Recent Activity"
+      has_update: "has edited"
+      has_create: "has created"
+      has_destroy: "has deleted"
+      article: "in"
+      article_category: "in category"
+      with_date: "dated on"
+
+      update:
+        swimmer: "Has been updated the swimmer"
+        competition: "Has been updated the competition"
+        incident: "Has been updated the incident"
+        trial: "Has been updated the test"
+        trainning: "Has been updated training dated on"
+
+  incidents:
+    form:
+      legend: "Incident Information"
+      tag_tooltip: "Tags will be useful to filter incidents"
+      tag_text: "Add comma separated tags"
+
+    breadcumbs:
+      incidents: "Diary of Incidents"
+      show_incidents_list: "Show incidents list"
+      modify_incident: "Edit incident"
+      add_incident: "Add incident"
+
+    index:
+      header_incidents: "Manage diary of incidents"
+      filter: "Incidents filter by:"
+      filter_remove: "(delete filter)"
+      find: "Search:"
+      find_placeholder: "Insert search criteria"
+      tags: "Tags -"
+
+      tag_sidebar:
+        header: "Tags"
+        text: "Se listan las etiquetas asociadas a los registros del diario de incidencias del entrenador. Haciendo clic en cada una de ellas puede acceder directamente a las incidencias por categorías."
+
+      buttons:
+        add_incident: "Add Incident"
+        print_pdf: "Print PDF"
+
+    edit:
+      header: "Edit incident -"
+
+    new:
+      header: "Add incident"
+
+  swimmers:
+    form:
+      personal_information: "Personal Information"
+      state_notice: "With Federado or Baja state, swimmer cant be included in competitions"
+      contact_information: "Contact information"
+      other_information: "Other information"
+      disease_notice: "Add all swimmer diseases such as his treatment"
+
+    index:
+      breadcumbs_swimmers: "Swimmers" 
+      breadcumbs_swimmers_list: "Show swimmers list"
+      header: "Swimmers Manage"
+      header_stats: "Statistics"
+      action: "Action"
+
+      table:
+        secname_and_name: "Secname and name"
+        year: "Born"
+        category: "Category"
+        state: "State"
+        genre: "Genre"
+
+      buttons:
+        add_swimmer: "Add swimmer"
+
+      tabs:
+        all: "All"
+        federates: "Federados"
+        not_federates: "No Federados"
+        leave: "Bajas"
+        message_tab_html: "It shows all swimmers added by a coach and his staff team. Swimmers with <strong>no federados o baja</strong> tag cant be included in competitions."
+        chart_swimmers_by_category: "Swimmer Categories"
+
+    show:
+      header_swimmer_show: "Swimmer Information"
+      change_photo: "Change"
+      delete_photo: "Delete"
+      send_message: "Send message"
+      contact: "Contact"
+      parents: "Parents"
+      header_results_in_comp_tests: "Competition/Test Results"
+      footer: "Diff. MM: Difference in time between this and best results untill this moment"
+      no_disease: "El nadador no padece ninguna enfermedad relevante"
+      no_observation: "No se ha realizado ninguna anotación sobre el nadador"
+
+      table:
+        date: "Date"
+        place: "Place"
+        set: "Set"
+        time: "Time"
+        diff_with: "Dif. MM"
+        diff_with_percent: "Dif. MM (%)"
+        category: "Category"
+        action: "Action"
+        title: "Title"
+        type: "Type"
+        value: "Value"
+
+      tabs:
+        competitions: "Competitions"
+        test: "Test"
+        best_results: "Best Results"
+
+      breadcumbs:
+        swimmers: "Swimmers"
+
+    new:
+      header: "Add swimmer"
+      breadcumbs:
+        swimmers: "Swimmers"
+        add_swimmer: "Add swimmer"
+
+    edit:
+      header: "Edit swimmer"
+
+      breadcumbs:
+        swimmers: "Swimmers"
+        modify_swimmer: "Edit swimmer"
+
+      buttons:
+        show_swimmer: "Show swimmer"
+        delete_swimmer: "Delete"
+
+  trainnings:
+    breadcumbs:
+      trainnings: "Trainings"
+      trainnings_list: "Show trainings list"
+      add_trainning: "Add training"
+      modify_trainning: "Edit training"
+
+    form:
+      trainning_information: "Training Information"
+      trainning_exercises: "Training Exercises"
+      trainning_physics: "Physical Training"
+
+    index:
+      header: "Manage trainings"
+      header_basic_information: "Information"
+      header_stats: "Statistics"
+      vol_current_micro: "Volum Micro actual (m)"
+      car_current_micro: "Carga Micro actual"
+      about_mujika_1_html: "<p>El <strong>índice de Mujika (ISFA)</strong> permite definir la intensidad de cada zona objetivo del entrenamiento utilizada y valorar el esfuerzo realizado por el nadador durante una sesión de entrenamiento de la resistencia. Mediante el mismo se pretenden controlar los procesos de carga y descarga dentro de los diferentes ciclos del entrenamiento.</p>"
+      about_mujika_2_html: "<p>Los <strong>tipos de ejercicios básicos</strong> definidos en teoría del entrenamiento comprenden los siguientes (entre paréntesis el valor del índice de Mujika para obtener su equivalente en carga):</p>"
+      table_analyze_season_header: "Data Volumen/Carga of Microcicle during the season"
+      table_micro: "Micro"
+      table_start: "Init Date"
+      table_total_vol: "Vol Total (m)"
+      table_total_car: "Car Total"
+      table_vtec: "V Tec"
+      table_ctec: "C Tec"
+      table_val: "V AL"
+      table_cal: "C AL"
+      table_vam: "V AM"
+      table_cam: "C AM"
+      table_vai: "V AI"
+      table_cai: "C AI"
+      table_vvel: "V Vel"
+      table_cvel: "C Vel"
+
+      tabs:
+        current_micro_analyze: "Current Microcicle Analysis"
+        all_season_analyze: "Season Analysis"
+
+    new:
+      header_add_trainning: "Add training"
+
+    edit:
+      header_modify_trainning: "Edit training"
+
+    show:
+      table_exercise: "Exercise"
+      table_content: "Content"
+      table_type: "Type"
+      table_vol: "Volumen"
+      total_vol: "Current training Total Volumen"
+      total_car: "Current training Total Carga"
+      physic_trainning: "Physical training"
+      header_actions: "Actions"
+      print: "Print"
+      export: "Print PDF"
+      send_to_email: "Send by email"
+
+  trials:
+    breadcumbs:
+      tests: "Tests"
+      add_test: "Add tests"
+      modify_test: "Edit test"
+      tests_lists: "Show tests list"
+
+    form:
+      test_information: "Test Information"
+      trial_results: "Test Results"
+      table_swimmer: "Swimmer"
+      table_trial_type: "Test type"
+      table_result: "Value"
+      table_unit: "Unit"
+      table_observation: "Observations"
+
+    new:
+      header_add_test: "Add test"
+
+    edit:
+      header_modify_test: "Edit test"
+
+    index:
+      header: "Manage Tests"
+      table_date: "Date"
+      table_title: "Title"
+      table_type: "Type"
+      table_action: "Action"
+      header_information: "Information"
+      trials_text: "All capacities that coach can evaluate in a swimmer are:"
+      header_calendar_stats: "Calendar"
+      header_test_calendar: "Test Calendar"
+
+      tabs:
+        calendar: "Calendar"
+
+    show:
+      header_test_information: "Test Information"
+      header_stats: "Statistics"
+      total_results_added: "Total results added"
+      masc_swimmers: "Male competitors"
+      fem_swimmers: "Female competitors"
+      header_swimmer_results: "Swimmer Results"
+      table_swimmer: "Swimmer"
+      table_type_test: "Test type"
+      table_value: "Value"
+      table_observation: "Observation"
+      date: "Date"
+
+  accounts:
+    breadcumbs:
+      profile_configuration: "Profile Settiings"
+
+    form:
+      header_picture_avatar: "Photo/Avatar"
+      header_personal_information: "Personal Information"
+      header_contact_information: "Contact Information"
+      photo_in_use: "Photo in use"
+      photo_max_size: "2Mb Max size"
+      dni_example: "Ex: 12345678-X"
+      phone_example: "Ex: (928) 12 34 56"
+      header_language: "Language App"
+
+    edit:
+      header: "Account Information"
+
+  devise:
+    registrations:
+      edit:
+        breadcumbs:
+          profile_configuration: "Profile settings"
+          change_password: "Change password"
+
+        header: "Change password"
+        password: "New password"
+        password_confirmation: "Password confirmation"
+        current_password: "Current password"
+  labels:
+    required_field: "Required field"
+    show: "Show"
+    edit: "Edit"
+    delete: "Delete"
+
+  controllers:
+    successfully_created: "%{model} has been successfully created."
+    successfully_updated: "%{model} has been successfully updated."
+    successfully_deleted: "%{model} has been succesfully deleted."
+    swimmer_photo_deleted: "Swimmer Photo has been successfully deleted."
+    email_to_swimmer_sent: "Email has been sent successfully to the swimmer."
+    email_blank_not_sent: "Email has not been sent because your message is blank."
+    email_to_swimmers_sent: "Email has been sent to swimmers."
+    email_to_swimmers_not_sent: "Email has not been sent because message or destinataries are blank."

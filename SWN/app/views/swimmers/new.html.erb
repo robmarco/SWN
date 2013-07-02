@@ -1,0 +1,26 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to t('.breadcumbs.swimmers'), swimmers_path %></li>
+	<li><%= t('.breadcumbs.add_swimmer') %></li>
+</ul>
+
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<!-- Header  -->
+		<header>
+			<h2><%= t('.header') %></h2>
+		</header>
+		<!-- \Header  -->
+
+		<section>
+			<%= render 'form' %>
+		</section>
+		
+	</div>
+</article>
+
+
+
+
+

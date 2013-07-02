@@ -1,0 +1,28 @@
+<fieldset>
+	<legend><%= t('trials.form.trial_results') %></legend>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th><%= t('trials.form.table_swimmer') %></th>
+				<th><%= t('trials.form.table_trial_type') %></th>
+				<th><%= t('trials.form.table_result') %></th>
+				<th><%= t('trials.form.table_unit') %></th>
+				<th><%= t('trials.form.table_observation') %></th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<%= f.fields_for :trial_results do |builder| %>
+				<%= render 'trial_result_fields', :f => builder %>
+			<% end %>				
+		</tbody>
+		
+		<tfoot>
+			<tr>
+				<td colspan="6"><p class="res"><%= link_to_add_fields "Añadir resultado", f, :trial_results %></p></td>
+			</tr>
+		</tfoot>
+	</table>
+	<br />
+</fieldset>

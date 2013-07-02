@@ -1,0 +1,96 @@
+<!doctype html>
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<title>Login | Quality Swimming - Gestión deportiva para entrenadores de natación</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+	<!-- CSS Links -->
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<link rel="stylesheet" href="/stylesheets/custom_devise.css">
+	<link rel="stylesheet" href="/stylesheets/colors.css">
+	<link rel="stylesheet" href="/stylesheets/jquery.tipsy.css">
+	<%= stylesheet_link_tag "frontend/font-awesome" %>
+	
+	<!-- Google WebFonts -->
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+	
+	<script src="/javascripts/libs/modernizr-1.7.min.js"></script>
+</head>
+
+<body class="login">
+	<div id="social-top">
+		<div class="container">
+			<ul>
+				<li><a href="#"><i class="icon-google-plus-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-github-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-linkedin-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-pinterest-sign icon-large"></i></a></li>
+				<li><a href="#"><i class="icon-facebook-sign icon-large"></i></a></li> 
+				<li><a href="#"><i class="icon-twitter-sign icon-large"></i></a></li>
+			</ul>
+		</div><!--/container-->	
+	</div><!--/social top-->
+
+	<!-- Navbar
+	  ================================================== -->
+		<div class="navbar">
+		  <div class="navbar-inner">
+		    <div class="container">
+		      <%= link_to image_tag("frontend/logo.png", :alt => "QuSwimming", :size => "300x22"), root_path, :class => "brand pull-left" %>
+		    </div>
+		  </div>
+		</div>
+
+	<section role="main">
+		<!-- Login box -->
+		<article id="login-box">
+
+			<div class="article-container">
+
+				<!-- Notification -->
+				<% if notice || alert %>
+					<div class="notification error">
+						<a href="#" class="close-notification" title="Hide Notification" rel="tooltip">x</a>
+						<p><strong>Error notification</strong><%= notice %> <%= alert %></p>
+					</div>
+				<% end %>
+				<!-- /Notification -->
+				
+				<%= yield %>
+			
+			</div>
+
+		</article>
+		<!-- /Login box -->		
+		
+		<%= render :partial => "devise/shared/links" %>
+	
+	</section>
+				
+
+	<!-- JS Libs at the end for faster loading -->
+	<%= javascript_include_tag 'jquery.min', 'rails'  %>
+	<script src="/javascripts/libs/selectivizr.js"></script>
+	<script src="/javascripts/jquery/jquery.maskedinput.min.js"></script>	
+	<script src="/javascripts/jquery/jquery.tipsy.js"></script>
+	<script src="/javascripts/login.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			// jQuery Masked input selectors
+			$("input#time_type_masked").live("focusin", function() {
+				$(this).mask("59:59:99")
+			});
+			
+			$(".phone_mask").mask("(999) 99 99 99");
+			$(".date_mask").mask("99/99/9999");
+		});
+	</script>
+</body>

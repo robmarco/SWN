@@ -1,0 +1,26 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to t('incidents.breadcumbs.incidents'), incidents_path %></li>
+	<li><%= link_to "Id #{@incident.id}", @incident %></li>
+	<li><%= t('incidents.breadcumbs.modify_incident') %></li>
+</ul>
+
+<article class="full-bock clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2><%= t('.header') %> <%= @incident.title %></h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Eliminar', incident_path(@incident), :confirm => '¿Está seguro de que desea eliminar la incidencia?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Mostrar incidencias', incidents_path, :class => "button" %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<%= render 'form' %>
+		</section>
+		
+	</div>
+</article>

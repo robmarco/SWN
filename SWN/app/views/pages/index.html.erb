@@ -1,0 +1,95 @@
+<div id="orange-hero">
+	<div class="container">
+		<div id="myCarousel" class="carousel slide">
+			<!-- Carousel items -->
+			<div class="carousel-inner">
+				<div class="active item">
+					<div class="pull-left span5 slides-home">
+						<h2>Permite que te ayudemos a mejorar en tu trabajo</h2>
+						<p>
+							Date la oportunidad que te mereces y comienza a usar nuestra aplicación para gestionar la información deportiva de entrenadores de natación. Te ayudamos a centrar todo en un mismo sistema y a realizar análisis que ayuden a mejorar.
+						</p>
+						<br>
+						<%= link_to "Conoce toda la aplicación", pages_about_path, :class => "darkbtnslide" %>
+					</div>
+
+					<div class="pull-right span6">
+						<img src="/images/frontend/slide1.png" alt="slide1" />
+					</div>
+				</div>
+				<div class="item"><img src="/images/frontend/slide2.png" alt="slide1" /></div>
+				<div class="item"><img src="/images/frontend/slide3.png" alt="slide1" /></div>
+			</div>
+			<!-- Carousel nav -->			
+		</div>
+		
+		<a class="carousel-control-home-left left" href="#myCarousel" data-slide="prev"></a>
+		<a class="carousel-control-home-right right" href="#myCarousel" data-slide="next"></a>
+		
+	</div><!--/container-->
+</div><!--/orange hero-->
+
+<div id="grey-content" class="greyhome">
+	<div class="container">
+		<div class="row">
+			<div class="span6home featured-boxes">
+				<i class="icon-cogs"></i>
+				<h4>Diseño web adaptativo.</h4>
+				<p>Se puede acceder a la aplicación desde cualquier dispositivo electrónico con conexión a internet: móvil, tablet u ordenador.</p>
+			</div><!--/span 6-->
+			<div class="span6home featured-boxes">
+				<i class="icon-user"></i>
+				<h4>Control de nadadores.</h4>
+				<p>El entrenador podrá insertar en su base de datos todos los nadadores con los que cuenta en su plantilla.</p>
+			</div><!--/span 6-->
+			<div class="span6home featured-boxes">
+				<i class="icon-edit"></i>
+				<h4>Entrenamientos diarios.</h4>
+				<p>Servirá al entrenador para calcular al momento el volumen y carga de cada sesión planificada durante la temporada.</p>
+			</div><!--/span 6-->
+			<div class="span6home featured-boxes">
+				<i class="icon-dashboard"></i>
+				<h4>Competiciones y tests.</h4>
+				<p>Posibilidad de calendarización de una temporada con competiciones y tests que a los que asisten los nadadores.</p>
+			</div><!--/span 6-->
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/grey content -->
+<div id="call-out">
+	<div class="container">
+		<h2 class="pull-left">
+			¡Si quieres descubrir todas las funcionalidades, no dudes en pasar a formar parte!
+		</h2>
+		<%= link_to "Regístrate gratis ya", new_user_registration_path, :class => "pull-right darkbtn" %>
+	</div><!--/container-->
+</div><!--/call out-->
+
+<div id="white-home-blog">
+	<div class="container">
+		<div class="row">
+			<div class="span12 column-divider">
+				<span class="column-divider-icon pull-left home-icon-fix"><i class="icon-bookmark"></i></span>
+				<h4>Quienes nos están usando</h4>
+			</div><!--/row9-->
+		</div><!--/row-->
+	
+		<div class="row home-news">
+			<div class="span3 opacity-fade">
+				<%= image_tag "frontend/partners/jescagua.png", :class => "img-rounded" %>
+				<p class="muted-small">Equipo joven y primeros en probarnos</p>
+			</div><!--/row 3-->
+			<div class="span3 opacity-fade">
+				<%= image_tag "frontend/partners/metropole.png", :class => "img-rounded" %>
+				<p class="muted-small">Uno de los mejores equipos de España</p>
+			</div><!--/row 3-->
+			<div class="span3 opacity-fade">
+				<%= image_tag "frontend/partners/salinas.png", :class => "img-rounded" %>
+				<p class="muted-small">Referente a nivel de natación Master</p>
+			</div><!--/row 3-->
+			<div class="span3 opacity-fade">
+				<%= image_tag "frontend/partners/laspalmas.png", :class => "img-rounded" %>
+				<p class="muted-small">Uno de los mejores equipos de Canarias</p>
+			</div><!--/row 3-->
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/white-home-blog-->

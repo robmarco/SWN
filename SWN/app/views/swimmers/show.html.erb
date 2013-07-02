@@ -1,0 +1,282 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to 'Nadadores', swimmers_path %></li>
+	<li>Id <%= @swimmer.id %></li>
+</ul>
+
+<!-- Information Block -->
+<article class="full-block nested">
+	<div class="article-container">
+		
+		<!-- Header  -->
+		<header>
+			<h2>
+				Ficha del nadador
+			</h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Imprimir PDF', swimmer_path(@swimmer, format: "pdf"), :class => "button" %></li>
+					<li><%= link_to 'Añadir nadador', new_swimmer_path, :class => "button" %></li>
+					<li><%= link_to 'Eliminar', swimmer_path(@swimmer), :confirm => '¿Está seguro de que desea eliminar al nadador?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Editar', edit_swimmer_path(@swimmer), :class => "button" %></li>					
+				</ul>
+			</nav>				
+		</header>
+		<!-- \Header  -->
+
+		<section>
+			
+			<article class="block" style="width: 230px">
+				<ul class="image-gallery">
+					<li class="image-frame">
+						<% if @swimmer.photo? %>
+							<%= image_tag @swimmer.photo.url(:thumb) %>
+						<% else %>
+							<%= image_tag "sample_avatar.png", :size => "180x180" %>
+						<% end %>
+						
+						<ul class="image-actions">
+							<li class="change"><%= link_to "Cambiar", edit_swimmer_path(@swimmer)+"#change_photo", :class => "open-modal" %></li>
+							<% if @swimmer.photo?  %>
+							<li class="delete"><%= link_to "Eliminar", delete_photo_swimmer_path(@swimmer), :confirm => "¿Está seguro de que desea eliminar la foto del nadador?", :method => :delete %></li>
+							<% end %>
+						</ul>
+					</li>
+				</ul>
+			</article>
+
+			<div class="article-container">
+
+				<article class="block-42" id="profile_information">
+					<h3><%= @swimmer.swimmer_name_secname %></h3>
+					<p><%= link_to "Enviar mensaje", swimmer_path(@swimmer)+"#private_message", :class => "button-link send_message open-modal" %></p>
+					<div class="detail_information">
+						<table id="swimmer_info">
+							<tr>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:licence)}" %></td>
+								<td class="darker"><%= @swimmer.licence %></td>
+							</tr>
+							<tr>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:born)}" %></td>
+								<td class="darker"><%= @swimmer.born.strftime("%d/%m/%Y") %></td>
+							</tr>
+							<tr>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:category)}" %></td>
+								<td class="darker"><%= @swimmer.category %></td>
+							</tr>
+							<tr>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:genre)}" %></td>
+								<td class="darker"><%= @swimmer.genre %></td>
+							</tr>
+							<tr>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:state)}" %></td>
+								<td class="darker">
+									<% case @swimmer.state %>
+										<% when "Baja" %>
+											<span class='tag tag2 tag_show red'>
+										<% when "Federado" %>
+											<span class='tag tag2 tag_show green'>
+										<% when "No Federado" %>
+											<span class='tag tag2 tag_show orange'>
+									<% end %>
+									<%= @swimmer.state %></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="right"><%= "#{Swimmer.human_attribute_name(:disease)}" %></td>
+								<td class="darker">									
+									<% if @swimmer.disease_html_clean.blank? %>
+										<%= link_to 'No', swimmer_path(@swimmer)+"#diseases", :class => "open-modal" %>
+									<% else %>
+										<%= link_to 'Sí', swimmer_path(@swimmer)+"#diseases", :class => "open-modal" %>
+									<% end %>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</article>
+
+				<article class="block-56 clearrm" id="contact_information">
+					<ul>
+						<li class="address-icon">
+							<% if @swimmer.address or @swimmer.postal or @swimmer.city %>
+								<p><b><%= t('.contact') %></b><%= " - #{@swimmer.address} " + "- #{@swimmer.city}" + " (#{@swimmer.country})" %></p>
+								<p><%= "CP #{@swimmer.postal}" %></p>
+								<p><%= "T: #{@swimmer.phone}" %></p>
+								<p>E: <%= link_to "#{@swimmer.email}", '#' %></p>
+							<% end %>
+						</li>
+						<li class="parents-icon">
+							<% if @swimmer.parentname or @swimmer.parentphone or @swimmer.parentemail  %>
+								<p><b><%= t('.parents') %></b><%= " - #{@swimmer.parentname}" %></p>
+								<p><%= "T: #{@swimmer.parentphone}" %></p>
+								<p>E: <%= link_to "#{@swimmer.parentemail}", '#' %></p>
+							<% end %>
+						</li>
+					</ul>
+				</article>
+
+			</div>
+			
+		</section>
+		
+	</div>
+</article>
+<!-- \Information Block -->
+
+<!-- Competition and test results Block -->
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2><%= t('.header_results_in_comp_tests') %></h2>
+			<nav>
+				<ul class="tab-switch">
+					<li><%= link_to t('.tabs.competitions'), '#tab1', :class => "default-tab" %></li>
+					<li><%= link_to t('.tabs.test'), '#tab2' %></li>
+					<li><%= link_to t('.tabs.best_results'), '#tab3' %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+		
+			<!-- Competition tab -->
+				<div class="tab default-tab" id="tab1">
+					
+					<%= render "layouts/dateFilter" %>
+
+					<table class="datatable_datefilter_sort">
+						<thead>
+							<tr>
+								<th><%= t('.table.date') %></th>
+								<th><%= t('.table.place') %></th>
+								<th><%= t('.table.set') %></th>
+								<th><%= t('.table.time') %></th></th>
+								<th><%= t('.table.diff_with') %></th></th>
+								<th><%= t('.table.diff_with_percent') %></th>
+								<th><%= t('.table.category') %></th></th>
+								<th><%= t('.table.action') %></th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% if @swimmer_competition_results.size > 0 %>
+								<% @swimmer_competition_results.each do |competition_result| %>
+									<tr>
+										<td><%= competition_result.competition.date_competition.strftime("%d/%m/%Y") %></td>
+										<td><%= link_to "#{competition_result.competition.title} (#{competition_result.competition.pool_dist})", competition_path(competition_result.competition)%></td>
+										<td><%= competition_result.competition_set.name %></td>
+										<td>
+											<%= competition_result.time_result %> 
+											<span id="evolution"><%= increase_decrease_time(competition_result) %></span>
+											<span id="comp_best_result"><%= best_result_icon(competition_result) %></span>
+										</td>
+										<td><%= "#{competition_result.diff_with_best_result_until_date} s" %></td>
+										<td><%= "#{competition_result.diffpercent_with_best_result_until_date}%" %></td>
+										<td><%= competition_result.competition.category %></td>
+										<td><ul class="actions"><li><%= link_to 'ver', competition_path(competition_result.competition), :class => "view", :title => "Ver competición", :rel => "tooltip" %></li></ul></td>
+									</tr>
+								<% end %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			<!-- /Competition tab -->
+			
+			<!-- Test tab -->
+				<div class="tab" id="tab2">
+					<%= render "layouts/dateFilter" %>
+
+					<table class="datatable_datefilter_sort">
+						<thead>
+							<tr>
+								<th><%= t('.table.date') %></th></th>
+								<th><%= t('.table.title') %></th></th>
+								<th><%= t('.table.type') %></th></th>
+								<th><%= t('.table.value') %></th></th>
+								<th><%= t('.table.action') %></th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% if @swimmer_trial_results.size > 0 %>
+								<% @swimmer_trial_results.each do |trial_result| %>
+									<tr>
+										<td><%= trial_result.trial.date_trial.strftime("%d/%m/%Y") %></td>
+										<td><%= trial_result.trial.title %></td>
+										<td><%= trial_result.trial.trial_category.name %></td>
+										<td><%= trial_result.trial_value %> <%= "#{trial_result.trial.trial_category.type_value}" %></td>
+										<td><ul class="actions"><li><%= link_to 'ver', trial_path(trial_result.trial), :class => "view", :title => "Ver test", :rel => "tooltip" %></li></ul></td>
+									</tr>
+								<% end %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			<!-- /Test tab -->
+
+			<!-- Mejores Marcas tab -->
+			<div class="tab" id="tab3">
+				<table class="datatable">
+					<thead>
+						<th><%= t('.table.set') %></th></th>
+						<th><%= t('.table.place') %></th></th>
+						<th><%= t('.table.date') %></th></th>
+						<th><%= t('.table.time') %></th></th>
+						<th><%= t('.table.action') %></th></th>
+					</thead>
+					<tbody>
+						<% @swimmer_best_competition_results.each do |res| %>
+							<tr>
+								<td><%= res.competition_set.name %></td>
+								<td><%= link_to "#{res.competition.title} (#{res.competition.pool_dist})", competition_path(res.competition)%></td>								
+								<td><%= res.competition.date_competition.strftime("%d/%m/%Y") %></td>								
+								<td><%= res.time_result %></td>
+								<td><ul class="actions"><li><%= link_to 'ver', competition_path(res.competition), :class => "view", :title => "Ver competición", :rel => "tooltip" %></li></ul></td>
+							</tr>	
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+			<!-- /Mejores Marcas tab -->
+		
+		</section>
+		
+		<footer>
+			<p><%= t('.footer') %></p>
+		</footer>
+	</div>
+</article>
+<!-- \Competition and test results Block -->
+
+<%= link_to 'Ir Atrás', swimmers_path, :class => "button right" %>
+<br />	
+
+<div id="diseases">
+	<div class="diseases">
+		<h2><%= Swimmer.human_attribute_name(:disease) %></h2>
+		<% if @swimmer.disease_html_clean.blank? %>
+			<p><%= t('.no_disease') %></p>
+		<% else %>
+			<p><%= @swimmer.disease_html_clean %></p>
+		<% end %>
+		<br>
+		<h2><%= Swimmer.human_attribute_name(:observation) %></h2>
+		<% if @swimmer.observation_html_clean.blank? %>
+			<p><%= t('.no_observation') %></p>
+		<% else %>
+			<p><%= @swimmer.observation_html_clean %></p>
+		<% end %>
+	</div>
+</div>
+
+<%= render "private_message" %>
+
+<% content_for :fullcalendar_script do %>
+	<script type="text/javascript">
+		require("/javascripts/dateFilter_dataTable.js");
+		
+		// Params: table_selector, min_selector, max_selector, column_sort, type_sort
+		dateFilter_dataTable(".datatable_datefilter_sort", "#fmin", "#fmax",
+													0, "desc")
+	</script>
+<% end %>

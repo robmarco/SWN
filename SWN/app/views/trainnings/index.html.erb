@@ -1,0 +1,202 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to t('trainnings.breadcumbs.trainnings'), trainnings_path %></li>
+	<li><%= t('trainnings.breadcumbs.trainnings_list') %></li>
+</ul>
+
+<div class="clearfix"></div>
+
+<!-- Trainnings Calendar Block -->
+<article class="third-quarter-block">
+	<div class="article-container">
+		
+		<header>
+			<h2><%= t('.header') %></h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Añadir entrenamiento', new_trainning_path, :class => 'button' %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>			
+			<div class="third-quarter-reduced">
+				<!-- jQuery Full Calendar Plugin -->
+				<div class="fullcalendar"></div>
+				<!-- /jQuery Full Calendar Plugin -->
+				<% content_for :fullcalendar_script do %>
+					<script type="text/javascript">
+						//jQuery Full Calendar
+						//var date = new Date(); // date must be with this format: '2010-10-02'
+						//var d = date.getDate();
+						//var m = date.getMonth();
+						//var y = date.getFullYear();
+
+						$('.fullcalendar').fullCalendar({
+							header: {
+								left: 'prev,next today',
+								center: 'title',
+								right: 'month,basicWeek'
+							},
+							editable: true,
+							firstDay: 1,
+							events: [
+								<% @trainnings.each do |trainning| %>
+									{
+										title: '<%= "Micro #{trainning.micro.to_s} - Macro #{trainning.macro.to_s} Volumen: #{trainning.volumen} m - Carga: #{trainning.carga}" %>',
+										start: '<%= trainning.date_trainning.strftime("%Y/%m/%d") %>',
+										allDay: true, 
+										url: '<%= trainning_path(trainning) %>'
+									},
+								<% end %>
+							]
+						});
+					</script>
+				<% end %>
+			</div>
+		</section>
+		
+	</div>
+</article>
+<!-- \Trainnings Calendar Block -->
+
+<!-- Trainnings Basic Stats Block -->
+<article class="quarter-block clearrm">
+	<div class="article-container">
+		
+		<header>
+			<h2><%= t('.header_basic_information') %></h2>
+		</header>
+		
+		<section>
+			<ul class="stats-summary">
+				<li>					
+					<strong class="stats-count"><%= trainning_volumen @trainnings_current_micro %></strong>
+					<p><%= t('.vol_current_micro') %></p>
+				</li>
+				
+				<li>
+					<strong class="stats-count"><%= trainning_carga @trainnings_current_micro %></strong>
+					<p><%= t('.car_current_micro') %></p>
+				</li>
+			</ul>
+			<br />
+			<%= t('.about_mujika_1_html') %>
+			<%= t('.about_mujika_2_html') %>
+
+			<ul class="list-style-checkmark"> 
+				<% ExerciseType.all.each do |c| %>
+					<li><%= c.description %> (<%= c.mujika %>)</li>
+				<% end %>				
+			</ul>
+		</section>
+			
+	</div>
+</article>
+<!-- \Trainnings Basic Stats Block -->
+
+<div class="clearfix"></div>
+
+<article class="full-block">
+	<div class="article-container">
+		
+		<header>
+			<h2><%= t('.header_stats') %></h2>
+			<nav>
+				<ul class="tab-switch">
+					<li><a class="default-tab current" href="#tab0"><%= t('.tabs.current_micro_analyze') %></a></li>
+					<li><a href="#tab1"><%= t('.tabs.all_season_analyze') %></a></li>
+					
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<!-- Micro Analyze -->
+			<div class="tab default-tab" id="tab0">
+				<div id="orders_chart_2" style="height: 400px; min-width: 500px;"></div>
+			</div>
+			<!-- End Micro Analyze -->
+
+			<!-- Season Analyze -->
+			<div class="tab" id="tab1">
+				<% all_season_data = volumen_by_micro @trainnings %>
+				<div id="orders_chart" style="height: 500px; min-width: 500px;"></div>
+				
+				<!-- Table with All season data -->
+				<div id="table_analyze_season">
+					<h3><%= t('.table_analyze_season_header') %></h3>
+					<table class="datatable_trainings">
+						<thead>
+							<tr>
+								<th><%= t('.table_micro') %></th>
+								<th><%= t('.table_start') %></th>
+								<th><%= t('.table_total_vol') %></th>
+								<th><%= t('.table_total_car') %></th>
+								<th class="bordered-left"><%= t('.table_val') %></th>
+								<th><%= t('.table_cal') %></th>
+								<th class="bordered-left"><%= t('.table_vam') %></th>
+								<th><%= t('.table_cam') %></th>
+								<th class="bordered-left"><%= t('.table_vai') %></th>
+								<th><%= t('.table_cai') %></th>
+								<th class="bordered-left"><%= t('.table_vtec') %></th>
+								<th><%= t('.table_ctec') %></th>
+								<th class="bordered-left"><%= t('.table_vvel') %></th>
+								<th><%= t('.table_cvel') %></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% all_season_data.each_with_index do |micro, index| %>
+								<tr>
+									<td><%= "M#{index+1}" %></td>
+									<td><%= Time.at(micro.date/1000).to_date.strftime("%d/%m/%Y") %></td>
+									<td><%= micro.volumen %></td>
+									<td><%= micro.carga %></td>
+									<td class="bordered-left">
+										<%= percent_of(micro.vol_ex[1],micro.volumen) %>
+									</td>
+									<td><%= percent_of(micro.car_ex[1],micro.carga) %></td>
+									<td class="bordered-left">
+										<%= percent_of(micro.vol_ex[2],micro.volumen) %>
+									</td>
+									<td><%= percent_of(micro.car_ex[2],micro.carga) %></td>
+									<td class="bordered-left">
+										<%= percent_of(micro.vol_ex[3],micro.volumen) %>
+									</td>
+									<td><%= percent_of(micro.car_ex[3],micro.carga) %></td>
+									<td class="bordered-left">
+										<%= percent_of(micro.vol_ex[4],micro.volumen) %>
+									</td>
+									<td><%= percent_of(micro.car_ex[4],micro.carga) %></td>
+									<td class="bordered-left">
+										<%= percent_of(micro.vol_ex[5],micro.volumen) %>
+									</td>
+									<td><%= percent_of(micro.car_ex[5],micro.carga) %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+				<!-- End Table with All season data -->
+			</div>
+			<!-- End Season Analyze -->
+		</section>
+		
+	</div>
+</article>
+
+<% content_for :fullcalendar_script do %>
+	<script type="text/javascript">
+		require("/javascripts/charts_script.js");
+		
+		var datos = <%= raw all_season_data.to_json %>,
+				max_volumen = <%= all_season_data.map(&:volumen).max || 0 %>,
+				max_carga = <%= all_season_data.map(&:carga).max || 0 %>
+		
+		chart_lines(datos, max_volumen, max_carga);
+
+		var data = <%= raw volumen_of_micro_by_day(@trainnings_current_micro).to_json %>
+
+		micro_stacked_bar(data);
+	</script>
+<% end %>

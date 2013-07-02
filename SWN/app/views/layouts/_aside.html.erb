@@ -1,0 +1,97 @@
+<!-- Sidebar template  -->
+<section role="navigation">
+	<!-- Header with logo and headline -->
+	<header>
+		<%= link_to '', root_path, :title => "Ir a página de inicio" %>
+		<h1><%= t('main_sidebar.subtitle') %></h1>
+	</header>
+	
+	<!-- User Info -->
+	<section id="user-info">
+		<% if user_signed_in? and current_user.photo? %>
+			<%= image_tag current_user.account.photo(:thumb) %>
+		<% else  %>
+			<img src="/images/sample_user.png" alt="User Avatar">
+		<% end %>
+		
+		<div>
+			<%= link_to "¡Hola #{current_user.name if user_signed_in?}!", root_path, :title => "Configuración de cuenta" %>
+			<em><%= t('main_sidebar.coach') %></em>
+			<ul>
+				<li><a class="button-link" href="#" title="¡Web del Club!" rel="tooltip"><%= t('main_sidebar.go_site') %></a></li>
+				<li><%= link_to t('main_sidebar.close_session'), destroy_user_session_path,  :class => 'button-link' %></li>
+			</ul>
+		</div>
+	</section>
+	<!-- /User Info -->
+	
+	<!-- Main Navigation -->
+	<nav id="main-nav">
+		<ul>
+			<!-- Class .no-submenu to open link instead of a sub menu-->
+			<!-- Class .current to open submenu on page load -->
+			<li <%= params[:controller].eql?("dashboard") ? "class='current'" : "" %>>
+				<%= link_to 'Dashboard', dashboard_path, :class => "dashboard no-submenu" %>
+			</li> 
+		
+			<!-- Swimmers menu -->
+			<li <%= params[:controller].eql?("swimmers") ? "class='current'" : "" %>>
+				<%= link_to t('main_sidebar.swimmers'), swimmers_path, :class => "swimmers no-submenu" %>
+				<span title='Tienes <%= session[:swimmers_size] %> nadadores'><%= session[:swimmers_size] %></span>
+			</li>
+			<!-- /Swimmers menu -->
+			
+			<!-- Trainnings menu -->
+			<li <%= params[:controller].eql?("trainnings") ? "class='current'" : "" %>>
+				<%= link_to t('main_sidebar.trainnings'), trainnings_path, :class => 'projects no-submenu' %>
+				<span title='Tienes <%= session[:trainnings_size] %> entrenamientos'><%= session[:trainnings_size] %></span>
+			</li>
+			<!-- \Trainnings menu -->
+			
+			<!-- Competitions menu -->
+			<li <%= params[:controller].eql?("competitions") ? "class='current'" : "" %>>
+				<%= link_to t('main_sidebar.competitions'), competitions_path, :class => 'events no-submenu' %>
+				<span title='Tienes <%= session[:competitions_size] %> competiciones'><%= session[:competitions_size] %></span>
+			</li>
+			<!-- /Competitions menu -->
+			
+			<!-- Trials menu -->
+			<li <%= params[:controller].eql?("trials") ? "class='current'" : "" %>>
+				<%= link_to t('main_sidebar.test'), trials_path, :class => 'tests no-submenu' %>
+				<span title='Tienes <%= session[:trials_size] %> tests preparatorios'><%= session[:trials_size] %></span>
+			</li>
+			<!-- \Trials menu -->
+			
+			<!-- Incidents menu -->
+			<li <%= params[:controller].eql?("incidents") ? "class='current'" : "" %>>
+				<%= link_to t('main_sidebar.incidents'), incidents_path, :class => 'articles no-submenu' %>
+				<span title='Tienes <%= session[:incidents_size] %> incidencias en tu diario'><%= session[:incidents_size] %></span>
+			</li>
+			<!-- \Incidents menu -->			
+
+			<!-- Account configuration -->
+			<li <%= params[:controller].eql?("accounts") ? "class='current'" : "" %>>
+				<% if !user_signed_in? %>
+					<%= link_to t('main_sidebar.settings'), '#', :class => 'settings no-submenu' %>
+				<% else %>
+					<%= link_to t('main_sidebar.settings'), edit_account_path(current_user.account), :class => 'settings no-submenu' %>
+				<% end %>
+				
+			</li>
+			<!-- \Account configuration -->
+		</ul>
+	</nav>
+	<!-- /Main Navigation -->
+	
+	<!-- Sidebar -->
+	<section class="sidebar nested"> <!-- Use class .nested for diferent style -->
+		<h2>Fase Beta</h2>
+		<p>El proyecto está en fase de desarrollo, por lo que los cambios que se pueden ver forman parte de la primera iteración. Se informará a los usuarios cuando se lance la primera release.</p>
+	</section>
+	<!-- /Sidebar -->	
+
+	<section class="sidebar" id="flags">
+		<b><%= t('main_sidebar.select_lang') %></b> <span><%= link_to image_tag("flags/png/es.png"), url_for(:locale => :es) %> <%= link_to image_tag("flags/png/gb.png"), url_for(:locale => :en) %></span>		
+	</section>
+
+</section>

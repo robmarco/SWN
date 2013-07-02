@@ -1,0 +1,10 @@
+<tr class="fields">
+	<td class="remove"><%= link_to_remove_fields "X", f %></td>
+	<td class="result">
+		<%= f.collection_select :swimmer_id, current_user.swimmers.all, :id, :swimmer_name_secname, { :prompt => "Seleccionar nadador"}, :class => "large" %>
+	</td>
+	<td id="result_trial_category" class="result text"><%= params[:action].eql?("edit") ? "#{@trial.trial_category.name}" : "" %></td>
+	<td class="result"><%= f.text_field :trial_value %></td>
+	<td id="result_trial_category_type" class="result text"><%= params[:action].eql?("edit") ? "#{@trial.trial_category.type_value}" : "" %></td>
+	<td class="result"><%= f.text_field :observation, :class => "large"%></td>
+</tr>

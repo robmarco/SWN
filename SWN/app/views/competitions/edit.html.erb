@@ -1,0 +1,25 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to t('competitions.breadcumbs.competitions'), competitions_path %></li>
+	<li><%= link_to "Id #{@competition.id}", @competition %></li>
+	<li><%= t('competitions.breadcumbs.modify_competition') %></li>
+</ul>
+
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2><%= t('.header_competition') %> - <%= @competition.title %></h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Eliminar', competition_path(@competition), :confirm => '¿Está seguro de que desea eliminar la competición?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Mostrar competición', competition_path(@competition), :class => "button" %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<%= render 'form' %>
+		</section>
+	</div>
+</article>

@@ -1,0 +1,80 @@
+<%= form_for(@account, :html => { :multipart => true }) do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
+      <h2><%= t('activerecord.errors.template.header', :model => Account.model_name.human, :count => @account.errors.count) %></h2>
+      <ul>
+      <% @account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<fieldset>
+		<legend><%= t('.header_picture_avatar') %></legend>
+		<dl>
+			<dd>
+				<% if current_user.photo? %>
+					<b><%= t('.photo_in_use') %> </b><%= current_user.account.photo_file_name %>
+				<% end %>
+				<%= f.file_field :photo, :class => 'fileupload customfile-input' %>
+				<p><%= t('.photo_max_size') %></p>
+			</dd>
+		</dl>
+	</fieldset>
+		
+	<fieldset>
+		<legend><%= t('.header_personal_information') %></legend>
+		<dl>
+			<dt><%= f.label :name, "#{Account.human_attribute_name(:name)}*", :rel => 'tooltip', :title => t('labels.required_field') %></dt>
+			<dd><%= f.text_field :name, :class => "medium" %></dd>
+			
+			<dt><%= f.label :secname, "#{Account.human_attribute_name(:secname)}*", :rel => 'tooltip', :title => t('labels.required_field') %></dt>
+			<dd><%= f.text_field :secname, :class => "medium" %></dd>
+			
+			<dt><%= f.label :dni %></dt>
+			<dd>
+				<%= f.text_field :dni, :class => "small" %>
+				<p><%= t('.dni_example') %></p>
+			</dd>
+						
+			<dt><%= f.label :club %></dt>
+			<dd><%= f.text_field :club, :class => "medium" %></dd>
+			
+			<dt><%= f.label :web %></dt>
+			<dd><%= f.text_field :web, :class => "medium" %></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend><%= t('.header_contact_information') %></legend>
+		<dl>
+			<dt><%= f.label :address %></dt>
+			<dd><%= f.text_field :address, :class => "medium" %></dd>
+			
+			<dt><%= f.label :city %></dt>
+			<dd><%= f.text_field :city, :class => "medium" %></dd>
+			
+			<dt><%= f.label :country %></dt>
+			<dd><%= f.select :country, options_from_collection_for_select(@country, :name, :name, :prompt => true, :selected => @account.country), :class => "medium" %></dd>
+			
+			<dt><%= f.label :phone %></dt>
+			<dd>
+				<%= f.text_field :phone, :class => "phone_mask small" %>
+				<p><%= t('.phone_example') %></p>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend><%= t('.header_language') %></legend>
+		<dl>
+			<dt><%= f.label :language %></dt>
+			<dd><%= f.select :language, options_for_select([["Español", "es"],["Inglés", "en"]], :selected => f.object.language) %></dd>
+		</dl>
+	</fieldset>
+
+	<div align="center"><%= f.submit 'Guardar', :class => "button" %> ó <%= link_to 'Cancelar', :back %></div>
+	
+<% end %>

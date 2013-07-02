@@ -1,0 +1,47 @@
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	<% resource.build_account %>
+	<%= devise_error_messages! %>
+	<fieldset>
+  	<legend>Datos de registro</legend>
+		<dl>
+			
+			<%= f.fields_for :account do |user_account| %>
+				<dt><%= user_account.label :name, "Nombre*", :rel => "tooltip", :title => "Campo requerido"  %></dt>
+				<dd><%= user_account.text_field :name, :class => 'large' %></dd>
+				
+				<dt><%= user_account.label :secname, "Apellidos*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.text_field :secname, :class => 'large' %></dd>
+				
+				<dt><%= user_account.label :club, "Club*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.text_field :club, :class => 'large' %></dd>
+
+				<dt><%= user_account.label :address, "Dirección*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.text_field :address, :class => 'large' %></dd>
+
+				<dt><%= user_account.label :city, "Ciudad*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.text_field :city, :class => 'large' %></dd>
+
+				<dt><%= user_account.label :country, "País*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.select :country, options_from_collection_for_select(Country.all, :name, :name, :prompt => true), :class => 'large' %></dd>
+
+				<dt><%= user_account.label :phone, "Teléfono*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.text_field :phone, :class => 'phone_mask large' %></dd>
+
+				<dt><%= user_account.label :language, "Idioma*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+				<dd><%= user_account.select :language, options_for_select([["Español", "es"],["Inglés", "en"]]), :class => 'large' %></dd>
+			<% end %>
+			<hr>
+			<br>
+			<dt><%= f.label :email, "Email*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dd><%= f.email_field :email, :class => 'large' %></dd>
+			
+			<dt><%= f.label :password, "Password*", :rel => "tooltip", :title => "Campo requerido" %></dt>
+			<dd>
+				<%= f.password_field :password, :class => 'large' %>
+				<p>Tiene que tener al menos 6 carácteres</p>
+			</dd>
+			
+		</dl>
+  </fieldset>
+	<%= f.submit "Registrarse", :class => "button right" %>
+<% end %>

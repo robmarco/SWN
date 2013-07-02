@@ -1,0 +1,16 @@
+<li class="event">
+	<span class="logs-timestamp"><%= I18n.localize(incident.date_incident, :format => :long) %></span>
+	<h4><%= link_to "#{incident.title}", edit_incident_path(incident), :class => "logs-event" %></h4>
+	<div class="body_incident"><%=raw incident.description %></div>
+	<hr>
+	<em class="logs-meta">
+		<%= t('incidents.index.tags') %>
+		<% if incident.tags.any? %>
+			<% incident.tags.each do |tag| %>
+				<%= link_to tag.name, incidents_url(:tag => tag.name) %>,
+			<% end %>
+		<% else %>
+			<i>No se ha añadido ninguna</i>
+		<% end %>
+	</em>
+</li>

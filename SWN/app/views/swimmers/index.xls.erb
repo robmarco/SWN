@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Styles>
+    <Style ss:ID="header" ss:Name="Normal">
+      <Font ss:Color="#000000" ss:Bold="1"/>
+    </Style>
+  </Styles>
+
+  <Worksheet ss:Name="Nadadores">
+    <Table>
+      <Row>
+        <Cell ss:StyleID="header"><Data ss:Type="String">APELLIDOS</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">NOMBRE</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">AÑO</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">CATEGORÍA</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">GÉNERO</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">ESTADO</Data></Cell>
+      </Row>
+    <% @swimmers.each do |swimmer| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= swimmer.secname %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= swimmer.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= swimmer.born.strftime("%d/%m/%Y") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= swimmer.category %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= swimmer.genre %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= swimmer.state %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

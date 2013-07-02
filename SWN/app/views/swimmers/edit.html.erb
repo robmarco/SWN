@@ -1,0 +1,30 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to t('.breadcumbs.swimmers'), swimmers_path %></li>
+	<li><%= link_to "Id #{@swimmer.id}", @swimmer %></li>
+	<li><%= t('.breadcumbs.modify_swimmer') %></li>
+</ul>
+
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<!-- Header  -->
+		<header>
+			<h2><%= t('.header') %> - <%= "#{@swimmer.name} #{@swimmer.secname}" %></h2>
+			<hav>
+				<ul class="button-switch">
+					<li><%= link_to t('.buttons.delete_swimmer'), swimmer_path(@swimmer), :confirm => '¿Está seguro de que desea eliminar al nadador?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to t('.buttons.show_swimmer'), swimmer_path(@swimmer), :class => "button" %></li>					
+				</ul>
+			</hav>
+		</header>
+		<!-- \Header  -->
+
+		<section>
+
+			<%= render 'form' %>
+			
+		</section>
+		
+	</div>
+</article>

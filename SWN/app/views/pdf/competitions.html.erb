@@ -1,0 +1,45 @@
+<section>
+	<div class="trainer_info">
+		<div class="personal_info">
+			<ul>
+				<li><%= current_user.full_name %></li>
+				<li><%= current_user.account.try(:club) %></li>
+				<li><%= "#{current_user.account.try(:country)}, #{current_user.account.try(:city)}" %></li>
+				<li><%= current_user.try(:email) %></li>
+			</ul>
+		</div>
+		<div class="page_info">
+			<h2>Informe de Competiciones</h2>
+			<p><%= Time.now.strftime("Generado %m/%d/%Y a %I:%M%p") %></p>
+		</div>
+	</div>
+
+	<div align="center">
+		<% if @competitions.count > 0 %>
+		<table id="hor-minimalist-b">
+			<thead>
+				<tr>
+					<tr><th colspan="5" id="colspan_title"><b>LISTADO COMPETICIONES</b></th></tr>
+					<th>Fecha</th>
+					<th>Título</th>
+					<th>Lugar</th>
+					<th>Categoría</th>
+					<th>Crono</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @competitions.each do |competition| %>
+					<tr>
+						<td><%= competition.date_competition.strftime("%d/%m/%Y") %></td>
+						<td><%= "#{competition.title} (#{competition.pool_dist})" %></td>
+						<td><%= competition.place %></td>
+						<td><%= competition.category %></td>
+						<td><%= competition.chrono_type %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% end %>
+	</div>
+</section>
+

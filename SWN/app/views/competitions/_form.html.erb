@@ -1,0 +1,103 @@
+<%= form_for(@competition) do |f| %>
+  <% if @competition.errors.any? %>
+    <div id="error_explanation">
+			<a href="#" class="close-notification" title="Cerrar notificación" rel="tooltip">x</a>
+      <h2><%= t('activerecord.errors.template.header', :model => Competition.model_name.human, :count => @competition.errors.count) %></h2>
+
+      <ul>
+      <% @competition.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<fieldset>
+		<legend><%= t('competitions.form.competition_information') %></legend>
+		<dl>
+			<dt><%= f.label :title, "#{Competition.human_attribute_name(:title)}*", :rel => "tooltip", :title => t('labels.required_field') %></dt>
+			<dd><%= f.text_field :title, :class => 'medium' %></dd>
+
+			<dt><%= f.label :place, "#{Competition.human_attribute_name(:place)}*", :rel => "tooltip", :title => t('labels.required_field') %></dt>
+			<dd><%= f.text_field :place, :class => 'medium' %></dd>
+
+			<dt><%= f.label :date_competition, "#{Competition.human_attribute_name(:date_competition)}*", :rel => "tooltip", :title => t('labels.required_field') %></dt>
+			<dd>
+				<% if params[:action]=="edit" %>
+					<%= f.text_field :date_competition, :value => @competition.date_competition.strftime("%d/%m/%Y"), :class => 'datepicker small' %>
+				<% else %>
+					<%= f.text_field :date_competition, :class => 'datepicker small' %>
+				<% end %>
+			</dd>
+			
+			<!-- Chrono_Type Field -->
+			<dt><%= f.label :chrono_type, "#{Competition.human_attribute_name(:chrono_type)}*", :rel => "tooltip", :title => t('labels.required_field') %></dt>
+			<dd>
+				<% if params[:action] == "edit" or params[:action]=="update" %>
+					<%= f.select :chrono_type, "<option #{@competition.chrono_type == "Manual" ? "selected='selected' " : ""} value='Manual'>Manual</option><option #{@competition.chrono_type == "Electrónico" ? "selected='selected' " : ""} value='Electrónico'>Electrónico</option>".html_safe  %>
+				<% else %>
+					<%= f.select :chrono_type, "<option value='Manual'>Manual</option><option value='Electrónico'>Electrónico</option>".html_safe, :include_blank => true  %>
+				<% end %>				
+			</dd>
+			<!-- \Chrono_Type Field -->
+
+			<!-- Pool_Dist Field -->
+			<dt><%= f.label :pool_dist, "#{Competition.human_attribute_name(:pool_dist)}*", :rel => "tooltip", :title => t('labels.required_field') %></dt>
+			<dd>
+				<% if params[:action] == "edit" or params[:action]=="update"%>
+					<%= f.select :pool_dist, "<option #{@competition.pool_dist == "25m" ? "selected='selected' " : ""} value='25m'>25m</option><option #{@competition.pool_dist == "50m" ? "selected='selected' " : ""} value='50m'>50m</option>".html_safe  %>
+				<% else %>
+					<%= f.select :pool_dist, "<option value='25m'>25m</option><option value='50m'>50m</option>".html_safe, :include_blank => true  %>
+				<% end %>				
+			</dd>
+			<!-- \Pool_Dist Field -->
+			
+			<!-- Category Field -->
+			<dt><%= f.label :category, "#{Competition.human_attribute_name(:category)}*", :rel => "tooltip", :title => t('labels.required_field') %></dt>
+			<dd>
+				<% if params[:action] == "edit" or params[:action]=="update"%>
+					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), :class => "small"%>
+				<% else %>
+					<%= f.select :category, options_from_collection_for_select(@categories, "name", "name"), :include_blank => true, :class => "small"%>
+				<% end %>	
+			</dd>
+			<!-- \Category Field -->
+			
+		</dl>
+		
+	</fieldset>
+	
+	<!-- Competition Results Block -->
+	<fieldset>
+		<legend><%= t('competitions.form.competition_results') %></legend>
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th><%= CompetitionResult.human_attribute_name(:swimmer_id) %></th>
+					<th><%= CompetitionResult.human_attribute_name(:competition_set_id) %></th>
+					<th><%= CompetitionResult.human_attribute_name(:time_result) %></th>
+					<th><%= CompetitionResult.human_attribute_name(:disqualify) %></th>
+					<th><%= CompetitionResult.human_attribute_name(:observation) %></th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<%= f.fields_for :competition_results do |builder| %>
+					<%= render 'competition_result_fields', :f => builder %>
+				<% end %>				
+			</tbody>
+			
+			<tfoot>
+				<tr>
+					<td colspan="6"><p class="res"><%= link_to_add_fields "Añadir resultado", f, :competition_results %></p></td>
+				</tr>
+			</tfoot>
+		</table>
+		<br />
+	</fieldset>
+	<!-- \Competition Results Block -->
+	<div align="center"><%= f.submit 'Enviar', :class => "button" %> ó <%= link_to 'Cancelar', :back %></div>
+	
+
+<% end %>

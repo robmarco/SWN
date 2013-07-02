@@ -1,0 +1,119 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to t('competitions.breadcumbs.competitions'), competitions_path %></li>
+	<li>Id <%= @competition.id %></li>
+</ul>
+
+<!-- Competition's Information Block -->
+<article class="full-block clearrm nested">
+	<div class="article-container">
+	
+		<header>
+			<h2><%= @competition.title %></h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Imprimir PDF', competition_path(@competition, format: "pdf"), :class => "button" %></li>
+					<li><%= link_to 'Añadir Competición', new_competition_path, :class => "button" %></li>
+					<li><%= link_to 'Eliminar', competition_path(@competition), :confirm => '¿Está seguro de que desea eliminar la competición?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Editar', edit_competition_path(@competition), :class => "button" %></li>					
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+
+			<ul class="tickets" id="comp_test">
+				<li class="ticket-data">
+					<div class="ticket-overview">
+						<ul>
+							<li class="ticket-data-ticket"><strong><%= @competition.date_competition.strftime("%d/%m/%Y") %></strong></li>
+							<li class="ticket-data-activity">
+								<a href="#" class="ticket-open-details"><%= @competition.place %></a>
+							</li>
+							<li class="ticket-data-user">
+								<strong>De <%= @competition.pool_dist %></strong>
+								<%= t('.chrono') %> <%= @competition.chrono_type %>
+							</li>
+							<li class="ticket-data-priority">
+								<span class="tag <%= Category.where('name like ?', @competition.category).map(&:color)[0] %>"><%= @competition.category %></span>
+							</li>
+							<li class="ticket-data-age">
+								<%= days_until_event (@competition.date_competition - Date.today).to_i %>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<hr>
+				<!-- Estadísticas -->
+				<li class="ticket-stats">
+					<ul>
+						<li class="ticket-stats-info">
+							<span class="ticket-stats-results">
+								<%= t('.total_results_added') %> <strong><%= @competition_results.size %></strong>
+							</span>
+							<span class="ticket-stats-swimmers">
+								<%= t('.total_swimmers_in') %> <strong><%= @competition_results.map(&:swimmer_id).uniq.size %> </strong>(<%= @competition_results.joins(:swimmer).merge(Swimmer.male).map(&:swimmer_id).uniq.size %> M/<%= @competition_results.joins(:swimmer).merge(Swimmer.female).map(&:swimmer_id).uniq.size %> F)
+							</span>
+							<span class="ticket-stats-disq">
+								<%= t('.disqualifieds') %> <strong><%= @competition_results.disqualified.size %></strong>
+							</span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+		</section>		
+	</div>
+</article>
+<!-- \Competition's Information Block -->
+
+<!-- Results Block -->
+<article class="full-block">
+	<div class="article-container">
+		<header>
+			<h2><%= t('.header_swimmers_results') %></h2>
+		</header>
+		
+		<section>
+			<table class="dt_swimmer_results">
+			  <thead>
+			  	<tr>
+				    <th><%= t('.table_swimmer') %></th>
+				    <th><%= t('.table_comp') %></th>
+				    <th><%= t('.table_time') %></th>
+				    <th><%= t('.table_diff') %></th>
+				    <th><%= t('.table_diff_percent') %></th>
+				    <th><%= t('.table_observation') %></th>
+				  </tr>
+			  </thead>
+
+				<tbody>
+					<!-- Competition results tr -->
+					<% if @competition_results.size > 0 %>					
+						<% @competition_results.each do |res| %>
+							<tr>
+								<td><%= link_to "#{res.swimmer.swimmer_secname_name}", swimmer_path(res.swimmer) %></td>
+								<td><%= res.competition_set.name %></td>
+								<td>
+									<%= res.time_result %>
+									<span id="evolution"><%= increase_decrease_time(res) %></span>
+									<span id="comp_best_result"><%= best_result_icon(res) %></span>
+								</td>
+								<td><%= "#{res.diff_with_best_result_until_date} s" %></td>
+								<td><%= "#{res.diffpercent_with_best_result_until_date}%" %></td>
+								<td><%= res.is_disqualified? ? "Descalificado" : res.observation %></td>
+							</tr>
+						<% end %>							
+					<% end %>
+					<!-- \Competition results tr -->
+				</tbody>			
+			</table>
+		</section>
+		<footer>
+			<p><%= t('.footer') %></p>
+		</footer>
+	</div>
+</article>
+<!-- \Results Block -->
+<%= link_to 'Ir Atrás', competitions_path, :class => "button right" %>
+<br />

@@ -1,0 +1,156 @@
+/** * YUI 3.5.0 - reset.css (http://developer.yahoo.com/yui/3/cssreset/) 
+* http://cssreset.com * Copyright 2012 Yahoo! Inc. All rights reserved. 
+* http://yuilibrary.com/license/ */
+/*	TODO will need to remove settings on HTML since we can't namespace it.	
+TODO with the prefix, should I group by selector or property for weight savings?*/
+html{	color:#000;	background:#FFF;}
+/*	TODO remove settings on BODY since we can't namespace it.*/
+/*	TODO test putting a class on HEAD.		- Fails on FF. */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td {	margin:0;	padding:0;}
+table {	border-collapse:collapse;	border-spacing:0;}
+fieldset,img {	border:0;}
+/*	TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...*/
+address,caption,cite,code,dfn,em,strong,th,var {	font-style:normal;	font-weight:normal;} 
+ol,ul {	list-style:none;} caption,th {	text-align:left;}
+h1,h2,h3,h4,h5,h6 {	font-size:100%;	font-weight:normal;}
+q:before,q:after {	content:'';}
+abbr,acronym {	border:0;	font-variant:normal;}
+/* to preserve line-height and selector appearance */
+sup {	vertical-align:text-top;}
+sub {	vertical-align:text-bottom;}
+input,textarea,select {	font-family:inherit;	font-size:inherit;	font-weight:inherit;}
+/*to enable resizing for IE*/
+input,textarea,select {	*font-size:100%;}
+/*because legend doesn't inherit in IE */
+legend {	color:#000;}
+/* YUI CSS Detection Stamp */
+#yui3-css-stamp.cssreset { display: none; }
+
+
+body
+{
+	line-height: 1.6em;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+}
+
+.clear { clear:both;}
+
+header img { width: 100%;}
+
+/* ------------------
+ styling Trainer Info 
+   ------------------   */
+
+.trainer_info { width: 100%; margin-top: 20px; margin-bottom: 20px;} 
+.trainer_info .personal_info { float:left; width: 50%;}
+
+.personal_info ul { list-style: none; margin-left: 20px; color: #663366;}
+.personal_info ul li { line-height: 1.1em; font-size: 10px;}
+.page_info { color: #663366; margin-right: 30px; }
+.page_info h2, .page_info p { text-align: right;}
+.page_info h2 { padding-top: 20px; margin-bottom: 0; font-size: 20px;}
+.page_info p { margin: 0; font-size: 9px; color: #999966;}
+
+/* ------------------
+ styling Swimmer Info
+   ------------------   */
+.swimmer_info .picture img { 
+	height: 150px; 
+	width: 150px;
+	border-spacing: 2px;
+	margin-top: 20px;
+}
+.info { width: 64%; float: left; margin-left: 4%;}
+.picture { width: 30%; float: right;}
+.swimmer_info {margin-top: 100px;}
+.swimmer_info .info h2 { color: #663366; font-size: 20px; }
+.swimmer_info .info ul { list-style: none; }
+.data_info { margin-top: 30px;}
+.data_info li { color: gray; }
+.data_info li span { color: black;}
+li#parents { margin-top: 10px;}
+.info h3 { margin-top: 20px; margin-left: 20px; color: #663366; font-size: 13px;}
+ul.data_info#contact_info, ul.data_info#diseases { margin-top: 10px;}
+ul#diseases { min-height: 120px;}
+
+/* -----------------------------
+ styling Competition & Test Info
+   --------------------------- */
+.right_20 { float:left; width: 20%; }
+.left_80 { float:left; width: 80%;}
+.basic_information { margin-top: 90px; }
+.basic_information h2, .basic_information h3	{ color: #663366; font-size: 20px; margin-bottom: 0px;}
+.basic_information p { margin: 0; font-size: 10px; color: #999966;}
+.basic_information p.category { font-size: 14px; text-align: center}
+#ex span { display: block; color: #666; }
+
+/* -----------------------------
+ styling Incidents Info
+   --------------------------- */
+.incident { 
+	text-align: justify;
+	width: 90%;
+	margin-top: 55px;
+}
+.incident h2 {
+	color: #663366;
+	font-size: 14px;
+	font-weight: bold;
+}
+#incident_title { border: 1px solid #333; padding: 10px;}	
+#incident_title p { color: #666; }
+#incident_content { margin-top: 10px;}
+#incident_content ol { margin-left: 50px; margin-top: 5px;}
+/* ------------------
+ styling for the tables 
+   ------------------   */
+.text_right { text-align: right;}
+
+#hor-minimalist-b
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 11px;
+	background: #fff;
+	margin: 45px;
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+#hor-minimalist-b th
+{
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	padding: 10px 8px;
+	border-bottom: 2px solid black;
+}
+#hor-minimalist-b td
+{
+	border-bottom: 1px solid #ccc;
+	color: #333;
+	padding: 6px 8px;
+	line-height: 1.2em;
+}
+#hor-minimalist-b tfoot tr {
+	line-height: 1.0em;
+	font-size: 9px;
+
+}
+#hor-minimalist-b tfoot td { border: 0px; }
+
+#colspan_title { 
+	line-height: 1.2em; 
+	font-weight: bold; 
+	text-align: center; 
+	height: 50px; 
+}
+
+span#evolution img { 
+	border: none;
+	height: 8px;
+	width: 8px;
+	position: relative;
+	top: 0px;
+	margin-left: 10px;
+}

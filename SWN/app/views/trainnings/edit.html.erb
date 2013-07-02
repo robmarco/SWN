@@ -1,0 +1,26 @@
+<ul id="breadcrumbs">
+	<li><%= link_to 'Dashboard', root_path, :title => "Dashboard" %></li>
+	<li><%= link_to t('trainnings.breadcumbs.trainnings'), trainnings_path %></li>
+	<li><%= link_to "Id #{@trainning.id}", @trainning %></li>
+	<li><%= t('trainnings.breadcumbs.modify_trainning') %></li>
+</ul>
+
+<article class="full-block clearfix">
+	<div class="article-container">
+		
+		<header>
+			<h2><%= t('.header_modify_trainning') %> - <%= "Micro " +  @trainning.micro.to_s + " del macro " + @trainning.macro.to_s %></h2>
+			<nav>
+				<ul class="button-switch">
+					<li><%= link_to 'Eliminar', trainning_path(@trainning), :confirm => '¿Está seguro de que desea eliminar el entrenamiento?', :method => :delete, :class => "button gray" %></li>
+					<li><%= link_to 'Mostrar entrenamiento', trainning_path(@trainning), :class => "button" %></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section>
+			<%= render 'form' %>
+		</section>
+		
+	</div>
+</article>
